@@ -83,5 +83,7 @@ gem 'haml', '~> 4.0', '>= 4.0.7'
 
 gem 'devise'
 
+gem 'enumerize'
+
 #RUBY Version
 ruby "2.2.3"
