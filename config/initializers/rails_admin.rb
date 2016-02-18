@@ -19,6 +19,11 @@ RailsAdmin.config do |config|
 
   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
 
+  config.authenticate_with do
+    warden.authenticate! scope: :admin
+  end
+  config.current_user_method(&:current_admin)
+
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
@@ -34,4 +39,17 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+  config.model Mensaje do
+    configure :color, :color
+  end
+
+  config.model Caracteristica do
+    list do
+      configure :type do
+        hide
+      end
+    end
+  end
+
 end

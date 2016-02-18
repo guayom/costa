@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160218135506) do
+ActiveRecord::Schema.define(version: 20160218160508) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,99 @@ ActiveRecord::Schema.define(version: 20160218135506) do
     t.datetime "updated_at",             null: false
     t.string   "nombre"
     t.string   "codigo"
+  end
+
+  create_table "amenidades", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "caracteristicas", force: :cascade do |t|
+    t.string   "titulo"
+    t.string   "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "imagenes", force: :cascade do |t|
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "imagen_file_name"
+    t.string   "imagen_content_type"
+    t.integer  "imagen_file_size"
+    t.datetime "imagen_updated_at"
+  end
+
+  create_table "mensajes", force: :cascade do |t|
+    t.string   "mensaje"
+    t.string   "color",      default: "#209922"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "propietarios", force: :cascade do |t|
+    t.string   "nombre"
+    t.string   "apellido"
+    t.string   "email"
+    t.string   "celular"
+    t.string   "telefono"
+    t.string   "comision"
+    t.string   "direccion"
+    t.text     "otros_contactos"
+    t.text     "notas"
+    t.integer  "admin_id",        index: {name: "fk__propietarios_admin_id"}, foreign_key: {references: "admins", name: "fk_propietarios_admin_id", on_update: :no_action, on_delete: :no_action}
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "tipos", force: :cascade do |t|
+    t.string   "titulo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "propiedades", force: :cascade do |t|
+    t.string   "listado",                 default: "1",   null: false
+    t.string   "titular"
+    t.string   "estado",                  default: "1"
+    t.string   "codigo",                  null: false
+    t.integer  "admin_id",                null: false, index: {name: "fk__propiedades_admin_id"}, foreign_key: {references: "admins", name: "fk_propiedades_admin_id", on_update: :no_action, on_delete: :no_action}
+    t.integer  "propietario_id",          null: false, index: {name: "fk__propiedades_propietario_id"}, foreign_key: {references: "propietarios", name: "fk_propiedades_propietario_id", on_update: :no_action, on_delete: :no_action}
+    t.integer  "tipo_id",                 null: false, index: {name: "fk__propiedades_tipo_id"}, foreign_key: {references: "tipos", name: "fk_propiedades_tipo_id", on_update: :no_action, on_delete: :no_action}
+    t.text     "direccion_exacta"
+    t.text     "direccion_uso_interno"
+    t.text     "descripcion_publica"
+    t.string   "moneda",                  default: "USD", null: false
+    t.integer  "valor_compra"
+    t.integer  "valor_alquiler"
+    t.boolean  "opcion_compra"
+    t.boolean  "incluye_mantenimiento"
+    t.integer  "cuota_mantenimiento"
+    t.integer  "area_terreno"
+    t.float    "area_construccion"
+    t.integer  "pisos"
+    t.integer  "dormitorios"
+    t.float    "banos"
+    t.boolean  "sala_comedor"
+    t.boolean  "patio"
+    t.integer  "patio_area"
+    t.integer  "estacionamiento"
+    t.string   "tipo_de_estacionamiento"
+    t.boolean  "amueblado"
+    t.boolean  "linea_blanca"
+    t.integer  "fecha_construccion"
+    t.text     "otros"
+    t.string   "numero_plano_catastrado"
+    t.text     "notas_uso_interno"
+    t.string   "meta_keywords"
+    t.text     "meta_description"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "servicios", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

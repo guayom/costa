@@ -76,6 +76,8 @@ GEM
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    email_validator (1.6.0)
+      activemodel
     equalizer (0.0.11)
     erubis (2.7.0)
     execjs (2.6.0)
@@ -287,6 +289,7 @@ DEPENDENCIES
   byebug
   chartkick
   devise
+  email_validator
   font-awesome-rails
   haml (~> 4.0, >= 4.0.7)
   inflections

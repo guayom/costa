@@ -3,4 +3,13 @@ class Admin < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  validates :nombre, :codigo, :email, :codigo,  presence: true
+  validates :email, :codigo, uniqueness: true, on: :create
+
+  has_many :propietarios
+
+  rails_admin do
+		object_label_method :nombre
+	end
 end
