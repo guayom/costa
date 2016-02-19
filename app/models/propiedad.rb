@@ -3,7 +3,9 @@ class Propiedad < ActiveRecord::Base
 	belongs_to :admin
 	belongs_to :propietario
 	belongs_to :tipo
-  has_and_belongs_to_many :caracteristicas
+  has_many :imagenes, :dependent => :destroy
+  accepts_nested_attributes_for :imagenes, :allow_destroy => true
+  #has_and_belongs_to_many :caracteristicas
 	
 	extend Enumerize
 	enumerize :listado, in: [:venta, :alquiler, :opcion_compra, :venta_alquiler]

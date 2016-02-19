@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160218234412) do
+ActiveRecord::Schema.define(version: 20160219023303) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,22 +36,6 @@ ActiveRecord::Schema.define(version: 20160218234412) do
   create_table "caracteristicas", force: :cascade do |t|
     t.string   "titulo"
     t.string   "type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "imagenes", force: :cascade do |t|
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-    t.string   "imagen_file_name"
-    t.string   "imagen_content_type"
-    t.integer  "imagen_file_size"
-    t.datetime "imagen_updated_at"
-  end
-
-  create_table "mensajes", force: :cascade do |t|
-    t.string   "mensaje"
-    t.string   "color",      default: "#209922"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -117,6 +101,25 @@ ActiveRecord::Schema.define(version: 20160218234412) do
     t.integer  "provincia"
     t.integer  "canton"
     t.integer  "distrito"
+    t.string   "cover"
+  end
+
+  create_table "imagenes", force: :cascade do |t|
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "imagen_file_name"
+    t.string   "imagen_content_type"
+    t.integer  "imagen_file_size"
+    t.datetime "imagen_updated_at"
+    t.string   "imagen"
+    t.integer  "propiedad_id",        index: {name: "fk__imagenes_propiedad_id"}, foreign_key: {references: "propiedades", name: "imagenes_propiedad_id_fkey", on_update: :no_action, on_delete: :no_action}
+  end
+
+  create_table "mensajes", force: :cascade do |t|
+    t.string   "mensaje"
+    t.string   "color",      default: "#209922"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
