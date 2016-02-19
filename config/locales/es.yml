@@ -21,3 +21,10 @@
 
 es:
   hello: "Hola Mundo"
+  enumerize:
+    propiedad:
+      listado:
+        venta: "Venta"
+        alquiler: "Alquiler"
+        opcion_compra: "Alquiler con opción de compra"
+        venta_alquiler: 'Venta ó Alquiler'

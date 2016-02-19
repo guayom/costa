@@ -26,4 +26,5 @@ ActiveSupport::Inflector.inflections do |inflect|
 	inflect.irregular 'comun', 'comunes'
 	inflect.irregular 'imagen', 'imagenes'
 	inflect.irregular 'caracteristica', 'caracteristicas'
+	inflect.irregular 'general', 'generales'
 end

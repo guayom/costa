@@ -1,4 +1,16 @@
 class Propiedad < ActiveRecord::Base
+
+	belongs_to :admin
+	belongs_to :propietario
+	belongs_to :tipo
+  has_and_belongs_to_many :caracteristicas
+	
+	extend Enumerize
+	enumerize :listado, in: [:venta, :alquiler, :opcion_compra, :venta_alquiler]
+	enumerize :estado, in: [:disponible, :alquilado, :vendido, :oculto], default: :disponible
+	enumerize :moneda, in: [:usd, :crc], default: :usd
+	enumerize :tipo_de_estacionamiento, in: [:parqueo, :garaje, :parqueo_techado]
+
 	def provincia_enum
     # Do not select any value, or add any blank field. RailsAdmin will do it for you.
     ['San José', 'Alajuela', 'Cartago', 'Heredia', 'Limón', 'Guanacaste', 'Puntrenas']

@@ -1,7 +1,7 @@
-class Servicio < Caracteristica
+class General < Caracteristica
 	validates :type, presence: true
 
 	rails_admin do
 		object_label_method :titulo
 	end
-end 
+end

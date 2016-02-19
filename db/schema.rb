@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160218175421) do
+ActiveRecord::Schema.define(version: 20160218234412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,11 +31,6 @@ ActiveRecord::Schema.define(version: 20160218175421) do
     t.datetime "updated_at",             null: false
     t.string   "nombre"
     t.string   "codigo"
-  end
-
-  create_table "amenidades", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "caracteristicas", force: :cascade do |t|
@@ -122,11 +117,6 @@ ActiveRecord::Schema.define(version: 20160218175421) do
     t.integer  "provincia"
     t.integer  "canton"
     t.integer  "distrito"
-  end
-
-  create_table "servicios", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end
