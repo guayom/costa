@@ -26,4 +26,5 @@ production:
   pool:     5
   template: template0  
   username: costa
-  password: <%= ENV['COSTA_DATABASE_PASSWORD'] %>
+  # password: <%= ENV['COSTA_DATABASE_PASSWORD'] %>
+  password: postgres
