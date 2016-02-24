@@ -34,10 +34,6 @@ RailsAdmin.config do |config|
     edit
     delete
     show_in_app
-
-    multiple_upload do
-      only Imagen
-    end
   end
 
   config.model Mensaje do
