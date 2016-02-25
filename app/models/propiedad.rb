@@ -31,9 +31,7 @@ class Propiedad < ActiveRecord::Base
     edit do
       exclude_fields :id
       field :imagenes, :paperclip do
-        html_attributes do
-          { multiple: true }
-        end
+        partial 'multiple_images'
       end
     end
   end
