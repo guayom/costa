@@ -1,0 +1,24 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+    %meta{:content => "IE=Edge,chrome=1", "http-equiv" => "X-UA-Compatible"}
+    %meta{:content => "Put Meta Data here", :name => "description"}
+    %meta{:content => "Guayo Mena", :name => "author"}
+    %link{:href => "images/favicon.png", :rel => "shortcut icon"}
+
+    %title Costa506
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    / HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
+    /[if lt IE 9]
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+
+%body#top
+  = render "application/navbar"
+  = yield :full_width_header
+  = content_for?(:content) ? yield(:content) : yield
+  = render "application/footer"

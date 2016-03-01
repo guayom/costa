@@ -1,0 +1,62 @@
+- content_for :full_width_header do
+  #header.heading{:style => "background-image: url(img/img01.jpg);"}
+    .container
+      .row
+        .col-md-10.col-md-offset-1.col-sm-12
+          .page-title
+            %h2
+              Contacto
+          %ol.breadcrumb
+            %li= link_to "Inicio", root_path
+            %li.active Contacto
+
+- content_for :content do
+  #contentz
+    .container
+      .row
+        .col-md-12
+          .blog-container
+            .blog-content
+              / <div id="map"></div>
+              .blog-title
+                %h2 ¿Interesado en alguna propiedad?
+                %h3 No dude en contactarnos por medio de nuestro formulario
+              .blog-text.contact
+                .row
+                  .col-md-8.col-sm-7
+                    %form
+                      .form-group
+                        %label.sr-only{:for => "name"} Nombre
+                        %input.form-control{:placeholder => "Nombre y apellidos", :type => "text"}
+                      .form-group
+                        %label.sr-only{:for => "email"} Email
+                        %input.form-control{:placeholder => "nombre@ejemplo.com", :type => "email"}
+                      .form-group
+                        %label.sr-only{:for => "email"} Teléfono
+                        %input.form-control{:placeholder => "2222 2222", :type => "email"}
+                      .form-group
+                        %label.sr-only{:for => "subject"} Motivo
+                        %input.form-control{:placeholder => "Motivo de mensaje", :type => "text"}
+                      .form-group
+                        %label.sr-only{:for => "subject"} Propiedad(es)
+                        %input.form-control{:placeholder => "Ej: #000999", :type => "text"}
+                      .form-group
+                        %label.sr-only{:for => "name"} Mensaje
+                        %textarea.form-control{:placeholder => "Escriba su mensaje", :rows => "5"}
+                      .form-group
+                        %button.btn.btn-success{:name => "submit", :type => "submit"}
+                          %i.fa.fa-envelope-o
+                          Enviar Mensaje
+                    %br
+                  .col-md-4.col-sm-5
+                    %address
+                      %h4 Costa 506 Real Estate
+                      = CONTACT_INFO['direccion']
+                      %br/
+                      = CONTACT_INFO['email']
+                      %br
+                        %br
+                          %h4 Teléfonos
+                          - CONTACT_INFO['telefonos'].each do |telefono|
+                            %div
+                              = telefono['numero']

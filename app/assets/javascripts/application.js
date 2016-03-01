@@ -14,8 +14,15 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap.min
+//= require gmap3.min
+//= require jquery.easing
+//= require imagesloaded.pkgd.min
+//= require masonry.pkgd.min
+//= require jquery.backstretch
+//= require jquery.nicescroll.min
 //= require jquery.jcarousel.min
-//= require_tree .
+//= require jquery.jcarousel-autoscroll.min.js
+//= require script
 
 function slideMensajesEspeciales() {
     var allofEm = $('.property-status div');
@@ -37,6 +44,7 @@ function submitSearchForm(){
   quizSearchForm.find(':selected[value=""]').parent().attr('disabled', true);
   quizSearchForm.submit();
 }
+
 //Selectores de zona geográfica
 jQuery(function($) {
   $(".provincia_id_selector").change(function() {

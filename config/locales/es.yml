@@ -28,3 +28,11 @@ es:
         alquiler: "Alquiler"
         opcion_compra: "Alquiler con opción de compra"
         venta_alquiler: 'Venta ó Alquiler'
+      provincia:
+        sj: "San José"
+        al: Alajuela
+        ca: Cartago
+        he: Heredia
+        li: "Limón"
+        gu: Guanacaste
+        pu: Puntarenas

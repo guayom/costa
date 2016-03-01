@@ -1,0 +1,1 @@
+CONTACT_INFO = YAML.load_file("#{Rails.root}/config/data/contact_info.yml")

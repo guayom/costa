@@ -1,0 +1,66 @@
+<div class="col-md-4 col-sm-6 col-xs-12">
+	<div class="property-container">
+	  <div class="property-image">
+	  	<% unless propiedad.pictures.empty? %>
+	  		<%= image_tag propiedad.pictures.first.image %>
+	  	<% end %>
+	    <div class="property-price">
+			<div class="pull-left alquiler">
+			  <% if defined? propiedad.compra and ! propiedad.compra.blank? %>
+			      <small>Compra</small><br/>
+			      <span>$<%= number_with_delimiter(propiedad.compra) %></span><br/>
+			  <% end %>
+			</div>
+			<div class="pull-left">
+			  <% if defined? propiedad.compra and ! propiedad.compra.blank? %>
+			      <small>Alquiler</small><br/>
+			      <span>$<%=  number_with_delimiter(propiedad.alquiler) %></span>
+		      <% end %>
+			</div>
+	    </div>
+	    <div class="property-status venta">
+	    	<% propiedad.especiales.each do |mensaje| %>
+	        	<div style="background-color: <%= mensaje.color %>"><%= mensaje.mensaje %></div>
+        	<% end %>
+	    </div>
+	  </div>
+	  <div class="property-features">
+	  	<% if defined? propiedad.area_construccion %>
+		    <span>
+		    	<i class="fa fa-home"></i> <%= number_to_human(propiedad.area_construccion, precision: 1, strip_insignificant_zeros: true) %>m<sup>2</sup>
+		    </span>
+	    <% end %>
+	    <% if defined? propiedad.dormitorios %>
+		    <span>
+		    	<i class="fa fa-bed"></i> <%= number_to_human(propiedad.dormitorios, precision: 1, strip_insignificant_zeros: true) %>
+		    </span>
+	    <% end %>
+	    <% if defined? propiedad.banos %>
+		    <span>
+		    	<%= image_tag 'icons/bathroom-white.svg', class: "bathroom-index" %>
+		    	<%= number_to_human(propiedad.banos, precision: 1, strip_insignificant_zeros: true) %>&nbsp;
+		    </span>
+	    <% end %>
+	    <% if defined? propiedad.estacionamiento %>
+		    <span>
+		    	<i class="fa fa-car"></i> <%= number_to_human(propiedad.estacionamiento) %>
+		    </span>
+	    <% end %>
+	  </div>
+	  <div class="property-content">
+	    <h3>
+	    	<%= link_to(propiedad.permalink,  controller: "propiedades", action: "detalles", id: propiedad.permalink) %>
+	    	<small>
+	    		<% provincia = @provincias.find {|s| s.id == propiedad.provincia_id.to_i } %>
+	    		<%= provincia.nombre if defined? provincia.nombre %>
+	    		<% canton = @cantones.find {|s| s.id == propiedad.canton_id.to_i } %>
+	    		<%= ', '+canton.nombre if defined? canton.nombre %>
+	    		<% distrito = @distritos.find {|s| s.id == propiedad.distrito_id.to_i } %>
+	    		<%= ', '+distrito.nombre if defined? distrito.nombre %>
+	    	</small>
+	    </h3>
+	    <!-- poner colores para cada uno -->
+	    <span class="categoria"><strong><%= propiedad.tipo.titulo if defined? propiedad.tipo.titulo %></strong></div>
+	  </div>
+	</div>
+	

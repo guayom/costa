@@ -1,0 +1,24 @@
+<% if !flash[:success].blank? %>
+	<div class="notice alert alert-success">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		<%= flash[:success] %>
+	</div>
+<% end %>
+<% if !flash[:alert].blank? %>
+	<div class="notice alert alert-danger">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		<%= flash[:alert] %>
+	</div>
+<% end %>
+<% if !flash[:warning].blank? %>
+	<div class="notice alert alert-warning">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		<%= flash[:warning] %>
+	</div>
+<% end %>
+<% if !flash[:info].blank? %>
+	<div class="notice alert alert-info">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		<%= flash[:info] %>
+	</div>
+<% end %>

@@ -1,0 +1,41 @@
+<%
+def isselected (params, controller)
+	if params[:controller] == controller
+		return ' class=active'
+	end
+end
+%>
+<div class="row">
+	<nav class="navbar navbar-inverse admin-navbar" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<strong>
+					<%= link_to "Menú Administración", {controller: "propiedades", action: "index"}, :class=> 'navbar-brand' %>
+				</strong>
+		    </div>
+			<ul class="nav navbar-nav">
+				<li<%= isselected(params, 'propiedades') %>>
+					<%= link_to "Propiedades", controller: "propiedades", action: "index" %>
+				</li>
+				<li<%= isselected(params, 'agentes') %>>
+					<%= link_to "Agentes", controller: "agentes", action: "index" %>
+				</li>
+				<li<%= isselected(params, 'mensajes_especiales') %>>
+					<%= link_to "Mensajes Especiales", controller: "especiales", action: "index" %>
+				</li>
+				<li<%= isselected(params, 'propietarios') %>>
+					<%= link_to "Propietarios", controller: "propietarios", action: "index" %>
+				</li>
+				<li<%= isselected(params, 'tipos') %>>
+					<%= link_to "Tipos de Propiedad", controller: "tipos", action: "index" %>
+				</li>
+				<li<%= isselected(params, 'usuarios') %>>
+					<%= link_to "Usuarios", controller: "usuarios", action: "index" %>
+				</li>
+				<li<%= isselected(params, 'caracteristicas_comunes') %>>
+					<%= link_to "Características Comunes", controller: "caracteristicas_comunes", action: "index" %>
+				</li>
+			</ul>
+		</div>
+	</nav>
+</div>

@@ -41,6 +41,9 @@ RailsAdmin.config do |config|
   end
 
   config.model Mensaje do
+    object_label_method do
+      :mensaje
+    end
     configure :color, :color
   end
 

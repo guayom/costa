@@ -12,9 +12,9 @@ $(document).ready(function(){
 
     /* backstretch slider */
     $('.header-slide').backstretch([
-      "slide/bg01.jpg",
-      "slide/bg02.jpg",
-      "slide/bg03.jpg"
+      "<%= asset_path('bg01.jpg') %>",
+      "<%= asset_path('bg02.jpg') %>",
+      "<%= asset_path('bg03.jpg') %>" 
       ], {
         fade: 850,
         duration: 4000
@@ -37,18 +37,21 @@ $(document).ready(function(){
         cursorcolor: '#434a54',
         cursorwidth: '10px',
         cursorborder: '1px solid #434a54',
-        cursoropacitymax: 0.9,                
-        scrollspeed: 200,
-        zindex: 1060
+        cursoropacitymax: 0.3,                
+        scrollspeed: 100,
+        zindex: 106
     });
 
 
     /* carousel testimony */
+    /*
     $('#testislider').jcarousel({
         interval: 6000
     })
+    */
 
 	/* carousel partner */
+    /*
 	var jcarousel = $('.jcarousel');
 
     jcarousel
@@ -97,7 +100,7 @@ $(document).ready(function(){
                 return '<a href="#' + page + '">' + page + '</a>';
         }
     });
-
+    */
 
     /* scrolltop */
     $('.scroltop').on('click', function(event) {
@@ -155,9 +158,11 @@ $(document).ready(function(){
 
 
     /* carousel single */
+    /*
     $('#slider-property').jcarousel({
         interval: 6500
     })
+    */
 
 
     /* map property */
@@ -181,4 +186,19 @@ $(document).ready(function(){
              }
         });
     })
+
+    $(".mensajes-especiales li").css('background', function () { //or for code's consistency, i'd use background-color instead
+        return "#"+$(this).data('color')
+    });
+
+
+    $('#mycarousel').jcarousel({
+    })
+    .jcarouselAutoscroll({
+        autostart: true,
+        interval: 1000,
+        target: '+=1'
+    })
+
+
 });

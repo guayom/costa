@@ -1,0 +1,19 @@
+<table class="table table-bordered table-hover">
+	<tr>
+	<% headers.each do |i| %>
+		<th<%if i==headers.last %> " class='text-right'"<% end %>><%= i %></th>
+	<% end %>
+	</tr>
+	<% items.each do |i| %>
+		<tr>
+			<% campos.each do |item| %>
+				<td><%= i[item] %></td>
+			<% end %>
+			<td class='text-right'>
+				<% opciones.each do |opcion| %>
+					&nbsp;<%= link_to opcion.capitalize, {:action => opcion, :id => i} %>
+				<% end %>
+			</td>
+		</tr>
+	<% end %>
+</table>

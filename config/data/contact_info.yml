@@ -1,0 +1,22 @@
+#Social Networks
+redes_sociales:
+ - nombre: facebook
+   url: https://www.facebook.com/costa506/
+   icon: facebook
+
+#Email de contacto:
+email: info@costa506realestate.com
+
+#Dirección
+direccion: 'San José, Costa Rica'
+
+#Teléfonos
+telefonos:
+ - nombre: primero
+   numero: +506 8701 7726
+ - nombre: segundo
+   numero: +506 8857 2832
+ - nombre: tercero
+   numero: +506 8882 6473
+ - nombre: cuarto
+   numero: +506 8380 0415

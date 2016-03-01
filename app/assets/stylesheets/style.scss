@@ -45,7 +45,7 @@ $main-color: #209922;
 body{
 	margin: 0;
 	padding: 0;
-	padding-top: 115px;
+	padding-top: 110px;
 	font-family: 'Raleway', sans-serif;
 	font-size: 14px;
 	line-height: 24px;
@@ -707,6 +707,7 @@ input[type="color"]:focus,
 .property-image{
 	position: relative;
 	overflow: hidden;
+	min-height: 150px;
 }
 
 .property-image img{
@@ -715,16 +716,24 @@ input[type="color"]:focus,
 	height: auto;
 }
 
-.property-status{
-	position: absolute;
-	right: 0;
-	bottom: 0;
-	display: block;
-	width: 100%;
-	background: #1b1d2a;
-	font-weight: 400;
-	color: #fff;
-	text-align:center;
+.mensajes-especiales{
+
+  overflow: hidden;
+  position: absolute;
+  bottom:0;
+  width: 100%;
+  height: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    float: left;
+    width: 100%;
+    color: #fff;
+    text-align: center
+	}
+
 }
 
 .property-price{

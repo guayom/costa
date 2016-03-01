@@ -20,4 +20,19 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  hello: "Hello World"
+  enumerize:
+    propiedad:
+      listado:
+        venta: "Sale"
+        alquiler: "Rent"
+        opcion_compra: "Alquiler con opción de compra"
+        venta_alquiler: 'Rent or Sale'
+      provincia:
+        sj: "San José"
+        al: Alajuela
+        ca: Cartago
+        he: Heredia
+        li: "Limón"
+        gu: Guanacaste
+        pu: Puntarenas

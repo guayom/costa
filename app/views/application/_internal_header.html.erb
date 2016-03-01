@@ -1,0 +1,61 @@
+<!-- begin:header -->
+<div id="header" class="heading" style="background-image: url(img/img01.jpg);">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1 col-sm-12">
+        <div class="quick-search">
+          <div class="row">
+            <form method="get" id="submitSearchForm"  onsubmit='submitSearchForm()'>
+              <div class="col-md-3 col-sm-3 col-xs-6">
+                <div class="form-group">
+                  <%= label_tag 'tipo', 'Tipo de Propiedad' %>
+                  <% tipos = @tipos.map { |tipo| [tipo.titulo, tipo.id] } %>
+                  <%= select_tag "tipo", options_for_select(tipos, params[:tipo]), {include_blank: "Seleccionar tipo", class: 'form-control'} %>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-3 col-xs-6">
+                <div class="form-group">
+                  <%= label_tag 'provincia', 'Provincia' %>
+                  <% provincias = @provincias.map { |provincia| [provincia.nombre, provincia.id] } %>
+                  <%= select_tag "provincia", options_for_select(provincias, params[:provincia]), {include_blank: "Seleccionar Provincia", class: 'form-control provincia_id_selector'} %>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-3 col-xs-6">
+                <div class="form-group">
+                  <%= label_tag 'canton', 'Cantón' %>
+                  <% cantones = @cantones.map { |canton| [canton.nombre, canton.id] } %>
+                  <%= select_tag "canton", options_for_select(cantones, params[:canton]), {include_blank: "Seleccionar cantón", class: 'form-control canton_id_selector'} %>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-3 col-xs-6">
+                <div class="form-group">
+                  <%= label_tag 'distrito', 'Distrito' %>
+                  <% distritos = @distritos.map { |distrito| [distrito.nombre, distrito.id] } %>
+                  <%= select_tag "distrito", options_for_select(distritos, params[:distrito]), {include_blank: "Seleccionar distrito", class: 'form-control distrito_id_selector'} %>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-3 col-xs-6">
+                <div class="form-group">
+                  <%= label_tag 'estado', 'Estado' %>
+                  <%= select_tag "estado", options_for_select([['Disponible' , 1], ['Alquilado' , 2], ['Vendido' , 3], ['Oculto' , 0]], params[:estado]), {include_blank: "Seleccionar Estado", class: 'form-control'} %>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-3 col-xs-6">
+                <div class="form-group">
+                  <input type="submit" value="Search Again" class="btn btn-success btn-block">
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+        <ol class="breadcrumb">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Search</a></li>
+          <li class="active">Your Keyword</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end:header -->

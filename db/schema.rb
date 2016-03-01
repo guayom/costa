@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160219023303) do
+ActiveRecord::Schema.define(version: 20160222150520) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,9 +98,9 @@ ActiveRecord::Schema.define(version: 20160219023303) do
     t.text     "meta_description"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
-    t.integer  "provincia"
-    t.integer  "canton"
-    t.integer  "distrito"
+    t.string   "provincia"
+    t.string   "canton"
+    t.string   "distrito"
     t.string   "cover"
   end
 
@@ -120,6 +120,11 @@ ActiveRecord::Schema.define(version: 20160219023303) do
     t.string   "color",      default: "#209922"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "mensajes_propiedades", id: false, force: :cascade do |t|
+    t.integer "mensaje_id",   index: {name: "index_mensajes_propiedades_on_mensaje_id"}, foreign_key: {references: "mensajes", name: "fk_mensajes_propiedades_mensaje_id", on_update: :no_action, on_delete: :no_action}
+    t.integer "propiedad_id", index: {name: "index_mensajes_propiedades_on_propiedad_id"}, foreign_key: {references: "propiedades", name: "fk_mensajes_propiedades_propiedad_id", on_update: :no_action, on_delete: :no_action}
   end
 
 end
