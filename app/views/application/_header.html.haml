@@ -64,5 +64,9 @@
                     %option $11,700
                     %option $14,150
                     %option $21,110
+              .col-md-12.col-sm-12.col-xs-12
+                .form-group
+                  %label{for: 'keywords'}= t(:keywords)
+                  %input.form-control{type: 'search', name: 'keywords', value: params[:keywords]}
               .col-md-12.col-sm-12
                 %input.btn.btn-success.btn-lg.btn-block{:name => "submit", :type => "submit", :value => "Search"}/

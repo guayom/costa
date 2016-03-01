@@ -13,6 +13,16 @@ class Propiedad < ActiveRecord::Base
   enumerize :estado, in: [:disponible, :alquilado, :vendido, :oculto], default: :disponible
   enumerize :moneda, in: [:usd, :crc], default: :usd
   enumerize :tipo_de_estacionamiento, in: [:parqueo, :garaje, :parqueo_techado]
+  
+  searchable do
+    text :listado
+    text :provincia
+    text :canton
+    text :distrito    
+    text :tipo do 
+        tipo.titulo
+      end
+  end
 
   def provincia_enum
     ['San José', 'Alajuela', 'Cartago', 'Heredia', 'Limón', 'Guanacaste', 'Puntrenas']
