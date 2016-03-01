@@ -30,9 +30,6 @@ gem 'rails_admin'
 
 gem 'email_validator'
 
-# Gem to map incoming controller parameters to named scopes in models.
-gem 'has_scope'
-
 # Gem to use Solr search engine for full-text search.
 # https://github.com/sunspot/sunspot
 gem 'sunspot_rails'

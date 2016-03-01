@@ -89,9 +89,6 @@ GEM
       activesupport (>= 4.1.0)
     haml (4.0.7)
       tilt
-    has_scope (0.7.0)
-      actionpack (>= 4.1, < 5.1)
-      activesupport (>= 4.1, < 5.1)
     i18n (0.7.0)
     ice_nine (0.11.2)
     inflections (4.1.0)
@@ -309,7 +306,6 @@ DEPENDENCIES
   enumerize
   font-awesome-rails
   haml (~> 4.0, >= 4.0.7)
-  has_scope
   inflections
   jbuilder (~> 2.0)
   jquery-rails
