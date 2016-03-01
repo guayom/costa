@@ -1,5 +1,5 @@
 class Tipo < ActiveRecord::Base
-	validates :tipo, presence: true
+	validates :titulo, presence: true
 
 	rails_admin do
 		object_label_method :titulo

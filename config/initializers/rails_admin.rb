@@ -1,3 +1,5 @@
+require Rails.root.join('lib', 'rails_admin', 'destroy_image.rb')
+
 RailsAdmin.config do |config|
 
   ### Popular gems integration
@@ -34,10 +36,9 @@ RailsAdmin.config do |config|
     edit
     delete
     show_in_app
-
-    ## With an audit adapter, you can add:
-    # history_index
-    # history_show
+    destroy_image do
+      only ['Imagen']
+    end
   end
 
   config.model Mensaje do
