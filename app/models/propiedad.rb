@@ -41,13 +41,13 @@ class Propiedad < ActiveRecord::Base
 
   def ubicacion
     ubicacion = Array.new
-    unless self.distrito.empty?
+    unless self.distrito.blank?
       ubicacion.push [self.distrito]
     end
-    unless self.canton.empty?
+    unless self.canton.blank?
       ubicacion.push [self.canton]
     end
-    unless self.provincia.empty?
+    unless self.provincia.blank?
       ubicacion.push [self.provincia]
     end
     return ubicacion.join(", ")
