@@ -1,6 +1,6 @@
 class PropiedadesController < ApplicationController
   def index
-    @propiedades = Propiedad.search { fulltext params[:keywords]}.results
+    @propiedades = apply_scopes(Propiedad).all.search { fulltext params[:keywords] }.results
   end
 
   def detalles
