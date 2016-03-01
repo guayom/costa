@@ -30,6 +30,10 @@ gem 'rails_admin'
 
 gem 'email_validator'
 
+# Library to use Solr search engine.
+# https://github.com/sunspot/sunspot
+gem 'sunspot_rails'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -47,6 +51,9 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  
+  # Pre-packaged Solr distribution for use in development.
+  gem 'sunspot_solr'
 end
 
 #Bootstrap
