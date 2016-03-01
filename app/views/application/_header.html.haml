@@ -1,0 +1,68 @@
+#header.header-slide
+  .container
+    .row
+      .col-md-5
+        .quick-search
+          .row
+            %form{:method => "GET", :role => "form"}
+              .col-md-6.col-sm-6.col-xs-6
+                .form-group
+                  %label{:for => "country"} Country
+                  %select.form-control
+                    %option Australia
+                    %option Indonesia
+                    %option Japan
+                    %option South Korea
+                    %option China
+                .form-group
+                  %label{:for => "bedroom"} Bedroom
+                  %select.form-control
+                    %option 1
+                    %option 2
+                    %option 3
+                    %option 4
+              .col-md-6.col-sm-6.col-xs-6
+                .form-group
+                  %label{:for => "location"} Location
+                  %select.form-control
+                    %option Tasmania
+                    %option Yogyakarta
+                    %option Tokyo
+                    %option Busan
+                    %option Taipe
+                .form-group
+                  %label{:for => "bathroom"} Bathroom
+                  %select.form-control
+                    %option 1
+                    %option 2
+                    %option 3
+                    %option 4
+              .col-md-6.col-sm-6.col-xs-6
+                .form-group
+                  %label{:for => "status"} Status
+                  %select.form-control
+                    %option For Sale
+                    %option For Rent
+                .form-group
+                  %label{:for => "minprice"} Min Price
+                  %select.form-control
+                    %option $4,200
+                    %option $6,700
+                    %option $8,150
+                    %option $11,110
+              .col-md-6.col-sm-6.col-xs-6
+                .form-group
+                  %label{:for => "type"} Type
+                  %select.form-control
+                    %option Villa
+                    %option Recident
+                    %option Commercial
+                .form-group
+                  %label{:for => "maxprice"} Max Price
+                  %select.form-control
+                    %option $8,200
+                    %option $11,700
+                    %option $14,150
+                    %option $21,110
+              .col-md-12.col-sm-12
+                %input.btn.btn-success.btn-lg.btn-block{:name => "submit", :type => "submit", :value => "Search"}/
