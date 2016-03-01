@@ -53,25 +53,38 @@
                     %option Tokyo
                     %option Busan
                     %option Taipe
-              .col-md-6.col-sm-6.col-xs-6
+              .col-md-12.col-sm-12.col-xs-12
                 .form-group
-                  %label{:for => "minprice"} Min Price
-                  %select.form-control
-                    %option $4,200
-                    %option $6,700
-                    %option $8,150
-                    %option $11,110
-              .col-md-6.col-sm-6.col-xs-6
+                  %label{for: :valor_compra}= t(:valor_compra)
+                  = text_field_tag :valor_compra, params[:valor_compra], style: 'width: 100%;'
+                  :javascript
+                    $(document).ready( function() {
+                      $('#valor_compra').slider({
+                        min: #{Propiedad.minimum(:valor_compra)}, 
+                        max: #{Propiedad.maximum(:valor_compra)},
+                        value: #{params[:valor_compra] || [0, Propiedad.maximum(:valor_compra)]},
+                        formatter: function(value) {
+                          return '$' + value[0] + ' — $' + value[1];
+                        }
+                      });
+                    });
                 .form-group
-                  %label{:for => "maxprice"} Max Price
-                  %select.form-control
-                    %option $8,200
-                    %option $11,700
-                    %option $14,150
-                    %option $21,110
+                  %label{for: :valor_alquiler}= t(:valor_alquiler)
+                  = text_field_tag :valor_alquiler, params[:valor_alquiler], style: 'width: 100%;'
+                  :javascript
+                    $(document).ready( function() {
+                      $('#valor_alquiler').slider({
+                        min: #{Propiedad.minimum(:valor_alquiler)}, 
+                        max: #{Propiedad.maximum(:valor_alquiler)},
+                        value: #{params[:valor_alquiler] || [0, Propiedad.maximum(:valor_alquiler)]},
+                        formatter: function(value) {
+                          return '$' + value[0] + ' — $' + value[1];
+                        }
+                      });
+                    });
               .col-md-12.col-sm-12.col-xs-12
                 .form-group
                   %label{for: 'keywords'}= t(:keywords)
                   %input.form-control{type: 'search', name: 'keywords', value: params[:keywords]}
               .col-md-12.col-sm-12
-                %input.btn.btn-success.btn-lg.btn-block{:type => "submit", :value => "Search"}/
+                %input.btn.btn-success.btn-lg.btn-block{type: :submit, value: t(:search)}

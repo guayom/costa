@@ -27,6 +27,8 @@ class Propiedad < ActiveRecord::Base
     string :tipo_de_estacionamiento
     integer :dormitorios
     integer :banos
+    integer :valor_compra
+    integer :valor_alquiler
   end
 
   def provincia_enum
