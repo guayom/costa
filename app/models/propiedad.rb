@@ -20,8 +20,13 @@ class Propiedad < ActiveRecord::Base
     text :canton
     text :distrito    
     text :tipo do 
-        tipo.titulo
-      end
+      tipo.titulo
+    end
+    
+    string :estado
+    string :tipo_de_estacionamiento
+    integer :dormitorios
+    integer :banos
   end
 
   def provincia_enum

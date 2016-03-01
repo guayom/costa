@@ -4,8 +4,23 @@
       .col-md-5
         .quick-search
           .row
-            %form{:method => "GET", :role => "form"}
+            %form{:method => "GET", :role => "form", action: propiedades_path}
               .col-md-6.col-sm-6.col-xs-6
+                .form-group
+                  %label{for: :listado}= t(:listado)
+                  = select_tag :listado, 
+                               options_for_select([['cualquier...', nil]] + Propiedad.listado.options, params[:listado]), 
+                               class: 'form-control'
+                .form-group
+                  %label{for: :tipo}= t(:tipo)
+                  = select_tag :tipo, 
+                               options_for_select([['cualquier...', nil]] + Tipo.pluck(:titulo), params[:tipo]), 
+                               class: 'form-control'
+                .form-group
+                  %label{for: :dormitorios}= t(:dormitorios)
+                  = select_tag :dormitorios, 
+                               options_for_select(Propiedad.pluck(:dormitorios).sort, params[:dormitorios]), 
+                               class: 'form-control'
                 .form-group
                   %label{:for => "country"} Country
                   %select.form-control
@@ -14,14 +29,22 @@
                     %option Japan
                     %option South Korea
                     %option China
-                .form-group
-                  %label{:for => "bedroom"} Bedroom
-                  %select.form-control
-                    %option 1
-                    %option 2
-                    %option 3
-                    %option 4
               .col-md-6.col-sm-6.col-xs-6
+                .form-group
+                  %label{for: :estado}= t(:estado)
+                  = select_tag :estado, 
+                               options_for_select([['cualquier...', nil]] + Propiedad.estado.options, params[:estado]), 
+                               class: 'form-control'
+                .form-group
+                  %label{for: :tipo_de_estacionamiento}= t(:estacionamiento)
+                  = select_tag :tipo_de_estacionamiento, 
+                               options_for_select([['cualquier...', nil]] + Propiedad.tipo_de_estacionamiento.options, params[:tipo_de_estacionamiento]), 
+                               class: 'form-control'
+                .form-group
+                  %label{for: :banos}= t(:banos)
+                  = select_tag :banos, 
+                               options_for_select(Propiedad.pluck(:banos).map(&:to_i).sort, params[:banos]), 
+                               class: 'form-control'
                 .form-group
                   %label{:for => "location"} Location
                   %select.form-control
@@ -30,19 +53,7 @@
                     %option Tokyo
                     %option Busan
                     %option Taipe
-                .form-group
-                  %label{:for => "bathroom"} Bathroom
-                  %select.form-control
-                    %option 1
-                    %option 2
-                    %option 3
-                    %option 4
               .col-md-6.col-sm-6.col-xs-6
-                .form-group
-                  %label{:for => "status"} Status
-                  %select.form-control
-                    %option For Sale
-                    %option For Rent
                 .form-group
                   %label{:for => "minprice"} Min Price
                   %select.form-control
@@ -51,12 +62,6 @@
                     %option $8,150
                     %option $11,110
               .col-md-6.col-sm-6.col-xs-6
-                .form-group
-                  %label{:for => "type"} Type
-                  %select.form-control
-                    %option Villa
-                    %option Recident
-                    %option Commercial
                 .form-group
                   %label{:for => "maxprice"} Max Price
                   %select.form-control
@@ -69,4 +74,4 @@
                   %label{for: 'keywords'}= t(:keywords)
                   %input.form-control{type: 'search', name: 'keywords', value: params[:keywords]}
               .col-md-12.col-sm-12
-                %input.btn.btn-success.btn-lg.btn-block{:name => "submit", :type => "submit", :value => "Search"}/
+                %input.btn.btn-success.btn-lg.btn-block{:type => "submit", :value => "Search"}/
