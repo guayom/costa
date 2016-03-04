@@ -8,11 +8,11 @@
 					= propiedad.listado.capitalize
 				- if propiedad.listado.alquiler?
 					%span= propiedad.mostrar_valor(propiedad.valor_alquiler.to_i)
-			
-			%ul.mensajes-especiales#mycarousel
-				- propiedad.mensajes.each do |mensaje|
-					%li{:data => {:color => mensaje.color }}
-						= mensaje.mensaje
+			.mycarousel
+				%ul.mensajes-especiales
+					- propiedad.mensajes.each do |mensaje|
+						%li{:data => {:color => mensaje.color }}
+							= mensaje.mensaje
 
 		.property-features
 			- unless propiedad.area_construccion.blank?
