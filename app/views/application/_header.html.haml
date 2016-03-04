@@ -5,12 +5,12 @@
         .quick-search
           .row
             %form{:method => "GET", :role => "form", action: propiedades_path}
-              .col-md-6.col-sm-6.col-xs-6
+              .col-md-12.col-sm-12.col-xs-12
                 .form-group
-                  %label{for: :listado}= t(:listado)
                   = select_tag :listado, 
-                               options_for_select([['cualquier...', nil]] + Propiedad.listado.options, params[:listado]), 
-                               class: 'form-control'
+                               options_for_select(Propiedad.listado.options, params[:listado]), 
+                               class: 'form-control listado-control'
+              .col-md-6.col-sm-6.col-xs-6
                 .form-group
                   %label{for: :tipo}= t(:tipo)
                   = select_tag :tipo, 
@@ -19,22 +19,9 @@
                 .form-group
                   %label{for: :dormitorios}= t(:dormitorios)
                   = select_tag :dormitorios, 
-                               options_for_select(Propiedad.pluck(:dormitorios).sort, params[:dormitorios]), 
+                               options_for_select(Propiedad.pluck(:dormitorios).uniq.sort, params[:dormitorios]), 
                                class: 'form-control'
-                .form-group
-                  %label{:for => "country"} Country
-                  %select.form-control
-                    %option Australia
-                    %option Indonesia
-                    %option Japan
-                    %option South Korea
-                    %option China
               .col-md-6.col-sm-6.col-xs-6
-                .form-group
-                  %label{for: :estado}= t(:estado)
-                  = select_tag :estado, 
-                               options_for_select([['cualquier...', nil]] + Propiedad.estado.options, params[:estado]), 
-                               class: 'form-control'
                 .form-group
                   %label{for: :tipo_de_estacionamiento}= t(:estacionamiento)
                   = select_tag :tipo_de_estacionamiento, 
@@ -43,45 +30,39 @@
                 .form-group
                   %label{for: :banos}= t(:banos)
                   = select_tag :banos, 
-                               options_for_select(Propiedad.pluck(:banos).map(&:to_i).sort, params[:banos]), 
+                               options_for_select(Propiedad.pluck(:banos).uniq.map(&:to_i).sort, params[:banos]), 
                                class: 'form-control'
-                .form-group
-                  %label{:for => "location"} Location
-                  %select.form-control
-                    %option Tasmania
-                    %option Yogyakarta
-                    %option Tokyo
-                    %option Busan
-                    %option Taipe
               .col-md-12.col-sm-12.col-xs-12
-                .form-group
-                  %label{for: :valor_compra}= t(:valor_compra)
-                  = text_field_tag :valor_compra, params[:valor_compra], style: 'width: 100%;'
-                  :javascript
-                    $(document).ready( function() {
-                      $('#valor_compra').slider({
-                        min: #{Propiedad.minimum(:valor_compra)}, 
-                        max: #{Propiedad.maximum(:valor_compra)},
-                        value: #{params[:valor_compra] || [0, Propiedad.maximum(:valor_compra)]},
-                        formatter: function(value) {
-                          return '$' + value[0] + ' — $' + value[1];
-                        }
+                - if [:venta, :venta_alquiler].include?(params[:listado].to_sym)
+                  .form-group
+                    %label{for: :valor_compra}= t(:valor_compra)
+                    = text_field_tag :valor_compra, params[:valor_compra], style: 'width: 100%;'
+                    :javascript
+                      $(document).ready( function() {
+                        $('#valor_compra').slider({
+                          min: #{Propiedad.minimum(:valor_compra)}, 
+                          max: #{Propiedad.maximum(:valor_compra)},
+                          value: #{params[:valor_compra] || [0, Propiedad.maximum(:valor_compra)]},
+                          formatter: function(value) {
+                            return '$' + value[0] + ' — $' + value[1];
+                          }
+                        });
                       });
-                    });
-                .form-group
-                  %label{for: :valor_alquiler}= t(:valor_alquiler)
-                  = text_field_tag :valor_alquiler, params[:valor_alquiler], style: 'width: 100%;'
-                  :javascript
-                    $(document).ready( function() {
-                      $('#valor_alquiler').slider({
-                        min: #{Propiedad.minimum(:valor_alquiler)}, 
-                        max: #{Propiedad.maximum(:valor_alquiler)},
-                        value: #{params[:valor_alquiler] || [0, Propiedad.maximum(:valor_alquiler)]},
-                        formatter: function(value) {
-                          return '$' + value[0] + ' — $' + value[1];
-                        }
+                - if [:alquiler, :opcion_compra].include?(params[:listado].to_sym)
+                  .form-group
+                    %label{for: :valor_alquiler}= t(:valor_alquiler)
+                    = text_field_tag :valor_alquiler, params[:valor_alquiler], style: 'width: 100%;'
+                    :javascript
+                      $(document).ready( function() {
+                        $('#valor_alquiler').slider({
+                          min: #{Propiedad.minimum(:valor_alquiler)}, 
+                          max: #{Propiedad.maximum(:valor_alquiler)},
+                          value: #{params[:valor_alquiler] || [0, Propiedad.maximum(:valor_alquiler)]},
+                          formatter: function(value) {
+                            return '$' + value[0] + ' — $' + value[1];
+                          }
+                        });
                       });
-                    });
               .col-md-12.col-sm-12.col-xs-12
                 .form-group
                   %label{for: 'keywords'}= t(:keywords)

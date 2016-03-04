@@ -15,7 +15,6 @@ class Propiedad < ActiveRecord::Base
   enumerize :tipo_de_estacionamiento, in: [:parqueo, :garaje, :parqueo_techado]
   
   searchable do
-    text :listado
     text :provincia
     text :canton
     text :distrito    
@@ -23,6 +22,7 @@ class Propiedad < ActiveRecord::Base
       tipo.titulo
     end
     
+    string :listado
     string :estado
     string :tipo_de_estacionamiento
     integer :dormitorios

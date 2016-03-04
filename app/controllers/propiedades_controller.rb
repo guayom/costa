@@ -1,8 +1,10 @@
 class PropiedadesController < ApplicationController
-  def index    
+  def index
+    params[:listado] ||= :venta
+    
     query = Propiedad.search do
       all do
-        [:estado, :tipo_de_estacionamiento, :dormitorios, :banos].each do |key|
+        [:listado, :estado, :tipo_de_estacionamiento, :dormitorios, :banos].each do |key|
           with(key).equal_to(params[key]) if params[key].present?
         end
         
@@ -14,11 +16,7 @@ class PropiedadesController < ApplicationController
           end
         end
 
-        any do
-          fulltext params[:listado]
-          fulltext params[:tipo]
-          fulltext params[:keywords]
-        end
+        fulltext params[:keywords]
       end
     end
     
