@@ -1,26 +1,21 @@
 class PropiedadesController < ApplicationController
   def index
     params[:listado] ||= :venta
-    
-    query = Propiedad.search do
-      all do
-        [:listado, :estado, :tipo_de_estacionamiento, :dormitorios, :banos].each do |key|
-          with(key).equal_to(params[key]) if params[key].present?
-        end
-        
-        [:valor_compra, :valor_alquiler].each do |range_key|
-          if params[range_key].present?
-            params[range_key] = params[range_key].split(',').map(&:to_i)
 
-            with(range_key, params[range_key][0]..params[range_key][1])
-          end
-        end
-
-        fulltext params[:keywords]
+    [:valor_compra, :valor_alquiler].each do |range_key|
+      if params[range_key].present?
+        params[range_key] = params[range_key].split(',').map(&:to_i)
       end
     end
     
-    @propiedades = query.results
+    @propiedades = Propiedad.all
+    
+    [:listado, :tipo, :tipo_de_estacionamiento, :dormitorios, :banos, 
+     :valor_compra, :valor_alquiler, :keywords].each do |key|
+      if params[key].present?
+        @propiedades = @propiedades.send("search_by_#{key}", params[key])
+      end
+    end
   end
 
   def detalles

@@ -1,4 +1,5 @@
 class Propiedad < ActiveRecord::Base
+  include PgSearch
 
   belongs_to :admin
   belongs_to :propietario
@@ -14,23 +15,23 @@ class Propiedad < ActiveRecord::Base
   enumerize :moneda, in: [:usd, :crc], default: :usd
   enumerize :tipo_de_estacionamiento, in: [:parqueo, :garaje, :parqueo_techado]
   
-  searchable do
-    text :provincia
-    text :canton
-    text :distrito    
-    text :tipo do 
-      tipo.titulo
-    end
-    
-    string :listado
-    string :estado
-    string :tipo_de_estacionamiento
-    integer :dormitorios
-    integer :banos
-    integer :valor_compra
-    integer :valor_alquiler
-  end
-
+  pg_search_scope :search_by_listado, against: :listado
+  pg_search_scope :search_by_tipo, associated_against: {
+    tipo: :titulo
+  }
+  pg_search_scope :search_by_tipo_de_estacionamiento, 
+                  against: :tipo_de_estacionamiento
+  pg_search_scope :search_by_dormitorios, against: :dormitorios
+  pg_search_scope :search_by_banos, against: :banos
+  scope :search_by_valor_compra, -> (values) { 
+    where('valor_compra >= ? AND valor_compra <= ?', values[0], values[1]) 
+  }
+  scope :search_by_valor_alquiler, -> (values) { 
+    where('valor_alquiler >= ? AND valor_alquiler <= ?', values[0], values[1]) 
+  }
+  
+  pg_search_scope :search_by_keywords, against: [:provincia, :canton, :distrito]
+  
   def provincia_enum
     ['San José', 'Alajuela', 'Cartago', 'Heredia', 'Limón', 'Guanacaste', 'Puntrenas']
   end
