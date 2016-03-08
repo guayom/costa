@@ -8,6 +8,10 @@ Rails.application.routes.draw do
 
   resources :propiedades
 
+  controller :static_pages, path: 'static_pages' do
+    get 'contacto', to: 'static_pages#contacto_new', as: 'contacto'
+    post 'contacto', to: 'static_pages#contacto_create'
+  end
   root 'static_pages#index'
   get "/static_pages/:page" => "static_pages#show"
   match ':controller(/:action(/:id))', :via => [:get , :post, :patch]

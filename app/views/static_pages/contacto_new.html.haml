@@ -24,25 +24,28 @@
               .blog-text.contact
                 .row
                   .col-md-8.col-sm-7
-                    %form
+                    = form_for @contacto_mensaje, url: contacto_path do |f|
+                      - if @contacto_mensaje.errors.any?
+                        #error_explanation
+                          %h2= "#{pluralize(@contacto_mensaje.errors.count, "error")} prohibited this message from being sent:"
+                          %ul
+                            - @contacto_mensaje.errors.full_messages.each do |msg|
+                              %li= msg
                       .form-group
-                        %label.sr-only{:for => "name"} Nombre
-                        %input.form-control{:placeholder => "Nombre y apellidos", :type => "text"}
+                        = f.label :nombre, class: 'sr-only'
+                        = f.text_field :nombre, class: "form-control", placeholder: "Nombre y apellidos"
                       .form-group
-                        %label.sr-only{:for => "email"} Email
-                        %input.form-control{:placeholder => "nombre@ejemplo.com", :type => "email"}
+                        = f.label :email, class: 'sr-only'
+                        = f.email_field :email, class: "form-control", placeholder: "nombre@ejemplo.com"
                       .form-group
-                        %label.sr-only{:for => "email"} Teléfono
-                        %input.form-control{:placeholder => "2222 2222", :type => "email"}
+                        = f.label :telefono, "Teléfono", class: 'sr-only'
+                        = f.text_field :telefono, class: "form-control", placeholder: "2222 2222"
                       .form-group
-                        %label.sr-only{:for => "subject"} Motivo
-                        %input.form-control{:placeholder => "Motivo de mensaje", :type => "text"}
+                        = f.label :motivo, class: 'sr-only'
+                        = f.text_field :motivo, class: "form-control", placeholder: "Motivo de mensaje"
                       .form-group
-                        %label.sr-only{:for => "subject"} Propiedad(es)
-                        %input.form-control{:placeholder => "Ej: #000999", :type => "text"}
-                      .form-group
-                        %label.sr-only{:for => "name"} Mensaje
-                        %textarea.form-control{:placeholder => "Escriba su mensaje", :rows => "5"}
+                        = f.label :mensaje, class: 'sr-only'
+                        = f.text_area :mensaje, class: "form-control", placeholder: "Escriba su mensaje", rows: 5
                       .form-group
                         %button.btn.btn-success{:name => "submit", :type => "submit"}
                           %i.fa.fa-envelope-o
