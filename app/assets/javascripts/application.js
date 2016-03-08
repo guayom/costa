@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap.min
+//= require bootstrap-slider
 //= require gmap3.min
 //= require jquery.easing
 //= require imagesloaded.pkgd.min
@@ -74,3 +75,9 @@ jQuery(function($) {
     return false;
   });
 })
+
+$(function() {
+  $('.listado-control').change(function() {
+    $(this).parents('form').submit();
+  });
+});

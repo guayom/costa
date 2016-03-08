@@ -30,6 +30,9 @@ gem 'rails_admin'
 
 gem 'email_validator'
 
+# Build named scopes that take advantage of PostgreSQL's full text search.
+gem 'pg_search'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

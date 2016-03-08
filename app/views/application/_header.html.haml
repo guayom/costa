@@ -4,65 +4,68 @@
       .col-md-5
         .quick-search
           .row
-            %form{:method => "GET", :role => "form"}
+            %form{:method => "GET", :role => "form", action: propiedades_path}
+              .col-md-12.col-sm-12.col-xs-12
+                .form-group
+                  = select_tag :listado, 
+                               options_for_select(Propiedad.listado.options, params[:listado]), 
+                               class: 'form-control listado-control'
               .col-md-6.col-sm-6.col-xs-6
                 .form-group
-                  %label{:for => "country"} Country
-                  %select.form-control
-                    %option Australia
-                    %option Indonesia
-                    %option Japan
-                    %option South Korea
-                    %option China
+                  %label{for: :tipo}= t(:tipo)
+                  = select_tag :tipo, 
+                               options_for_select([['cualquier...', nil]] + Tipo.pluck(:titulo), params[:tipo]), 
+                               class: 'form-control'
                 .form-group
-                  %label{:for => "bedroom"} Bedroom
-                  %select.form-control
-                    %option 1
-                    %option 2
-                    %option 3
-                    %option 4
+                  %label{for: :dormitorios}= t(:dormitorios)
+                  = select_tag :dormitorios, 
+                               options_for_select(Propiedad.pluck(:dormitorios).uniq.sort, params[:dormitorios]), 
+                               class: 'form-control'
               .col-md-6.col-sm-6.col-xs-6
                 .form-group
-                  %label{:for => "location"} Location
-                  %select.form-control
-                    %option Tasmania
-                    %option Yogyakarta
-                    %option Tokyo
-                    %option Busan
-                    %option Taipe
+                  %label{for: :tipo_de_estacionamiento}= t(:estacionamiento)
+                  = select_tag :tipo_de_estacionamiento, 
+                               options_for_select([['cualquier...', nil]] + Propiedad.tipo_de_estacionamiento.options, params[:tipo_de_estacionamiento]), 
+                               class: 'form-control'
                 .form-group
-                  %label{:for => "bathroom"} Bathroom
-                  %select.form-control
-                    %option 1
-                    %option 2
-                    %option 3
-                    %option 4
-              .col-md-6.col-sm-6.col-xs-6
+                  %label{for: :banos}= t(:banos)
+                  = select_tag :banos, 
+                               options_for_select(Propiedad.pluck(:banos).uniq.map(&:to_i).sort, params[:banos]), 
+                               class: 'form-control'
+              .col-md-12.col-sm-12.col-xs-12
+                - if [:venta, :venta_alquiler].include?(params[:listado] ? params[:listado].to_sym : nil) || params[:listado].nil?
+                  .form-group
+                    %label{for: :valor_compra}= t(:valor_compra)
+                    = text_field_tag :valor_compra, params[:valor_compra], style: 'width: 100%;'
+                    :javascript
+                      $(document).ready( function() {
+                        $('#valor_compra').slider({
+                          min: #{Propiedad.minimum(:valor_compra)}, 
+                          max: #{Propiedad.maximum(:valor_compra)},
+                          value: #{params[:valor_compra] || [0, Propiedad.maximum(:valor_compra)]},
+                          formatter: function(value) {
+                            return '$' + value[0] + ' — $' + value[1];
+                          }
+                        });
+                      });
+                - if [:alquiler, :opcion_compra].include?(params[:listado] ? params[:listado].to_sym : nil)
+                  .form-group
+                    %label{for: :valor_alquiler}= t(:valor_alquiler)
+                    = text_field_tag :valor_alquiler, params[:valor_alquiler], style: 'width: 100%;'
+                    :javascript
+                      $(document).ready( function() {
+                        $('#valor_alquiler').slider({
+                          min: #{Propiedad.minimum(:valor_alquiler)}, 
+                          max: #{Propiedad.maximum(:valor_alquiler)},
+                          value: #{params[:valor_alquiler] || [0, Propiedad.maximum(:valor_alquiler)]},
+                          formatter: function(value) {
+                            return '$' + value[0] + ' — $' + value[1];
+                          }
+                        });
+                      });
+              .col-md-12.col-sm-12.col-xs-12
                 .form-group
-                  %label{:for => "status"} Status
-                  %select.form-control
-                    %option For Sale
-                    %option For Rent
-                .form-group
-                  %label{:for => "minprice"} Min Price
-                  %select.form-control
-                    %option $4,200
-                    %option $6,700
-                    %option $8,150
-                    %option $11,110
-              .col-md-6.col-sm-6.col-xs-6
-                .form-group
-                  %label{:for => "type"} Type
-                  %select.form-control
-                    %option Villa
-                    %option Recident
-                    %option Commercial
-                .form-group
-                  %label{:for => "maxprice"} Max Price
-                  %select.form-control
-                    %option $8,200
-                    %option $11,700
-                    %option $14,150
-                    %option $21,110
+                  %label{for: 'keywords'}= t(:keywords)
+                  %input.form-control{type: 'search', name: 'keywords', value: params[:keywords]}
               .col-md-12.col-sm-12
-                %input.btn.btn-success.btn-lg.btn-block{:name => "submit", :type => "submit", :value => "Search"}/
+                %input.btn.btn-success.btn-lg.btn-block{type: :submit, value: t(:search)}

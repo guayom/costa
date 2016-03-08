@@ -12,3 +12,6 @@
 !/log/.keep
 /tmp
 /public/images
+
+solr/development
+solr/test
