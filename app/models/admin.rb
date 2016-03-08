@@ -8,6 +8,7 @@ class Admin < ActiveRecord::Base
   validates :email, :codigo, uniqueness: true, on: :create
 
   has_many :propietarios
+  has_many :propiedades
 
   rails_admin do
 		object_label_method :nombre
