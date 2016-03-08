@@ -61,9 +61,10 @@ class Propiedad < ActiveRecord::Base
 
   def set_codigo
     if admin
+      length_of_codigo_number = 3
       last_propiedad = admin.propiedades.last
       prev_number = last_propiedad ? last_propiedad.codigo[/\d+/].to_i : 0
-      num = (prev_number + 1).to_s.rjust(LENGTH_OF_CODIGO_NUMBER, '0')
+      num = (prev_number + 1).to_s.rjust(length_of_codigo_number, '0')
       self.codigo = "#{admin.codigo}#{num}"
     end
   end
