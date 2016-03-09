@@ -8,7 +8,7 @@ class PropiedadesController < ApplicationController
       end
     end
 
-    @propiedades = Propiedad.all
+    @propiedades = Propiedad.publicado
 
     [:listado, :provincia_id, :canton_id, :distrito_id, :tipo,
      :tipo_de_estacionamiento, :dormitorios, :banos, :valor_compra,
