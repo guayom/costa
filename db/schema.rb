@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160309201443) do
+ActiveRecord::Schema.define(version: 20160309202827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 20160309201443) do
     t.string   "titular"
     t.string   "estado",                  default: "1"
     t.string   "codigo"
-    t.integer  "admin_id",                null: false, index: {name: "fk__propiedades_admin_id"}, foreign_key: {references: "admins", name: "fk_propiedades_admin_id", on_update: :no_action, on_delete: :no_action}
+    t.integer  "admin_id",                index: {name: "fk__propiedades_admin_id"}, foreign_key: {references: "admins", name: "fk_propiedades_admin_id", on_update: :no_action, on_delete: :no_action}
     t.integer  "propietario_id",          null: false, index: {name: "fk__propiedades_empty_propietario_id"}, foreign_key: {references: "propietarios", name: "fk_propiedades_propietario_id", on_update: :no_action, on_delete: :no_action}
     t.integer  "tipo_id",                 null: false, index: {name: "fk__propiedades_empty_tipo_id"}, foreign_key: {references: "tipos", name: "fk_propiedades_tipo_id", on_update: :no_action, on_delete: :no_action}
     t.text     "direccion_exacta"

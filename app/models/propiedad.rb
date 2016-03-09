@@ -22,6 +22,7 @@ class Propiedad < ActiveRecord::Base
 
   validates_presence_of :listado
   validates_presence_of :codigo, if: :publicado?
+  validates_presence_of :admin, if: :publicado?
 
   pg_search_scope :search_by_provincia_id, against: :provincia
   pg_search_scope :search_by_canton_id, against: :canton
