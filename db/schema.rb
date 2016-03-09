@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160222150520) do
+ActiveRecord::Schema.define(version: 20160308224554) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,6 +102,15 @@ ActiveRecord::Schema.define(version: 20160222150520) do
     t.string   "canton"
     t.string   "distrito"
     t.string   "cover"
+  end
+
+  create_table "contacto_mensajes", force: :cascade do |t|
+    t.string  "nombre"
+    t.string  "email"
+    t.string  "telefono"
+    t.string  "motivo"
+    t.text    "mensaje"
+    t.integer "propiedad_id", index: {name: "fk__contacto_mensajes_propiedad_id"}, foreign_key: {references: "propiedades", name: "fk_contacto_mensajes_propiedad_id", on_update: :no_action, on_delete: :no_action}
   end
 
   create_table "imagenes", force: :cascade do |t|

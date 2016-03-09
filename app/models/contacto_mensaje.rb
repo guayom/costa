@@ -1,10 +1,6 @@
-class ContactoMensaje
+class ContactoMensaje < ActiveRecord::Base
 
-  include ActiveModel::Model
-  include ActiveModel::Conversion
-  include ActiveModel::Validations
-
-  attr_accessor :nombre, :email, :telefono, :motivo, :mensaje
+  belongs_to :propiedad
 
   validates :nombre, presence: true
   validates :email, presence: true

@@ -19,37 +19,16 @@
             .blog-content
               / <div id="map"></div>
               .blog-title
-                %h2 ¿Interesado en alguna propiedad?
+                %h2
+                  - if @contacto_mensaje.propiedad
+                    ¿Le interesa esta propiedad?
+                  - else
+                    ¿Interesado en alguna propiedad?
                 %h3 No dude en contactarnos por medio de nuestro formulario
               .blog-text.contact
                 .row
                   .col-md-8.col-sm-7
-                    = form_for @contacto_mensaje, url: contacto_path do |f|
-                      - if @contacto_mensaje.errors.any?
-                        #error_explanation
-                          %h2= "#{pluralize(@contacto_mensaje.errors.count, "error")} prohibited this message from being sent:"
-                          %ul
-                            - @contacto_mensaje.errors.full_messages.each do |msg|
-                              %li= msg
-                      .form-group
-                        = f.label :nombre, class: 'sr-only'
-                        = f.text_field :nombre, class: "form-control", placeholder: "Nombre y apellidos"
-                      .form-group
-                        = f.label :email, class: 'sr-only'
-                        = f.email_field :email, class: "form-control", placeholder: "nombre@ejemplo.com"
-                      .form-group
-                        = f.label :telefono, "Teléfono", class: 'sr-only'
-                        = f.text_field :telefono, class: "form-control", placeholder: "2222 2222"
-                      .form-group
-                        = f.label :motivo, class: 'sr-only'
-                        = f.text_field :motivo, class: "form-control", placeholder: "Motivo de mensaje"
-                      .form-group
-                        = f.label :mensaje, class: 'sr-only'
-                        = f.text_area :mensaje, class: "form-control", placeholder: "Escriba su mensaje", rows: 5
-                      .form-group
-                        %button.btn.btn-success{:name => "submit", :type => "submit"}
-                          %i.fa.fa-envelope-o
-                          Enviar Mensaje
+                    = render partial: "form", locals: {contacto_mensaje: @contacto_mensaje}
                     %br
                   .col-md-4.col-sm-5
                     %address

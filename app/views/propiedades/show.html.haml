@@ -107,7 +107,7 @@
 										.col-md-4.col-sm-4
 											%h3 Características
 											%ul
-												
+
 									%h3 Descripción:
 									%p= @propiedad.descripcion_publica
 									%p= @propiedad.estado
@@ -151,23 +151,7 @@
 												</div>
 								.col-md-6.col-sm-6
 									%br/
-									%form
-										.form-group
-											%label{:for => "nombre"} Nombre
-											%input#nombre.form-control.input-lg{:name => "nombre", :placeholder => "", :type => "text"}
-										.form-group
-											%label{:for => "email"} Email
-											%input#email.form-control.input-lg{:name => "email", :placeholder => "", :type => "email"}
-										.form-group
-											%label{:for => "telefono"} Teléfono
-											%input#telefono.form-control.input-lg{:name => "telefono", :placeholder => "Ej: 2222 2222", :type => "text"}
-										.form-group
-											%label{:for => "comentarios"} Comentarios
-											%textarea#comentarios.form-control.input-lg{:name => "comentarios", :placeholder => "", :rows => "7"}
-										%input{:name => "propiedad", :type => "hidden", :value => @propiedad.codigo}/
-										%input{:name => "link", :type => "hidden", :value => request.original_url}/
-										.form-group
-											%input.btn.btn-success.btn-lg{:name => "submit", :type => "submit", :value => "Enviar"}
+									= render partial: "static_pages/form", locals: {contacto_mensaje: @contacto_mensaje}
 		/ end:article
 		.col-md-3.pull-left
 		-#= render('application/sidebar')
