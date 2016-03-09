@@ -31,3 +31,16 @@ $ ->
     else
       $('#distrito_id').val('')
       $('#distrito_id').hide()
+
+  # Initialize select elements on page load.
+  if $('#provincia_id').val() > 0
+    $('#provincia_id').change()
+    params = $.getQueryParameters()
+    canton_id = params['canton_id']
+    if canton_id > 0
+      $('#canton_id').val(canton_id)
+      $('#canton_id').change()
+
+      distrito_id = params['distrito_id']
+      if distrito_id > 0
+        $('#distrito_id').val(distrito_id)
