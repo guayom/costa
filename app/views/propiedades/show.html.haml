@@ -131,11 +131,12 @@
                       </div>
                     .team-description
                       %small Agente:
-                      %h3
-                        = @propiedad.admin.nombre
-                      %p
-                        %i.fa.fa-envelope
-                        = @propiedad.admin.email
+                      - if @propiedad.admin
+                        %h3
+                          = @propiedad.admin.nombre
+                        %p
+                          %i.fa.fa-envelope
+                          = @propiedad.admin.email
                         /
                           <i class="fa fa-phone"></i> Office : 021-234-5678<br>
                           <i class="fa fa-mobile"></i> Mobile : +62-3456-78910<br>
