@@ -26,4 +26,11 @@ class PropiedadesController < ApplicationController
   	@propiedad = Propiedad.find(params[:id])
     @contacto_mensaje = @propiedad.contacto_mensajes.new
   end
+
+  def new
+  end
+
+  def create
+    fail :create
+  end
 end

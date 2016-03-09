@@ -55,4 +55,18 @@ RailsAdmin.config do |config|
       end
     end
   end
+
+  config.model Propiedad do
+    edit do
+      configure :provincia do
+        partial 'propiedad_provincia'
+      end
+      configure :canton do
+        partial 'propiedad_canton'
+      end
+      configure :distrito do
+        partial 'propiedad_distrito'
+      end
+    end
+  end
 end

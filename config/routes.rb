@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   devise_for :admins
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  resources :propiedades
+  resources :propiedades do
+    collection do
+      get 'registrar', to: :new
+    end
+  end
 
   controller :static_pages, path: 'static_pages' do
     get 'contacto', to: 'static_pages#contacto_new', as: 'contacto'
