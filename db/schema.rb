@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160308224554) do
+ActiveRecord::Schema.define(version: 20160309090028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,20 @@ ActiveRecord::Schema.define(version: 20160308224554) do
     t.datetime "updated_at",             null: false
     t.string   "nombre"
     t.string   "codigo"
+  end
+
+  create_table "provincias", force: :cascade do |t|
+    t.string   "nombre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cantones", force: :cascade do |t|
+    t.integer  "canton_id",    index: {name: "fk__cantones_canton_id"}, foreign_key: {references: "cantones", name: "fk_cantones_canton_id", on_update: :no_action, on_delete: :no_action}
+    t.integer  "provincia_id", index: {name: "index_cantones_on_provincia_id"}, foreign_key: {references: "provincias", name: "fk_cantones_provincia_id", on_update: :no_action, on_delete: :no_action}
+    t.string   "nombre"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "caracteristicas", force: :cascade do |t|
@@ -111,6 +125,15 @@ ActiveRecord::Schema.define(version: 20160308224554) do
     t.string  "motivo"
     t.text    "mensaje"
     t.integer "propiedad_id", index: {name: "fk__contacto_mensajes_propiedad_id"}, foreign_key: {references: "propiedades", name: "fk_contacto_mensajes_propiedad_id", on_update: :no_action, on_delete: :no_action}
+  end
+
+  create_table "distritos", force: :cascade do |t|
+    t.integer  "distrito_id",  index: {name: "index_distritos_on_distrito_id"}, foreign_key: {references: "distritos", name: "fk_distritos_distrito_id", on_update: :no_action, on_delete: :no_action}
+    t.integer  "canton_id",    index: {name: "index_distritos_on_canton_id"}, foreign_key: {references: "cantones", name: "fk_distritos_canton_id", on_update: :no_action, on_delete: :no_action}
+    t.integer  "provincia_id", index: {name: "index_distritos_on_provincia_id"}, foreign_key: {references: "provincias", name: "fk_distritos_provincia_id", on_update: :no_action, on_delete: :no_action}
+    t.string   "nombre"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "imagenes", force: :cascade do |t|
