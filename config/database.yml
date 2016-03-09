@@ -4,11 +4,9 @@ development:
   encoding: unicode
   database: costa_development
   pool:     5
-#  username: guayo
-#  password: elgrone
-  username: postgres
-  password: postgres
-  template: template0    
+  username: guayo
+  password: elgrone
+  template: template0
 
 test:
   adapter:  postgresql

@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+// require turbolinks
 //= require bootstrap.min
 //= require bootstrap-slider
 //= require gmap3.min
@@ -24,6 +24,7 @@
 //= require jquery.jcarousel.min
 //= require jquery.jcarousel-autoscroll.min.js
 //= require script
+//= require filters
 
 function slideMensajesEspeciales() {
     var allofEm = $('.property-status div');
