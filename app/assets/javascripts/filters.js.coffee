@@ -33,7 +33,7 @@ $ ->
       $('#distrito_id').hide()
 
   # Initialize select elements on page load.
-  if $('#provincia_id').val().length > 0
+  if $('#provincia_id').size() > 0 and $('#provincia_id').val().length > 0
     $('#provincia_id').change()
     params = $.getQueryParameters()
     canton_id = params['canton_id'].replace(/\+/g, ' ')
