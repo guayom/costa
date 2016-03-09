@@ -20,6 +20,9 @@ class Propiedad < ActiveRecord::Base
 
   enum estatus: { publicado: 1, borrador: 2, rechazado: 3 }
 
+  validates_presence_of :listado
+  validates_presence_of :codigo, if: :publicado?
+
   pg_search_scope :search_by_provincia_id, against: :provincia
   pg_search_scope :search_by_canton_id, against: :canton
   pg_search_scope :search_by_distrito_id, against: :distrito
