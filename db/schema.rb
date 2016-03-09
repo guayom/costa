@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160309090028) do
+ActiveRecord::Schema.define(version: 20160309135114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,8 +81,8 @@ ActiveRecord::Schema.define(version: 20160309090028) do
     t.string   "estado",                  default: "1"
     t.string   "codigo",                  null: false
     t.integer  "admin_id",                null: false, index: {name: "fk__propiedades_admin_id"}, foreign_key: {references: "admins", name: "fk_propiedades_admin_id", on_update: :no_action, on_delete: :no_action}
-    t.integer  "propietario_id",          null: false, index: {name: "fk__propiedades_propietario_id"}, foreign_key: {references: "propietarios", name: "fk_propiedades_propietario_id", on_update: :no_action, on_delete: :no_action}
-    t.integer  "tipo_id",                 null: false, index: {name: "fk__propiedades_tipo_id"}, foreign_key: {references: "tipos", name: "fk_propiedades_tipo_id", on_update: :no_action, on_delete: :no_action}
+    t.integer  "propietario_id",          null: false, index: {name: "fk__propiedades_empty_propietario_id"}, foreign_key: {references: "propietarios", name: "fk_propiedades_propietario_id", on_update: :no_action, on_delete: :no_action}
+    t.integer  "tipo_id",                 null: false, index: {name: "fk__propiedades_empty_tipo_id"}, foreign_key: {references: "tipos", name: "fk_propiedades_tipo_id", on_update: :no_action, on_delete: :no_action}
     t.text     "direccion_exacta"
     t.text     "direccion_uso_interno"
     t.text     "descripcion_publica"
@@ -116,7 +116,11 @@ ActiveRecord::Schema.define(version: 20160309090028) do
     t.string   "canton"
     t.string   "distrito"
     t.string   "cover"
+    t.integer  "estatus",                 default: 2
   end
+  add_index "propiedades", ["admin_id"], name: "fk__propiedades_empty_admin_id"
+  add_index "propiedades", ["propietario_id"], name: "fk__propiedades_propietario_id"
+  add_index "propiedades", ["tipo_id"], name: "fk__propiedades_tipo_id"
 
   create_table "contacto_mensajes", force: :cascade do |t|
     t.string  "nombre"

@@ -18,6 +18,8 @@ class Propiedad < ActiveRecord::Base
   enumerize :moneda, in: [:usd, :crc], default: :usd
   enumerize :tipo_de_estacionamiento, in: [:parqueo, :garaje, :parqueo_techado]
 
+  enum estatus: { publicado: 1, borrador: 2, rechazado: 3 }
+
   pg_search_scope :search_by_provincia_id, against: :provincia
   pg_search_scope :search_by_canton_id, against: :canton
   pg_search_scope :search_by_distrito_id, against: :distrito
