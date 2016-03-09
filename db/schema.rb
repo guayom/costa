@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160309202827) do
+ActiveRecord::Schema.define(version: 20160309211932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,8 +81,8 @@ ActiveRecord::Schema.define(version: 20160309202827) do
     t.string   "estado",                  default: "1"
     t.string   "codigo"
     t.integer  "admin_id",                index: {name: "fk__propiedades_admin_id"}, foreign_key: {references: "admins", name: "fk_propiedades_admin_id", on_update: :no_action, on_delete: :no_action}
-    t.integer  "propietario_id",          null: false, index: {name: "fk__propiedades_propietario_id"}, foreign_key: {references: "propietarios", name: "fk_propiedades_propietario_id", on_update: :no_action, on_delete: :no_action}
-    t.integer  "tipo_id",                 null: false, index: {name: "fk__propiedades_tipo_id"}, foreign_key: {references: "tipos", name: "fk_propiedades_tipo_id", on_update: :no_action, on_delete: :no_action}
+    t.integer  "propietario_id",          null: false, index: {name: "fk__propiedades_empty_propietario_id"}, foreign_key: {references: "propietarios", name: "fk_propiedades_propietario_id", on_update: :no_action, on_delete: :no_action}
+    t.integer  "tipo_id",                 index: {name: "fk__propiedades_empty_tipo_id"}, foreign_key: {references: "tipos", name: "fk_propiedades_tipo_id", on_update: :no_action, on_delete: :no_action}
     t.text     "direccion_exacta"
     t.text     "direccion_uso_interno"
     t.text     "descripcion_publica"

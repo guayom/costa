@@ -1,39 +1,40 @@
 .col-md-3.col-sm-6.col-xs-12
-	.property-container
-		.property-image
-			=link_to propiedad do
-				%img{:alt => "arillo real estate theme", :src => propiedad.imagenes.first.imagen.url }
-			.property-price{:data => {:listado => propiedad.listado }}
-				%h4
-					= propiedad.listado.capitalize
-				- if propiedad.listado.alquiler?
-					%span= propiedad.mostrar_valor(propiedad.valor_alquiler.to_i)
-			.mycarousel
-				%ul.mensajes-especiales
-					- propiedad.mensajes.each do |mensaje|
-						%li{:data => {:color => mensaje.color }}
-							= mensaje.mensaje
+  .property-container
+    .property-image
+      =link_to propiedad do
+        - if propiedad.imagenes.any?
+          %img{:alt => "arillo real estate theme", :src => propiedad.imagenes.first.imagen.url }
+      .property-price{:data => {:listado => propiedad.listado }}
+        %h4
+          = propiedad.listado.capitalize
+        - if propiedad.listado.alquiler?
+          %span= propiedad.mostrar_valor(propiedad.valor_alquiler.to_i)
+      .mycarousel
+        %ul.mensajes-especiales
+          - propiedad.mensajes.each do |mensaje|
+            %li{:data => {:color => mensaje.color }}
+              = mensaje.mensaje
 
-		.property-features
-			- unless propiedad.area_construccion.blank?
-				%span
-					%i.fa.fa-home
-					="#{propiedad.area_construccion.round}m"
-					%sup 2
-			- unless propiedad.dormitorios.blank?
-				%span
-					%i.fa.fa-bed
-					= propiedad.dormitorios
-			- unless propiedad.banos.blank?
-				%span
-					= image_tag 'icons/bathroom-white.svg', class: "bathroom-index"
-					= propiedad.banos.round
-			- unless propiedad.estacionamiento.blank?
-				%span
-					%i.fa.fa-car
-					= propiedad.estacionamiento
-		.property-content
-			%h3
-				%small=t propiedad.tipo.titulo
-				=link_to propiedad.titular, propiedad
-				%small= propiedad.ubicacion
+    .property-features
+      - unless propiedad.area_construccion.blank?
+        %span
+          %i.fa.fa-home
+          ="#{propiedad.area_construccion.round}m"
+          %sup 2
+      - unless propiedad.dormitorios.blank?
+        %span
+          %i.fa.fa-bed
+          = propiedad.dormitorios
+      - unless propiedad.banos.blank?
+        %span
+          = image_tag 'icons/bathroom-white.svg', class: "bathroom-index"
+          = propiedad.banos.round
+      - unless propiedad.estacionamiento.blank?
+        %span
+          %i.fa.fa-car
+          = propiedad.estacionamiento
+    .property-content
+      %h3
+        %small=t propiedad.tipo.titulo
+        =link_to propiedad.titular, propiedad
+        %small= propiedad.ubicacion

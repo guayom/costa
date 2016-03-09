@@ -8,7 +8,7 @@ class PropiedadesController < ApplicationController
       end
     end
 
-    @propiedades = Propiedad.all
+    @propiedades = Propiedad.publicado
 
     [:listado, :provincia_id, :canton_id, :distrito_id, :tipo,
      :tipo_de_estacionamiento, :dormitorios, :banos, :valor_compra,
@@ -28,10 +28,13 @@ class PropiedadesController < ApplicationController
   end
 
   def new
+    @propiedad = Propiedad.new
+    @propiedad.build_propietario
   end
 
   def create
-    if Propiedad.create(propiedad_params)
+    @propiedad = Propiedad.new(propiedad_params)
+    if @propiedad.save
       redirect_to propiedades_path, { notice: t(:propiedad_added_succefully) }
     else
       render :new
@@ -41,6 +44,9 @@ class PropiedadesController < ApplicationController
   private
 
   def propiedad_params
-    params.require(:propiedad).permit(:titular, :valor_compra, :valor_alquiler)
+    params.require(:propiedad).permit(
+      :estatus, :titular, :valor_compra, :valor_alquiler, :listado,
+      propietario_attributes: [:nombre, :apellido, :celular, :email]
+    )
   end
 end

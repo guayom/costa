@@ -2,7 +2,10 @@ class Propiedad < ActiveRecord::Base
   include PgSearch
 
   belongs_to :admin
+
   belongs_to :propietario
+  accepts_nested_attributes_for :propietario
+
   belongs_to :tipo
   has_many :imagenes, :dependent => :destroy
   has_many :contacto_mensajes
@@ -23,6 +26,8 @@ class Propiedad < ActiveRecord::Base
   validates_presence_of :listado
   validates_presence_of :codigo, if: :publicado?
   validates_presence_of :admin, if: :publicado?
+  validates_presence_of :tipo, if: :publicado?
+  validates_presence_of :propietario
 
   pg_search_scope :search_by_provincia_id, against: :provincia
   pg_search_scope :search_by_canton_id, against: :canton
