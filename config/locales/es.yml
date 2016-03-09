@@ -38,3 +38,8 @@ es:
         pu: Puntarenas
         
   search: "Buscar"
+
+  helpers:
+    submit:
+      propiedad:
+        create: 'Registrar'

@@ -31,6 +31,16 @@ class PropiedadesController < ApplicationController
   end
 
   def create
-    fail :create
+    if Propiedad.create(propiedad_params)
+      redirect_to propiedades_path, { notice: t(:propiedad_added_succefully) }
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def propiedad_params
+    params.require(:propiedad).permit(:titular, :valor_compra, :valor_alquiler)
   end
 end
