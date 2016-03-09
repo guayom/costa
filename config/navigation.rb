@@ -10,7 +10,7 @@ SimpleNavigation::Configuration.run do |navigation|
   # This setting avoids it
   navigation.autogenerate_item_ids = false
 
-  
+
   navigation.items do |primary|
     # Bootstrap classes for tabbed menu
     primary.dom_class = "nav navbar-nav navbar-right"
@@ -18,7 +18,7 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item :dashboard, 'Inicio', '/'
     primary.item :entries, 'Propiedades', '/propiedades/index'
     primary.item :entries, 'Registre Su Propiedad', '/propiedades/registrar'
-    primary.item :entries, 'Contacto', 'static_pages/contacto'
-    
+    primary.item :entries, 'Contacto', '/static_pages/contacto'
+
   end
 end
