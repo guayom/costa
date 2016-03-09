@@ -54,9 +54,9 @@
                     :javascript
                       $(document).ready( function() {
                         $('#valor_compra').slider({
-                          min: #{Propiedad.minimum(:valor_compra) || 0},
+                          min: #{Propiedad.minimum(:valor_compra) || 0 ; fail '123'},
                           max: #{Propiedad.maximum(:valor_compra) || 0},
-                          value: #{params[:valor_compra] || [0, Propiedad.maximum(:valor_compra) || 0]},
+                          value: #{(params[:valor_compra] || [0, Propiedad.maximum(:valor_compra) || 0]).to_s},
                           formatter: function(value) {
                             return '$' + value[0] + ' — $' + value[1];
                           }
@@ -71,7 +71,7 @@
                         $('#valor_alquiler').slider({
                           min: #{Propiedad.minimum(:valor_alquiler) || 0},
                           max: #{Propiedad.maximum(:valor_alquiler) || 0},
-                          value: #{params[:valor_alquiler] || [0, Propiedad.maximum(:valor_alquiler) || 0]},
+                          value: #{(params[:valor_alquiler] || [0, Propiedad.maximum(:valor_alquiler) || 0]).to_s},
                           formatter: function(value) {
                             return '$' + value[0] + ' — $' + value[1];
                           }
