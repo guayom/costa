@@ -54,7 +54,7 @@
                     :javascript
                       $(document).ready( function() {
                         $('#valor_compra').slider({
-                          min: #{Propiedad.minimum(:valor_compra) || 0 ; fail '123'},
+                          min: #{Propiedad.minimum(:valor_compra) || 0},
                           max: #{Propiedad.maximum(:valor_compra) || 0},
                           value: #{(params[:valor_compra] || [0, Propiedad.maximum(:valor_compra) || 0]).to_s},
                           formatter: function(value) {
