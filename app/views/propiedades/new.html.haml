@@ -7,6 +7,8 @@
             = msg
             %br
 
+        = f.hidden_field :estatus, { value: :borrador }
+
         = f.fields_for :propietario do |sf|
           .form-group
             = sf.label :nombre, class: 'col-sm-2 control-label'
