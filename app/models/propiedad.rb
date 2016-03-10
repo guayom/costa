@@ -113,4 +113,7 @@ class Propiedad < ActiveRecord::Base
     return "#{@symbol}#{@valor}"
   end
 
+  def tipo
+    false
+  end
 end
