@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Admin.delete_all
+Admin.destroy_all
 Admin.create!([
   {:nombre => 'Augusto Biolley Blanco', :password => '12345678', :password_confirmation => '12345678', :codigo => 'A', :telefono => '8701-7726', :email => 'augusto@costa506realestate.com'},
   {:nombre => 'Pablo Larios Navarro', :password => '12345678', :password_confirmation => '12345678', :codigo => 'P', :telefono => '8380-0415', :email => 'pablo@costa506realestate.com'},
@@ -15,7 +15,7 @@ Admin.create!([
   {:nombre => 'Usuario no identificado', :password => '12345678', :password_confirmation => '12345678', :codigo => 'M', :telefono => '8882-6473', :email => 'm@guayo.me'}
 ])
 
-Caracteristica.delete_all
+Caracteristica.destroy_all
 Caracteristica.create!([
 	{:titulo => 'piscina', :type => 'amenidad'},
 	{:titulo => 'generador', :type => 'otros'},
