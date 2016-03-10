@@ -35,6 +35,6 @@
           = propiedad.estacionamiento
     .property-content
       %h3
-        %small=t propiedad.tipo.titulo
+        %small=t(propiedad.tipo.titulo) if propiedad.tipo
         =link_to propiedad.titular, propiedad
         %small= propiedad.ubicacion
