@@ -91,8 +91,8 @@ ActiveRecord::Schema.define(version: 20160310205612) do
     t.string   "estado",                  default: "1"
     t.string   "codigo"
     t.integer  "admin_id",                index: {name: "fk__propiedades_admin_id"}, foreign_key: {references: "admins", name: "fk_propiedades_admin_id", on_update: :no_action, on_delete: :no_action}
-    t.integer  "propietario_id",          index: {name: "fk__propiedades_empty_propietario_id"}, foreign_key: {references: "propietarios", name: "fk_propiedades_propietario_id", on_update: :no_action, on_delete: :no_action}
-    t.integer  "tipo_id",                 index: {name: "fk__propiedades_empty_tipo_id"}, foreign_key: {references: "tipos", name: "fk_propiedades_tipo_id", on_update: :no_action, on_delete: :no_action}
+    t.integer  "propietario_id",          index: {name: "fk__propiedades_propietario_id"}, foreign_key: {references: "propietarios", name: "fk_propiedades_propietario_id", on_update: :no_action, on_delete: :no_action}
+    t.integer  "tipo_id",                 index: {name: "fk__propiedades_tipo_id"}, foreign_key: {references: "tipos", name: "fk_propiedades_tipo_id", on_update: :no_action, on_delete: :no_action}
     t.text     "direccion_exacta"
     t.text     "direccion_uso_interno"
     t.text     "descripcion_publica"
@@ -130,9 +130,6 @@ ActiveRecord::Schema.define(version: 20160310205612) do
     t.integer  "wpid"
     t.string   "slug"
   end
-  add_index "propiedades", ["admin_id"], name: "fk__propiedades_empty_admin_id"
-  add_index "propiedades", ["propietario_id"], name: "fk__propiedades_propietario_id"
-  add_index "propiedades", ["tipo_id"], name: "fk__propiedades_tipo_id"
 
   create_table "caracteristicas_propiedades", id: false, force: :cascade do |t|
     t.integer "caracteristica_id", null: false, index: {name: "index_caracteristicas_propiedades_on_caracteristica_id"}, foreign_key: {references: "caracteristicas", name: "fk_caracteristicas_propiedades_caracteristica_id", on_update: :no_action, on_delete: :no_action}
