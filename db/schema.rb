@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20160310164416) do
 
   create_table "caracteristicas", force: :cascade do |t|
     t.string   "titulo"
-    t.string   "type"
+    t.string   "grupo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
