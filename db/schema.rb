@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160310193551) do
+ActiveRecord::Schema.define(version: 20160310203010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,8 +97,8 @@ ActiveRecord::Schema.define(version: 20160310193551) do
     t.text     "direccion_uso_interno"
     t.text     "descripcion_publica"
     t.string   "moneda",                  default: "USD", null: false
-    t.integer  "valor_compra"
-    t.integer  "valor_alquiler"
+    t.integer  "valor_compra",            limit: 8
+    t.integer  "valor_alquiler",          limit: 8
     t.boolean  "opcion_compra"
     t.boolean  "incluye_mantenimiento"
     t.integer  "cuota_mantenimiento"
