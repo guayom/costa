@@ -18,7 +18,7 @@ class Propiedad < ActiveRecord::Base
 
   extend Enumerize
   enumerize :listado, in: [:venta, :alquiler, :opcion_compra, :venta_alquiler]
-  enumerize :estado, in: [:disponible, :alquilado, :vendido, :oculto], default: :disponible
+  enumerize :estado, in: [:disponible, :alquilado, :vendido], default: :disponible
   enumerize :moneda, in: [:usd, :crc], default: :usd
   enumerize :tipo_de_estacionamiento, in: [:parqueo, :garaje, :parqueo_techado]
 
