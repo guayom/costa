@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :propietarios
+
   get 'propiedades/index'
 
   get 'propiedades/detalles'

@@ -54,6 +54,9 @@ group :development do
   gem 'spring'
 
   gem 'quiet_assets'
+
+  # Preview email in the default browser instead of sending it.
+  gem 'letter_opener'
 end
 
 #Bootstrap
