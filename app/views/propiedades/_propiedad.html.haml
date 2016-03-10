@@ -6,8 +6,8 @@
           %img{:alt => "arillo real estate theme", :src => propiedad.imagenes.first.imagen.url }
       .property-price{:data => {:listado => propiedad.listado }}
         %h4
-          = propiedad.listado.capitalize
-        - if propiedad.listado.alquiler?
+          = propiedad.listado.capitalize if propiedad.listado.present?
+        - if propiedad.listado && propiedad.listado.alquiler?
           %span= propiedad.mostrar_valor(propiedad.valor_alquiler.to_i)
       .mycarousel
         %ul.mensajes-especiales
