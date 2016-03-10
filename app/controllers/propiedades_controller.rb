@@ -30,11 +30,20 @@ class PropiedadesController < ApplicationController
   def new
     @propiedad = Propiedad.new
     @propiedad.build_propietario
+
+    password = Devise.friendly_token.first(8)
+    @propiedad.propietario.password = password
   end
 
   def create
     @propiedad = Propiedad.new(propiedad_params)
     if @propiedad.save
+      # Send password to new user.
+      PropietarioMailer
+        .welcome_email(@propiedad.propietario,
+                       propiedad_params[:propietario_attributes][:password])
+        .deliver_later
+
       redirect_to propiedades_path, { notice: t(:propiedad_added_succefully) }
     else
       render :new
@@ -46,7 +55,8 @@ class PropiedadesController < ApplicationController
   def propiedad_params
     params.require(:propiedad).permit(
       :estatus, :titular, :valor_compra, :valor_alquiler, :listado,
-      propietario_attributes: [:nombre, :apellido, :celular, :email]
+      propietario_attributes: [:nombre, :apellido, :celular, :email,
+                               :password]
     )
   end
 end

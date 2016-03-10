@@ -10,6 +10,8 @@
         = f.hidden_field :estatus, { value: :borrador }
 
         = f.fields_for :propietario do |sf|
+          = sf.hidden_field :password
+
           .form-group
             = sf.label :nombre, class: 'col-sm-2 control-label'
             .col-sm-4
