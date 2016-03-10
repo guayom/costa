@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160310203010) do
+ActiveRecord::Schema.define(version: 20160310205612) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -178,6 +178,11 @@ ActiveRecord::Schema.define(version: 20160310203010) do
   create_table "mensajes_propiedades", id: false, force: :cascade do |t|
     t.integer "mensaje_id",   index: {name: "index_mensajes_propiedades_on_mensaje_id"}, foreign_key: {references: "mensajes", name: "fk_mensajes_propiedades_mensaje_id", on_update: :no_action, on_delete: :no_action}
     t.integer "propiedad_id", index: {name: "index_mensajes_propiedades_on_propiedad_id"}, foreign_key: {references: "propiedades", name: "fk_mensajes_propiedades_propiedad_id", on_update: :no_action, on_delete: :no_action}
+  end
+
+  create_table "propiedades_tipos", force: :cascade do |t|
+    t.integer "propiedad_id", index: {name: "index_propiedades_tipos_on_propiedad_id"}, foreign_key: {references: "propiedades", name: "fk_propiedades_tipos_propiedad_id", on_update: :no_action, on_delete: :no_action}
+    t.integer "tipo_id",      index: {name: "index_propiedades_tipos_on_tipo_id"}, foreign_key: {references: "tipos", name: "fk_propiedades_tipos_tipo_id", on_update: :no_action, on_delete: :no_action}
   end
 
 end
