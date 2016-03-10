@@ -12,3 +12,8 @@ Admin.create!([
   {:nombre => 'Ivannia Contreras', :password => '12345678', :password_confirmation => '12345678', :codigo => 'I', :telefono => '8380-0415', :email => 'pablo@costa506realestate.com'},
   {:nombre => 'Christian Ungar Borbon', :password => '12345678', :password_confirmation => '12345678', :codigo => 'C', :telefono => '6006-0502', :email => 'christian@costa506realestate.com'},
 ])
+
+Caracteristica.delete_all
+Caracteristica.create!([
+	{}
+])
