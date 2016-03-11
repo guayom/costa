@@ -22,6 +22,6 @@ module FiltersHelper
   end
 
   def banos_options
-    Propiedad.pluck(:banos).uniq.sort.map { |n| 0 == n % 1 ? n.to_i : n }
+    Propiedad.pluck(:banos).uniq.sort.map { |n| 0 == n % 1 ? n.to_i : n }.map(&:to_s)
   end
 end
