@@ -21,6 +21,10 @@
 
 en:
   hello: "Hello World"
+  number:
+      currency:
+        format:
+          precision: 0
   enumerize:
     propiedad:
       listado:

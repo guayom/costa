@@ -47,19 +47,19 @@
                           %td{:width => "20%"}
                             %strong Código
                           %td= @propiedad.codigo
-                        - unless @propiedad.valor_compra.to_i < 0
+                        - if @propiedad.valor_compra > 0
                           %tr
                             %td
                               %strong Venta
                             %td
-                              $#{number_with_delimiter(@propiedad.valor_compra)}
+                              = number_to_currency(@propiedad.valor_compra, locale: @propiedad.price_locale)
                               \#{'Opción de compra' if @propiedad.opcion_compra == true}
-                        - unless @propiedad.valor_alquiler.to_i < 0
+                        - if @propiedad.valor_alquiler > 0
                           %tr
                             %td
                               %strong Alquiler
                             %td
-                              $#{number_with_delimiter(@propiedad.valor_alquiler)}
+                              = number_to_currency(@propiedad.valor_alquiler, locale: @propiedad.price_locale)
                         %tr
                           %td
                             %strong Ubicación

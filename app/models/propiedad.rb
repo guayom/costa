@@ -116,4 +116,15 @@ class Propiedad < ActiveRecord::Base
   def tipo
     false
   end
+
+  def price_locale
+    case moneda
+    when 'usd'
+      :en
+    when 'crc'
+      :es
+    else
+      :en
+    end
+  end
 end
