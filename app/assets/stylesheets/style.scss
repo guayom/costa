@@ -2094,6 +2094,15 @@ input[type="color"]:focus,
   color: #898ba2;
 }
 
+#footer {
+  .tipos {
+    ul {
+      columns: 2;
+      -webkit-columns: 2;
+      -moz-columns: 2;
+    }
+  }
+}
 
 /* 
 	==================

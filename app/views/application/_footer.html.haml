@@ -2,11 +2,16 @@
 #footer
   .container
     .row
-      .col-md-3.col-sm-6.col-xs-12
-        .widget
-          .fb-page{"data-hide-cover" => "false", "data-href" => "https://www.facebook.com/costa506/", "data-show-facepile" => "true", "data-width" => "340"}
+      .col-md-5.col-sm-6.col-xs-12
+        .widget.tipos
+          %h3 Propiedades
+          %ul.list-unstyled
+            - Tipo.all.find_all { |t| t.propiedades.publicado.any? }.each do |tipo|
+              %li
+                = link_to propiedades_path(listado: :venta, tipo: tipo.titulo) do
+                  = tipo.titulo
       / break
-      .col-md-3.col-sm-6.col-xs-12
+      .col-md-4.col-sm-6.col-xs-12
         .widget
           %h3 Top Agents Listed
           %ul.list-unstyled
@@ -15,20 +20,20 @@
                 = admin.nombre
                 = admin.telefono
       / break
-      .col-md-3.col-sm-6.col-xs-12
-        .widget
-          %h3 Features
-          %ul.list-unstyled
-            %li
-              %a{:href => "#"} My Account
-            %li
-              %a{:href => "#"} How To
-            %li
-              %a{:href => "#"} Market Trend
-            %li
-              %a{:href => "#"} Android App
-            %li
-              %a{:href => "#"} IOS App
+      -#.col-md-2.col-sm-6.col-xs-12
+      -#  .widget
+      -#    %h3 Features
+      -#    %ul.list-unstyled
+      -#      %li
+      -#        %a{:href => "#"} My Account
+      -#      %li
+      -#        %a{:href => "#"} How To
+      -#      %li
+      -#        %a{:href => "#"} Market Trend
+      -#      %li
+      -#        %a{:href => "#"} Android App
+      -#      %li
+      -#        %a{:href => "#"} IOS App
       / break
       .col-md-3.col-sm-6.col-xs-12
         .widget
