@@ -10,8 +10,10 @@
         .widget
           %h3 Top Agents Listed
           %ul.list-unstyled
-            %li
-              %a{:href => "#"} Lorenso
+            - Admin.all.find_all { |a| a.has_any_propiedades? }.each do |admin|
+              %li
+                = admin.nombre
+                = admin.telefono
       / break
       .col-md-3.col-sm-6.col-xs-12
         .widget

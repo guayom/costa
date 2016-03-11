@@ -12,5 +12,9 @@ class Admin < ActiveRecord::Base
 
   rails_admin do
 		object_label_method :nombre
-	end
+  end
+
+  def has_any_propiedades?
+    Propiedad.where("codigo ILIKE ?", "%#{codigo}%").any?
+  end
 end
