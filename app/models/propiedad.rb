@@ -17,8 +17,8 @@ class Propiedad < ActiveRecord::Base
   # accepts_nested_attributes_for :imagenes, :allow_destroy => true
   #has_and_belongs_to_many :caracteristicas
 
-  has_and_belongs_to_many :tipos
-  accepts_nested_attributes_for :tipos
+  # has_and_belongs_to_many :tipos
+  # accepts_nested_attributes_for :tipos
 
   before_create :set_codigo
 
@@ -41,7 +41,7 @@ class Propiedad < ActiveRecord::Base
   pg_search_scope :search_by_distrito_id, against: :distrito
 
   pg_search_scope :search_by_tipo,
-                  associated_against: { tipos: :titulo }
+                  associated_against: { tipo: :titulo }
   pg_search_scope :search_by_tipo_de_estacionamiento,
                   against: :tipo_de_estacionamiento
   pg_search_scope :search_by_dormitorios, against: :dormitorios
@@ -124,10 +124,6 @@ class Propiedad < ActiveRecord::Base
     @valor =  valor
 
     return "#{@symbol}#{@valor}"
-  end
-
-  def tipo
-    false
   end
 
   def price_locale

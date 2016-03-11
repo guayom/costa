@@ -35,58 +35,48 @@
           .col-sm-10
             = f.text_field :titular, class: 'form-control'
 
-        .row
+        .form-group
+          = f.label :tipo_id, class: 'col-sm-2 control-label'
           .col-sm-4
-            .form-group
-              = f.label :tipo_ids, class: 'col-sm-2 control-label'
-              .col-sm-10
-                = f.collection_check_boxes :tipo_ids, Tipo.all, :id, :titulo do |b|
-                  .checkbox
-                    %label
-                      = b.check_box
-                      = b.text
+            = f.select :tipo_id, options_from_collection_for_select(Tipo.all, :id, :titulo), {}, class: 'form-control'
 
-          .col-sm-8
-            .form-group
-              = f.label :listado, class: 'col-sm-2 control-label'
-              .col-sm-10
-                = f.select :listado, options_for_select(Propiedad.listado.options),
-                           {}, class: 'form-control'
+          = f.label :listado, class: 'col-sm-2 control-label'
+          .col-sm-4
+            = f.select :listado, options_for_select(Propiedad.listado.options),
+                       {}, class: 'form-control'
 
-            .form-group
-              %label.col-sm-2.control-label{for: :provincia_id}= t(:ubicación)
-              .col-sm-10
-                = select_tag :provincia_id,
-                                       options_for_select([['cualquier...', nil]] + Provincia.all.map { |p| [p.nombre, p.nombre, { 'data-provincia-id': p.id }] }, params[:provincia_id]),
-                                       class: 'form-control'
-                = select_tag :canton_id_copy,
-                                       options_for_select([['cualquier...', nil]] + Canton.all.map { |c| [c.nombre, c.nombre, { 'data-provincia-id': c.provincia_id, 'data-canton-id': c.canton_id }]}),
-                                       class: 'form-control', style: 'display: none;'
-                = select_tag :canton_id, nil, style: 'display: none;'
-                = select_tag :distrito_id_copy,
-                                       options_for_select([['cualquier...', nil]] + Distrito.all.map { |d| [d.nombre, d.nombre, { 'data-provincia-id': d.provincia_id, 'data-canton-id': d.canton_id }] }),
-                                       class: 'form-control', style: 'display: none;'
-                = select_tag :distrito_id, nil, style: 'display: none;'
+        .form-group
+          %label.col-sm-2.control-label{for: :provincia_id}= t(:ubicación)
+          .col-sm-4
+            = select_tag :provincia_id,
+                                   options_for_select([['cualquier...', nil]] + Provincia.all.map { |p| [p.nombre, p.nombre, { 'data-provincia-id': p.id }] }, params[:provincia_id]),
+                                   class: 'form-control'
+            = select_tag :canton_id_copy,
+                                   options_for_select([['cualquier...', nil]] + Canton.all.map { |c| [c.nombre, c.nombre, { 'data-provincia-id': c.provincia_id, 'data-canton-id': c.canton_id }]}),
+                                   class: 'form-control', style: 'display: none;'
+            = select_tag :canton_id, nil, style: 'display: none;'
+            = select_tag :distrito_id_copy,
+                                   options_for_select([['cualquier...', nil]] + Distrito.all.map { |d| [d.nombre, d.nombre, { 'data-provincia-id': d.provincia_id, 'data-canton-id': d.canton_id }] }),
+                                   class: 'form-control', style: 'display: none;'
+            = select_tag :distrito_id, nil, style: 'display: none;'
 
-            .form-group
-              = f.label :direccion_exacta, class: 'col-sm-2 control-label'
-              .col-sm-10
-                = f.text_area :direccion_exacta, class: 'form-control'
+          = f.label :direccion_exacta, class: 'col-sm-2 control-label'
+          .col-sm-4
+            = f.text_area :direccion_exacta, class: 'form-control'
 
-            .form-group
-              = f.label :valor_compra, class: 'col-sm-2 control-label'
-              .col-sm-10
-                = f.number_field :valor_compra, class: 'form-control'
+        .form-group
+          = f.label :valor_compra, class: 'col-sm-2 control-label'
+          .col-sm-4
+            = f.number_field :valor_compra, class: 'form-control'
 
-            .form-group
-              = f.label :valor_alquiler, class: 'col-sm-2 control-label'
-              .col-sm-10
-                = f.number_field :valor_alquiler, class: 'form-control'
+          = f.label :valor_alquiler, class: 'col-sm-2 control-label'
+          .col-sm-4
+            = f.number_field :valor_alquiler, class: 'form-control'
 
-            .form-group
-              = f.label :descripcion_publica, class: 'col-sm-2 control-label'
-              .col-sm-10
-                = f.text_area :descripcion_publica, class: 'form-control', rows: 20
+        .form-group
+          = f.label :descripcion_publica, class: 'col-sm-2 control-label'
+          .col-sm-10
+            = f.text_area :descripcion_publica, class: 'form-control', rows: 5
 
         .form-group
           .col-sm-offset-2.col-sm-10
