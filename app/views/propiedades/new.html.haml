@@ -52,6 +52,23 @@
               .col-sm-10
                 = f.select :listado, options_for_select(Propiedad.listado.options),
                            {}, class: 'form-control'
+
+            .form-group
+              %label.col-sm-2.control-label{for: :provincia_id}= t(:ubicación)
+              .col-sm-10
+                = select_tag :provincia_id,
+                                       options_for_select([['cualquier...', nil]] + Provincia.all.map { |p| [p.nombre, p.nombre, { 'data-provincia-id': p.id }] }, params[:provincia_id]),
+                                       class: 'form-control'
+                = select_tag :canton_id_copy,
+                                       options_for_select([['cualquier...', nil]] + Canton.all.map { |c| [c.nombre, c.nombre, { 'data-provincia-id': c.provincia_id, 'data-canton-id': c.canton_id }]}),
+                                       class: 'form-control', style: 'display: none;'
+                = select_tag :canton_id, nil, style: 'display: none;'
+                = select_tag :distrito_id_copy,
+                                       options_for_select([['cualquier...', nil]] + Distrito.all.map { |d| [d.nombre, d.nombre, { 'data-provincia-id': d.provincia_id, 'data-canton-id': d.canton_id }] }),
+                                       class: 'form-control', style: 'display: none;'
+                = select_tag :distrito_id, nil, style: 'display: none;'
+
+
             .form-group
               = f.label :valor_compra, class: 'col-sm-2 control-label'
               .col-sm-10

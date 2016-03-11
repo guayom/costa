@@ -45,6 +45,10 @@ class PropiedadesController < ApplicationController
 
   def create
     @propiedad = Propiedad.new(propiedad_params)
+    @propiedad.provincia = params[:provincia_id]
+    @propiedad.canton = params[:canton_id]
+    @propiedad.distrito = params[:distrito_id]
+
     if @propiedad.save
       # Send password to new user.
       PropietarioMailer
@@ -63,7 +67,8 @@ class PropiedadesController < ApplicationController
   def propiedad_params
     params.require(:propiedad).permit(
       :estatus, :titular, :valor_compra, :valor_alquiler, :listado,
-      :descripcion_publica, { tipo_ids: [] },
+      :descripcion_publica, { tipo_ids: [] }, :provincia_id, :canton_id,
+      :distrito_id,
       propietario_attributes: [:nombre, :apellido, :celular, :email,
                                :password]
     )
