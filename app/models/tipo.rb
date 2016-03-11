@@ -1,5 +1,5 @@
 class Tipo < ActiveRecord::Base
-	has_and_belongs_to_many :propiedads
+	has_and_belongs_to_many :propiedades
 
 	validates :titulo, presence: true
 

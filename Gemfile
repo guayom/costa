@@ -91,12 +91,15 @@ gem 'virtus', '~> 1.0.5'
 gem "schema_plus", "2.0.0.pre12"
 
 gem 'paperclip'
+gem 'aws-sdk'
 
 gem 'haml', '~> 4.0', '>= 4.0.7'
 
 gem 'devise'
 
 gem 'enumerize'
+
+gem 'will_paginate'
 # gem 'rails_admin_multiple_upload', path: 'vendor/gems/rails_admin_multiple_upload'
 #RUBY Version
 ruby "2.2.3"

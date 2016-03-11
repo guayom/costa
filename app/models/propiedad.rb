@@ -5,6 +5,7 @@ class Propiedad < ActiveRecord::Base
 
   belongs_to :propietario
   accepts_nested_attributes_for :propietario
+  belongs_to :tipo
 
   # belongs_to :tipo
   has_many :imagenes, :dependent => :destroy
@@ -30,7 +31,7 @@ class Propiedad < ActiveRecord::Base
   validates_presence_of :codigo, if: :publicado?
   validates_presence_of :admin, if: :publicado?
   validates_presence_of :tipo, if: :publicado?
-  validates_presence_of :propietario
+  #validates_presence_of :propietario, if: :publicado?
 
   pg_search_scope :search_by_provincia_id, against: :provincia
   pg_search_scope :search_by_canton_id, against: :canton
