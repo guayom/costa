@@ -48,10 +48,19 @@ class Propiedad < ActiveRecord::Base
 
   scope :search_by_listado, -> (value) { where(listado: value) }
   scope :search_by_valor_compra, -> (values) {
-    where('valor_compra >= ? AND valor_compra <= ?', values[0], values[1])
+    if values.size > 1
+      where('valor_compra >= ? AND valor_compra <= ?', values[0], values[1])
+    else
+      where('valor_compra >= ?', values[0])
+    end
   }
+
   scope :search_by_valor_alquiler, -> (values) {
-    where('valor_alquiler >= ? AND valor_alquiler <= ?', values[0], values[1])
+    if values.size > 1
+      where('valor_alquiler >= ? AND valor_alquiler <= ?', values[0], values[1])
+    else
+      where('valor_alquiler >= ?', values[0])
+    end
   }
 
   pg_search_scope :search_by_keywords, against: [:provincia, :canton, :distrito]

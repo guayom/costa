@@ -44,33 +44,15 @@
     - if [:venta, :venta_alquiler].include?(params[:listado] ? params[:listado].to_sym : nil) || params[:listado].nil?
       .form-group
         %label{for: :valor_compra}= t(:valor_compra)
-        = text_field_tag :valor_compra, params[:valor_compra], style: 'width: 100%;'
-        :javascript
-                    $(document).ready( function() {
-                      $('#valor_compra').slider({
-                        min: #{Propiedad.minimum(:valor_compra) || 0},
-                        max: #{Propiedad.maximum(:valor_compra) || 0},
-                        value: #{params[:valor_compra].present? ? params[:valor_compra] : [0, Propiedad.maximum(:valor_compra) || 0]},
-                        formatter: function(value) {
-                          return '$' + value[0] + ' — $' + value[1];
-                        }
-                      });
-                    });
-    - if [:alquiler, :opcion_compra].include?(params[:listado] ? params[:listado].to_sym : nil)
+        = select_tag :valor_compra,
+                     options_for_select([['cualquier...', nil]] + valor_compra_options, params[:valor_compra]),
+                     class: 'form-control'
+    - if [:alquiler, :opcion_compra, :venta_alquiler].include?(params[:listado] ? params[:listado].to_sym : nil)
       .form-group
         %label{for: :valor_alquiler}= t(:valor_alquiler)
-        = text_field_tag :valor_alquiler, params[:valor_alquiler], style: 'width: 100%;'
-        :javascript
-                    $(document).ready( function() {
-                      $('#valor_alquiler').slider({
-                        min: #{Propiedad.minimum(:valor_alquiler) || 0},
-                        max: #{Propiedad.maximum(:valor_alquiler) || 0},
-                        value: #{params[:valor_alquiler].present? ? params[:valor_alquiler] : [0, Propiedad.maximum(:valor_alquiler) || 0]},
-                        formatter: function(value) {
-                          return '$' + value[0] + ' — $' + value[1];
-                        }
-                      });
-                    });
+        = select_tag :valor_alquiler,
+                     options_for_select([['cualquier...', nil]] + valor_alquiler_options, params[:valor_alquiler]),
+                     class: 'form-control'
   .col-md-12.col-sm-12.col-xs-12
     .form-group
       %label{for: 'keywords'}= t(:keywords)
