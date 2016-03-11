@@ -57,6 +57,9 @@ group :development do
 
   # Preview email in the default browser instead of sending it.
   gem 'letter_opener'
+
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 #Bootstrap

@@ -37,14 +37,14 @@ class Propiedad < ActiveRecord::Base
   pg_search_scope :search_by_canton_id, against: :canton
   pg_search_scope :search_by_distrito_id, against: :distrito
 
-  pg_search_scope :search_by_listado, against: :listado
-  pg_search_scope :search_by_tipo, associated_against: {
-    tipo: :titulo
-  }
+  pg_search_scope :search_by_tipo,
+                  associated_against: { tipos: :titulo }
   pg_search_scope :search_by_tipo_de_estacionamiento,
                   against: :tipo_de_estacionamiento
   pg_search_scope :search_by_dormitorios, against: :dormitorios
   pg_search_scope :search_by_banos, against: :banos
+
+  scope :search_by_listado, -> (value) { where(listado: value) }
   scope :search_by_valor_compra, -> (values) {
     where('valor_compra >= ? AND valor_compra <= ?', values[0], values[1])
   }
@@ -114,4 +114,7 @@ class Propiedad < ActiveRecord::Base
     return "#{@symbol}#{@valor}"
   end
 
+  def tipo
+    false
+  end
 end
