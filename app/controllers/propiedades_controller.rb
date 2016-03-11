@@ -8,7 +8,7 @@ class PropiedadesController < ApplicationController
       end
     end
 
-    @propiedades = Propiedad.publicado
+    @propiedades = Propiedad.publicado.paginate(:page => params[:page], :per_page => 5)
 
     [:listado, :provincia_id, :canton_id, :distrito_id, :tipo,
      :tipo_de_estacionamiento, :dormitorios, :banos, :valor_compra,

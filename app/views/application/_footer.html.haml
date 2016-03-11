@@ -1,0 +1,64 @@
+/ begin:footer
+#footer
+  .container
+    .row
+      .col-md-3.col-sm-6.col-xs-12
+        .widget
+          .fb-page{"data-hide-cover" => "false", "data-href" => "https://www.facebook.com/costa506/", "data-show-facepile" => "true", "data-width" => "340"}
+      / break
+      .col-md-3.col-sm-6.col-xs-12
+        .widget
+          %h3 Top Agents Listed
+          %ul.list-unstyled
+            %li
+              %a{:href => "#"} Lorenso
+      / break
+      .col-md-3.col-sm-6.col-xs-12
+        .widget
+          %h3 Features
+          %ul.list-unstyled
+            %li
+              %a{:href => "#"} My Account
+            %li
+              %a{:href => "#"} How To
+            %li
+              %a{:href => "#"} Market Trend
+            %li
+              %a{:href => "#"} Android App
+            %li
+              %a{:href => "#"} IOS App
+      / break
+      .col-md-3.col-sm-6.col-xs-12
+        .widget
+          %h2 Costa 506 Real Estate
+          %address
+            %strong= CONTACT_INFO['direccion']
+            %br
+              Email : #{CONTACT_INFO['email']}
+              %br/
+              %br/
+              %strong Teléfonos:
+              %br/
+              - CONTACT_INFO['telefonos'].each do |member|
+                %div
+                  %abbr{:title => "Phone"}
+                  = member['numero']
+      / break
+    / break
+    / begin:copyright
+    .row
+      .col-md-12.copyright
+        %ul.list-inline.social-links
+          - CONTACT_INFO['redes_sociales'].each do |link|
+            %li
+              %a{:class => "icon-#{link['nombre']}", "data-original-title" => link['nombre'].titleize, "data-placement" => "bottom", :href => link['url'], :rel => "tooltip", :title => ""}
+                %i{:class => "fa fa-#{link['icon']}"}
+        %p Copyright &copy; 2015 Costa 506 Real Estate. Todos los derechos reservados.
+        %p
+          Powered by
+          %strong
+            %a{:href => "http://tigerkissdesign.com", :target => "_blank"} TigerKiss Design.
+        %a.btn.btn-success.scroltop{:href => "#top"}
+          %i.fa.fa-angle-up
+    / end:copyright
+/ end:footer

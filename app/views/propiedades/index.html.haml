@@ -1,9 +1,21 @@
 - content_for :full_width_header do
-	- render 'application/header'
+	#header.heading{:style => "background-image: url(&quot;img/img01.jpg&quot;); background-position: 50% 0px;"}
+		.container
+			.row
+				.col-md-10.col-md-offset-1.col-sm-12
+					.page-title
+						%h2
+							Nuestras Propiedades
+							%span 
+							%p
+- content_for :content do
+	#content
+		.container
+			.row
+				.col-md-9.col-md-push-3
+					.row.container-realestate
+						= render partial: "propiedades/horizontal", collection: @propiedades, as: :propiedad
+						will_paginate @propiedades
+				.col-md-3.col-md-pull-9.sidebar
+					= render :partial => 'application/filters_sidebar'
 
-= @propiedades.inspect
-
-= @propiedades.size
-
-<h1>Propiedades#index</h1>
-<p>Find me in app/views/propiedades/index.html.erb</p>
