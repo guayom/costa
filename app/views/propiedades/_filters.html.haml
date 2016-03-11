@@ -27,7 +27,7 @@
     .form-group
       %label{for: :dormitorios}= t(:dormitorios)
       = select_tag :dormitorios,
-                             options_for_select([['cualquier...', nil]] + Propiedad.pluck(:dormitorios).map(&:to_i).uniq.sort, params[:dormitorios]),
+                             options_for_select([['cualquier...', nil]] + Propiedad.pluck(:dormitorios).map(&:to_i).uniq.find_all(&:present?).sort, params[:dormitorios]),
                              class: 'form-control'
   .col-md-6.col-sm-6.col-xs-6
     .form-group
