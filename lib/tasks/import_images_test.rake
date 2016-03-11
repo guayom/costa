@@ -1727,8 +1727,6 @@ task :import_images_test => :environment do
 [5905, "http://www.costa506realestate.com/wp-content/uploads/2014/06/10342775_656478921093358_1250875053919190390_n.jpg"]
 ]
 
-	@images.each do |(a,b)|
-		Imagen.create!({:propiedad_id => a, :imagen => b}) if Propiedad.exists?(a)
-	end
+	@images.each do |(a,b)| Imagen.create!({:propiedad_id => a, :imagen => b}) if Propiedad.exists?(a) end
 
 end
