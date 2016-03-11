@@ -91,7 +91,7 @@ gem 'virtus', '~> 1.0.5'
 gem "schema_plus", "2.0.0.pre12"
 
 gem 'paperclip'
-gem "paperclip-storage-ftp"
+gem 'aws-sdk'
 
 gem 'haml', '~> 4.0', '>= 4.0.7'
 
