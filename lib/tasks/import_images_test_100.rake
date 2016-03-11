@@ -1,4 +1,4 @@
-task :import_images => :environment do
+task :import_images_test_100 => :environment do
 	@images = [
 [5671, "http://www.costa506realestate.com/wp-content/uploads/2014/06/10390259_653693334705250_1662782565831986354_n.jpg"],
 [5671, "http://www.costa506realestate.com/wp-content/uploads/2014/06/68612_653693368038580_7851316442342540144_n.jpg"],
