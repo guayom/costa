@@ -44,7 +44,6 @@ class Propiedad < ActiveRecord::Base
   pg_search_scope :search_by_tipo_de_estacionamiento,
                   against: :tipo_de_estacionamiento
   pg_search_scope :search_by_dormitorios, against: :dormitorios
-  pg_search_scope :search_by_banos, against: :banos
 
   scope :search_by_listado, -> (value) { where(listado: value) }
   scope :search_by_valor_compra, -> (values) {
@@ -54,6 +53,7 @@ class Propiedad < ActiveRecord::Base
       where('valor_compra >= ?', values[0])
     end
   }
+  scope :search_by_banos, -> (value) { where(banos: value) }
 
   scope :search_by_valor_alquiler, -> (values) {
     if values.size > 1

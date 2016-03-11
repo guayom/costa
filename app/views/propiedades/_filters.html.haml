@@ -38,7 +38,7 @@
     .form-group
       %label{for: :banos}= t(:banos)
       = select_tag :banos,
-                             options_for_select([['cualquier...', nil]] + Propiedad.pluck(:banos).uniq.map(&:to_i).sort, params[:banos]),
+                             options_for_select([['cualquier...', nil]] + banos_options, params[:banos]),
                              class: 'form-control'
   .col-md-12.col-sm-12.col-xs-12
     - if [:venta, :venta_alquiler].include?(params[:listado] ? params[:listado].to_sym : nil) || params[:listado].nil?
