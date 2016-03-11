@@ -1,4 +1,6 @@
 class Propiedad < ActiveRecord::Base
+  self.per_page = 5
+
   include PgSearch
 
   belongs_to :admin
