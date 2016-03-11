@@ -68,3 +68,9 @@ es:
     submit:
       propiedad:
         create: 'Registrar'
+
+  activerecord:
+    attributes:
+      propiedad:
+        tipo_ids: 'Tipos'
+        descripcion_publica: 'Descripcion'
