@@ -3,7 +3,7 @@ class PropiedadesController < ApplicationController
     params[:listado] ||= :venta
 
     [:valor_compra, :valor_alquiler].each do |range_key|
-      if params[range_key].present?
+      if params[range_key].present? && params[range_key].instance_of?(String)
         params[range_key] = params[range_key].split(',').map(&:to_i)
       end
     end

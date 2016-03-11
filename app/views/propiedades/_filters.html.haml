@@ -1,0 +1,79 @@
+%form{:method => "GET", :role => "form", action: propiedades_path}
+  .col-md-12.col-sm-12.col-xs-12
+    .form-group
+      = select_tag :listado,
+                             options_for_select(Propiedad.listado.options, params[:listado]),
+                             class: 'form-control listado-control'
+  .col-md-12.col-sm-12.col-xs-12
+    .form-group
+      %label{for: :provincia_id}= t(:ubicación)
+      = select_tag :provincia_id,
+                             options_for_select([['cualquier...', nil]] + Provincia.all.map { |p| [p.nombre, p.nombre, { 'data-provincia-id': p.id }] }, params[:provincia_id]),
+                             class: 'form-control'
+      = select_tag :canton_id_copy,
+                             options_for_select([['cualquier...', nil]] + Canton.all.map { |c| [c.nombre, c.nombre, { 'data-provincia-id': c.provincia_id, 'data-canton-id': c.canton_id }]}),
+                             class: 'form-control', style: 'display: none;'
+      = select_tag :canton_id, nil, style: 'display: none;'
+      = select_tag :distrito_id_copy,
+                             options_for_select([['cualquier...', nil]] + Distrito.all.map { |d| [d.nombre, d.nombre, { 'data-provincia-id': d.provincia_id, 'data-canton-id': d.canton_id }] }),
+                             class: 'form-control', style: 'display: none;'
+      = select_tag :distrito_id, nil, style: 'display: none;'
+  .col-md-6.col-sm-6.col-xs-6
+    .form-group
+      %label{for: :tipo}= t(:tipo)
+      = select_tag :tipo,
+                             options_for_select([['cualquier...', nil]] + Tipo.pluck(:titulo), params[:tipo]),
+                             class: 'form-control'
+    .form-group
+      %label{for: :dormitorios}= t(:dormitorios)
+      = select_tag :dormitorios,
+                             options_for_select([['cualquier...', nil]] + Propiedad.pluck(:dormitorios).map(&:to_i).uniq.sort, params[:dormitorios]),
+                             class: 'form-control'
+  .col-md-6.col-sm-6.col-xs-6
+    .form-group
+      %label{for: :tipo_de_estacionamiento}= t(:estacionamiento)
+      = select_tag :tipo_de_estacionamiento,
+                             options_for_select([['cualquier...', nil]] + Propiedad.tipo_de_estacionamiento.options, params[:tipo_de_estacionamiento]),
+                             class: 'form-control'
+    .form-group
+      %label{for: :banos}= t(:banos)
+      = select_tag :banos,
+                             options_for_select([['cualquier...', nil]] + Propiedad.pluck(:banos).uniq.map(&:to_i).sort, params[:banos]),
+                             class: 'form-control'
+  .col-md-12.col-sm-12.col-xs-12
+    - if [:venta, :venta_alquiler].include?(params[:listado] ? params[:listado].to_sym : nil) || params[:listado].nil?
+      .form-group
+        %label{for: :valor_compra}= t(:valor_compra)
+        = text_field_tag :valor_compra, params[:valor_compra], style: 'width: 100%;'
+        :javascript
+                    $(document).ready( function() {
+                      $('#valor_compra').slider({
+                        min: #{Propiedad.minimum(:valor_compra) || 0},
+                        max: #{Propiedad.maximum(:valor_compra) || 0},
+                        value: #{params[:valor_compra].present? ? params[:valor_compra] : [0, Propiedad.maximum(:valor_compra) || 0]},
+                        formatter: function(value) {
+                          return '$' + value[0] + ' — $' + value[1];
+                        }
+                      });
+                    });
+    - if [:alquiler, :opcion_compra].include?(params[:listado] ? params[:listado].to_sym : nil)
+      .form-group
+        %label{for: :valor_alquiler}= t(:valor_alquiler)
+        = text_field_tag :valor_alquiler, params[:valor_alquiler], style: 'width: 100%;'
+        :javascript
+                    $(document).ready( function() {
+                      $('#valor_alquiler').slider({
+                        min: #{Propiedad.minimum(:valor_alquiler) || 0},
+                        max: #{Propiedad.maximum(:valor_alquiler) || 0},
+                        value: #{params[:valor_alquiler].present? ? params[:valor_alquiler] : [0, Propiedad.maximum(:valor_alquiler) || 0]},
+                        formatter: function(value) {
+                          return '$' + value[0] + ' — $' + value[1];
+                        }
+                      });
+                    });
+  .col-md-12.col-sm-12.col-xs-12
+    .form-group
+      %label{for: 'keywords'}= t(:keywords)
+      %input.form-control{type: 'search', name: 'keywords', value: params[:keywords]}
+  .col-md-12.col-sm-12
+    %input.btn.btn-success.btn-lg.btn-block{type: :submit, value: t(:search)}

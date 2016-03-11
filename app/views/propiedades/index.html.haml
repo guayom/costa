@@ -12,11 +12,11 @@
   #content
     .container
       .row
-        .col-md-9.col-md-push-3
+        .col-md-8.col-md-push-4
           .row.container-realestate
             = will_paginate @propiedades
             = render partial: "propiedades/horizontal", collection: @propiedades, as: :propiedad
             = will_paginate @propiedades
-        .col-md-3.col-md-pull-9.sidebar
+        .col-md-4.col-md-pull-8.sidebar
           = render :partial => 'application/filters_sidebar'
 
