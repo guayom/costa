@@ -68,6 +68,10 @@
                                        class: 'form-control', style: 'display: none;'
                 = select_tag :distrito_id, nil, style: 'display: none;'
 
+            .form-group
+              = f.label :direccion_exacta, class: 'col-sm-2 control-label'
+              .col-sm-10
+                = f.text_area :direccion_exacta, class: 'form-control'
 
             .form-group
               = f.label :valor_compra, class: 'col-sm-2 control-label'

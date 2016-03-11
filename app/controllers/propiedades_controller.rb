@@ -68,7 +68,7 @@ class PropiedadesController < ApplicationController
     params.require(:propiedad).permit(
       :estatus, :titular, :valor_compra, :valor_alquiler, :listado,
       :descripcion_publica, { tipo_ids: [] }, :provincia_id, :canton_id,
-      :distrito_id,
+      :distrito_id, :direccion_exacta,
       propietario_attributes: [:nombre, :apellido, :celular, :email,
                                :password]
     )
