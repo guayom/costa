@@ -1,7 +1,7 @@
 namespace :import do
 	desc 'Import old images to S3.'
 	task images: :environment do
-		@images = [
+		images = [
 			[17575, 'http://www.costa506realestate.com/wp-content/uploads/2015/04/11193309_824995114241737_8728564973857162447_n.jpg'],
 			[17575, 'http://www.costa506realestate.com/wp-content/uploads/2015/04/11193430_824995210908394_8903978996937891939_n.jpg'],
 			[17575, 'http://www.costa506realestate.com/wp-content/uploads/2015/04/11203151_824995200908395_3718874464827122462_n.jpg'],
