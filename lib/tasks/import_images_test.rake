@@ -16,7 +16,10 @@ namespace :import do
         propiedad.imagenes << image
 
         propiedad.save!(validate: false)
+
+        puts image.imagen.url
       end
+
     end
   end
 end
