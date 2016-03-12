@@ -29,7 +29,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'rails_admin'
-gem 'wysiwyg-rails'
+gem 'wysiwyg-rails', '1.2.8'
 
 gem 'email_validator'
 

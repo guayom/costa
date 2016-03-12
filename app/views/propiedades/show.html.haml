@@ -110,7 +110,7 @@
                       %ul
 
                   %h3 Descripción:
-                  %p= @propiedad.descripcion_publica
+                  %p= simple_format(@propiedad.descripcion_publica)
                   %p= @propiedad.estado
             / break
             #location.tab-pane.fade
