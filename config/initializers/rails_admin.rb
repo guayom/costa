@@ -36,6 +36,7 @@ RailsAdmin.config do |config|
     edit
     delete
     show_in_app
+
     destroy_image do
       only ['Imagen']
     end
@@ -67,6 +68,12 @@ RailsAdmin.config do |config|
       end
       configure :distrito do
         partial 'propiedad_distrito'
+      end
+      configure :imagenes, :paperclip do
+        html_attributes do
+          { multiple: true }
+        end
+        partial 'multiple_images'
       end
     end
   end

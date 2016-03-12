@@ -76,14 +76,14 @@ class Propiedad < ActiveRecord::Base
     Distrito.pluck(:nombre)
   end
 
-  rails_admin do
-    edit do
-      exclude_fields :id
-      field :imagenes, :paperclip do
-        partial 'multiple_images'
-      end
-    end
-  end
+  # rails_admin do
+  #   edit do
+  #     exclude_fields :id
+  #     field :imagenes, :paperclip do
+  #       partial 'multiple_images'
+  #     end
+  #   end
+  # end
 
   def imagenes= array
     array.each do |file|
