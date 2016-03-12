@@ -450,9 +450,11 @@ input[type="color"]:focus,
 	background: rgba(255,255,255,.7);
 }
 
+#header {
+  margin-top: 20px;
+}
 #header.heading{
 	position: relative;
-  margin-top: 20px;
 	min-height: 200px;
 	padding-top: 40px;
 	padding-bottom: 40px;
