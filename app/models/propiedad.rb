@@ -17,7 +17,7 @@ class Propiedad < ActiveRecord::Base
   # accepts_nested_attributes_for :imagenes, :allow_destroy => true
   #has_and_belongs_to_many :caracteristicas
 
-  # has_and_belongs_to_many :tipos
+  has_and_belongs_to_many :tipos, dependent: :destroy
   # accepts_nested_attributes_for :tipos
 
   before_save :set_codigo
