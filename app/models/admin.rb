@@ -9,7 +9,7 @@ class Admin < ActiveRecord::Base
   validates :permisos, presence: true
 
   extend Enumerize
-  enumerize :permisos, in: [:developer, :admin, :agente]
+  enumerize :permisos, :in => [:developer, :admin, :agente], scope: true
 
   has_many :propietarios
   has_many :propiedades
@@ -22,5 +22,4 @@ class Admin < ActiveRecord::Base
     Propiedad.where("codigo ILIKE ?", "%#{codigo}%").any?
   end
 
-  scope :agente, -> { where("permisos != ?", "developer") }
 end
