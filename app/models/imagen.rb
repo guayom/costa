@@ -4,7 +4,7 @@ class Imagen < ActiveRecord::Base
   belongs_to :propiedad, inverse_of: :imagenes
 
   has_attached_file :imagen,
-    :path => ":rails_root/public/images/:id/:style/:filename",
+    # :path => ":rails_root/public/images/:id/:style/:filename",
     :url  => "/images/:id/:style/:filename",
     :styles => {
       :thumb => "100x65>",
