@@ -520,6 +520,12 @@ input[type="color"]:focus,
 	margin-bottom: 20px;
 }
 
+@media screen and (max-width: 380px) {
+  .navbar-brand img {
+    width: 200px !important;
+  }
+}
+
 
 /* 
 	==================
