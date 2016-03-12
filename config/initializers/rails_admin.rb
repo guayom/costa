@@ -58,6 +58,7 @@ RailsAdmin.config do |config|
 
   config.model Propiedad do
     edit do
+      configure :descripcion_publica, :froala
       configure :provincia do
         partial 'propiedad_provincia'
       end
