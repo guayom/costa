@@ -15,7 +15,7 @@
         .widget
           %h3 Nuestros Agentes
           %ul.list-unstyled
-            - Admin.without_permisos(:developer) do |admin|
+            - Admin.without_permisos(:developer).each do |admin|
               %li
                 = admin.nombre
                 %br
