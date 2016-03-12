@@ -6,6 +6,10 @@ class Admin < ActiveRecord::Base
 
   validates :nombre, :codigo, :email,  presence: true
   validates :email, :codigo, uniqueness: true, on: :create
+  validates :permisos, presence: true
+
+  extend Enumerize
+  enumerize :permisos, :in => [:developer, :admin, :agente], scope: true
 
   has_many :propietarios
   has_many :propiedades
@@ -17,4 +21,5 @@ class Admin < ActiveRecord::Base
   def has_any_propiedades?
     Propiedad.where("codigo ILIKE ?", "%#{codigo}%").any?
   end
+
 end
