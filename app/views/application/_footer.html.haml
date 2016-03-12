@@ -13,27 +13,14 @@
       / break
       .col-md-4.col-sm-6.col-xs-12
         .widget
-          %h3 Top Agents Listed
+          %h3 Nuestros Agentes
           %ul.list-unstyled
-            - Admin.all.find_all { |a| a.has_any_propiedades? }.each do |admin|
+            - Admin.agente.each do |admin|
               %li
                 = admin.nombre
+                %br
                 = admin.telefono
-      / break
-      -#.col-md-2.col-sm-6.col-xs-12
-      -#  .widget
-      -#    %h3 Features
-      -#    %ul.list-unstyled
-      -#      %li
-      -#        %a{:href => "#"} My Account
-      -#      %li
-      -#        %a{:href => "#"} How To
-      -#      %li
-      -#        %a{:href => "#"} Market Trend
-      -#      %li
-      -#        %a{:href => "#"} Android App
-      -#      %li
-      -#        %a{:href => "#"} IOS App
+
       / break
       .col-md-3.col-sm-6.col-xs-12
         .widget
