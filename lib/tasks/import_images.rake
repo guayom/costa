@@ -1,4 +1,6 @@
-task :import_images => :environment do
+namespace :import do
+	desc "test importing of images"
+task :all_images => :environment do
 	@images = [
 [49, "http://costa506realestate.com/wp-content/uploads/2013/06/post161.jpg"],
 [49, "http://costa506realestate.com/wp-content/uploads/2013/06/post17.jpg"],
@@ -3405,8 +3407,8 @@ task :import_images => :environment do
 [5905, "http://www.costa506realestate.com/wp-content/uploads/2014/06/10342775_656478921093358_1250875053919190390_n.jpg"]
 ]
 
-	@images.each do |(a,b)|
+	@images.reverse.each do |(a,b)|
 		Imagen.create!({:propiedad_id => a, :imagen => b}) if Propiedad.exists?(a)
 	end
-
+end
 end
