@@ -20,7 +20,7 @@ class Propiedad < ActiveRecord::Base
   # has_and_belongs_to_many :tipos
   # accepts_nested_attributes_for :tipos
 
-  before_create :set_codigo
+  before_save :set_codigo
 
   extend Enumerize
   enumerize :listado, in: [:venta, :alquiler, :opcion_compra, :venta_alquiler]
@@ -92,10 +92,10 @@ class Propiedad < ActiveRecord::Base
   end
 
   def set_codigo
-    if admin
+    if admin && codigo.blank?
       last_propiedad = admin.propiedades.last
       prev_number = last_propiedad ? last_propiedad.codigo[/\d+/].to_i : 0
-      num = (prev_number + 1).to_s.rjust(LENGTH_OF_CODIGO_NUMBER, '0')
+      num = (prev_number + 1).to_s
       self.codigo = "#{admin.codigo}#{num}"
     end
   end
