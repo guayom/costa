@@ -13,10 +13,11 @@
     .container
       .row
         .col-md-8.col-md-push-4
-          = will_paginate @propiedades, :previous_label => '«', :next_label => '»', renderer: BootstrapPagination::Rails
+          .hidden-xs
+            = render partial: "application/pagination"
           .row.container-realestate
             = render partial: "propiedades/horizontal", collection: @propiedades, as: :propiedad
-          = will_paginate @propiedades, :previous_label => '«', :next_label => '»', renderer: BootstrapPagination::Rails
+          = render partial: "application/pagination"
         .col-md-4.col-md-pull-8.sidebar
           = render :partial => 'application/filters_sidebar'
 
