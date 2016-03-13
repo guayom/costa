@@ -82,9 +82,10 @@ es:
     sign_in: 'SIGN IN HERE'
     sign_out: 'CLICK HERE IF IT IS NOT YOU'
   sidebar:
-    back_to_all: 'BACK TO ALL PROPERTIES'
+    related:
+      heading: 'RELATED PROPERTIES'
     recent:
-      heading: 'RECENT PROPERTY'
+      heading: 'RECENT PROPERTIES'
     types:
       heading: 'Tipos'
     agents:

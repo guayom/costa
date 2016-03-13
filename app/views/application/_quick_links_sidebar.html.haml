@@ -1,6 +1,17 @@
 .widget.widget-white
   .widget-header
     %h3
+      = t('sidebar.related.heading')
+
+  %ul
+    - @propiedad.related_properties.each do |p|
+      %li
+        = link_to p do
+          = p.titular
+
+.widget.widget-white
+  .widget-header
+    %h3
       = t('sidebar.recent.heading')
 
   %ul
