@@ -43,8 +43,7 @@
                   #{propiedad.tipo_de_estacionamiento}
       .property-text
         %h3
-          %a{:href => "#"}= propiedad.titular
+          = link_to propiedad.titular, propiedad
           %small
         %p= truncate( strip_tags(propiedad.descripcion_publica), length: 150, :separator => ' ').gsub("↵", '')
-        %p
-          = link_to "Más detalles »", propiedad, class: 'btn btn-success'
+        %p= link_to "Más detalles »", propiedad, class: 'btn btn-success'
