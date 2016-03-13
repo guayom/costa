@@ -1,18 +1,19 @@
 .col-xs-12{:style => "position: absolute; left: 0px; top: 0px;"}
   .property-container.row
     .property-content-list
-      .property-image-list.col-xs-12.col-md-6
-        - if propiedad.imagenes.any?
-          %img{:alt => "#{propiedad.titular}", :src => propiedad.imagenes.first.imagen.url }
-            .property-price
-              %h4
-                = propiedad.tipo.titulo unless propiedad.tipo.nil?
-              = propiedad_all_prices(propiedad)
-            .mycarousel
-              %ul.mensajes-especiales
-                - propiedad.mensajes.each do |mensaje|
-                  %li{:data => {:color => mensaje.color }}
-                    = mensaje.mensaje
+      .row
+        .property-image-list.col-xs-12.col-md-6
+          - if propiedad.imagenes.any?
+            %img{:alt => "#{propiedad.titular}", :src => propiedad.imagenes.first.imagen.url }
+              .property-price
+                %h4
+                  = propiedad.tipo.titulo unless propiedad.tipo.nil?
+                = propiedad_all_prices(propiedad)
+              .mycarousel
+                %ul.mensajes-especiales
+                  - propiedad.mensajes.each do |mensaje|
+                    %li{:data => {:color => mensaje.color }}
+                      = mensaje.mensaje
           -#.property-status
             -#%span= propiedad.tipo.titulo if propiedad.tipo
           .property-features
