@@ -56,6 +56,8 @@ class PropiedadesController < ApplicationController
           .welcome_email(@propiedad.propietario,
                          propiedad_params[:propietario_attributes][:password])
           .deliver_later
+
+        sign_in(:propietario, @propiedad.propietario)
       end
 
       redirect_to propiedades_path, { notice: t(:propiedad_added_succefully) }
