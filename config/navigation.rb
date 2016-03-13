@@ -17,7 +17,13 @@ SimpleNavigation::Configuration.run do |navigation|
 
     primary.item :dashboard, 'Inicio', '/'
     primary.item :entries, 'Propiedades', '/propiedades/index'
-    primary.item :entries, 'Registre Su Propiedad', '/propiedades/registrar'
+
+    if propietario_signed_in?
+      primary.item :entries, t('registre.old_user'), '/propiedades/registrar'
+    else
+      primary.item :entries, t('registre.new_user'), '/propiedades/registrar'
+    end
+
     primary.item :entries, 'Contacto', '/static_pages/contacto'
 
   end

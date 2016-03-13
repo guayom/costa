@@ -50,11 +50,13 @@ class PropiedadesController < ApplicationController
     @propiedad.distrito = params[:distrito_id]
 
     if @propiedad.save
-      # Send password to new user.
-      PropietarioMailer
-        .welcome_email(@propiedad.propietario,
-                       propiedad_params[:propietario_attributes][:password])
-        .deliver_later
+      if propiedad_params[:propietario_attributes]
+        # Send password to new user.
+        PropietarioMailer
+          .welcome_email(@propiedad.propietario,
+                         propiedad_params[:propietario_attributes][:password])
+          .deliver_later
+      end
 
       redirect_to propiedades_path, { notice: t(:propiedad_added_succefully) }
     else
@@ -68,7 +70,7 @@ class PropiedadesController < ApplicationController
     params.require(:propiedad).permit(
       :estatus, :titular, :valor_compra, :valor_alquiler, :listado,
       :descripcion_publica, :tipo_id, :provincia_id, :canton_id,
-      :distrito_id, :direccion_exacta,
+      :distrito_id, :direccion_exacta, :propietario_id,
       propietario_attributes: [:nombre, :apellido, :celular, :email,
                                :password]
     )

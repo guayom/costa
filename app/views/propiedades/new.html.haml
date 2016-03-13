@@ -19,26 +19,41 @@
 
           = f.hidden_field :estatus, { value: :borrador }
 
-          = f.fields_for :propietario do |sf|
-            = sf.hidden_field :password
+          - if propietario_signed_in?
+            = f.hidden_field :propietario_id, { value: current_propietario.id }
 
-            .form-group
-              = sf.label :nombre, class: 'col-sm-2 control-label'
-              .col-sm-4
-                = sf.text_field :nombre, class: 'form-control'
-              = sf.label :apellido, class: 'col-sm-2 control-label'
-              .col-sm-4
-                = sf.text_field :apellido, class: 'form-control'
+            %p.lead
+              = propietario_info
+              —
+              = link_to destroy_propietario_session_path, method: :delete do
+                = t('registre.sign_out')
+          - else
+            %p.lead
+              = t('registre.already?')
+              —
+              = link_to new_propietario_session_path do
+                = t('registre.sign_in')
 
-            .form-group
-              = sf.label :celular, class: 'col-sm-2 control-label'
-              .col-sm-4
-                = sf.phone_field :celular, class: 'form-control'
-              = sf.label :email, class: 'col-sm-2 control-label'
-              .col-sm-4
-                = sf.email_field :email, class: 'form-control'
+            = f.fields_for :propietario do |sf|
+              = sf.hidden_field :password
 
-            %hr
+              .form-group
+                = sf.label :nombre, class: 'col-sm-2 control-label'
+                .col-sm-4
+                  = sf.text_field :nombre, class: 'form-control'
+                = sf.label :apellido, class: 'col-sm-2 control-label'
+                .col-sm-4
+                  = sf.text_field :apellido, class: 'form-control'
+
+              .form-group
+                = sf.label :celular, class: 'col-sm-2 control-label'
+                .col-sm-4
+                  = sf.phone_field :celular, class: 'form-control'
+                = sf.label :email, class: 'col-sm-2 control-label'
+                .col-sm-4
+                  = sf.email_field :email, class: 'form-control'
+
+              %hr
 
           .form-group
             = f.label :titular, class: 'col-sm-2 control-label'

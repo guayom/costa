@@ -74,3 +74,10 @@ es:
       propiedad:
         tipo_ids: 'Tipos'
         descripcion_publica: 'Descripcion'
+
+  registre:
+    new_user: 'Registre Su Propiedad'
+    old_user: 'ADD NEW PROPERTY'
+    already?: 'ALREADY HAVE AN ACCOUNT?'
+    sign_in: 'SIGN IN HERE'
+    sign_out: 'CLICK HERE IF IT IS NOT YOU'
