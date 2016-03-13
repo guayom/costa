@@ -818,7 +818,7 @@ input[type="color"]:focus,
 
 .property-image-list{
 	position: relative;
-	width: 50%;
+	//width: 50%;
 	display: table-cell;
 	vertical-align: top;
 }
@@ -847,7 +847,7 @@ input[type="color"]:focus,
 
 .property-text{
 	position: relative;
-	width: 50%;
+	//width: 50%;
 	display: table-cell;
 	padding: 15px;
 	vertical-align: top;
@@ -2173,4 +2173,7 @@ input[type="color"]:focus,
 .copyright .social-links > li > .icon-youtube:hover,
 .copyright .social-links > li > .icon-gplus:hover{
 	background: #ff4b4b;
+}
+.navbar-fixed-top{
+	overflow: hidden;
 }
