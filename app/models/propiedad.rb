@@ -136,6 +136,11 @@ class Propiedad < ActiveRecord::Base
     end
   end
 
+  def short_description
+    strip_tags(self.descripcion_publica)
+    #truncate( self.descripcion_publica, length: 150, :separator => ' ')
+  end
+
   def related_properties
     Propiedad.publicado.where(tipo_id: tipo_id).last(5)
   end

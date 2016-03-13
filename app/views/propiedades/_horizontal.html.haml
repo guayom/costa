@@ -45,6 +45,6 @@
         %h3
           %a{:href => "#"}= propiedad.titular
           %small
-        %p= simple_format(truncate(propiedad.descripcion_publica, length: 150, :separator => ' '))
+        %p= truncate( strip_tags(propiedad.descripcion_publica), length: 150, :separator => ' ').gsub("↵", '')
         %p
           = link_to "Más detalles »", propiedad, class: 'btn btn-success'
