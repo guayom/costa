@@ -108,6 +108,9 @@
                     .col-md-4.col-sm-4
                       %h3 Características
                       %ul
+                        - @propiedad.caracteristicas.each do |c|
+                          %li
+                            = c.titulo
 
                   %h3 Descripción:
                   %p= simple_format(@propiedad.descripcion_publica)
