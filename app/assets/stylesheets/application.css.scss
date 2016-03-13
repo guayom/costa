@@ -13,39 +13,39 @@
  *= require bootstrap-theme
  *= require bootstrap-slider
  *= require font-awesome
- *= require variables
- *= require style
- *= require_self
- *= require_tree .
  */
-@import "bootstrap-sprockets"
-@import "bootstrap"
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "variables";
+@import "style";
+@import "propiedades";
 
-.admin-navbar
-	margin-bottom: 0
-
-.contact-header
-	background: #eee
-	color: #777
-	font-size: 0.9em
-	padding: 5px 0
-	border-bottom: solid 1px #ddd
-
-.property-price div:last-child
-	padding-left: 20px
-
-.bathroom-index
-	height: 14px
-
-.tab-content
-	background: #fff
-	border: 1px solid #ddd
-	border-top: 0
-	padding: 40px
-
-.property-status div
-	display: none
-	padding: 5px 10px
-
-.venta
-	background: blue
+.admin-navbar{
+	margin-bottom: 0;
+}
+.contact-header{
+	background: #eee;
+	color: #777;
+	font-size: 0.9em;
+	padding: 5px 0;
+	border-bottom: solid 1px #ddd;
+}
+.property-price div:last-child{
+	padding-left: 20px;
+}
+.bathroom-index{
+	height: 14px;
+}
+.tab-content{
+	background: #fff;
+	border: 1px solid #ddd;
+	border-top: 0;
+	padding: 40px;
+}
+.property-status div{
+	display: none;
+	padding: 5px 10px;
+}
+.venta{
+	background: blue;
+}
