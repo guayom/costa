@@ -101,6 +101,7 @@ gem 'devise'
 gem 'enumerize'
 
 gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 # gem 'rails_admin_multiple_upload', path: 'vendor/gems/rails_admin_multiple_upload'
 #RUBY Version
 ruby "2.2.3"
