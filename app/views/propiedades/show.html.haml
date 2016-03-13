@@ -52,8 +52,8 @@
                                 = image_tag pic.imagen.url, :class => "img-responsive"
                     %h3 General
                     .row
-                      .col-xs-8
-                        %table.table.table-bordered
+                      .col-xs-12.col-md-8
+                        %table.table.table-bordered.table-responsive
                           %tr
                             %td{:width => "20%"}
                               %strong Código
@@ -100,7 +100,7 @@
                                 = "#{@propiedad.admin.nombre}"
                                 %br/
                                 = @propiedad.admin.email
-                      .col-xs-4
+                      .col-xs-12.col-md-4
                         .post-meta.description-icons
                           %i.fa.fa-bed
                           = pluralize(@propiedad.dormitorios, 'Dormitorio')
@@ -125,7 +125,7 @@
                                 = c.titulo
 
                     %h3 Descripción:
-                    %p= simple_format(@propiedad.descripcion_publica)
+                    %p= simple_format(@propiedad.descripcion_publica.gsub("↵", ''))
                     %p= @propiedad.estado
               / break
               #location.tab-pane.fade
