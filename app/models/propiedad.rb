@@ -135,4 +135,9 @@ class Propiedad < ActiveRecord::Base
       :en
     end
   end
+
+  def short_description
+    strip_tags(self.descripcion_publica)
+    #truncate( self.descripcion_publica, length: 150, :separator => ' ')
+  end
 end
