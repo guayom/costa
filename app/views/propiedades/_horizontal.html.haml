@@ -6,7 +6,7 @@
           %img{:alt => "#{propiedad.titular}", :src => propiedad.imagenes.first.imagen.url }
             .property-price
               %h4
-                = propiedad.tipo.titulo
+                = propiedad.tipo.titulo unless propiedad.tipo.nil?
               = propiedad_all_prices(propiedad)
             .mycarousel
               %ul.mensajes-especiales
