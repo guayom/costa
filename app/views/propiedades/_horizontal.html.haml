@@ -1,7 +1,7 @@
-.col-md-12.col-sm-12.col-xs-12{:style => "position: absolute; left: 0px; top: 0px;"}
-  .property-container
+.col-xs-12{:style => "position: absolute; left: 0px; top: 0px;"}
+  .property-container.row
     .property-content-list
-      .property-image-list
+      .property-image-list.col-xs-12.col-md-6
         - if propiedad.imagenes.any?
           %img{:alt => "#{propiedad.titular}", :src => propiedad.imagenes.first.imagen.url }
             .property-price
@@ -41,7 +41,7 @@
                   Estacionamiento
                 - else
                   #{propiedad.tipo_de_estacionamiento}
-      .property-text
+      .property-text.col-xs-12.col-md-6
         %h3
           = link_to propiedad.titular, propiedad
           %small
