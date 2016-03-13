@@ -19,3 +19,15 @@
       %li
         = link_to propiedades_path(listado: :venta, tipo: tipo.titulo) do
           = tipo.titulo
+
+.widget.widget-white
+  .widget-header
+    %h3
+      = t('sidebar.agents.heading')
+
+  %ul
+    - Admin.without_permisos(:developer).each do |admin|
+      %li
+        = admin.nombre
+        %br
+        = admin.telefono

@@ -87,3 +87,5 @@ es:
       heading: 'RECENT PROPERTY'
     types:
       heading: 'Tipos'
+    agents:
+      heading: 'TOP AGENTS'
