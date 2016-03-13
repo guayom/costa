@@ -77,16 +77,16 @@ es:
 
   registre:
     new_user: 'Registre Su Propiedad'
-    old_user: 'ADD NEW PROPERTY'
-    already?: 'ALREADY HAVE AN ACCOUNT?'
-    sign_in: 'SIGN IN HERE'
-    sign_out: 'CLICK HERE IF IT IS NOT YOU'
+    old_user: 'Agregar una nueva propiedad'
+    already?: '¿Ya tiene una cuenta?'
+    sign_in: 'Ingrese aquí'
+    sign_out: 'Haga click aquí si este no es usted'
   sidebar:
     related:
-      heading: 'RELATED PROPERTIES'
+      heading: 'Propiedades relacionadas'
     recent:
-      heading: 'RECENT PROPERTIES'
+      heading: 'Propiedades recientes'
     types:
-      heading: 'Tipos'
+      heading: 'Tipos de propiedad'
     agents:
-      heading: 'TOP AGENTS'
+      heading: 'Nuestros Agentes'

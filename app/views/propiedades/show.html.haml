@@ -84,7 +84,7 @@
                             %br/
                             Terreno: #{number_to_human(@propiedad.area_terreno, precision: 1, strip_insignificant_zeros: true)}m
                             %sup 2
-                          - unless @propiedad.patio == false
+                          - unless @propiedad.patio.nil?
                             %tr
                               %td
                                 %strong Patio
@@ -92,14 +92,15 @@
                                 = @propiedad.patio_area
                                 m
                                 %sup 2
-                          %tr
-                            %td
-                              %strong Agente
-                            %td
-                              - if @propiedad.admin
-                                = "#{@propiedad.admin.nombre}"
-                                %br/
-                                = @propiedad.admin.email
+                          - unless @propiedad.admin.nil?
+                            %tr
+                              %td
+                                %strong Agente
+                              %td
+                                - if @propiedad.admin
+                                  = "#{@propiedad.admin.nombre}"
+                                  %br/
+                                  = @propiedad.admin.email
                       .col-xs-12.col-md-4
                         .post-meta.description-icons
                           %i.fa.fa-bed
@@ -126,7 +127,8 @@
 
                     %h3 Descripción:
                     %p= simple_format(@propiedad.descripcion_publica.gsub("↵", ''))
-                    %p= @propiedad.estado
+                    %h3 Estado de la propiedad:
+                    %p= @propiedad.estado.capitalize
               / break
               #location.tab-pane.fade
                 /
