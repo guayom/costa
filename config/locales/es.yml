@@ -81,3 +81,9 @@ es:
     already?: 'ALREADY HAVE AN ACCOUNT?'
     sign_in: 'SIGN IN HERE'
     sign_out: 'CLICK HERE IF IT IS NOT YOU'
+  sidebar:
+    back_to_all: 'BACK TO ALL PROPERTIES'
+    recent:
+      heading: 'RECENT PROPERTY'
+    types:
+      heading: 'Tipos'

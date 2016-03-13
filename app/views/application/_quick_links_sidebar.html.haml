@@ -1,0 +1,21 @@
+.widget.widget-white
+  .widget-header
+    %h3
+      = t('sidebar.recent.heading')
+
+  %ul
+    - Propiedad.publicado.last(5).each do |p|
+      %li
+        = link_to p do
+          = p.titular
+
+.widget.widget-white
+  .widget-header
+    %h3
+      = t('sidebar.types.heading')
+
+  %ul
+    - Tipo.all.find_all { |t| t.propiedades.publicado.any? }.each do |tipo|
+      %li
+        = link_to propiedades_path(listado: :venta, tipo: tipo.titulo) do
+          = tipo.titulo
