@@ -66,6 +66,20 @@ class PropiedadesController < ApplicationController
     end
   end
 
+  def test_email
+    p = Propietario.new
+    p.id = 1
+    p.nombre = 'Nombre'
+    p.apellido = 'Apellido'
+    p.email = 'email@email.com'
+    p.celular = '+71234567890'
+    p.password = '12345678'
+
+    PropietarioMailer
+      .welcome_email(p, '12345678')
+      .deliver_later
+  end
+
   private
 
   def propiedad_params
