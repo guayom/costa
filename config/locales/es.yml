@@ -90,9 +90,10 @@ es:
       heading: 'Tipos de propiedad'
     agents:
       heading: 'Nuestros Agentes'
+
   email:
     welcome:
       subject: 'Welcome to Costa506'
     property_added:
-      subject: ''
+      subject: 'Your new property has been added'
 
