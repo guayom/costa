@@ -60,6 +60,10 @@ class PropiedadesController < ApplicationController
         sign_in(:propietario, @propiedad.propietario)
       end
 
+      PropietarioMailer
+        .property_added_email(@propiedad.propietario, @propiedad)
+        .deliver_later
+
       redirect_to propiedades_path, { notice: t(:propiedad_added_succefully) }
     else
       render :new
