@@ -1,9 +1,9 @@
 .col-xs-12{:style => "position: absolute; left: 0px; top: 0px;"}
   .property-container
-    .row
-      .property-content-list.col-xs-12
-        .row
-          .property-image-list.col-xs-12.col-md-6
+    .property-content-list
+      .row
+        .col-xs-12.col-md-6
+          .property-image-list
             - if propiedad.imagenes.any?
               %img{:alt => "#{propiedad.titular}", :src => propiedad.imagenes.first.imagen.url }
                 .property-price
@@ -23,19 +23,19 @@
                   %i.fa.fa-home
                   #{propiedad.area_construccion} m
                   %sup 2
-              - unless propiedad.area_construccion.nil?
+              - unless propiedad.dormitorios.nil? || propiedad.dormitorios == 0
                 %span
                   %i.fa.fa-hdd-o
                   #{propiedad.dormitorios} Dormitorios
-              - unless propiedad.banos.nil?
+              - unless propiedad.banos.nil? || propiedad.banos == 0
                 %span
                   %i.fa.fa-male
                   #{propiedad.banos.round} Baños
-              - unless propiedad.pisos.nil?
+              - unless propiedad.pisos.nil? || propiedad.pisos == 0
                 %span
                   %i.fa.fa-building-o
                   #{propiedad.pisos} Pisos
-              - unless propiedad.estacionamiento.nil?
+              - unless propiedad.estacionamiento.nil? || propiedad.estacionamiento == 0
                 %span
                   %i.fa.fa-car
                   #{propiedad.estacionamiento}
