@@ -6,7 +6,7 @@
           .property-image-list
             - if propiedad.imagenes.any?
               %img{:alt => "#{propiedad.titular}", :src => propiedad.imagenes.first.imagen.url }
-                .property-price
+                .property-price{class: "propiedad-color-#{propiedad.listado}"}
                   %h4
                     = propiedad.tipo.titulo unless propiedad.tipo.nil?
                   = propiedad_all_prices(propiedad)
@@ -17,7 +17,7 @@
                         = mensaje.mensaje
             -#.property-status
               -#%span= propiedad.tipo.titulo if propiedad.tipo
-            .property-features
+            .property-features{class: "propiedad-color-#{propiedad.listado}"}
               - unless propiedad.area_construccion.nil? || propiedad.area_construccion == 0
                 %span
                   %i.fa.fa-home
@@ -48,4 +48,4 @@
             = link_to propiedad.titular, propiedad
             %small
           %p= truncate( strip_tags(propiedad.descripcion_publica), length: 150, :separator => ' ').gsub("↵", '')
-          %p= link_to "Más detalles »", propiedad, class: 'btn btn-success'
+          %p= link_to "Más detalles »", propiedad, class: "btn btn-success propiedad-color-#{propiedad.listado}"

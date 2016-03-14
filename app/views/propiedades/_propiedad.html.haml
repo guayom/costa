@@ -4,7 +4,7 @@
       =link_to propiedad do
         - if propiedad.imagenes.any?
           %img{:alt => "arillo real estate theme", :src => propiedad.imagenes.first.imagen.url }
-      .property-price{:data => {:listado => propiedad.listado }}
+      .property-price{:data => {:listado => propiedad.listado }, class: "propiedad-color-#{propiedad.listado}"}
         %h4
           = listado_name(propiedad.listado) if propiedad.listado.present?
         = propiedad_all_prices(propiedad)
@@ -14,7 +14,7 @@
             %li{:data => {:color => mensaje.color }}
               = mensaje.mensaje
 
-    .property-features
+    .property-features{class: "propiedad-color-#{propiedad.listado}"}
       - unless propiedad.area_construccion.blank?
         %span
           %i.fa.fa-home
