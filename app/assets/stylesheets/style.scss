@@ -340,6 +340,11 @@ input[type="color"]:focus,
 		 -o-border-radius: 100%;
 			border-radius: 100%;
 }
+@media (max-width: 768px) {
+  .navbar-default .navbar-nav > .active > a::after{
+    display: none;
+  }
+}
 
 .navbar.navbar-default .navbar-nav li.dropdown.open > a,
 .navbar.navbar-default .navbar-nav li.dropdown.open > a:hover{
@@ -429,6 +434,13 @@ input[type="color"]:focus,
 #modal-signin .modal-footer p,
 #modal-signup .modal-footer p{
 	margin-bottom: 15px;
+}
+
+.navbar-fixed-top{
+	overflow: hidden;
+}
+.navbar-header{
+	max-width: 100%;
 }
 
 
@@ -2173,7 +2185,4 @@ input[type="color"]:focus,
 .copyright .social-links > li > .icon-youtube:hover,
 .copyright .social-links > li > .icon-gplus:hover{
 	background: #ff4b4b;
-}
-.navbar-fixed-top{
-	overflow: hidden;
 }
