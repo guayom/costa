@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   def index
-  	@propiedades = Propiedad.publicado.last(8)
+  	@propiedades = Propiedad.with_estado(:disponible).publicado.last(8)
   end
 
   def show
