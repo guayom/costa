@@ -537,7 +537,10 @@ input[type="color"]:focus,
 
 @media screen and (max-width: 380px) {
   .navbar-brand img {
-    width: 200px !important;
+    width: 190px !important;
+  }
+  .navbar-toggle {
+    margin-right: 0 !important;
   }
 }
 
