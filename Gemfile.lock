@@ -61,6 +61,7 @@ GEM
       sass (~> 3.2)
     builder (3.2.2)
     byebug (8.2.2)
+    cancancan (1.13.1)
     chartkick (1.4.1)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -317,6 +318,7 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass (~> 3.2.0)
   byebug
+  cancancan
   chartkick
   devise
   email_validator

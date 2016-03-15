@@ -10,4 +10,16 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource_or_scope)
     request.referrer
   end
+
+  rescue_from CanCan::AccessDenied do |exception|
+    if defined?(main_app)
+      redirect_to main_app.root_url, alert: exception.message
+    else
+      redirect_to root_url, alert: exception.message
+    end
+  end
+
+  def current_user
+    current_admin
+  end
 end
