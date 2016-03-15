@@ -75,19 +75,27 @@
                                 %strong Alquiler
                               %td
                                 = number_to_currency(@propiedad.valor_alquiler, locale: @propiedad.price_locale)
-                          %tr
-                            %td
-                              %strong Ubicación
-                            %td
-                              = @propiedad.ubicacion
-                          %td
-                            %strong Área
-                          %td
-                            Construcción: #{number_to_human(@propiedad.area_construccion, precision: 1, strip_insignificant_zeros: true)}m
-                            %sup 2
-                            %br/
-                            Terreno: #{number_to_human(@propiedad.area_terreno, precision: 1, strip_insignificant_zeros: true)}m
-                            %sup 2
+
+                          - if @propiedad.ubicacion.present?
+                            %tr
+                              %td
+                                %strong Ubicación
+                              %td
+                                = @propiedad.ubicacion
+
+                          - if @propiedad.area_construccion > 0 || @propiedad.area_terreno > 0
+                            %tr
+                              %td
+                                %strong Área
+                              %td
+                                - if @propiedad.area_construccion > 0
+                                  Construcción: #{number_to_human(@propiedad.area_construccion, precision: 1, strip_insignificant_zeros: true)}m
+                                  %sup 2
+                                  %br/
+                                - if @propiedad.area_terreno > 0
+                                  Terreno: #{number_to_human(@propiedad.area_terreno, precision: 1, strip_insignificant_zeros: true)}m
+                                  %sup 2
+
                           - unless @propiedad.patio.nil?
                             %tr
                               %td
@@ -107,19 +115,29 @@
                                   = @propiedad.admin.email
                       .col-xs-12.col-md-4
                         .post-meta.description-icons
-                          %i.fa.fa-bed
-                          = pluralize(@propiedad.dormitorios, 'Dormitorio')
-                          %br/
-                          %i.fa.fa-male
-                          = pluralize(number_to_human(@propiedad.banos, precision: 1, strip_insignificant_zeros: true), 'Baño')
-                          %br/
-                          %i.fa.fa-building-o
-                          = pluralize(@propiedad.pisos, 'Piso')
-                          %br/
-                          %i.fa.fa-car
-                          = @propiedad.tipo_de_estacionamiento
-                          para #{pluralize(@propiedad.estacionamiento, 'Carro')}
-                          %br/
+                          - if @propiedad.dormitorios.present? && @propiedad.dormitorios > 0
+                            %i.fa.fa-bed
+                            = pluralize(@propiedad.dormitorios, 'Dormitorio')
+                            %br/
+
+                          - if @propiedad.banos.present? && @propiedad.banos > 0
+                            %i.fa.fa-male
+                            = pluralize(number_to_human(@propiedad.banos, precision: 1, strip_insignificant_zeros: true), 'Baño')
+                            %br/
+
+                          - if @propiedad.pisos.present? && @propiedad.pisos > 0
+                            %i.fa.fa-building-o
+                            = pluralize(@propiedad.pisos, 'Piso')
+                            %br/
+
+                          - if @propiedad.estacionamiento.present? && @propiedad.estacionamiento > 0
+                            %i.fa.fa-car
+                            - if @propiedad.tipo_de_estacionamiento.present?
+                              = @propiedad.tipo_de_estacionamiento
+                              para
+                            #{pluralize(@propiedad.estacionamiento, 'Carro')}
+                            %br/
+
                     - if @propiedad.caracteristicas.any?
                       .row
                         .col-md-4.col-sm-4
