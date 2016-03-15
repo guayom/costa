@@ -5,7 +5,7 @@
         .col-xs-12.col-md-6
           .property-image-list
             - if propiedad.imagenes.any?
-              %img{:alt => "#{propiedad.titular}", :src => propiedad.imagenes.first.imagen.url }
+              %img{:alt => "#{propiedad.titular}", :src => propiedad.cover_url }
                 .property-price{class: "propiedad-color-#{propiedad.listado}"}
                   %h4
                     = propiedad.tipo.titulo unless propiedad.tipo.nil?

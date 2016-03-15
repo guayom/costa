@@ -1,13 +1,17 @@
 <%= form.file_field(field.name, field.html_attributes.reverse_merge({ multiple: true, data: { fileupload: true }})) %>
 
 <% form.object.imagenes.each do |image| %>
-  <div style="display:inline-block" class="image_form_preview"
-       id="image_<%= image.id %>">
+  <div class="image-form-preview" id="image_<%= image.id %>">
     <%= link_to(image.imagen.url, target: 'blank') do %>
-      <%= image_tag(image.imagen.url(:thumb)) %>
+      <%= image_tag image.imagen.url(:small), class: image.id.to_s == form.object.cover ? 'cover' : '' %>
     <% end %>
     <% if image.id.present? %>
-      <p align="center">
+      <div class="clearfix"></div>
+      <p class="pull-right" style="padding-right: 15px;">
+        <%= link_to 'Cover', main_app.cover_propiedad_path(cover: image.id), remote: true %>
+      </p>
+
+      <p align="left">
         <%= link_to "Eliminar", destroy_image_path(:imagen, image.id), method: :delete, remote: true, data: {confirm: '¿Está seguro?'} %>
       </p>
     <% end %>

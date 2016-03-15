@@ -14,6 +14,10 @@ Rails.application.routes.draw do
 
       get 'test_email', to: :test_email
     end
+
+    member do
+      get 'cover', to: :cover
+    end
   end
 
   controller :static_pages, path: 'static_pages' do

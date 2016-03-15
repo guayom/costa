@@ -1,0 +1,9 @@
+var $oldCover = $('#image_<%= @old_cover %> img');
+if ($oldCover.size() > 0) {
+  $oldCover.removeClass('cover');
+}
+
+var $newCover = $('#image_<%= @new_cover %> img');
+if ($newCover.size() > 0) {
+  $newCover.addClass('cover');
+}

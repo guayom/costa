@@ -152,4 +152,23 @@ class Propiedad < ActiveRecord::Base
       area_construccion
     end
   end
+
+  def cover_url
+    if cover
+      i = Imagen.find(cover)
+      if i
+        url = i.imagen.url
+      end
+    end
+
+    if url.present?
+      url
+    else
+      if imagenes.any?
+        imagenes.first.imagen.url
+      else
+        nil
+      end
+    end
+  end
 end

@@ -70,6 +70,16 @@ class PropiedadesController < ApplicationController
     end
   end
 
+  def cover
+    if params[:cover]
+      propiedad = Propiedad.find(params[:id])
+      @old_cover = propiedad.cover
+      propiedad.cover = params[:cover]
+      propiedad.save(validate: false)
+      @new_cover = propiedad.cover
+    end
+  end
+
   private
 
   def propiedad_params

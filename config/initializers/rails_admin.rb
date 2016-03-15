@@ -75,6 +75,11 @@ RailsAdmin.config do |config|
         end
         partial 'multiple_images'
       end
+
+      # configure :cover do
+      #   :hide
+      # end
+      exclude_fields :cover
     end
   end
 end
