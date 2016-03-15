@@ -63,7 +63,7 @@ class Propiedad < ActiveRecord::Base
     end
   }
 
-  pg_search_scope :search_by_keywords, against: [:provincia, :canton, :distrito]
+  pg_search_scope :search_by_keywords, against: [:provincia, :canton, :distrito, :codigo]
 
   def provincia_enum
     Provincia.pluck(:nombre)
