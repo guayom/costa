@@ -18,10 +18,10 @@
             -#.property-status
               -#%span= propiedad.tipo.titulo if propiedad.tipo
             .property-features{class: "propiedad-color-#{propiedad.listado}"}
-              - unless propiedad.area_construccion.nil? || propiedad.area_construccion == 0
+              - if propiedad.area.present?
                 %span
                   %i.fa.fa-home
-                  #{propiedad.area_construccion} m
+                  #{propiedad.area} m
                   %sup 2
               - unless propiedad.dormitorios.nil? || propiedad.dormitorios == 0
                 %span
@@ -45,7 +45,7 @@
                     #{propiedad.tipo_de_estacionamiento}
         .property-text.col-xs-12.col-md-6
           %h3
-            = link_to propiedad.titular, propiedad, class: "propiedad-text-color-#{propiedad.listado}"
+            = link_to propiedad, propiedad, class: "propiedad-text-color-#{propiedad.listado}"
             %small
           %p= truncate( strip_tags(propiedad.descripcion_publica), length: 150, :separator => ' ').gsub("↵", '')
 

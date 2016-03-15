@@ -15,10 +15,10 @@
               = mensaje.mensaje
 
     .property-features{class: "propiedad-color-#{propiedad.listado}"}
-      - unless propiedad.area_construccion.blank?
+      - if propiedad.area.present?
         %span
           %i.fa.fa-home
-          ="#{propiedad.area_construccion.round}m"
+          ="#{propiedad.area.round}m"
           %sup 2
       - unless propiedad.dormitorios.blank?
         %span

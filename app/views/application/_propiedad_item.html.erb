@@ -25,9 +25,9 @@
 	    </div>
 	  </div>
 	  <div class="property-features">
-	  	<% if defined? propiedad.area_construccion %>
+	  	<% if propiedad.area.present? %>
 		    <span>
-		    	<i class="fa fa-home"></i> <%= number_to_human(propiedad.area_construccion, precision: 1, strip_insignificant_zeros: true) %>m<sup>2</sup>
+		    	<i class="fa fa-home"></i> <%= number_to_human(propiedad.area, precision: 1, strip_insignificant_zeros: true) %>m<sup>2</sup>
 		    </span>
 	    <% end %>
 	    <% if defined? propiedad.dormitorios %>
@@ -60,6 +60,6 @@
 	    	</small>
 	    </h3>
 	    <!-- poner colores para cada uno -->
-	    <span class="categoria"><strong><%= propiedad.tipo.titulo if defined? propiedad.tipo.titulo %></strong></div>
+	    <span class="categoria"><strong><%= propiedad.tipo.titulo if defined? propiedad.tipo.titulo %></strong></span></div>
 	  </div>
 	</div>

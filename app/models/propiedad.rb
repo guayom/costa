@@ -41,6 +41,7 @@ class Propiedad < ActiveRecord::Base
 
   pg_search_scope :search_by_tipo,
                   associated_against: { tipo: :titulo }
+
   pg_search_scope :search_by_tipo_de_estacionamiento,
                   against: :tipo_de_estacionamiento
   pg_search_scope :search_by_dormitorios, against: :dormitorios
@@ -147,5 +148,13 @@ class Propiedad < ActiveRecord::Base
 
   def to_s
     titular
+  end
+
+  def area
+    if tipo && 'Lote' == tipo.titulo
+      area_terreno
+    else
+      area_construccion
+    end
   end
 end
