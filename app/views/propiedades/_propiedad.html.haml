@@ -36,5 +36,6 @@
       %h3
         -# if propiedad.tipo.present?
           -#%small=t(propiedad.tipo.titulo) unless propiedad.tipo.empty?
-        =link_to propiedad.titular, propiedad
-        %small= propiedad.ubicacion
+        =link_to propiedad.titular, propiedad, class: "propiedad-text-color-#{propiedad.listado}"
+        %small{class: "propiedad-text-color-#{propiedad.listado}"}
+          = propiedad.ubicacion
