@@ -5,15 +5,20 @@
         - if propiedad.imagenes.any?
           %img{:alt => "arillo real estate theme", :src => propiedad.cover_url }
           -#%img{:alt => "arillo real estate theme", :src => 'http://costa506.s3.amazonaws.com/images/18507/original/open-uri20160313-3-1mdk20k?1457857175' }
-      .property-price{:data => {:listado => propiedad.listado }, class: "propiedad-color-#{propiedad.listado}"}
-        %h4
-          = listado_name(propiedad.listado) if propiedad.listado.present?
-        = propiedad_all_prices(propiedad)
-
-      - if 'disponible' != propiedad.estado
-        .property-status
-          %span
+      - if 'disponible' == propiedad.estado
+        .property-price{:data => {:listado => propiedad.listado }, class: "propiedad-color-#{propiedad.listado}"}
+          %h4
+            = listado_name(propiedad.listado) if propiedad.listado.present?
+          = propiedad_all_prices(propiedad)
+      - else
+        .property-price{class: "propiedad-color-#{propiedad.estado}"}
+          %h4
             = propiedad.estado.capitalize
+
+      -#- if 'disponible' != propiedad.estado
+      -#  .property-status
+      -#    %span
+      -#      = propiedad.estado.capitalize
 
       .mycarousel
         %ul.mensajes-especiales
