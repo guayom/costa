@@ -49,14 +49,13 @@
                   %i.fa.fa-building-o
                   #{propiedad.pisos} Pisos
 
-              - if propiedad.estacionamiento.present? || propiedad.tipo_de_estacionamiento.present?
+              - if (propiedad.estacionamiento.present? && propiedad.estacionamiento > 0) || propiedad.tipo_de_estacionamiento.present?
                 %span
                   %i.fa.fa-car
-                  #{propiedad.estacionamiento}
-                  - if propiedad.tipo_de_estacionamiento.present?
+                  - if propiedad.estacionamiento > 0
+                    = propiedad.estacionamiento
+                  - elsif propiedad.tipo_de_estacionamiento.present?
                     = capitalize(propiedad.tipo_de_estacionamiento)
-                  - elsif propiedad.estacionamiento > 0
-                    #{propiedad.tipo_de_estacionamiento}
         .property-text.col-xs-12.col-md-6
           %h3
             = link_to propiedad, propiedad, class: "propiedad-text-color-#{propiedad.listado}"
