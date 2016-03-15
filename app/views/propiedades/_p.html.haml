@@ -1,0 +1,11 @@
+.property-container.col-xs-12.col-sm-6.col-md-4
+  .row
+    -#- if propiedad.imagenes.any?
+    .property-image
+      -#= image_tag propiedad.imagenes.first.imagen.url
+      = image_tag 'http://costa506.s3.amazonaws.com/images/18547/original/open-uri20160313-3-18wn5v3?1457857322'
+
+    .description
+      %h3
+        = link_to propiedad, propiedad,
+                  class: "propiedad-text-color-#{propiedad.listado}"

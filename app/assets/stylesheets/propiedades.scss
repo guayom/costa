@@ -81,3 +81,15 @@
 .propiedad-text-color-venta_alquiler {
   color: #d73c3c !important;
 }
+
+.full-width {
+  .property-container {
+    width: 100%;
+
+    .image {
+      img {
+        width: 100%;
+      }
+    }
+  }
+}

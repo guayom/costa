@@ -144,4 +144,8 @@ class Propiedad < ActiveRecord::Base
   def related_properties
     Propiedad.publicado.where(tipo_id: tipo_id).last(5)
   end
+
+  def to_s
+    titular
+  end
 end
