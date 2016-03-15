@@ -55,3 +55,8 @@
         =link_to propiedad.titular, propiedad, class: "propiedad-text-color-#{propiedad.listado}"
         %small{class: "propiedad-text-color-#{propiedad.listado}"}
           = propiedad.ubicacion
+
+- if 0 == (propiedad_counter + 1) % 4
+  .clearfix.visible-md-block.visible-lg-block
+- if 0 == (propiedad_counter + 1) % 2
+  .clearfix.visible-sm-block
