@@ -10,6 +10,12 @@
                   %h4
                     = propiedad.tipo.titulo unless propiedad.tipo.nil?
                   = propiedad_all_prices(propiedad)
+
+                - if 'disponible' != propiedad.estado
+                  .property-status
+                    %span
+                      = propiedad.estado.capitalize
+
                 .mycarousel
                   %ul.mensajes-especiales
                     - propiedad.mensajes.each do |mensaje|

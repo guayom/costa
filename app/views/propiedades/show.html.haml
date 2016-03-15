@@ -58,6 +58,10 @@
                             %td{:width => "20%"}
                               %strong Código
                             %td= @propiedad.codigo
+                          %tr
+                            %td{:width => "20%"}
+                              %strong Estado
+                            %td= @propiedad.estado.capitalize
                           - if @propiedad.valor_compra > 0
                             %tr
                               %td
