@@ -2,7 +2,7 @@
   .col-md-12.col-sm-12.col-xs-12
     .form-group
       = select_tag :listado,
-                             options_for_select(Propiedad.listado.options, params[:listado]),
+                             options_for_select([['Todos listado', nil]] + Propiedad.listado.options, params[:listado]),
                              class: 'form-control listado-control'
   .col-md-12.col-sm-12.col-xs-12
     .form-group

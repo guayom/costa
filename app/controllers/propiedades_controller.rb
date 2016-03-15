@@ -1,6 +1,7 @@
 class PropiedadesController < ApplicationController
   def index
-    params[:listado] ||= :venta
+    # Todos
+    # params[:listado] ||= :venta
 
     [:valor_compra, :valor_alquiler].each do |range_key|
       if params[range_key].present?

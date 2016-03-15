@@ -46,7 +46,13 @@ class Propiedad < ActiveRecord::Base
                   against: :tipo_de_estacionamiento
   pg_search_scope :search_by_dormitorios, against: :dormitorios
 
-  scope :search_by_listado, -> (value) { where(listado: value) }
+  scope :search_by_listado, -> (value) do
+    if 'venta_alquiler' == value
+      where(listado: [:venta, :alquiler, :venta_alquiler])
+    else
+      where(listado: value)
+    end
+  end
   scope :search_by_valor_compra, -> (values) {
     if values.size > 1
       where('valor_compra >= ? AND valor_compra <= ?', values[0], values[1])
