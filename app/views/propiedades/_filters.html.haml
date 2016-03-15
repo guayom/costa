@@ -1,9 +1,18 @@
 %form{:method => "GET", :role => "form", action: propiedades_path}
   .col-md-12.col-sm-12.col-xs-12
     .form-group
-      = select_tag :listado,
-                             options_for_select([['Cualquiera', nil]] + Propiedad.listado.options, params[:listado]),
-                             class: 'form-control listado-control'
+      .btn-group.btn-group-justified.btn-group-listado{ data: { toggle: 'buttons' } }
+        - [['venta_alquiler', 'Cualquiera'],
+           ['alquiler', 'Alquiler'],
+           ['venta', 'Venta']].each do |value, label|
+          %label.btn.btn-success{ class: (value == params[:listado].to_s ? 'active' : '') }
+            = radio_button_tag :listado, value, (value == params[:listado].to_s), class: 'listado-control'
+            = label
+
+      -#= select_tag :listado,
+      -#                       options_for_select([['Cualquiera', nil]] + Propiedad.listado.options, params[:listado]),
+      -#                       class: 'form-control listado-control'
+
   .col-md-12.col-sm-12.col-xs-12
     .form-group
       %label{for: :provincia_id}= t(:ubicación)

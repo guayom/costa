@@ -16,4 +16,3 @@ $ ->
       success: (data, textStatus, jqXHR) ->
         console.log("Dynamic country select OK!")
 */
-

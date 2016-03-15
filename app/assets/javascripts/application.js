@@ -77,9 +77,3 @@ jQuery(function($) {
     return false;
   });
 })
-
-$(function() {
-  $('.listado-control').change(function() {
-    $(this).parents('form').submit();
-  });
-});

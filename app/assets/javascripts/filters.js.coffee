@@ -44,3 +44,7 @@ $ ->
       distrito_id = params['distrito_id'].replace(/\+/g, ' ')
       if distrito_id.length > 0
         $('#distrito_id').val(distrito_id)
+
+  $('.listado-control').change ->
+    $(this).parents('form').submit()
+

@@ -47,10 +47,13 @@ class Propiedad < ActiveRecord::Base
   pg_search_scope :search_by_dormitorios, against: :dormitorios
 
   scope :search_by_listado, -> (value) do
-    if 'venta_alquiler' == value
-      where(listado: [:venta, :alquiler, :venta_alquiler])
+    case value
+    when 'venta'
+      where(listado: :venta)
+    when 'alquiler'
+      where(listado: [:alquiler, :opcion_compra])
     else
-      where(listado: value)
+      where(listado: [:venta, :alquiler, :venta_alquiler, :opcion_compra])
     end
   end
   scope :search_by_valor_compra, -> (values) {
