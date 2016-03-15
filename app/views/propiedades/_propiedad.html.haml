@@ -22,23 +22,27 @@
               = mensaje.mensaje
 
     .property-features{class: "propiedad-color-#{propiedad.listado}"}
-      - if propiedad.area.present?
+      - if propiedad.area.present? && propiedad.area > 0
         %span
           %i.fa.fa-home
           ="#{propiedad.area.round}m"
           %sup 2
-      - unless propiedad.dormitorios.blank?
+
+      - if propiedad.dormitorios.present? && propiedad.dormitorios > 0
         %span
           %i.fa.fa-bed
           = propiedad.dormitorios
-      - unless propiedad.banos.blank?
+
+      - if propiedad.banos.present? && propiedad.banos > 0
         %span
           = image_tag 'icons/bathroom-white.svg', class: "bathroom-index"
           = propiedad.banos.round
-      - unless propiedad.estacionamiento.blank?
+
+      - if propiedad.estacionamiento.present? && propiedad.estacionamiento > 0
         %span
           %i.fa.fa-car
           = propiedad.estacionamiento
+
     .property-content
       %h3
         -# if propiedad.tipo.present?
