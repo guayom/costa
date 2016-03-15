@@ -101,17 +101,12 @@ class Propiedad < ActiveRecord::Base
   end
 
   def ubicacion
-    ubicacion = Array.new
-    unless self.distrito.blank?
-      ubicacion.push [self.distrito]
-    end
-    unless self.canton.blank?
-      ubicacion.push [self.canton]
-    end
-    unless self.provincia.blank?
-      ubicacion.push [self.provincia]
-    end
-    return ubicacion.join(", ")
+    [
+      [:provincia,
+       :canton,
+       :distrito].map { |key| send(key) }.find_all(&:present?).join(', '),
+      direccion_exacta
+    ].find_all(&:present?).join('<br>').html_safe
   end
 
   def mostrar_valor(valor)
