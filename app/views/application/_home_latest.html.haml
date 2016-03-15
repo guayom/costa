@@ -2,7 +2,9 @@
   .container
     .row
       .col-md-12
-        .heading-title
+        .heading-title.hidden-xs
+          %h2 Propiedades Recientes
+        .visible-xs
           %h2 Propiedades Recientes
     .row
       = render @propiedades
