@@ -177,4 +177,8 @@ class Propiedad < ActiveRecord::Base
       end
     end
   end
+
+  def to_param
+    "#{id}-#{codigo.parameterize}-#{titular.parameterize}"
+  end
 end
