@@ -29,10 +29,12 @@ RailsAdmin.config do |config|
 
   config.actions do
     dashboard                     # mandatory
+
     index                         # mandatory
     new
     export
     bulk_delete
+
     show
     edit
     delete
@@ -40,6 +42,11 @@ RailsAdmin.config do |config|
 
     destroy_image do
       only ['Imagen']
+    end
+
+    collection :import do
+      only ['Propiedad']
+      link_icon 'icon-file'
     end
   end
 

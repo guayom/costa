@@ -44,6 +44,9 @@ gem 'pg_search'
 
 gem 'cancancan'
 
+# Roo implements read access for all common spreadsheet types.
+gem 'roo'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

@@ -110,6 +110,9 @@ es:
         title: "Historial para %{model_label} '%{object_label}'"
         menu: "Historial"
         breadcrumb: "Historial"
+
+      import:
+        menu: 'Importar desde archivo'
     form:
       cancel: "Cancelar"
       basic_info: "Información básica"

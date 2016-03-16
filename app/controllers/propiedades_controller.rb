@@ -80,6 +80,12 @@ class PropiedadesController < ApplicationController
     end
   end
 
+  def import
+    if admin_signed_in?
+
+    end
+  end
+
   private
 
   def propiedad_params
