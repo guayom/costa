@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :propiedades do
     collection do
       get 'registrar', to: :new
-      get 'import', to: :import
+      get 'import'
 
       get 'test_email', to: :test_email
     end

@@ -9,10 +9,6 @@
             = radio_button_tag :listado, value, (value == params[:listado].to_s), class: 'listado-control'
             = label
 
-      -#= select_tag :listado,
-      -#                       options_for_select([['Cualquiera', nil]] + Propiedad.listado.options, params[:listado]),
-      -#                       class: 'form-control listado-control'
-
   .col-md-12.col-sm-12.col-xs-12
     .form-group
       %label{for: :provincia_id}= t(:ubicación)
@@ -66,5 +62,5 @@
     .form-group
       %label{for: 'keywords'}= t(:keywords)
       %input.form-control{type: 'search', name: 'keywords', value: params[:keywords]}
-  .col-md-12.col-sm-12
+  .col-md-12.col-sm-12.col-xs-12
     %input.btn.btn-success.btn-lg.btn-block{type: :submit, value: t(:search)}

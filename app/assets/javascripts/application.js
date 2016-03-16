@@ -38,7 +38,7 @@ function slideMensajesEspeciales() {
         $active = $next;
         $next = (allofEm.last().index() == allofEm.index($active)) ?
             $next = allofEm.eq(0):$active.next();
-       
+
     }, 5000);
 }
 
