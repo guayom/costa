@@ -11,15 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160314124215) do
+ActiveRecord::Schema.define(version: 20160316190207) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_stat_statements"
 
   create_table "admins", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false, index: {name: "index_admins_on_email", unique: true}
+    t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token",   index: {name: "index_admins_on_reset_password_token", unique: true}
+    t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.integer  "sign_in_count",          default: 0,  null: false
@@ -27,27 +28,27 @@ ActiveRecord::Schema.define(version: 20160314124215) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "nombre"
     t.string   "codigo"
     t.string   "telefono"
     t.string   "permisos"
   end
 
-  create_table "provincias", force: :cascade do |t|
-    t.string   "nombre"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+  add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
+  add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
   create_table "cantones", force: :cascade do |t|
-    t.integer  "canton_id",    index: {name: "fk__cantones_canton_id"}, foreign_key: {references: "cantones", name: "fk_cantones_canton_id", on_update: :no_action, on_delete: :no_action}
-    t.integer  "provincia_id", index: {name: "index_cantones_on_provincia_id"}, foreign_key: {references: "provincias", name: "fk_cantones_provincia_id", on_update: :no_action, on_delete: :no_action}
+    t.integer  "canton_id"
+    t.integer  "provincia_id"
     t.string   "nombre"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
+
+  add_index "cantones", ["canton_id"], name: "fk__cantones_canton_id", using: :btree
+  add_index "cantones", ["provincia_id"], name: "index_cantones_on_provincia_id", using: :btree
 
   create_table "caracteristicas", force: :cascade do |t|
     t.string   "titulo"
@@ -56,48 +57,91 @@ ActiveRecord::Schema.define(version: 20160314124215) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "propietarios", force: :cascade do |t|
-    t.string   "nombre"
-    t.string   "apellido"
-    t.string   "email",                  index: {name: "index_propietarios_on_email", unique: true}
-    t.string   "celular"
-    t.string   "telefono"
-    t.string   "comision"
-    t.string   "direccion"
-    t.text     "otros_contactos"
-    t.text     "notas"
-    t.integer  "admin_id",               index: {name: "fk__propietarios_admin_id"}, foreign_key: {references: "admins", name: "fk_propietarios_admin_id", on_update: :no_action, on_delete: :no_action}
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token",   index: {name: "index_propietarios_on_reset_password_token", unique: true}
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.inet     "current_sign_in_ip"
-    t.inet     "last_sign_in_ip"
+  create_table "caracteristicas_propiedades", id: false, force: :cascade do |t|
+    t.integer "caracteristica_id", null: false
+    t.integer "propiedad_id",      null: false
   end
 
-  create_table "tipos", force: :cascade do |t|
-    t.string   "titulo"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  add_index "caracteristicas_propiedades", ["caracteristica_id"], name: "index_caracteristicas_propiedades_on_caracteristica_id", using: :btree
+  add_index "caracteristicas_propiedades", ["propiedad_id"], name: "index_caracteristicas_propiedades_on_propiedad_id", using: :btree
+
+  create_table "contacto_mensajes", force: :cascade do |t|
+    t.string  "nombre"
+    t.string  "email"
+    t.string  "telefono"
+    t.string  "motivo"
+    t.text    "mensaje"
+    t.integer "propiedad_id"
   end
+
+  add_index "contacto_mensajes", ["propiedad_id"], name: "fk__contacto_mensajes_propiedad_id", using: :btree
+
+  create_table "distritos", force: :cascade do |t|
+    t.integer  "distrito_id"
+    t.integer  "canton_id"
+    t.integer  "provincia_id"
+    t.string   "nombre"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "distritos", ["canton_id"], name: "index_distritos_on_canton_id", using: :btree
+  add_index "distritos", ["distrito_id"], name: "index_distritos_on_distrito_id", using: :btree
+  add_index "distritos", ["provincia_id"], name: "index_distritos_on_provincia_id", using: :btree
+
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
+  create_table "imagenes", force: :cascade do |t|
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "imagen_file_name"
+    t.string   "imagen_content_type"
+    t.integer  "imagen_file_size"
+    t.datetime "imagen_updated_at"
+    t.string   "imagen"
+    t.integer  "propiedad_id"
+  end
+
+  add_index "imagenes", ["propiedad_id"], name: "fk__imagenes_propiedad_id", using: :btree
+
+  create_table "mensajes", force: :cascade do |t|
+    t.string   "mensaje"
+    t.string   "color",      default: "#209922"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  create_table "mensajes_propiedades", id: false, force: :cascade do |t|
+    t.integer "mensaje_id"
+    t.integer "propiedad_id"
+  end
+
+  add_index "mensajes_propiedades", ["mensaje_id"], name: "index_mensajes_propiedades_on_mensaje_id", using: :btree
+  add_index "mensajes_propiedades", ["propiedad_id"], name: "index_mensajes_propiedades_on_propiedad_id", using: :btree
 
   create_table "propiedades", force: :cascade do |t|
-    t.string   "listado",                 default: "1",   null: false
+    t.string   "listado",                           default: "1",   null: false
     t.string   "titular"
-    t.string   "estado",                  default: "1"
+    t.string   "estado",                            default: "1"
     t.string   "codigo"
-    t.integer  "admin_id",                index: {name: "fk__propiedades_admin_id"}, foreign_key: {references: "admins", name: "fk_propiedades_admin_id", on_update: :no_action, on_delete: :no_action}
-    t.integer  "propietario_id",          index: {name: "fk__propiedades_empty_propietario_id"}, foreign_key: {references: "propietarios", name: "fk_propiedades_propietario_id", on_update: :no_action, on_delete: :no_action}
-    t.integer  "tipo_id",                 index: {name: "fk__propiedades_empty_tipo_id"}, foreign_key: {references: "tipos", name: "fk_propiedades_tipo_id", on_update: :no_action, on_delete: :no_action}
+    t.integer  "admin_id"
+    t.integer  "propietario_id"
+    t.integer  "tipo_id"
     t.text     "direccion_exacta"
     t.text     "direccion_uso_interno"
     t.text     "descripcion_publica"
-    t.string   "moneda",                  default: "USD", null: false
+    t.string   "moneda",                            default: "USD", null: false
     t.integer  "valor_compra",            limit: 8
     t.integer  "valor_alquiler",          limit: 8
     t.boolean  "opcion_compra"
@@ -121,69 +165,85 @@ ActiveRecord::Schema.define(version: 20160314124215) do
     t.text     "notas_uso_interno"
     t.string   "meta_keywords"
     t.text     "meta_description"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
     t.string   "provincia"
     t.string   "canton"
     t.string   "distrito"
     t.string   "cover"
-    t.integer  "estatus",                 default: 2
+    t.integer  "estatus",                           default: 2
     t.integer  "wpid"
     t.string   "slug"
   end
-  add_index "propiedades", ["admin_id"], name: "fk__propiedades_empty_admin_id"
-  add_index "propiedades", ["propietario_id"], name: "fk__propiedades_propietario_id"
-  add_index "propiedades", ["tipo_id"], name: "fk__propiedades_tipo_id"
 
-  create_table "caracteristicas_propiedades", id: false, force: :cascade do |t|
-    t.integer "caracteristica_id", null: false, index: {name: "index_caracteristicas_propiedades_on_caracteristica_id"}, foreign_key: {references: "caracteristicas", name: "fk_caracteristicas_propiedades_caracteristica_id", on_update: :no_action, on_delete: :no_action}
-    t.integer "propiedad_id",      null: false, index: {name: "index_caracteristicas_propiedades_on_propiedad_id"}, foreign_key: {references: "propiedades", name: "fk_caracteristicas_propiedades_propiedad_id", on_update: :no_action, on_delete: :no_action}
+  add_index "propiedades", ["admin_id"], name: "fk__propiedades_admin_id", using: :btree
+  add_index "propiedades", ["propietario_id"], name: "fk__propiedades_propietario_id", using: :btree
+  add_index "propiedades", ["slug"], name: "index_propiedades_on_slug", unique: true, using: :btree
+  add_index "propiedades", ["tipo_id"], name: "fk__propiedades_tipo_id", using: :btree
+
+  create_table "propiedades_tipos", force: :cascade do |t|
+    t.integer "propiedad_id"
+    t.integer "tipo_id"
   end
 
-  create_table "contacto_mensajes", force: :cascade do |t|
-    t.string  "nombre"
-    t.string  "email"
-    t.string  "telefono"
-    t.string  "motivo"
-    t.text    "mensaje"
-    t.integer "propiedad_id", index: {name: "fk__contacto_mensajes_propiedad_id"}, foreign_key: {references: "propiedades", name: "fk_contacto_mensajes_propiedad_id", on_update: :no_action, on_delete: :no_action}
-  end
+  add_index "propiedades_tipos", ["propiedad_id"], name: "index_propiedades_tipos_on_propiedad_id", using: :btree
+  add_index "propiedades_tipos", ["tipo_id"], name: "index_propiedades_tipos_on_tipo_id", using: :btree
 
-  create_table "distritos", force: :cascade do |t|
-    t.integer  "distrito_id",  index: {name: "index_distritos_on_distrito_id"}, foreign_key: {references: "distritos", name: "fk_distritos_distrito_id", on_update: :no_action, on_delete: :no_action}
-    t.integer  "canton_id",    index: {name: "index_distritos_on_canton_id"}, foreign_key: {references: "cantones", name: "fk_distritos_canton_id", on_update: :no_action, on_delete: :no_action}
-    t.integer  "provincia_id", index: {name: "index_distritos_on_provincia_id"}, foreign_key: {references: "provincias", name: "fk_distritos_provincia_id", on_update: :no_action, on_delete: :no_action}
+  create_table "propietarios", force: :cascade do |t|
     t.string   "nombre"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string   "apellido"
+    t.string   "email"
+    t.string   "celular"
+    t.string   "telefono"
+    t.string   "comision"
+    t.string   "direccion"
+    t.text     "otros_contactos"
+    t.text     "notas"
+    t.integer  "admin_id"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
   end
 
-  create_table "imagenes", force: :cascade do |t|
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-    t.string   "imagen_file_name"
-    t.string   "imagen_content_type"
-    t.integer  "imagen_file_size"
-    t.datetime "imagen_updated_at"
-    t.string   "imagen"
-    t.integer  "propiedad_id",        index: {name: "fk__imagenes_propiedad_id"}, foreign_key: {references: "propiedades", name: "imagenes_propiedad_id_fkey", on_update: :no_action, on_delete: :no_action}
-  end
+  add_index "propietarios", ["admin_id"], name: "fk__propietarios_admin_id", using: :btree
+  add_index "propietarios", ["email"], name: "index_propietarios_on_email", unique: true, using: :btree
+  add_index "propietarios", ["reset_password_token"], name: "index_propietarios_on_reset_password_token", unique: true, using: :btree
 
-  create_table "mensajes", force: :cascade do |t|
-    t.string   "mensaje"
-    t.string   "color",      default: "#209922"
+  create_table "provincias", force: :cascade do |t|
+    t.string   "nombre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "mensajes_propiedades", id: false, force: :cascade do |t|
-    t.integer "mensaje_id",   index: {name: "index_mensajes_propiedades_on_mensaje_id"}, foreign_key: {references: "mensajes", name: "fk_mensajes_propiedades_mensaje_id", on_update: :no_action, on_delete: :no_action}
-    t.integer "propiedad_id", index: {name: "index_mensajes_propiedades_on_propiedad_id"}, foreign_key: {references: "propiedades", name: "fk_mensajes_propiedades_propiedad_id", on_update: :no_action, on_delete: :no_action}
+  create_table "tipos", force: :cascade do |t|
+    t.string   "titulo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "propiedades_tipos", force: :cascade do |t|
-    t.integer "propiedad_id", index: {name: "index_propiedades_tipos_on_propiedad_id"}, foreign_key: {references: "propiedades", name: "fk_propiedades_tipos_propiedad_id", on_update: :no_action, on_delete: :no_action}
-    t.integer "tipo_id",      index: {name: "index_propiedades_tipos_on_tipo_id"}, foreign_key: {references: "tipos", name: "fk_propiedades_tipos_tipo_id", on_update: :no_action, on_delete: :no_action}
-  end
-
+  add_foreign_key "cantones", "cantones", name: "fk_cantones_canton_id"
+  add_foreign_key "cantones", "provincias", name: "fk_cantones_provincia_id"
+  add_foreign_key "caracteristicas_propiedades", "caracteristicas", name: "fk_caracteristicas_propiedades_caracteristica_id"
+  add_foreign_key "caracteristicas_propiedades", "propiedades", name: "fk_caracteristicas_propiedades_propiedad_id"
+  add_foreign_key "contacto_mensajes", "propiedades", name: "fk_contacto_mensajes_propiedad_id"
+  add_foreign_key "distritos", "cantones", name: "fk_distritos_canton_id"
+  add_foreign_key "distritos", "distritos", name: "fk_distritos_distrito_id"
+  add_foreign_key "distritos", "provincias", name: "fk_distritos_provincia_id"
+  add_foreign_key "imagenes", "propiedades", name: "imagenes_propiedad_id_fkey"
+  add_foreign_key "mensajes_propiedades", "mensajes", name: "fk_mensajes_propiedades_mensaje_id"
+  add_foreign_key "mensajes_propiedades", "propiedades", name: "fk_mensajes_propiedades_propiedad_id"
+  add_foreign_key "propiedades", "admins", name: "fk_propiedades_admin_id"
+  add_foreign_key "propiedades", "propietarios", name: "fk_propiedades_propietario_id"
+  add_foreign_key "propiedades", "tipos", name: "fk_propiedades_tipo_id"
+  add_foreign_key "propiedades_tipos", "propiedades", name: "fk_propiedades_tipos_propiedad_id"
+  add_foreign_key "propiedades_tipos", "tipos", name: "fk_propiedades_tipos_tipo_id"
+  add_foreign_key "propietarios", "admins", name: "fk_propietarios_admin_id"
 end

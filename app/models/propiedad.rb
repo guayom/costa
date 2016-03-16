@@ -1,7 +1,8 @@
 class Propiedad < ActiveRecord::Base
-  self.per_page = 5
-
+  extend FriendlyId
   include PgSearch
+
+  self.per_page = 5
 
   belongs_to :admin
 
@@ -74,6 +75,9 @@ class Propiedad < ActiveRecord::Base
   }
 
   pg_search_scope :search_by_keywords, against: [:titular, :provincia, :canton, :distrito, :codigo]
+
+  # friendly_id :slug_string, use: :slugged
+  friendly_id :slug_string
 
   def provincia_enum
     Provincia.pluck(:nombre)
@@ -181,7 +185,10 @@ class Propiedad < ActiveRecord::Base
     end
   end
 
-  def to_param
-    "#{id}-#{codigo.parameterize}-#{titular.parameterize}"
+  def slug_string
+    "#{codigo} #{titular}"
   end
+  # def to_param
+  #   "#{id}-#{codigo.parameterize}-#{titular.parameterize}"
+  # end
 end
