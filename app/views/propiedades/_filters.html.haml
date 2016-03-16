@@ -48,7 +48,7 @@
   .col-md-12.col-sm-12.col-xs-12
     - if [:venta, :venta_alquiler].include?(params[:listado] ? params[:listado].to_sym : nil) || params[:listado].nil?
       .form-group
-        %label{for: :valor_compra}= t(:valor_compra)
+        %label{for: :valor_compra}= t(:price_range)
         = select_tag :valor_compra,
                      options_for_select([['cualquier...', nil]] + valor_compra_options, params[:valor_compra]),
                      class: 'form-control'

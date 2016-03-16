@@ -98,3 +98,7 @@ es:
       subject: 'Your new property has been added'
 
   propiedad_added_succefully: 'Gracias por registrar tu propiedad.'
+
+  banos: 'Baños'
+  price_range: "Rango de precio"
+  keywords: "Palabras clave ó Código de propiedad"
