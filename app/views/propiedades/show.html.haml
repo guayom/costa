@@ -113,9 +113,6 @@
                                   = "#{@propiedad.admin.nombre}"
                                   %br/
                                   %span.hidden-xs= @propiedad.admin.email
-                                  %span.visible-xs-*
-                                    %a{:href => "tel:#{@propiedad.admin.telefono}", :style => "white-space: nowrap;"}
-                                      = @propiedad.admin.telefono
                       .col-xs-12.col-md-4
                         .post-meta.description-icons
                           - if @propiedad.dormitorios.present? && @propiedad.dormitorios > 0
