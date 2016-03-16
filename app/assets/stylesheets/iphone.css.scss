@@ -1,0 +1,9 @@
+@media only screen 
+    and (max-device-width : 667px) // or 41.6875em
+{ 
+
+    .navbar-default .navbar-brand::after{
+        display:none;
+    }
+
+}

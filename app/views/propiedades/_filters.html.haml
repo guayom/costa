@@ -2,7 +2,7 @@
   .col-md-12.col-sm-12.col-xs-12
     .form-group
       .btn-group.btn-group-justified.btn-group-listado{ data: { toggle: 'buttons' } }
-        - [['venta_alquiler', 'Cualquiera'],
+        - [['venta_alquiler', 'Ambos'],
            ['alquiler', 'Alquiler'],
            ['venta', 'Venta']].each do |value, label|
           %label.btn.btn-success{ class: (value == params[:listado].to_s ? 'active' : '') }
