@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160316190207) do
+ActiveRecord::Schema.define(version: 20160316200542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -174,6 +174,10 @@ ActiveRecord::Schema.define(version: 20160316190207) do
     t.integer  "estatus",                           default: 2
     t.integer  "wpid"
     t.string   "slug"
+    t.integer  "valor_compra_cents"
+    t.string   "valor_compra_currency",             default: "USD", null: false
+    t.integer  "valor_alquiler_cents"
+    t.string   "valor_alquiler_currency",           default: "USD", null: false
   end
 
   add_index "propiedades", ["admin_id"], name: "fk__propiedades_admin_id", using: :btree
