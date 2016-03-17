@@ -25,7 +25,7 @@ class Propiedad < ActiveRecord::Base
   extend Enumerize
   enumerize :listado, in: [:venta, :alquiler, :opcion_compra, :venta_alquiler]
   enumerize :estado, in: [:disponible, :alquilado, :vendido], default: :disponible, scope: true
-  enumerize :moneda, in: [:usd, :crc], default: :usd
+  enumerize :moneda, in: ['USD', 'CRC'], default: 'USD'
   enumerize :tipo_de_estacionamiento, in: [:parqueo, :garaje, :parqueo_techado]
 
   enum estatus: { publicado: 1, borrador: 2, rechazado: 3 }
@@ -59,7 +59,8 @@ class Propiedad < ActiveRecord::Base
   end
   scope :search_by_valor_compra, -> (values) {
     if values.size > 1
-      where('valor_compra >= ? AND valor_compra <= ?', values[0], values[1])
+      rate = Rate.order(created_at: :desc).first
+      where('(moneda = ? AND valor_compra >= ? AND valor_compra <= ?) OR (moneda = ? AND valor_compra >= ? * ? * 0.98 AND valor_compra <= ? * ? * 1.02)', 'USD', values[0], values[1], 'CRC', values[0], rate.buy, values[1], rate.sell)
     else
       where('valor_compra >= ?', values[0])
     end
@@ -135,10 +136,10 @@ class Propiedad < ActiveRecord::Base
   end
 
   def price_locale
-    case moneda
-    when 'usd'
+    case moneda.upcase
+    when 'USD'
       :en
-    when 'crc'
+    when 'CRC'
       :es
     else
       :en
