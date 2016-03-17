@@ -8,3 +8,14 @@
           %h2 Propiedades Recientes
     .row
       = render @propiedades
+
+  .container
+    .row
+      .col-md-12
+        .heading-title.hidden-xs
+          %h2 Propiedades Destacadas
+        .visible-xs
+          %h2 Propiedades Destacadas
+    .row
+      = render @featured
+

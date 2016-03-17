@@ -44,6 +44,11 @@ RailsAdmin.config do |config|
       only ['Imagen']
     end
 
+    collection :featured do
+      only ['Propiedad']
+      link_icon 'icon-star'
+    end
+
     collection :import do
       only ['Propiedad']
       link_icon 'icon-file'

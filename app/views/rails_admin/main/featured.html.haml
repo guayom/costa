@@ -1,0 +1,7 @@
+%table
+  - Propiedad.featured.each do |p|
+    %tr
+      %td{style: 'padding: 5px;'}
+        = image_tag p.cover_url, style: 'width: 150px;'
+      %td
+        = link_to p.titular, edit_path(model_name: 'propiedad', id: p.id)

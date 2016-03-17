@@ -113,6 +113,10 @@ es:
 
       import:
         menu: 'Importar desde archivo'
+        breadcrumb: 'Importar'
+      featured:
+        menu: 'Destacado'
+        breadcrumb: 'Destacado'
     form:
       cancel: "Cancelar"
       basic_info: "Información básica"
