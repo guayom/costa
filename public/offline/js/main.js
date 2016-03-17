@@ -3,26 +3,6 @@ var systemDB;
 $(function() {
   moment.locale('es');
 
-  function updateIndicator() {
-    if (navigator.onLine) {
-      $('#navbar').removeClass('offline');
-      $('#navbar').addClass('online');
-
-      $('.show-online').show();
-      $('.show-offline').hide();
-    } else {
-      $('#navbar').removeClass('online');
-      $('#navbar').addClass('offline');
-
-      $('.show-online').hide();
-      $('.show-offline').show();
-    }
-  }
-
-  window.addEventListener('online',  updateIndicator);
-  window.addEventListener('offline', updateIndicator);
-  updateIndicator();
-
   function initDB() {
     try {
       if (!window.openDatabase) {
@@ -143,4 +123,24 @@ $(function() {
 
     return '<a href="' + href + '" target="_blank">Import to site</a>';
   }
+
+  function updateIndicator() {
+    if (navigator.onLine) {
+      $('#navbar').removeClass('offline');
+      $('#navbar').addClass('online');
+
+      $('.show-online').show();
+      $('.show-offline').hide();
+    } else {
+      $('#navbar').removeClass('online');
+      $('#navbar').addClass('offline');
+
+      $('.show-online').hide();
+      $('.show-offline').show();
+    }
+  }
+
+  window.addEventListener('online',  updateIndicator);
+  window.addEventListener('offline', updateIndicator);
+  updateIndicator();
 });
