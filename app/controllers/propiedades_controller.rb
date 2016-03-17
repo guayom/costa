@@ -10,6 +10,10 @@ class PropiedadesController < ApplicationController
 
     @propiedades = Propiedad.publicado
 
+    if params[:keywords].blank?
+      @propiedades = @propiedades.with_estado(:disponible)
+    end
+
     [:listado, :provincia_id, :canton_id, :distrito_id, :tipo,
      :estacionamiento, :dormitorios, :banos, :valor_compra,
      :valor_alquiler, :keywords].each do |key|
