@@ -8,7 +8,7 @@ class PropiedadesController < ApplicationController
       end
     end
 
-    @propiedades = Propiedad.publicado
+    @propiedades = Propiedad.publicado.order(created_at: :desc, id: :desc)
 
     if params[:keywords].blank?
       @propiedades = @propiedades.with_estado(:disponible)
