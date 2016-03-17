@@ -1,3 +1,10 @@
-%form{method: :get, action: new_path(model_name: 'propiedad')}
+= form_tag main_app.import_propiedades_path,
+           multipart: true, class: 'form-horizontal' do
   .form-group
-    %input{type: 'file'}
+    = label_tag :excel, t('admin.actions.import.breadcrumb'), class: 'col-sm-2 control-label'
+    .col-sm-10
+      = file_field_tag :excel, class: 'form-control'
+
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = submit_tag t('admin.form.save'), class: 'btn btn-primary'

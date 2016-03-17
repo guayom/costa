@@ -192,4 +192,20 @@ class Propiedad < ActiveRecord::Base
   # def to_param
   #   "#{id}-#{codigo.parameterize}-#{titular.parameterize}"
   # end
+
+  EXCEL_COORDS = {
+    titular: [4,2],
+    tipo_id: [6, 2],
+    direccion_exacta: [8,2],
+    descripcion_publica: [12, 2],
+    valor_compra: [20, 2],
+    valor_alquiler: [21, 2],
+    area_terreno: [23, 2],
+    area_construccion: [24, 2],
+    pisos: [26, 2],
+    dormitorios: [27, 2],
+    banos: [28, 2],
+    estacionamiento: [30, 2],
+    tipo_de_estacionamiento: [31, 2]
+  }
 end

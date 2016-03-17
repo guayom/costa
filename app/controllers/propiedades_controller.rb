@@ -86,7 +86,29 @@ class PropiedadesController < ApplicationController
 
   def import
     if admin_signed_in?
+      xlsx = Roo::Spreadsheet.open(params[:excel].tempfile.path)
 
+      params = {
+        model_name: 'propiedad',
+        propiedad: {}
+      }
+      Propiedad::EXCEL_COORDS.each do |field, coords|
+        value = xlsx.sheet(0).cell(*coords)
+
+        if :tipo_id == field
+          t = Tipo.find_by(titulo: value)
+          if t.present?
+            value = t.id
+          end
+        end
+
+        if :tipo_de_estacionamiento == field
+          value = value.downcase.split.join('_')
+        end
+
+        params[:propiedad][field] = value
+      end
+      redirect_to rails_admin.new_path(params)
     end
   end
 
