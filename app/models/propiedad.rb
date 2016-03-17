@@ -43,8 +43,7 @@ class Propiedad < ActiveRecord::Base
   pg_search_scope :search_by_tipo,
                   associated_against: { tipo: :titulo }
 
-  pg_search_scope :search_by_tipo_de_estacionamiento,
-                  against: :tipo_de_estacionamiento
+  pg_search_scope :search_by_estacionamiento, against: :estacionamiento
   pg_search_scope :search_by_dormitorios, against: :dormitorios
 
   scope :search_by_listado, -> (value) do

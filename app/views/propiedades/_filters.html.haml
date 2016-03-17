@@ -36,10 +36,10 @@
                              class: 'form-control'
   .col-md-6.col-sm-6.col-xs-6
     .form-group
-      %label{for: :tipo_de_estacionamiento}= t(:estacionamiento)
-      = select_tag :tipo_de_estacionamiento,
-                             options_for_select([['cualquier...', nil]] + Propiedad.tipo_de_estacionamiento.options, params[:tipo_de_estacionamiento]),
-                             class: 'form-control'
+      %label{for: :estacionamiento}= t(:estacionamiento)
+      = select_tag :estacionamiento,
+                   options_for_select([['cualquier...', nil]] + Propiedad.pluck(:estacionamiento).map(&:to_i).uniq.find_all(&:present?).sort, params[:estacionamiento]),
+                   class: 'form-control'
     .form-group
       %label{for: :banos}= t(:banos)
       = select_tag :banos,

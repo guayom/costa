@@ -11,7 +11,7 @@ class PropiedadesController < ApplicationController
     @propiedades = Propiedad.publicado
 
     [:listado, :provincia_id, :canton_id, :distrito_id, :tipo,
-     :tipo_de_estacionamiento, :dormitorios, :banos, :valor_compra,
+     :estacionamiento, :dormitorios, :banos, :valor_compra,
      :valor_alquiler, :keywords].each do |key|
       if params[key].present?
         @propiedades = @propiedades.send("search_by_#{key}", params[key])
