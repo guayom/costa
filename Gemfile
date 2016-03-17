@@ -47,6 +47,11 @@ gem 'cancancan'
 # Roo implements read access for all common spreadsheet types.
 gem 'roo'
 
+# FriendlyId is the "Swiss Army bulldozer" of slugging and permalink plugins
+# for Active Record. It lets you create pretty URLs and work with human-friendly
+# strings as if they were numeric ids.
+gem 'friendly_id'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -93,8 +98,6 @@ gem 'rails-i18n'
 
 #Virtus Attributes on Steroids for Plain Old Ruby Objects
 gem 'virtus', '~> 1.0.5'
-
-gem "schema_plus", "2.0.0.pre12"
 
 gem 'paperclip'
 gem 'aws-sdk'
