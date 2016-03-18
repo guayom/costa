@@ -221,6 +221,16 @@ $(function() {
       }
     }
 
+    var compra = parseInt(data['valor_compra']) > 0;
+    var alquiler = parseInt(data['valor_alquiler']) > 0;
+    if (compra && alquiler) {
+      href += 'propiedad[listado]=venta_alquiler';
+    } else if (compra > 0) {
+      href += 'propiedad[listado]=venta';
+    } else if (alquiler > 0) {
+      href += 'propiedad[listado]=alquiler';
+    }
+
     return '<a href="' + href + '" target="_blank">Import to site</a>';
   }
 
