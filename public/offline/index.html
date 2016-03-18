@@ -34,6 +34,11 @@
     .offline {
       background-color: red !important;
     }
+
+    .fake-link {
+      cursor: pointer;
+      border-bottom: 1px dashed black;
+    }
   </style>
   <link rel="stylesheet" href="offline/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="offline/css/main.css">
@@ -63,12 +68,13 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
-      <table class="table">
+      <table id="propiedades_table" class="table">
         <thead>
           <tr>
             <th>Titular</th>
             <th>Creado en</th>
             <th class="show-online">Import to site</th>
+            <th></th>
           </tr>
         </thead>
         <tbody id="propiedades"></tbody>

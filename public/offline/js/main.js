@@ -146,16 +146,51 @@ $(function() {
       transaction.executeSql(
         'SELECT * FROM propiedades;', [],
         function (transaction, results) {
-          var trs = '';
+          $('#propiedades').html('');
 
-          for (var i = 0; i < results.rows.length; i++) {
-            var row = results.rows.item(i);
-            trs += '<tr><td>' + row['titular'] + '</td><td>'
-                    + moment(parseFloat(row['created_at'])).format('L') + '</td><td class="show-online">'
-                    + linkToPropiedad(row) + '</td></tr>';
+          if (0 == results.rows.length) {
+            $('#propiedades_table').hide();
+          } else {
+            $('#propiedades_table').show();
           }
+          
+          for (var i = 0; i < results.rows.length; i++) {
+            var tr = $('<tr></tr>');
+            var row = results.rows.item(i);
 
-          document.getElementById('propiedades').innerHTML = trs;
+            tr.append($('<td></td>').text(row['titular']));
+            tr.append($('<td></td>').text(
+              moment(parseFloat(row['created_at'])).format('L'))
+            );
+            tr.append($('<td></td>', {
+              class: 'show-online'
+            }).html(linkToPropiedad(row)));
+
+            var span = $('<span></span>',  {
+              class: 'fake-link'
+            }).data('time', row['created_at']).text('Eliminar');
+            span.click(function() {
+              var time = $(this).data('time');
+              if (confirm('Really delete?')) {
+                systemDB.transaction(function(t) {
+                  t.executeSql(
+                    'DELETE FROM propiedades WHERE created_at = ?',
+                    [time],
+                    function deleteUpdateResults(transaction, results) {
+                      if (results.rowsAffected) {
+                        initPropiedades();
+                      }
+                    },
+                    errorHandler
+                  );
+                });
+              }
+            });
+
+            tr.append($('<td></td>').html(span));
+
+            $('#propiedades').append(tr);
+          }
         },
         errorHandler);
     });
@@ -163,7 +198,28 @@ $(function() {
   initPropiedades();
 
   function linkToPropiedad(data) {
-    var href = 'http://costa506.herokuapp.com/admin/propiedad/new?propiedad[titular]=' + data['titular'];
+    var fields = [
+      'titular',
+      'tipo_id',
+      'direccion_exacta',
+      'descripcion_publica',
+      'valor_compra',
+      'valor_alquiler',
+      'area_terreno',
+      'area_construccion',
+      'pisos',
+      'dormitorios',
+      'banos',
+      'estacionamiento',
+      'tipo_de_estacionamiento'
+    ];
+    var href = 'http://costa506.herokuapp.com/admin/propiedad/new?';
+
+    for (var i = 0; i < fields.length; i++) {
+      if (data[fields[i]]) {
+        href += 'propiedad[' + fields[i] + ']=' + encodeURIComponent(data[fields[i]]) + '&';
+      }
+    }
 
     return '<a href="' + href + '" target="_blank">Import to site</a>';
   }
