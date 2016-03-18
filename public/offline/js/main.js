@@ -96,10 +96,26 @@ $(function() {
       var myDB = systemDB;
       myDB.transaction(function(transaction) {
         transaction.executeSql(
-          'INSERT INTO propiedades (titular, created_at, tipo_id) VALUES (?, ?, ?);',
-          [$('#titular').val(), Date.now(), parseInt($('#tipo_id').val())],
+          'INSERT INTO propiedades (titular, created_at, tipo_id, direccion_exacta, descripcion_publica, valor_compra, valor_alquiler, area_terreno, area_construccion, pisos, dormitorios, banos, estacionamiento, tipo_de_estacionamiento) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);',
+          [
+            $('#titular').val(),
+            Date.now(),
+            parseInt($('#tipo_id').val()),
+            $('#direccion_exacta').val(),
+            $('#descripcion_publica').val(),
+            parseInt($('#valor_compra').val()),
+            parseInt($('#valor_alquiler').val()),
+            parseInt($('#area_terreno').val()),
+            parseInt($('#area_construccion').val()),
+            parseInt($('#pisos').val()),
+            parseInt($('#dormitorios').val()),
+            $('#banos').val(),
+            parseInt($('#estacionamiento').val()),
+            $('#tipo_de_estacionamiento').val(),
+          ],
           function(transaction, results) {
             initPropiedades();
+            document.forms['new_propiedad'].reset();
           },
           errorHandler);
       });
