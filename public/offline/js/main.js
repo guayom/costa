@@ -9,7 +9,7 @@ $(function() {
         alert('Not supported.');
       } else {
         var shortName = 'costa506';
-        var version = '0.1';
+        var version = '';
         var displayName = 'Costa506 Real Estate';
         var maxSize = 2 * 1024 * 1024;
         var myDB = openDatabase(shortName, version, displayName, maxSize);
@@ -39,15 +39,43 @@ $(function() {
 
     db.transaction(
       function (transaction) {
-        transaction.executeSql('CREATE TABLE IF NOT EXISTS propiedades(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, titular TEXT NOT NULL, created_at INTEGER NOT NULL);', [], nullDataHandler, killTransaction);
-        //transaction.executeSql('CREATE TABLE IF NOT EXISTS filedata(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, datablob BLOB NOT NULL DEFAULT "");', [], nullDataHandler, errorHandler);
+        transaction.executeSql('CREATE TABLE IF NOT EXISTS propiedades(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, titular TEXT NOT NULL, created_at INTEGER NOT NULL);', [],
+          function() {
+            db.transaction(function(t) {
+              t.executeSql(
+                "SELECT * from sqlite_master WHERE type = 'table' AND tbl_name = 'propiedades';", [],
+                function(t, results) {
+                  if (results.rows.item(0).sql.indexOf('tipo_id') < 0) {
+                    db.transaction(function(t) {
+                      t.executeSql('ALTER TABLE propiedades ADD COLUMN tipo_id INTEGER;', [], nullDataHandler, function(e1, e2) { debugger; });
+                      t.executeSql('ALTER TABLE propiedades ADD COLUMN direccion_exacta TEXT;', [], nullDataHandler, function(e1, e2) { debugger; });
+                      t.executeSql('ALTER TABLE propiedades ADD COLUMN descripcion_publica TEXT;', [], nullDataHandler, function(e1, e2) { debugger; });
+                      t.executeSql('ALTER TABLE propiedades ADD COLUMN valor_compra INTEGER;', [], nullDataHandler, function(e1, e2) { debugger; });
+                      t.executeSql('ALTER TABLE propiedades ADD COLUMN valor_alquiler INTEGER;', [], nullDataHandler, function(e1, e2) { debugger; });
+                      t.executeSql('ALTER TABLE propiedades ADD COLUMN area_terreno INTEGER;', [], nullDataHandler, function(e1, e2) { debugger; });
+                      t.executeSql('ALTER TABLE propiedades ADD COLUMN area_construccion INTEGER;', [], nullDataHandler, function(e1, e2) { debugger; });
+                      t.executeSql('ALTER TABLE propiedades ADD COLUMN pisos INTEGER;', [], nullDataHandler, function(e1, e2) { debugger; });
+                      t.executeSql('ALTER TABLE propiedades ADD COLUMN dormitorios INTEGER;', [], nullDataHandler, function(e1, e2) { debugger; });
+                      t.executeSql('ALTER TABLE propiedades ADD COLUMN banos TEXT;', [], nullDataHandler, function(e1, e2) { debugger; });
+                      t.executeSql('ALTER TABLE propiedades ADD COLUMN estacionamiento TEXT;', [], nullDataHandler, function(e1, e2) { debugger; });
+                      t.executeSql('ALTER TABLE propiedades ADD COLUMN tipo_de_estacionamiento TEXT;', [], nullDataHandler, function(e1, e2) { debugger; });
+                    });
+                  }
+                })
+            });
+          },
+          // killTransaction
+          function(e1, e2) {
+            debugger;
+          }
+        );
       }
     );
   }
 
   function nullDataHandler(transaction, results) {}
   function errorHandler(transaction, error) {
-    alert('Oops. Error was ' + error.message + ' (Code '+error.code+')');
+    alert('Oops. Error was ' + error.message + ' (Code ' + error.code + ')');
 
     // Handle errors here.
     var we_think_this_error_is_fatal = true;
@@ -68,8 +96,8 @@ $(function() {
       var myDB = systemDB;
       myDB.transaction(function(transaction) {
         transaction.executeSql(
-          'INSERT INTO propiedades (titular, created_at) VALUES (?, ?);',
-          [$('#titular').val(), Date.now()],
+          'INSERT INTO propiedades (titular, created_at, tipo_id) VALUES (?, ?, ?);',
+          [$('#titular').val(), Date.now(), parseInt($('#tipo_id').val())],
           function(transaction, results) {
             initPropiedades();
           },
@@ -83,14 +111,14 @@ $(function() {
 
   function saveChangesDialog(event) {
     // TODO TODO TODO
-    var contentdiv = document.getElementById('contentdiv');
-    var contents = contentdiv.contentDocument.body.innerHTML;
-    var origcontentdiv = document.getElementById('origcontentdiv');
-    var origcontents = origcontentdiv.innerHTML;
-
-    if (contents == origcontents) {
-      return NULL;
-    }
+    // var contentdiv = document.getElementById('contentdiv');
+    // var contents = contentdiv.contentDocument.body.innerHTML;
+    // var origcontentdiv = document.getElementById('origcontentdiv');
+    // var origcontents = origcontentdiv.innerHTML;
+    //
+    // if (contents == origcontents) {
+    //   return NULL;
+    // }
 
     return 'You have unsaved changes.'; //   CMP "+contents+" TO "+origcontents;
   }
@@ -107,7 +135,7 @@ $(function() {
           for (var i = 0; i < results.rows.length; i++) {
             var row = results.rows.item(i);
             trs += '<tr><td>' + row['titular'] + '</td><td>'
-                    + moment(row['created_at']).format('L') + '</td><td class="show-online">'
+                    + moment(parseFloat(row['created_at'])).format('L') + '</td><td class="show-online">'
                     + linkToPropiedad(row) + '</td></tr>';
           }
 
