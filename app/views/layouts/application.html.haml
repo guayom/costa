@@ -4,18 +4,22 @@
     %meta{:charset => "utf-8"}
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
     %meta{:content => "IE=Edge,chrome=1", "http-equiv" => "X-UA-Compatible"}
-    %meta{:content => "Put Meta Data here", :name => "description"}
-    %meta{:content => "Guayo Mena", :name => "author"}
     %meta{:content => "vdLMMOZytK8_f9EqtFuyZgvUkvGjqWbllc_GTuw_LGM", :name => "google-site-verification"}/
     -#%link{:href => "images/favicon.png", :rel => "shortcut icon"}
 
-    %title Costa506
+    %title 
+      = yield :title
+      = content_for?(:title) ? " | ":""
+      Costa506
+
+    = yield :meta_tags
 
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
 
 %body#top
+  = render "application/fbsdk" 
   = render "application/navbar"
   = yield :full_width_header
 
