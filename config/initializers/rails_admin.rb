@@ -94,5 +94,13 @@ RailsAdmin.config do |config|
       # end
       exclude_fields :cover
     end
+    list do
+      field :codigo
+      field :estado
+      field :estatus
+      field :listado
+      field :admin
+      field :titular
+    end
   end
 end
