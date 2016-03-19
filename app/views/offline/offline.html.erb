@@ -133,6 +133,16 @@
         </div>
 
         <div class="form-group">
+          <label for="direccion_uso_interno" class="col-sm-2 control-label">
+            Direccion uso interno
+          </label>
+          <div class="col-sm-10">
+            <textarea class="form-control" id="direccion_uso_interno"
+                      name="direccion_uso_interno" rows="3"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
           <label for="descripcion_publica" class="col-sm-2 control-label">
             Descripcion publica
           </label>
@@ -252,6 +262,193 @@
 
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="1" name="opcion_compra">
+                Opcion compra
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="1" name="incluye_mantenimiento">
+                Incluye mantenimiento
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="cuota_mantenimiento" class="col-sm-2 control-label">
+            Cuota mantenimiento
+          </label>
+          <div class="col-sm-10">
+            <input type="number" id="cuota_mantenimiento" name="cuota_mantenimiento" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="area_terreno" class="col-sm-2 control-label">
+            Area terreno
+          </label>
+          <div class="col-sm-10">
+            <input type="number" id="area_terreno" name="area_terreno" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="area_construccion" class="col-sm-2 control-label">
+            Area construccion
+          </label>
+          <div class="col-sm-10">
+            <input type="number" id="area_construccion" name="area_construccion" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="1" name="sala_comedor">
+                Sala comedor
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="1" name="patio">
+                Patio
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="patio_area" class="col-sm-2 control-label">
+            Patio area
+          </label>
+          <div class="col-sm-10">
+            <input type="number" id="patio_area" name="patio_area" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="1" name="amueblado">
+                Amueblado
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="1" name="linea_blanca">
+                Linea blanca
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="fecha_construccion" class="col-sm-2 control-label">
+            Fecha construccion
+          </label>
+          <div class="col-sm-10">
+            <input type="number" id="fecha_construccion" name="fecha_construccion" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="otros" class="col-sm-2 control-label">
+            Otros
+          </label>
+          <div class="col-sm-10">
+            <textarea class="form-control" id="otros" name="otros" rows="3"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="numero_plano_catastrado" class="col-sm-2 control-label">
+            Numero plano catastrado
+          </label>
+          <div class="col-sm-10">
+            <input type="text" id="numero_plano_catastrado" name="numero_plano_catastrado" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="notas_uso_interno" class="col-sm-2 control-label">
+            Notas uso interno
+          </label>
+          <div class="col-sm-10">
+            <textarea class="form-control" id="notas_uso_interno" name="notas_uso_interno" rows="3"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="provincia" class="col-sm-2 control-label">Provincia</label>
+          <div class="col-sm-10">
+            <select class="form-control" id="provincia" name="provincia">
+              <option value="">Buscar</option>
+              <% Provincia.order(:nombre).each do |p| %>
+                <option value="<%= p.nombre %>"><%= p.nombre %></option>
+              <% end %>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="canton" class="col-sm-2 control-label">Canton</label>
+          <div class="col-sm-10">
+            <select class="form-control" id="canton" name="canton">
+              <option value="">Buscar</option>
+              <% Canton.order(:nombre).each do |c| %>
+                <option value="<%= c.nombre %>"><%= c.nombre %></option>
+              <% end %>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="distrito" class="col-sm-2 control-label">Distrito</label>
+          <div class="col-sm-10">
+            <select class="form-control" id="distrito" name="distrito">
+              <option value="">Buscar</option>
+              <% Distrito.order(:nombre).each do |d| %>
+                <option value="<%= d.nombre %>"><%= d.nombre %></option>
+              <% end %>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <% Mensaje.all.each do |m| %>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="mensaje_ids" value="<%= m.id %>">
+                  <%= m.mensaje %>
+                </label>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
             <button type="submit" id="add_propiedad" class="btn btn-primary">Guardar</button>
           </div>
         </div>
@@ -272,8 +469,7 @@
 <script src="offline/js/vendor/ydn.db-is-core-e-qry-dev.js"></script>
 
 <script>
-  $.fn.serializeObject = function()
-  {
+  $.fn.serializeObject = function() {
     var o = {};
     var a = this.serializeArray();
     $.each(a, function() {
@@ -310,7 +506,6 @@
       }
     }, false);
 
-
     // Check for online/offline application state.
     var checkNetworkState = function() {
       var $navbar = $('#navbar');
@@ -333,7 +528,6 @@
     window.addEventListener('online', checkNetworkState, false);
     window.addEventListener('offline', checkNetworkState, false);
 
-
     // YDN schema definition.
     var schema = {
       stores: [{
@@ -348,7 +542,6 @@
       console.log(schema);
     });
 
-
     // Clear all records.
     $('#clear_all').click(function() {
       if (confirm('Are you sure?')) {
@@ -357,7 +550,6 @@
         });
       }
     });
-
 
     // Add event listeners to form.
     $('#new_propiedad').submit(function(event) {
@@ -384,7 +576,6 @@
       event.preventDefault();
     });
 
-
     // Function to display properties that are now in memory.
     var linkToPropiedad = function(data) {
       var fields = [
@@ -392,6 +583,7 @@
         'titular',
         'tipo_id',
         'direccion_exacta',
+        'direccion_uso_interno',
         'descripcion_publica',
         'valor_compra',
         'valor_alquiler',
@@ -402,7 +594,24 @@
         'banos',
         'estacionamiento',
         'tipo_de_estacionamiento',
-        'propietario_id'
+        'propietario_id',
+        'opcion_compra',
+        'incluye_mantenimiento',
+        'cuota_mantenimiento',
+        'area_terreno',
+        'area_construccion',
+        'sala_comedor',
+        'patio',
+        'patio_area',
+        'amueblado',
+        'linea_blanca',
+        'fecha_construccion',
+        'otros',
+        'numero_plano_catastrado',
+        'notas_uso_interno',
+        'provincia',
+        'canton',
+        'distrito',
       ];
       var href = 'http://costa506.herokuapp.com/admin/propiedad/new?';
 
@@ -417,6 +626,12 @@
       if (data['caracteristica_ids']) {
         for (var j = 0; j < data['caracteristica_ids'].length; j++) {
           href += 'propiedad[caracteristica_ids][]=' + data['caracteristica_ids'][j] + '&';
+        }
+      }
+
+      if (data['mensaje_ids']) {
+        for (var j = 0; j < data['mensaje_ids'].length; j++) {
+          href += 'propiedad[mensaje_ids][]=' + data['mensaje_ids'][j] + '&';
         }
       }
 
