@@ -262,17 +262,19 @@
   };
 
   window.addEventListener('load', function() {
+    window.applicationCache.addEventListener('downloading', function() {
+      alert('Downloading new version of this application. Please, select Ok and wait for a few seconds.');
+    }, false);
+
     // Check for new version of application. If it presented — reload page.
     window.applicationCache.addEventListener('updateready', function() {
       if (window.applicationCache.status ==
             window.applicationCache.UPDATEREADY) {
         window.applicationCache.swapCache();
 
-//        if (confirm('New version of this page is available? Load it?')) {
-//          window.location.reload();
-//        }
-      } else {
-        alert('123');
+        if (confirm('New version is available? Load it?')) {
+          window.location.reload();
+        }
       }
     }, false);
 
@@ -339,6 +341,7 @@
     // Function to display properties that are now in memory.
     var linkToPropiedad = function(data) {
       var fields = [
+        'listado',
         'titular',
         'tipo_id',
         'direccion_exacta',
