@@ -28,10 +28,10 @@
               #detail.tab-pane.fade.in.active
                 .row
                   .col-md-12
-                    %h2
+                    %h2{class: "propiedad-text-color-#{@propiedad.listado}"}
                       = @propiedad.titular
                       %br/
-                      %small
+                      %small{class: "propiedad-text-color-#{@propiedad.listado}"}
                         Código: #{@propiedad.codigo}
                     #slider-property.carousel.slide{"data-ride" => "carousel"}
                       .carousel-inner
@@ -56,8 +56,10 @@
                         %table.table.table-bordered.table-responsive
                           %tr
                             %td{:width => "20%"}
-                              %strong Código
-                            %td= @propiedad.codigo
+                              %strong{class: "propiedad-text-color-#{@propiedad.listado}"}
+                                Código
+                            %td{class: "propiedad-text-color-#{@propiedad.listado}"}
+                              = @propiedad.codigo
                           %tr
                             %td{:width => "20%"}
                               %strong Estado
@@ -65,15 +67,17 @@
                           - if @propiedad.valor_compra > 0
                             %tr
                               %td
-                                %strong Venta
-                              %td
+                                %strong{class: "propiedad-text-color-#{@propiedad.listado}"}
+                                  Venta
+                              %td{class: "propiedad-text-color-#{@propiedad.listado}"}
                                 = number_to_currency(@propiedad.valor_compra, locale: @propiedad.price_locale)
                                 \#{'Opción de compra' if @propiedad.opcion_compra == true}
                           - if @propiedad.valor_alquiler > 0
                             %tr
                               %td
-                                %strong Alquiler
-                              %td
+                                %strong{class: "propiedad-text-color-#{@propiedad.listado}"}
+                                  Alquiler
+                              %td{class: "propiedad-text-color-#{@propiedad.listado}"}
                                 = number_to_currency(@propiedad.valor_alquiler, locale: @propiedad.price_locale)
 
                           - if @propiedad.ubicacion.present?
@@ -149,8 +153,10 @@
 
                     %h3 Descripción:
                     %p= simple_format(@propiedad.descripcion_publica.gsub("↵", ''))
-                    %h3 Estado de la propiedad:
-                    %p= @propiedad.estado.capitalize
+                    %h3{class: "propiedad-text-color-#{@propiedad.listado}"}
+                      Estado de la propiedad:
+                    %p{class: "propiedad-text-color-#{@propiedad.listado}"}
+                      = @propiedad.estado.capitalize
               / break
               #location.tab-pane.fade
                 /
