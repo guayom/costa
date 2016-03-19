@@ -101,6 +101,21 @@ RailsAdmin.config do |config|
       field :listado
       field :admin
       field :titular
+      field :codigo do
+        column_width 80
+      end
+      field :estado do
+        column_width 100
+      end
+      field :estatus do
+        column_width 100
+      end
+      field :listado do
+        column_width 110
+      end
+      field :admin do
+        column_width 180
+      end
     end
   end
 end

@@ -10,3 +10,13 @@
     border: 3px solid red;
   }
 }
+
+.estatus_field[title = 'borrador']{
+	color: red;
+}
+.estado_field[title = 'Disponible']{
+	color: green;
+}
+.estado_field[title = 'Alquilado'], .estado_field[title = 'Vendido']{
+	color: orange;
+}
