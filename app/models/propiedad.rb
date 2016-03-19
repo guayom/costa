@@ -16,7 +16,9 @@ class Propiedad < ActiveRecord::Base
   has_many :imagenes, :dependent => :destroy
   has_many :contacto_mensajes
   has_and_belongs_to_many :mensajes
+
   has_and_belongs_to_many :caracteristicas
+
   # accepts_nested_attributes_for :imagenes, :allow_destroy => true
 
   has_and_belongs_to_many :tipos, dependent: :destroy
@@ -215,5 +217,13 @@ class Propiedad < ActiveRecord::Base
     if Admin.current.present?
       self.admin_id = Admin.current.id
     end
+
+    if temp_caracteristicas.present?
+      fail '123'
+      caracteristicas_ids = temp_caracteristicas
+    end
   end
+
+  # Needed for form population in rails_admin.
+  attr_accessor :temp_caracteristicas
 end
