@@ -45,7 +45,7 @@
                         %span.glyphicon.glyphicon-chevron-right
                     .row
                       .col-xs-12
-                        %ol.carousel-indicators
+                        %ol.carousel-indicators.hidden-xs
                           - unless @propiedad.imagenes.empty?
                             - @propiedad.imagenes.each_with_index do |pic, index|
                               %li{"data-slide-to" => index, "data-target" => "#slider-property"}
