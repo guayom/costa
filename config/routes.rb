@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   devise_for :propietarios
 
+  # Routes for offline mini-app.
+  get 'offline.appcache', controller: :offline, action: :appcache
+  get 'offline', controller: :offline, action: :offline
+
+
   get 'propiedades/index'
 
   get 'propiedades/detalles'
@@ -10,14 +15,14 @@ Rails.application.routes.draw do
 
   resources :propiedades do
     collection do
-      get 'registrar', to: :new
+      get 'registrar', action: :new
       get 'import'
 
-      get 'test_email', to: :test_email
+      get 'test_email', action: :test_email
     end
 
     member do
-      get 'cover', to: :cover
+      get 'cover', action: :cover
     end
   end
 

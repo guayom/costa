@@ -1,0 +1,391 @@
+<html manifest="offline.appcache" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Costa506 Mobile Register</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <link rel="stylesheet" href="offline/css/bootstrap.min.css">
+  <style>
+    body {
+      padding-top: 70px;
+      padding-bottom: 20px;
+    }
+
+    #navbar {
+      background-image: none !important;
+    }
+    #navbar a {
+      color: white;
+    }
+    .online {
+      background-color: green !important;
+    }
+    .offline {
+      background-color: red !important;
+    }
+
+    .fake-link {
+      cursor: pointer;
+      border-bottom: 1px dashed black;
+    }
+  </style>
+  <link rel="stylesheet" href="offline/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="offline/css/main.css">
+
+  <script src="offline/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+</head>
+<body>
+<nav id="navbar" class="navbar navbar-inverse navbar-fixed-top"
+     role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/offline">
+        Costa506 Mobile Register
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <table id="propiedades_table" class="table">
+        <thead>
+        <tr>
+          <th>Titular</th>
+          <th>Creado en</th>
+          <th class="show-online">Import to site</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody id="propiedades"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <form method="get" id="new_propiedad"
+            class="form-horizontal" role="form">
+        <div class="form-group">
+          <label for="titular" class="col-sm-2 control-label">Titular</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="titular" name="titular">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="tipo_id" class="col-sm-2 control-label">Tipo</label>
+          <div class="col-sm-10">
+            <select class="form-control" id="tipo_id" name="tipo_id">
+              <option value="">Buscar</option>
+              <% Tipo.order(:titulo).each do |tipo| %>
+                <option value="<%= tipo.id %>"><%= tipo.titulo %></option>
+              <% end %>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="direccion_exacta" class="col-sm-2 control-label">
+            Direccion exacta
+          </label>
+          <div class="col-sm-10">
+            <textarea class="form-control" id="direccion_exacta"
+                      name="direccion_exacta" rows="3"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="descripcion_publica" class="col-sm-2 control-label">
+            Descripcion publica
+          </label>
+          <div class="col-sm-10">
+            <textarea class="form-control" id="descripcion_publica"
+                      name="descripcion_publica" rows="10"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="valor_compra" class="col-sm-2 control-label">
+            Valor compra
+          </label>
+          <div class="col-sm-4">
+            <input type="number" class="form-control" id="valor_compra"
+                   name="valor_compra">
+          </div>
+
+          <label for="valor_alquiler" class="col-sm-2 control-label">
+            Valor alquiler
+          </label>
+          <div class="col-sm-4">
+            <input type="number" class="form-control" id="valor_alquiler"
+                   name="valor_alquiler">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="area_terreno" class="col-sm-2 control-label">
+            Area terreno
+          </label>
+          <div class="col-sm-4">
+            <input type="number" class="form-control" id="area_terreno"
+                   name="area_terreno">
+          </div>
+
+          <label for="area_construccion" class="col-sm-2 control-label">
+            Area construccion
+          </label>
+          <div class="col-sm-4">
+            <input type="number" class="form-control" id="area_construccion"
+                   name="area_construccion">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="pisos" class="col-sm-2 control-label">Pisos</label>
+          <div class="col-sm-4">
+            <input type="number" class="form-control" id="pisos" name="pisos">
+          </div>
+
+          <label for="dormitorios" class="col-sm-2 control-label">
+            Dormitorios
+          </label>
+          <div class="col-sm-4">
+            <input type="number" class="form-control" id="dormitorios"
+                   name="dormitorios">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="banos" class="col-sm-2 control-label">Banos</label>
+          <div class="col-sm-4">
+            <input type="number" class="form-control" id="banos" name="banos">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="estacionamiento" class="col-sm-2 control-label">
+            Estacionamiento
+          </label>
+          <div class="col-sm-4">
+            <input type="number" class="form-control" id="estacionamiento"
+                   name="estacionamiento">
+          </div>
+
+          <label for="tipo_de_estacionamiento" class="col-sm-2 control-label">
+            Tipo de estacionamiento
+          </label>
+          <div class="col-sm-4">
+            <select class="form-control" id="tipo_de_estacionamiento"
+                    name="tipo_de_estacionamiento">
+              <option value="">Buscar</option>
+              <option value="parqueo">Parqueo</option>
+              <option value="garaje">Garaje</option>
+              <option value="parqueo_techado">Parqueo techado</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button id="add_propiedad" class="btn btn-primary">Guardar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <hr>
+
+  <footer>
+    <p>&copy; Costa 506 Real Estate 2015</p>
+  </footer>
+</div>
+
+<script src="offline/js/vendor/jquery-1.11.2.min.js"></script>
+<script src="offline/js/vendor/bootstrap.min.js"></script>
+<script src="offline/js/vendor/moment-with-locales.js"></script>
+<script src="offline/js/vendor/ydn.db-is-core-e-qry-dev.js"></script>
+
+<script>
+  $.fn.serializeObject = function()
+  {
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a, function() {
+      if (o[this.name] !== undefined) {
+        if (!o[this.name].push) {
+          o[this.name] = [o[this.name]];
+        }
+        o[this.name].push(this.value || '');
+      } else {
+        o[this.name] = this.value || '';
+      }
+    });
+    return o;
+  };
+
+  window.addEventListener('load', function() {
+    // Check for new version of application. If it presented — reload page.
+    window.applicationCache.addEventListener('updateready', function() {
+      if (window.applicationCache.status ==
+            window.applicationCache.UPDATEREADY) {
+        window.applicationCache.swapCache();
+
+//        if (confirm('New version of this page is available? Load it?')) {
+          window.location.reload();
+//        }
+      } else {
+        alert('123');
+      }
+    }, false);
+
+
+    // Check for online/offline application state.
+    var checkNetworkState = function() {
+      var $navbar = $('#navbar');
+      if (navigator.onLine) {
+        $navbar.removeClass('offline');
+        $navbar.addClass('online');
+
+        $('.show-offline').hide();
+        $('.show-online').show();
+      } else {
+        $navbar.removeClass('online');
+        $navbar.addClass('offline');
+
+        $('.show-online').hide();
+        $('.show-offline').show();
+      }
+    };
+    checkNetworkState();
+
+    window.addEventListener('online', checkNetworkState, false);
+    window.addEventListener('offline', checkNetworkState, false);
+
+
+    // YDN schema definition.
+    var schema = {
+      stores: [{
+        name: 'propiedad',
+        autoIncrement: true
+      }]
+    };
+    db = new ydn.db.Storage('costa-offline-test-1', schema);
+
+    db.getSchema(function(schema) {
+      console.log('Database schema:');
+      console.log(schema);
+    });
+
+
+    // Add event listeners to form.
+    document.forms['new_propiedad'].addEventListener('submit', function(event) {
+      var id = Date.now();
+      var data = $('#new_propiedad').serializeObject();
+      data['created_at'] = Date.now();
+
+      db.put('propiedad', data, id).done(function(row_id) {
+        updateSavedProperties();
+        document.forms['new_propiedad'].reset();
+      });
+
+      event.preventDefault();
+    }, false);
+
+
+    // Function to display properties that are now in memory.
+    var linkToPropiedad = function(data) {
+      var fields = [
+        'titular',
+        'tipo_id',
+        'direccion_exacta',
+        'descripcion_publica',
+        'valor_compra',
+        'valor_alquiler',
+        'area_terreno',
+        'area_construccion',
+        'pisos',
+        'dormitorios',
+        'banos',
+        'estacionamiento',
+        'tipo_de_estacionamiento'
+      ];
+      var href = 'http://costa506.herokuapp.com/admin/propiedad/new?';
+
+      for (var i = 0; i < fields.length; i++) {
+        if (data[fields[i]]) {
+          href += 'propiedad[' + fields[i] + ']=' + encodeURIComponent(data[fields[i]]) + '&';
+        }
+      }
+
+      var compra = parseInt(data['valor_compra']) > 0;
+      var alquiler = parseInt(data['valor_alquiler']) > 0;
+      if (compra && alquiler) {
+        href += 'propiedad[listado]=venta_alquiler';
+      } else if (compra > 0) {
+        href += 'propiedad[listado]=venta';
+      } else if (alquiler > 0) {
+        href += 'propiedad[listado]=alquiler';
+      }
+
+      return '<a href="' + href + '" target="_blank">Import to site</a>';
+    };
+
+    var deletePropiedad = function() {
+      var id = $(this).data('id');
+      console.log('About to delete property #' + id + '.');
+      if (confirm('Are you sure?')) {
+        db.remove('propiedad', id).done(function(countOfDeletedRows) {
+          console.log('Property deleted.');
+          updateSavedProperties();
+        });
+      }
+    };
+
+    var updateSavedProperties = function() {
+      db.values('propiedad').done(function(objs) {
+        console.log('Objects in database:');
+        console.log(objs);
+
+        $('#propiedades').html('');
+
+        if (0 == objs.length) {
+          $('#propiedades_table').hide();
+        } else {
+          $('#propiedades_table').show();
+        }
+
+        for (var i = 0; i < objs.length; i++) {
+          var tr = $('<tr></tr>');
+          var row = objs[i];
+
+          tr.append($('<td></td>').text(row['titular']));
+
+          tr.append($('<td></td>').text(
+              moment(parseFloat(row['created_at'])).format('L'))
+          );
+
+          tr.append($('<td></td>', {
+            class: 'show-online'
+          }).html(linkToPropiedad(row)));
+
+          var span = $('<span></span>',  {
+            class: 'fake-link'
+          }).text('Eliminar').click(deletePropiedad);
+          span.data('id', row['created_at']);
+          tr.append($('<td></td>').html(span));
+
+          $('#propiedades').append(tr);
+        }
+      });
+    };
+    updateSavedProperties();
+  }, false);
+</script>
+</body>
+</html>
