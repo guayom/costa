@@ -1,7 +1,7 @@
 -if (title ||= nil)
   %meta{name: "twitter:title", content: title}
   %meta{name: "og:title", content: title}
--if (description ||= nil)
+-if (descripcion ||= nil)
   %meta{name: "description", content: (descripcion||="")}
   %meta{name: "twitter:description", content: descripcion}
   %meta{name: "og:description", content: descripcion}
@@ -16,4 +16,6 @@
 %meta{name: "twitter:card", content: "summary"}
 %meta{name: "og:type", content: "article"}
 %meta{name: "og:url", content: (url||=request.original_url)}
-%meta{:content => "1708808572737626", :property => "fb:app_id"}
+%meta{:property => "fb:app_id", :content => "1708808572737626"}
+%meta{:content => "Costa 506", :name => "author"}
+%meta{:content => "https://www.facebook.com/costa506/?fref=ts", :name => "article:publisher"}
