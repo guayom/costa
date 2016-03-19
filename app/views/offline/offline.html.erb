@@ -54,6 +54,18 @@
   </div>
 </nav>
 
+<div id="loading" style="display: none; padding-left: 60px;">
+  <img src="/offline/img/loading.gif" style="float: left;">
+  <h1 style="float: left; padding-top: 20px;">
+    Please, wait.
+  </h1>
+</div>
+<div id="please_reload" style="display: none; padding-left: 60px;">
+  <h1>
+    Please, reload page to activate new version.
+  </h1>
+</div>
+
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
@@ -223,6 +235,20 @@
         </div>
 
         <div class="form-group">
+          <label for="propietario_id" class="col-sm-2 control-label">
+            Propietario
+          </label>
+          <div class="col-sm-10">
+            <select class="form-control" id="propietario_id" name="propietario_id">
+              <option value="">Buscar</option>
+              <% Propietario.all.each do |p| %>
+                <option value="<%= p.id %>"><%= p.alt %></option>
+              <% end %>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
             <button type="submit" id="add_propiedad" class="btn btn-primary">Guardar</button>
           </div>
@@ -263,7 +289,8 @@
 
   window.addEventListener('load', function() {
     window.applicationCache.addEventListener('downloading', function() {
-      alert('Downloading new version of this application. Please, select Ok and wait for a few seconds.');
+      $('#loading').show();
+//      alert('Downloading new version of this application. Please, select Ok and wait for a few seconds.');
     }, false);
 
     // Check for new version of application. If it presented — reload page.
@@ -272,8 +299,11 @@
             window.applicationCache.UPDATEREADY) {
         window.applicationCache.swapCache();
 
+        $('#loading').hide();
         if (confirm('New version is available? Load it?')) {
           window.location.reload();
+        } else {
+          $('#please_reload').show();
         }
       }
     }, false);
@@ -321,7 +351,7 @@
     $('#new_propiedad').submit(function(event) {
       var id = Date.now();
       var data = $('#new_propiedad').serializeObject();
-      data['created_at'] = Date.now();
+      data['created_at'] = id;
 
       var val = [];
       $(':checkbox:checked').each(function(i) {
@@ -354,7 +384,8 @@
         'dormitorios',
         'banos',
         'estacionamiento',
-        'tipo_de_estacionamiento'
+        'tipo_de_estacionamiento',
+        'propietario_id'
       ];
       var href = 'http://costa506.herokuapp.com/admin/propiedad/new?';
 
@@ -386,12 +417,10 @@
     };
 
     var deletePropiedad = function() {
-      debugger;
       var id = $(this).attr('data-id');
       console.log('About to delete property #' + id + '.');
       if (confirm('Are you sure?')) {
         db.remove('propiedad', id).done(function(countOfDeletedRows) {
-          alert(countOfDeletedRows);
           console.log('Property deleted.');
           updateSavedProperties();
         });

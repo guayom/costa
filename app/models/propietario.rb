@@ -24,4 +24,8 @@ class Propietario < ActiveRecord::Base
 	rails_admin do
 		object_label_method :nombre_completo
 	end
+
+	def alt
+		"#{nombre_completo}, #{celular}"
+	end
 end
