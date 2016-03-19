@@ -15,12 +15,4 @@
 // require plugins/urls.min
 // require plugins/inline_styles.min
 
-window.addEventListener('load', function() {
-  window.applicationCache.addEventListener('updateready', function () {
-    // debugger;
-    if (window.applicationCache.status ==
-      window.applicationCache.UPDATEREADY) {
-      window.applicationCache.swapCache();
-    }
-  }, false);
-}, false);
+$.pjax.disable();

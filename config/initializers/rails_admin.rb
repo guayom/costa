@@ -1,5 +1,19 @@
 require Rails.root.join('lib', 'rails_admin', 'destroy_image.rb')
 
+module RailsAdmin
+  module Config
+    module Actions
+      class Base
+        register_instance_option :pjax? do
+          false
+        end
+      end
+    end
+  end
+end
+
+
+
 RailsAdmin.config do |config|
 
   ### Popular gems integration
