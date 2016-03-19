@@ -2,6 +2,8 @@ class Propiedad < ActiveRecord::Base
   extend FriendlyId
   include PgSearch
 
+  after_initialize :set_default_values
+
   self.per_page = 5
 
   belongs_to :admin
@@ -208,4 +210,10 @@ class Propiedad < ActiveRecord::Base
     estacionamiento: [30, 2],
     tipo_de_estacionamiento: [31, 2]
   }
+
+  def set_default_values
+    if Admin.current.present?
+      self.admin_id = Admin.current.id
+    end
+  end
 end
