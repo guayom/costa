@@ -75,7 +75,9 @@
           <th>Titular</th>
           <th>Creado en</th>
           <th class="show-online">Import to site</th>
-          <th></th>
+          <th>
+            <span id="clear_all" class="fake-link">Clear all</span>
+          </th>
         </tr>
         </thead>
         <tbody id="propiedades"></tbody>
@@ -347,6 +349,16 @@
     });
 
 
+    // Clear all records.
+    $('#clear_all').click(function() {
+      if (confirm('Are you sure?')) {
+        db.clear().done(function() {
+          updateSavedProperties();
+        });
+      }
+    });
+
+
     // Add event listeners to form.
     $('#new_propiedad').submit(function(event) {
       var id = Date.now();
@@ -363,6 +375,11 @@
         updateSavedProperties();
         document.forms['new_propiedad'].reset();
       });
+
+      $('body,html').animate({
+        scrollTop: 0
+      }, 400);
+      $('#titular').focus();
 
       event.preventDefault();
     });
