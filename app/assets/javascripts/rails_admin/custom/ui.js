@@ -18,7 +18,6 @@
 window.addEventListener('load', function() {
   // Check for new version of application. If it presented — reload page.
   window.applicationCache.addEventListener('updateready', function () {
-    debugger;
     if (window.applicationCache.status ==
       window.applicationCache.UPDATEREADY) {
       window.applicationCache.swapCache();
