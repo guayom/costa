@@ -2,7 +2,7 @@
   = "#{@propiedad.titular} - código: #{@propiedad.codigo}"
 
 - content_for :meta_tags do
-  = render partial: "application/meta_tags", locals: { title: "#{@propiedad.titular} - código: #{@propiedad.codigo}", descripcion: @propiedad.descripcion_publica, image: @propiedad.cover_url, author_handle: "@Costa506"}
+  = render partial: "application/meta_tags", locals: { title: "#{@propiedad.titular} - código: #{@propiedad.codigo}", descripcion: simple_format(@propiedad.descripcion_publica.gsub("↵", '')), image: @propiedad.cover_url, author_handle: "@Costa506"}
 
 - content_for :full_width_header do
   #header.heading{:style => "background-image: url('#{image_path('img01.jpg')}'); background-position: 50% 0px;"}
