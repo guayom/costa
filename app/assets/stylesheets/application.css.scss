@@ -64,11 +64,18 @@
 @import 'iphone';
 
 @media screen and (max-width: 380px) {
-  .container, .single-post {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  .tab-content {
-    padding: 2px !important;
+  //.container, .single-post {
+  //  padding-left: 0;
+  //  padding-right: 0;
+  //}
+  //.tab-content {
+  //  padding: 2px !important;
+  //}
+
+  .show-view {
+    .container, .single-post {
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
 }
