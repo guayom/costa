@@ -61,6 +61,74 @@
     position: static;
 }
 
+// Social Buttons
+// ------------------------------
+#socialicons{
+  span{
+    display: inline-block;
+    padding: 5px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    font-size: 18px;
+
+    background: $gray-lightest;
+
+    $facebook: #265999;
+    $twitter: #00B1EF;
+    $googleplus: #e93f2e;
+    $instagram: #00749C;
+    $linkedin: #0e76a8;
+    $pinterest: #EF0020;
+
+    &.facebook{
+      background-color: $facebook;
+      &:hover{
+        background-color: darken($facebook, 10%);
+      }
+    }
+    &.twitter{
+      background-color: $twitter;
+      &:hover{
+        background-color: darken($twitter, 10%);
+      }
+    }
+    &.googleplus{
+      background-color: $googleplus;
+      &:hover{
+        background-color: darken($googleplus, 10%);
+      }
+    }
+    &.instagram{
+      background-color: $instagram;
+      &:hover{
+        background-color: darken($instagram, 10%);
+      }
+    }
+    &.linkedin{
+      background-color: $linkedin;
+      &:hover{
+        background-color: darken($linkedin, 10%);
+      }
+    }
+    &.pinterest{
+      background-color: $pinterest;
+      &:hover{
+        background-color: darken($pinterest, 10%);
+      }
+    }
+    a{
+      width: 30px;
+      height: 30px;
+      display: block;
+      text-align: center;
+      line-height: 30px;
+      color: #fff;
+      border-radius: 50%;
+    }
+  }
+}
+
 @import 'iphone';
 
 @media screen and (max-width: 380px) {

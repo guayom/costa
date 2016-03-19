@@ -1,3 +1,9 @@
+- content_for :title do
+  = "#{@propiedad.titular} - código: #{@propiedad.codigo}"
+
+- content_for :meta_tags do
+  = render partial: "application/meta_tags", locals: { title: "#{@propiedad.titular} - código: #{@propiedad.codigo}", descripcion: @propiedad.descripcion_publica, image: @propiedad.cover_url, author_handle: "@Costa506"}
+
 - content_for :full_width_header do
   #header.heading{:style => "background-image: url('#{image_path('img01.jpg')}'); background-position: 50% 0px;"}
     .container
@@ -142,6 +148,12 @@
                             #{pluralize(@propiedad.estacionamiento, 'Carro')}
                             %br/
 
+                    %h3 Compartir
+                    = render partial: "application/social_buttons", locals: {text: "#{@propiedad.titular} - código: #{@propiedad.codigo}", title: "#{@propiedad.titular} - código: #{@propiedad.codigo}", summary: @propiedad.descripcion_publica, img: @propiedad.cover_url}
+
+                    %h3 Descripción:
+                    %p= simple_format(@propiedad.descripcion_publica.gsub("↵", ''))
+
                     - if @propiedad.caracteristicas.any?
                       .row
                         .col-md-4.col-sm-4
@@ -151,29 +163,18 @@
                               %li
                                 = c.titulo
 
-                    %h3 Descripción:
-                    %p= simple_format(@propiedad.descripcion_publica.gsub("↵", ''))
+                    
                     %h3{class: "propiedad-text-color-#{@propiedad.listado}"}
                       Estado de la propiedad:
                     %p{class: "propiedad-text-color-#{@propiedad.listado}"}
                       = @propiedad.estado.capitalize
               / break
               #location.tab-pane.fade
-                /
-                  <div class="row">
-                  <div class="col-md-12">
-                  <div id="map-property"></div>
-                  </div>
-                  </div>
                 .row
                   .col-md-6.col-sm-6
                     %h3 ¿Le interesa esta propiedad?
                     %p Póngase en contacto con nosotros por medio de nuestro formulario o contacte a nuestro agente directamente.
                     .team-container.team-dark
-                      /
-                        <div class="team-image">
-                        <img src="img/team01.jpg" alt="the team - mikha realestate theme">
-                        </div>
                       .team-description
                         %small Agente:
                         - if @propiedad.admin
@@ -182,23 +183,8 @@
                           %p
                             %i.fa.fa-envelope
                             = @propiedad.admin.email
-                          /
-                            <i class="fa fa-phone"></i> Office : 021-234-5678<br>
-                            <i class="fa fa-mobile"></i> Mobile : +62-3456-78910<br>
-                            <i class="fa fa-print"></i> Fax : 021-234-5679
-                        /
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                          tempor incididunt ut labore et dolore magna aliqua.</p>
-                          <div class="team-social">
-                          <span><a href="#" title="Twitter" rel="tooltip" data-placement="top"><i class="fa fa-twitter"></i></a></span>
-                          <span><a href="#" title="Facebook" rel="tooltip" data-placement="top"><i class="fa fa-facebook"></i></a></span>
-                          <span><a href="#" title="Google Plus" rel="tooltip" data-placement="top"><i class="fa fa-google-plus"></i></a></span>
-                          <span><a href="#" title="Email" rel="tooltip" data-placement="top"><i class="fa fa-envelope"></i></a></span>
-                          <span><a href="#" title="LinkedIn" rel="tooltip" data-placement="top"><i class="fa fa-linkedin"></i></a></span>
-                          </div>
                   .col-md-6.col-sm-6
                     %br/
                     = render partial: "static_pages/form", locals: {contacto_mensaje: @contacto_mensaje}
-      / end:article
       .col-md-4.col-md-pull-8.sidebar
         = render :partial => 'application/quick_links_sidebar'
