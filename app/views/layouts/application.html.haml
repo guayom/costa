@@ -21,6 +21,7 @@
     = csrf_meta_tags
 
 %body#top
+  = render "application/fbsdk" 
   = render "application/navbar"
   = yield :full_width_header
 
