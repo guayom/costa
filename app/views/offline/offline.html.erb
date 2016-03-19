@@ -1,4 +1,4 @@
-<html manifest="offline.appcache" class="no-js">
+<html manifest="/offline.appcache" class="no-js">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -31,6 +31,11 @@
       cursor: pointer;
       border-bottom: 1px dashed black;
     }
+
+      .checkbox {
+        float: left;
+        width: 30%;
+      }
   </style>
   <link rel="stylesheet" href="offline/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="offline/css/main.css">
@@ -70,6 +75,20 @@
     <div class="col-sm-12">
       <form method="get" id="new_propiedad"
             class="form-horizontal" role="form">
+        <div class="form-group">
+          <label for="listado" class="col-sm-2 control-label">
+            Listado
+          </label>
+          <div class="col-sm-4">
+            <select class="form-control" id="listado" name="listado">
+              <option value="venta">Venta</option>
+              <option value="alquiler">Alquiler</option>
+              <option value="opcion_compra">Alquiler con opción de compra</option>
+              <option value="venta_alquiler">Venta ó Alquiler</option>
+            </select>
+          </div>
+        </div>
+
         <div class="form-group">
           <label for="titular" class="col-sm-2 control-label">Titular</label>
           <div class="col-sm-10">
@@ -192,7 +211,20 @@
 
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
-            <button id="add_propiedad" class="btn btn-primary">Guardar</button>
+            <% Caracteristica.all.each do |c| %>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="caracteristica_ids" value="<%= c.id %>">
+                  <%= c.titulo %>
+                </label>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" id="add_propiedad" class="btn btn-primary">Guardar</button>
           </div>
         </div>
       </form>
@@ -237,7 +269,7 @@
         window.applicationCache.swapCache();
 
 //        if (confirm('New version of this page is available? Load it?')) {
-          window.location.reload();
+//          window.location.reload();
 //        }
       } else {
         alert('123');
@@ -284,10 +316,16 @@
 
 
     // Add event listeners to form.
-    document.forms['new_propiedad'].addEventListener('submit', function(event) {
+    $('#new_propiedad').submit(function(event) {
       var id = Date.now();
       var data = $('#new_propiedad').serializeObject();
       data['created_at'] = Date.now();
+
+      var val = [];
+      $(':checkbox:checked').each(function(i) {
+        val[i] = $(this).val();
+      });
+      data['caracteristica_ids'] = val;
 
       db.put('propiedad', data, id).done(function(row_id) {
         updateSavedProperties();
@@ -295,7 +333,7 @@
       });
 
       event.preventDefault();
-    }, false);
+    });
 
 
     // Function to display properties that are now in memory.
@@ -323,6 +361,14 @@
         }
       }
 
+      href += 'propiedad[estado]=disponible&';
+
+      if (data['caracteristica_ids']) {
+        for (var j = 0; j < data['caracteristica_ids'].length; j++) {
+          href += 'propiedad[caracteristica_ids][]=' + data['caracteristica_ids'][j] + '&';
+        }
+      }
+
       var compra = parseInt(data['valor_compra']) > 0;
       var alquiler = parseInt(data['valor_alquiler']) > 0;
       if (compra && alquiler) {
@@ -337,10 +383,12 @@
     };
 
     var deletePropiedad = function() {
-      var id = $(this).data('id');
+      debugger;
+      var id = $(this).attr('data-id');
       console.log('About to delete property #' + id + '.');
       if (confirm('Are you sure?')) {
         db.remove('propiedad', id).done(function(countOfDeletedRows) {
+          alert(countOfDeletedRows);
           console.log('Property deleted.');
           updateSavedProperties();
         });
@@ -375,9 +423,9 @@
           }).html(linkToPropiedad(row)));
 
           var span = $('<span></span>',  {
-            class: 'fake-link'
+            class: 'fake-link',
+            'data-id': row['created_at']
           }).text('Eliminar').click(deletePropiedad);
-          span.data('id', row['created_at']);
           tr.append($('<td></td>').html(span));
 
           $('#propiedades').append(tr);

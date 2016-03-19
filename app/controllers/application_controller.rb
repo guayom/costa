@@ -22,4 +22,9 @@ class ApplicationController < ActionController::Base
   def current_user
     current_admin
   end
+
+  before_filter :set_global_admin
+  def set_global_admin
+    Admin.current = current_admin
+  end
 end
