@@ -83,7 +83,7 @@ class Propiedad < ActiveRecord::Base
   pg_search_scope :search_by_keywords, against: [:titular, :provincia, :canton, :distrito, :codigo]
 
   # friendly_id :slug_string, use: :slugged
-  friendly_id :slug_string, use: :slugged
+  friendly_id :slug_string
 
   def provincia_enum
     Provincia.pluck(:nombre)
