@@ -5,20 +5,21 @@
         .col-xs-12.col-md-6
           .property-image-list
             - if propiedad.imagenes.any?
-              %img{:alt => "#{propiedad.titular}", :src => propiedad.cover_url }
+              = link_to propiedad do
+                %img{:alt => "#{propiedad.titular}", :src => propiedad.cover_url }
 
-                .property-price{:data => {:listado => propiedad.listado }, class: "propiedad-color-#{propiedad.listado}"}
-                  -#%h4
-                  -#  = propiedad.tipo.titulo unless propiedad.tipo.nil?
-                  - if 'disponible' == propiedad.estado
-                    = propiedad_all_prices(propiedad)
-                  - else
-                    = propiedad.estado.capitalize
+                  .property-price{:data => {:listado => propiedad.listado }, class: "propiedad-color-#{propiedad.listado}"}
+                    -#%h4
+                    -#  = propiedad.tipo.titulo unless propiedad.tipo.nil?
+                    - if 'disponible' == propiedad.estado
+                      = propiedad_all_prices(propiedad)
+                    - else
+                      = propiedad.estado.capitalize
 
-                -#- if 'disponible' != propiedad.estado
-                -#  .property-status
-                -#    %span
-                -#      = propiedad.estado.capitalize
+                  -#- if 'disponible' != propiedad.estado
+                  -#  .property-status
+                  -#    %span
+                  -#      = propiedad.estado.capitalize
 
                 .mycarousel
                   %ul.mensajes-especiales
