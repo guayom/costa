@@ -123,7 +123,7 @@
                                 - if @propiedad.admin
                                   = "#{@propiedad.admin.nombre}"
                                   %br/
-                                  %span= @propiedad.admin.telefono
+                                  %a{:href => "tel: +506 #{@propiedad.admin.telefono}"}="+506 #{@propiedad.admin.telefono}"
                                   %br/
                                   %span.hidden-xs= @propiedad.admin.email
                       .col-xs-12.col-md-4
@@ -183,7 +183,7 @@
                             = @propiedad.admin.nombre
                           %p
                             %i.fa.fa-phone
-                            = @propiedad.admin.telefono
+                            %a{:href => "tel: +506 #{@propiedad.admin.telefono}"}="+506 #{@propiedad.admin.telefono}"
                           %p
                             %i.fa.fa-envelope
                             = @propiedad.admin.email
