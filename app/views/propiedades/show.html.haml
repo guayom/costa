@@ -107,7 +107,7 @@
                                   Terreno: #{number_to_human(@propiedad.area_terreno, precision: 1, strip_insignificant_zeros: true)}m
                                   %sup 2
 
-                          - unless @propiedad.patio.nil? or @propiedad.patio == 0
+                          - unless @propiedad.patio.nil? or @propiedad.patio_area == 0
                             %tr
                               %td
                                 %strong Patio
