@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :propietarios
 
   # Routes for offline mini-app.
-  get 'offline.appcache', controller: :offline, action: :appcache, defaults: { format: 'text' }
+  get 'xoffline.xappcache', controller: :offline, action: :appcache, defaults: { format: 'text' }
   get 'offline', controller: :offline, action: :offline
 
 
