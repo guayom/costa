@@ -214,16 +214,10 @@ class Propiedad < ActiveRecord::Base
   }
 
   def set_default_values
-    if Admin.current.present?
-      self.admin_id = Admin.current.id
-    end
-
-    if temp_caracteristicas.present?
-      fail '123'
-      caracteristicas_ids = temp_caracteristicas
+    if self.admin_id.blank?
+      if Admin.current.present?
+        self.admin_id = Admin.current.id
+      end
     end
   end
-
-  # Needed for form population in rails_admin.
-  attr_accessor :temp_caracteristicas
 end
