@@ -2,7 +2,7 @@ class Propiedad < ActiveRecord::Base
   extend FriendlyId
   include PgSearch
 
-  after_initialize :set_default_values
+  # after_initialize :set_default_values
 
   self.per_page = 5
 
