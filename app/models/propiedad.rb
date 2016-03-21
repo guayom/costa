@@ -78,6 +78,7 @@ class Propiedad < ActiveRecord::Base
     end
   }
   scope :featured, -> { where(featured: true) }
+  scope :notfeatured, -> { where(featured: false) }
 
   pg_search_scope :search_by_keywords, against: [:titular, :provincia, :canton, :distrito, :codigo]
 

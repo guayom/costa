@@ -59,7 +59,7 @@
         .property-text.col-xs-12.col-md-6
           .col-xs-12
             %h3
-              = link_to propiedad, propiedad, class: "propiedad-text-color-#{propiedad.listado}"
+              =link_to propiedad.titular, propiedad, class: "propiedad-text-color-#{propiedad.listado}"
               %small
             %p= truncate( strip_tags(propiedad.descripcion_publica), length: 150, :separator => ' ').gsub("↵", '')
 

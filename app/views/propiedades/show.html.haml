@@ -107,7 +107,7 @@
                                   Terreno: #{number_to_human(@propiedad.area_terreno, precision: 1, strip_insignificant_zeros: true)}m
                                   %sup 2
 
-                          - unless @propiedad.patio.nil?
+                          - unless @propiedad.patio.nil? or @propiedad.patio_area == 0
                             %tr
                               %td
                                 %strong Patio
@@ -122,6 +122,8 @@
                               %td
                                 - if @propiedad.admin
                                   = "#{@propiedad.admin.nombre}"
+                                  %br/
+                                  %span= @propiedad.admin.telefono
                                   %br/
                                   %span.hidden-xs= @propiedad.admin.email
                       .col-xs-12.col-md-4
@@ -153,7 +155,7 @@
                     = render partial: "application/social_buttons", locals: {text: "#{@propiedad.titular} - código: #{@propiedad.codigo}", title: "#{@propiedad.titular} - código: #{@propiedad.codigo}", summary: @propiedad.descripcion_publica, img: @propiedad.cover_url}
 
                     %h3 Descripción:
-                    %p= simple_format(@propiedad.descripcion_publica.gsub("↵", ''))
+                    %p= simple_format(@propiedad.descripcion_publica.gsub("↵", '<br/>'))
 
                     - if @propiedad.caracteristicas.any?
                       .row
@@ -179,6 +181,9 @@
                         - if @propiedad.admin
                           %h3
                             = @propiedad.admin.nombre
+                          %p
+                            %i.fa.fa-phone
+                            = @propiedad.admin.telefono
                           %p
                             %i.fa.fa-envelope
                             = @propiedad.admin.email

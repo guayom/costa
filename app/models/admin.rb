@@ -9,6 +9,7 @@ class Admin < ActiveRecord::Base
   validates :nombre, :codigo, :email,  presence: true
   validates :email, :codigo, uniqueness: true, on: :create
   validates :permisos, presence: true
+  validates :telefono, presence: true
 
   extend Enumerize
   enumerize :permisos, :in => [:developer, :admin, :agente], scope: true
