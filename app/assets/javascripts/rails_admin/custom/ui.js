@@ -14,5 +14,3 @@
 // require plugins/fullscreen.min
 // require plugins/urls.min
 // require plugins/inline_styles.min
-
-$.pjax.disable();
