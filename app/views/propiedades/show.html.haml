@@ -123,6 +123,8 @@
                                 - if @propiedad.admin
                                   = "#{@propiedad.admin.nombre}"
                                   %br/
+                                  %span= @propiedad.admin.telefono
+                                  %br/
                                   %span.hidden-xs= @propiedad.admin.email
                       .col-xs-12.col-md-4
                         .post-meta.description-icons
@@ -179,6 +181,9 @@
                         - if @propiedad.admin
                           %h3
                             = @propiedad.admin.nombre
+                          %p
+                            %i.fa.fa-phone
+                            = @propiedad.admin.telefono
                           %p
                             %i.fa.fa-envelope
                             = @propiedad.admin.email
