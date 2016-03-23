@@ -3,10 +3,6 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  def after_sign_in_path_for(resource)
-    registrar_propiedades_path
-  end
-
   def after_sign_out_path_for(resource_or_scope)
     request.referrer
   end
@@ -29,16 +25,30 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    pars = CGI::parse(URI.parse(request.referrer).query)
-
-    if pars['back']
-      pars['back'][0]
+    if resource.instance_of?(Admin)
+      '/admin'
     else
-      if resource.instance_of?(Admin)
-        '/admin'
+      registrar_propiedades_path
+    end
+  end
+
+  private
+
+  def compare_password_and_do_simple_auth!
+    email = params['email']
+    password = params['password']
+
+    if email && password
+      a = Admin.find_by(email: email)
+      if a.present?
+        if !Devise::Encryptor.compare(Admin, Admin.find_by(email: email).encrypted_password, password)
+          render nothing: true, status: :unauthorized
+        end
       else
-        current_user_path
+        render nothing: true, status: :unauthorized
       end
+    else
+      render nothing: true, status: :unauthorized
     end
   end
 end
