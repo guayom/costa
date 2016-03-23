@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :provincias, only: [:index]
   resources :cantones, only: [:index]
   resources :distritos, only: [:index]
+  resources :mensajes, only: [:index]
+  resources :caracteristicas, only: [:index]
 
   resources :propiedades do
     collection do
