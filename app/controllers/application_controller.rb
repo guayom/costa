@@ -27,4 +27,18 @@ class ApplicationController < ActionController::Base
   def set_global_admin
     Admin.current = current_admin
   end
+
+  def after_sign_in_path_for(resource)
+    pars = CGI::parse(URI.parse(request.referrer).query)
+
+    if pars['back']
+      pars['back'][0]
+    else
+      if resource.instance_of?(Admin)
+        '/admin'
+      else
+        current_user_path
+      end
+    end
+  end
 end
