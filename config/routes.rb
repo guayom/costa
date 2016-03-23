@@ -1,17 +1,17 @@
 Rails.application.routes.draw do
   devise_for :propietarios
 
-  # Routes for offline mini-app.
-  get 'xoffline.xappcache', controller: :offline, action: :appcache, defaults: { format: 'text' }
-  get 'offline', controller: :offline, action: :offline
-
-
   get 'propiedades/index'
 
   get 'propiedades/detalles'
 
   devise_for :admins
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
+  resources :tipos, only: [:index]
+  resources :provincias, only: [:index]
+  resources :cantones, only: [:index]
+  resources :distritos, only: [:index]
 
   resources :propiedades do
     collection do
