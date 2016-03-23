@@ -15,6 +15,9 @@
         .widget
           %h3 Nuestros Agentes
           %ul.list-unstyled
+            - @agentes = Admin.without_permisos(:developer)
+            - @agentes = @agentes.move(@agentes.last, 1)
+            = @agentes.inspect
             - Admin.without_permisos(:developer).each do |admin|
               %li
                 = admin.nombre
