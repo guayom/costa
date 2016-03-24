@@ -68,6 +68,9 @@ RailsAdmin.config do |config|
         hide
       end
     end
+     object_label_method do
+      :titulo
+    end
   end
 
   config.model Propiedad do

@@ -100,11 +100,11 @@
                                 %strong Área
                               %td
                                 - if @propiedad.area_construccion > 0
-                                  Construcción: #{number_to_human(@propiedad.area_construccion, precision: 1, strip_insignificant_zeros: true)}m
+                                  Construcción: #{number_with_precision(@propiedad.area_construccion, significant: true)}m
                                   %sup 2
                                   %br/
                                 - if @propiedad.area_terreno > 0
-                                  Terreno: #{number_to_human(@propiedad.area_terreno, precision: 1, strip_insignificant_zeros: true)}m
+                                  Terreno: #{number_with_precision(@propiedad.area_terreno, significant: true)}m
                                   %sup 2
 
                           - unless @propiedad.patio.nil? or @propiedad.patio_area == 0
