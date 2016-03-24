@@ -104,7 +104,7 @@ gem 'rails-i18n'
 gem 'virtus', '~> 1.0.5'
 
 gem 'paperclip'
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 
 gem 'haml', '~> 4.0', '>= 4.0.7'
 
