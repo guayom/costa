@@ -10,6 +10,8 @@ class Ability
         can :manage, :all
       elsif 'agente' == admin.permisos
         can :manage, [Propiedad, Propietario, Imagen]
+
+        can :index, [Mensaje, Caracteristica]
       end
     end
 
