@@ -102,43 +102,6 @@ class Propiedad < ActiveRecord::Base
     Distrito.pluck(:nombre)
   end
 
-  # rails_admin do
-  #   edit do
-  #     exclude_fields :id
-  #     field :imagenes, :paperclip do
-  #       partial 'multiple_images'
-  #     end
-  #   end
-  # end
-
-  rails_admin do
-    edit do
-      # exclude_fields do |field|
-      #   fail _current_user.inspect
-      #   if 'agente' == Admin.current.permisos
-      #     [:cover, :admin, :admin_id].include?(field.name)
-      #   else
-      #     [:cover].include?(field.name)
-      #   end
-      # end
-      configure :admin do
-        # default_value do
-        #   Admin.current.id
-        # end
-
-        read_only do
-          'agente' == Admin.current.permisos
-        end
-        # if 'agente' == Admin.current.permisos
-        #   read_only true
-        # end
-
-        # fail bindings[:controller]._current_user.inspect
-        # visible ('agente' != Admin.current.permisos)
-      end
-    end
-  end
-
   def imagenes= array
     array.each do |file|
       imagenes.build(imagen: file)

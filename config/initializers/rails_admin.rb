@@ -1,14 +1,20 @@
 require Rails.root.join('lib', 'rails_admin', 'destroy_image.rb')
 
+RailsAdmin::ApplicationController.class_eval do
+  before_filter do
+    Admin.current = current_user
+  end
+end
+
 RailsAdmin.config do |config|
 
   ### Popular gems integration
 
   ## == Devise ==
-  # config.authenticate_with do
-  #   warden.authenticate! scope: :user
-  # end
-  # config.current_user_method(&:current_admin)
+  config.authenticate_with do
+    warden.authenticate! scope: :admin
+  end
+  config.current_user_method(&:current_admin)
 
   ## == Cancan ==
   # config.authorize_with :cancan
@@ -22,10 +28,10 @@ RailsAdmin.config do |config|
 
   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
 
-  config.authenticate_with do
-    warden.authenticate! scope: :admin
-  end
-  config.current_user_method(&:current_admin)
+  # config.authenticate_with do
+  #   warden.authenticate! scope: :admin
+  # end
+  # config.current_user_method(&:current_admin)
 
   config.actions do
     dashboard                     # mandatory
@@ -97,7 +103,7 @@ RailsAdmin.config do |config|
         partial 'multiple_images'
       end
 
-      # exclude_fields :cover, :admin
+      exclude_fields :cover
     end
     list do
       field :codigo

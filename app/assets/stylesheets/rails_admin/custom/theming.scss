@@ -20,3 +20,7 @@
 .estado_field[title = 'Alquilado'], .estado_field[title = 'Vendido']{
 	color: orange;
 }
+
+body.agente form#new_propiedad #propiedad_admin_id_field {
+  display: none;
+}
