@@ -58,9 +58,17 @@
         = select_tag :valor_alquiler,
                      options_for_select([['cualquier...', nil]] + valor_alquiler_options, params[:valor_alquiler]),
                      class: 'form-control'
+
   .col-md-12.col-sm-12.col-xs-12
     .form-group
       %label{for: 'keywords'}= t(:keywords)
       %input.form-control{type: 'search', name: 'keywords', value: params[:keywords]}
+
+  .col-md-12.col-sm-12.col-xs-12
+    .form-group
+      %label
+        = check_box_tag :estado, '1', ('1' == params[:estado])
+        Mostrar propiedades rentadas y alquiladas
+
   .col-md-12.col-sm-12.col-xs-12
     %input.btn.btn-success.btn-lg.btn-block{type: :submit, value: t(:search)}

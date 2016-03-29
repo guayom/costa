@@ -10,8 +10,12 @@ class PropiedadesController < ApplicationController
 
     @propiedades = Propiedad.publicado.order(created_at: :desc, id: :desc)
 
-    if params[:keywords].blank?
-      @propiedades = @propiedades.with_estado(:disponible)
+    if params[:estado].present? && params[:estado]
+      @propiedades = @propiedades.with_estado(:alquilado, :vendido)
+    else
+      if params[:keywords].blank?
+        @propiedades = @propiedades.with_estado(:disponible)
+      end
     end
 
     [:listado, :provincia_id, :canton_id, :distrito_id, :tipo,
