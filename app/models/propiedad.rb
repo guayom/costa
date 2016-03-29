@@ -26,6 +26,10 @@ class Propiedad < ActiveRecord::Base
 
   before_save :set_codigo
 
+  before_create do
+    self.admin_id = Admin.current.id
+  end
+
   extend Enumerize
   enumerize :listado, in: [:venta, :alquiler, :opcion_compra, :venta_alquiler]
   enumerize :estado, in: [:disponible, :alquilado, :vendido], default: :disponible, scope: true
@@ -103,6 +107,21 @@ class Propiedad < ActiveRecord::Base
   #     end
   #   end
   # end
+
+  rails_admin do
+    edit do
+      exclude_fields do |field|
+        if 'agente' == Admin.current.permisos
+          [:cover, :admin, :admin_id].include?(field.name)
+        else
+          [:cover].include?(field.name)
+        end
+      end
+      configure :admin do
+        visible ('agente' != Admin.current.permisos)
+      end
+    end
+  end
 
   def imagenes= array
     array.each do |file|
