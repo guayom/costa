@@ -26,8 +26,11 @@ class Propiedad < ActiveRecord::Base
 
   before_save :set_codigo
 
-  before_create do
-    self.admin_id = Admin.current.id
+  # before_create do
+  #   self.admin_id = Admin.current.id
+  # end
+  after_initialize do
+    self.admin_id = Admin.current.id unless self.persisted?
   end
 
   extend Enumerize
@@ -110,15 +113,28 @@ class Propiedad < ActiveRecord::Base
 
   rails_admin do
     edit do
-      exclude_fields do |field|
-        if 'agente' == Admin.current.permisos
-          [:cover, :admin, :admin_id].include?(field.name)
-        else
-          [:cover].include?(field.name)
-        end
-      end
+      # exclude_fields do |field|
+      #   fail _current_user.inspect
+      #   if 'agente' == Admin.current.permisos
+      #     [:cover, :admin, :admin_id].include?(field.name)
+      #   else
+      #     [:cover].include?(field.name)
+      #   end
+      # end
       configure :admin do
-        visible ('agente' != Admin.current.permisos)
+        # default_value do
+        #   Admin.current.id
+        # end
+
+        read_only do
+          'agente' == Admin.current.permisos
+        end
+        # if 'agente' == Admin.current.permisos
+        #   read_only true
+        # end
+
+        # fail bindings[:controller]._current_user.inspect
+        # visible ('agente' != Admin.current.permisos)
       end
     end
   end
