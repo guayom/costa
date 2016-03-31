@@ -30,7 +30,9 @@ class Propiedad < ActiveRecord::Base
   #   self.admin_id = Admin.current.id
   # end
   after_initialize do
-    self.admin_id = Admin.current.id unless self.persisted?
+    if Admin.current.present?
+      self.admin_id = Admin.current.try(:id) unless self.persisted?
+    end
   end
 
   extend Enumerize
