@@ -23,4 +23,6 @@ use Rack::Cors do
   end
 end
 
+Rack::Utils.multipart_part_limit = 0
+
 run Rails.application
