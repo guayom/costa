@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160331125007) do
+ActiveRecord::Schema.define(version: 20160331134029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -183,24 +183,24 @@ ActiveRecord::Schema.define(version: 20160331125007) do
     t.text     "direccion_uso_interno"
     t.text     "descripcion_publica"
     t.string   "moneda",                            default: "USD", null: false
-    t.integer  "valor_compra",            limit: 8, default: 0
-    t.integer  "valor_alquiler",          limit: 8, default: 0
+    t.integer  "valor_compra",            limit: 8, default: 0,     null: false
+    t.integer  "valor_alquiler",          limit: 8, default: 0,     null: false
     t.boolean  "opcion_compra"
     t.boolean  "incluye_mantenimiento"
-    t.integer  "cuota_mantenimiento",               default: 0
-    t.integer  "area_terreno",                      default: 0
-    t.float    "area_construccion",                 default: 0.0
-    t.integer  "pisos",                             default: 0
-    t.integer  "dormitorios",                       default: 0
-    t.float    "banos",                             default: 0.0
+    t.integer  "cuota_mantenimiento",               default: 0,     null: false
+    t.integer  "area_terreno",                      default: 0,     null: false
+    t.float    "area_construccion",                 default: 0.0,   null: false
+    t.integer  "pisos",                             default: 0,     null: false
+    t.integer  "dormitorios",                       default: 0,     null: false
+    t.float    "banos",                             default: 0.0,   null: false
     t.boolean  "sala_comedor"
     t.boolean  "patio"
-    t.integer  "patio_area",                        default: 0
-    t.integer  "estacionamiento",                   default: 0
+    t.integer  "patio_area",                        default: 0,     null: false
+    t.integer  "estacionamiento",                   default: 0,     null: false
     t.string   "tipo_de_estacionamiento"
     t.boolean  "amueblado"
     t.boolean  "linea_blanca"
-    t.integer  "fecha_construccion",                default: 0
+    t.integer  "fecha_construccion",                default: 0,     null: false
     t.text     "otros"
     t.string   "numero_plano_catastrado"
     t.text     "notas_uso_interno"
