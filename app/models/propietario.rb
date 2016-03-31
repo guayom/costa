@@ -1,8 +1,8 @@
 class Propietario < ActiveRecord::Base
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  # :confirmable, :lockable, :timeoutable, :validatable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable
 
 	belongs_to :admin
 
@@ -13,7 +13,7 @@ class Propietario < ActiveRecord::Base
   end
 
 	validates :nombre, :apellido, :celular, presence: true
-	validates :email, email: true
+	validates :email, allow_blank: true, email: true
 
   # This validation should use some sort of propietario_status. Because when
   # user just register on site — he has no admin_id. I think admin_id should be
