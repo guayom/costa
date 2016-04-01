@@ -56,9 +56,6 @@ class Propiedad < ActiveRecord::Base
   pg_search_scope :search_by_tipo,
                   associated_against: { tipo: :titulo }
 
-  pg_search_scope :search_by_estacionamiento, against: :estacionamiento
-  pg_search_scope :search_by_dormitorios, against: :dormitorios
-
   scope :search_by_listado, -> (value) do
     case value
     when 'venta'
@@ -77,7 +74,27 @@ class Propiedad < ActiveRecord::Base
       where('valor_compra >= ?', values[0])
     end
   }
-  scope :search_by_banos, -> (value) { where(banos: value) }
+  scope :search_by_estacionamiento, -> (value) {
+    if '10+' == value
+      where('estacionamiento > 10')
+    else
+      where(estacionamiento: value)
+    end
+  }
+  scope :search_by_dormitorios, -> (value) {
+    if '10+' == value
+      where('dormitorios > 10')
+    else
+      where(dormitorios: value)
+    end
+  }
+  scope :search_by_banos, -> (value) {
+    if '10+' == value
+      where('banos > 10')
+    else
+      where(banos: value)
+    end
+  }
 
   scope :search_by_valor_alquiler, -> (values) {
     if values.size > 1

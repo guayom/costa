@@ -32,18 +32,18 @@
     .form-group
       %label{for: :dormitorios}= t(:dormitorios)
       = select_tag :dormitorios,
-                             options_for_select([['cualquier...', nil]] + Propiedad.pluck(:dormitorios).map(&:to_i).uniq.find_all(&:present?).sort, params[:dormitorios]),
+                             options_for_select([['cualquier...', nil]] + integer_1_10_options, params[:dormitorios]),
                              class: 'form-control'
   .col-md-6.col-sm-6.col-xs-6
     .form-group
       %label{for: :estacionamiento}= t(:estacionamiento)
       = select_tag :estacionamiento,
-                   options_for_select([['cualquier...', nil]] + Propiedad.pluck(:estacionamiento).map(&:to_i).uniq.find_all(&:present?).sort, params[:estacionamiento]),
+                   options_for_select([['cualquier...', nil]] + integer_1_10_options, params[:estacionamiento]),
                    class: 'form-control'
     .form-group
       %label{for: :banos}= t(:banos)
       = select_tag :banos,
-                             options_for_select([['cualquier...', nil]] + banos_options, params[:banos]),
+                             options_for_select([['cualquier...', nil]] + float_1_10_options, params[:banos]),
                              class: 'form-control'
   .col-md-12.col-sm-12.col-xs-12
     - if [:venta, :venta_alquiler].include?(params[:listado] ? params[:listado].to_sym : nil) || params[:listado].nil?

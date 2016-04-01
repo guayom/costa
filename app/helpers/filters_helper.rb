@@ -24,4 +24,12 @@ module FiltersHelper
   def banos_options
     Propiedad.pluck(:banos).uniq.find_all(&:present?).sort.map { |n| 0 == n % 1 ? n.to_i : n }
   end
+
+  def integer_1_10_options
+    (1..10).to_a << '10+'
+  end
+
+  def float_1_10_options
+    (0..19).map { |i| 1.0 + 0.5 * i }.map { |n| 0 == n % 1 ? n.to_i : n } << '10+'
+  end
 end
