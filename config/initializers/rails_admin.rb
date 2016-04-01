@@ -81,11 +81,12 @@ RailsAdmin.config do |config|
 
   config.model Propiedad do
     edit do
-      # configure :admin do
-      #   default_value do
-      #     bindings[:view]._current_admin.id
-      #   end
-      # end
+      configure :admin do
+        visible false
+        default_value do
+          bindings[:view]._current_user.id
+        end
+      end
       configure :descripcion_publica, :froala
       configure :provincia do
         partial 'propiedad_provincia'
