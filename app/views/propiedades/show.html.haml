@@ -107,14 +107,16 @@
                                   Terreno: #{number_with_precision(@propiedad.area_terreno, significant: true)}m
                                   %sup 2
 
-                          - unless @propiedad.patio.nil? or @propiedad.patio_area == 0
+                          - if @propiedad.patio
                             %tr
                               %td
                                 %strong Patio
                               %td
-                                = @propiedad.patio_area
-                                m
-                                %sup 2
+                                - if @propiedad.patio_area > 0
+                                  = @propiedad.patio_area
+                                  m<sup>2</sup>
+                                - else
+                                  Si
                           - unless @propiedad.admin.nil?
                             %tr
                               %td
