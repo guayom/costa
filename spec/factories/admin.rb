@@ -1,12 +1,16 @@
 FactoryGirl.define do
   factory :admin do
-    email 'admin@example.com'
-    password 'password'
+    email { Faker::Internet.email }
+    password { Faker::Internet.password }
 
-    permisos 'agente'
+    permisos 'admin'
 
-    nombre 'Nombre'
-    codigo 'XXX'
-    telefono '+1234567890'
+    nombre { Faker::Name.name }
+    codigo { "#{Time.now.to_i}#{Faker::Lorem.word[0]}" }
+    telefono { Faker::PhoneNumber.cell_phone }
+
+    factory :agente do
+      permisos 'agente'
+    end
   end
 end

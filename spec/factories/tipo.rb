@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :tipo do
-    titulo 'Titulo'
+    titulo { Faker::Lorem.words }
   end
 end

@@ -24,11 +24,8 @@ class Propiedad < ActiveRecord::Base
   has_and_belongs_to_many :tipos, dependent: :destroy
   # accepts_nested_attributes_for :tipos
 
-  before_save :set_codigo
+  before_validation :set_codigo
 
-  # before_create do
-  #   self.admin_id = Admin.current.id
-  # end
   after_initialize do
     if Admin.current.present?
       self.admin_id = Admin.current.try(:id) unless self.persisted?

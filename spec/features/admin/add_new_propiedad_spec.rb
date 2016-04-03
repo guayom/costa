@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.feature 'Add new Propiedad through admin interface', type: :feature do
   before :each do
-    admin = FactoryGirl.create(:admin)
-    login_as(admin, scope: :admin)
+    agente = FactoryGirl.create(:agente)
+    login_as(agente, scope: :admin)
 
     @tipo = FactoryGirl.create(:tipo)
   end
