@@ -30,6 +30,6 @@ module FiltersHelper
   end
 
   def float_1_10_options
-    (0..19).map { |i| 1.0 + 0.5 * i }.map { |n| 0 == n % 1 ? n.to_i : n } << '10+'
+    %w(1 1.5 2 2.5 3 3.5 4 4.5 5 6 7 8 9 10 10+)
   end
 end
