@@ -11,7 +11,7 @@ class ContactoMensaje < ActiveRecord::Base
 
   after_create do
     if self.propiedad.present?
-      ContactoMailer.new_mensaje(self).deliver
+      ContactoMailer.for_agente(self).deliver
     end
   end
 end
