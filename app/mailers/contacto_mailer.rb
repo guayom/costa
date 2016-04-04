@@ -9,6 +9,13 @@ class ContactoMailer < ApplicationMailer
     mail from: "#{mensaje.nombre} <#{mensaje.email}>", subject: mensaje.motivo
   end
 
+  def for_agente(mensaje)
+    @mensaje = mensaje
+
+    mail to: @mensaje.propiedad.admin.email,
+         from: "#{mensaje.nombre} <#{mensaje.email}>", subject: mensaje.motivo
+  end
+
   def thank_you_mensaje(mensaje)
     @mensaje = mensaje
 

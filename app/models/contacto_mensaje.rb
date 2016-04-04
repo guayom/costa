@@ -9,4 +9,9 @@ class ContactoMensaje < ActiveRecord::Base
   validates :mensaje, presence: true
   validates_format_of :email,:with => Devise::email_regexp
 
+  after_create do
+    if self.propiedad.present?
+      ContactoMailer.new_mensaje(self).deliver
+    end
+  end
 end
