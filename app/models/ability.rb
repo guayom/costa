@@ -6,6 +6,7 @@ class Ability
     can :dashboard
 
     if admin
+      can :index, Admin
       can :show, Admin, id: admin.id
 
       if %w(developer admin).include?(admin.permisos)
