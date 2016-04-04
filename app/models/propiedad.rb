@@ -100,7 +100,7 @@ class Propiedad < ActiveRecord::Base
       where('valor_alquiler >= ?', values[0])
     end
   }
-  scope :featured, -> { where(featured: true) }
+  scope :featured, -> { where(featured: true, estado: :disponible) }
   scope :notfeatured, -> { where(featured: false) }
 
   pg_search_scope :search_by_keywords, against: [:titular, :provincia, :canton, :distrito, :codigo]
