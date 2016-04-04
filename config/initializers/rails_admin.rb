@@ -104,7 +104,7 @@ RailsAdmin.config do |config|
         partial 'multiple_images'
       end
 
-      exclude_fields :cover
+      exclude_fields :cover, :tipos, :wpid
     end
     list do
       field :codigo
