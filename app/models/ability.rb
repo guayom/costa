@@ -6,10 +6,6 @@ class Ability
     can :dashboard
 
     if admin
-      can :index, Admin
-      can :show, Admin, id: admin.id
-      can :edit, Admin, id: admin.id
-
       if %w(developer admin).include?(admin.permisos)
         can :manage, :all
       elsif 'agente' == admin.permisos
