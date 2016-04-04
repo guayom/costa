@@ -17,6 +17,8 @@ class Admin < ActiveRecord::Base
   has_many :propietarios
   has_many :propiedades
 
+  scope :for_footer, -> { order('14 = id').order(:nombre) }
+
   rails_admin do
 		object_label_method :nombre
   end
