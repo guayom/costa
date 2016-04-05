@@ -82,6 +82,7 @@
     $instagram: #00749C;
     $linkedin: #0e76a8;
     $pinterest: #EF0020;
+    $whatsapp: rgb(72, 198, 102);
 
     &.facebook{
       background-color: $facebook;
@@ -117,6 +118,12 @@
       background-color: $pinterest;
       &:hover{
         background-color: darken($pinterest, 10%);
+      }
+    }
+    &.whatsapp{
+      background-color: $whatsapp;
+      &:hover{
+        background-color: darken($whatsapp, 10%);
       }
     }
     a{

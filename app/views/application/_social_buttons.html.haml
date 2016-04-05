@@ -20,3 +20,8 @@
       %span.pinterest
         = link_to "https://www.pinterest.com/pin/create/button/?url=#{url}&media=#{img ||= ""}&description=#{text}", popup: true, target: "_blank" do
           %i.fa.fa-pinterest
+
+    %li
+      %span.whatsapp
+        = link_to "whatsapp://send?text=#{url} #{text}", popup: true, target: '_blank', data: { action: 'share/whatsapp/share' } do
+          %i.fa.fa-whatsapp
