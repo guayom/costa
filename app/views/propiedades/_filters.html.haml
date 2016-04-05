@@ -1,3 +1,5 @@
+- params.merge!(session[:propiedad_params]) if session[:propiedad_params].present?
+
 %form{:method => "GET", :role => "form", action: propiedades_path}
   .col-md-12.col-sm-12.col-xs-12
     .form-group
