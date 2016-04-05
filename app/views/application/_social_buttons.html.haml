@@ -25,3 +25,7 @@
       %span.whatsapp
         = link_to "whatsapp://send?text=#{url} #{text}", popup: true, target: '_blank', data: { action: 'share/whatsapp/share' } do
           %i.fa.fa-whatsapp
+    %li
+      %span.email
+        = mail_to 'email@example.com', subject: title, body: "#{url} #{text}" do
+          %i.fa.fa-envelope

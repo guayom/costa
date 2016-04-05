@@ -83,6 +83,7 @@
     $linkedin: #0e76a8;
     $pinterest: #EF0020;
     $whatsapp: rgb(72, 198, 102);
+    $email: rgb(69, 195, 244);
 
     &.facebook{
       background-color: $facebook;
@@ -124,6 +125,12 @@
       background-color: $whatsapp;
       &:hover{
         background-color: darken($whatsapp, 10%);
+      }
+    }
+    &.email{
+      background-color: $email;
+      &:hover{
+        background-color: darken($email, 10%);
       }
     }
     a{
