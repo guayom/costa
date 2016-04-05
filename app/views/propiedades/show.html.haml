@@ -42,20 +42,24 @@
                         Código: #{@propiedad.codigo}
 
                     .jcarousel-wrapper
-                      .jcarousel
+                      .jcarousel.main-jcarousel
                         %ul
                           - unless @propiedad.imagenes.empty?
                             - @propiedad.imagenes.each_with_index do |pic, index|
                               %li
                                 = image_tag pic.imagen.url(:large)
-                      = link_to '&lsaquo;'.html_safe, '#', class: 'jcarousel-control-prev'
-                      = link_to '&rsaquo;'.html_safe, '#', class: 'jcarousel-control-next'
+                      = link_to '&lsaquo;'.html_safe, '#', class: 'jcarousel-control-prev main'
+                      = link_to '&rsaquo;'.html_safe, '#', class: 'jcarousel-control-next main'
 
                     .clearfix
 
                     .row.hidden-xs
-                      .col-xs-12
-                        .jcarousel-pagination
+                      .col-xs-12.jcarousel-wrapper
+                        .jcarousel-pagination-wrapper.jcarousel
+                          %ul.jcarousel-pagination
+
+                        = link_to '&lsaquo;'.html_safe, '#', class: 'jcarousel-control-prev secondary'
+                        = link_to '&rsaquo;'.html_safe, '#', class: 'jcarousel-control-next secondary'
 
                     %h3 General
                     .row

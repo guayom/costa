@@ -108,16 +108,17 @@ $(document).ready(function () {
     carousel.jcarousel('items').css('width', Math.ceil(width) + 'px');
   });
 
-  $('.jcarousel').jcarousel({
+  $('.jcarousel, .main-jcarousel').jcarousel({
     wrap: 'circular'
-  }).jcarouselSwipe().jcarouselAutoscroll();
+  }).jcarouselSwipe();
+  $('.main-jcarousel').jcarouselAutoscroll();
 
-  $('.jcarousel-control-prev').jcarouselControl({
+  $('.jcarousel-control-prev.main').jcarouselControl({
     carousel: $(".jcarousel"),
     target: '-=1'
   });
 
-  $('.jcarousel-control-next').jcarouselControl({
+  $('.jcarousel-control-next.main').jcarouselControl({
     carousel: $(".jcarousel"),
     target: '+=1'
   });
@@ -126,12 +127,26 @@ $(document).ready(function () {
     .on('click', function(e) {
       e.preventDefault();
     })
+    .on('jcarouselpagination:createend', function() {
+      $('.jcarousel-pagination-wrapper').jcarousel({
+        wrap: 'circular'
+      }).jcarouselSwipe().jcarouselAutoscroll({autostart: false});
+      $('.jcarousel-control-prev.secondary').jcarouselControl({
+        carousel: $(".jcarousel-pagination-wrapper"),
+        target: '-=1'
+      });
+      $('.jcarousel-control-next.secondary').jcarouselControl({
+        carousel: $(".jcarousel-pagination-wrapper"),
+        target: '+=1'
+      });
+    })
     .jcarouselPagination({
+      carousel: $('.main-jcarousel'),
       perPage: 1,
       item: function(page, items) {
-        return '<a href="#' + page + '"><img src="'
+        return '<li><a href="#' + page + '"><img src="'
           + $(items).children('img').attr('src').replace('/large/', '/thumb/')
-            + '"></a>';
+            + '"></a></li>';
       }
     });
 });
