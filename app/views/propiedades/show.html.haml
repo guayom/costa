@@ -40,23 +40,23 @@
                       %br/
                       %small{class: "propiedad-text-color-#{@propiedad.listado}"}
                         Código: #{@propiedad.codigo}
-                    #slider-property.carousel.slide{"data-ride" => "carousel"}
-                      .carousel-inner
-                        - unless @propiedad.imagenes.empty?
-                          - @propiedad.imagenes.each_with_index do |pic, index|
-                            %div{:class => "item #{'active' if index == 0}"}
-                              = image_tag pic.imagen.url(:large)
-                      %a.left.carousel-control{"data-slide" => "prev", :href => "#slider-property"}
-                        %span.glyphicon.glyphicon-chevron-left
-                      %a.right.carousel-control{"data-slide" => "next", :href => "#slider-property"}
-                        %span.glyphicon.glyphicon-chevron-right
-                    .row
-                      .col-xs-12
-                        %ol.carousel-indicators.hidden-xs
+
+                    .jcarousel-wrapper
+                      .jcarousel
+                        %ul
                           - unless @propiedad.imagenes.empty?
                             - @propiedad.imagenes.each_with_index do |pic, index|
-                              %li{"data-slide-to" => index, "data-target" => "#slider-property"}
-                                = image_tag pic.imagen.url, :class => "img-responsive"
+                              %li
+                                = image_tag pic.imagen.url(:large)
+                      = link_to '&lsaquo;'.html_safe, '#', class: 'jcarousel-control-prev'
+                      = link_to '&rsaquo;'.html_safe, '#', class: 'jcarousel-control-next'
+
+                    .clearfix
+
+                    .row.hidden-xs
+                      .col-xs-12
+                        .jcarousel-pagination
+
                     %h3 General
                     .row
                       .col-xs-12.col-md-8
