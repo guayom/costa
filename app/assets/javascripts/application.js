@@ -24,6 +24,7 @@
 //= require jquery.nicescroll.min
 //= require jquery.jcarousel.min
 //= require jquery.jcarousel-autoscroll.min.js
+//= require jquery.jcarousel-swipe
 //= require script
 //= require filters
 

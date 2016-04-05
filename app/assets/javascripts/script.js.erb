@@ -42,66 +42,6 @@ $(document).ready(function(){
         zindex: 106
     });
 
-
-    /* carousel testimony */
-    /*
-    $('#testislider').jcarousel({
-        interval: 6000
-    })
-    */
-
-	/* carousel partner */
-    /*
-	var jcarousel = $('.jcarousel');
-
-    jcarousel
-        .on('jcarousel:reload jcarousel:create', function () {
-            var width = jcarousel.innerWidth();
-
-            if(width >= 992){
-            	width = width / 5;
-            } else if (width >= 768) {
-                width = width / 4;
-            } else if (width >= 480) {
-                width = width / 3;
-            } else if(width >= 350){
-            	width = width / 2;
-            }
-
-            jcarousel.jcarousel('items').css('width', width + 'px');
-        })
-        .jcarousel({
-            wrap: 'circular'
-        });
-
-    $('.jcarousel-control-prev')
-        .jcarouselControl({
-            target: '-=1'
-        });
-
-    $('.jcarousel-control-next')
-        .jcarouselControl({
-            target: '+=1'
-    	});
-
-    $('.jcarousel-pagination')
-        .on('jcarouselpagination:active', 'a', function() {
-            $(this).addClass('active');
-        })
-        .on('jcarouselpagination:inactive', 'a', function() {
-            $(this).removeClass('active');
-        })
-        .on('click', function(e) {
-            e.preventDefault();
-        })
-        .jcarouselPagination({
-            perPage: 1,
-            item: function(page) {
-                return '<a href="#' + page + '">' + page + '</a>';
-        }
-    });
-    */
-
     /* scrolltop */
     $('.scroltop').on('click', function(event) {
         var $anchor = $(this);
@@ -128,42 +68,6 @@ $(document).ready(function(){
             }
         });
     });
-
-
-    /* tooltip */
-    //$('[rel="tooltip"]').tooltip();
-
-
-    /* map contact */
-    /*
-    $("#map").gmap3({
-        map: {
-            options: {
-              center: [-7.866315,110.389574],
-              zoom: 12,
-              scrollwheel: false
-            }  
-         },
-        marker:{
-            latLng: [-7.866315,110.389574],
-            options: {
-             icon: new google.maps.MarkerImage(
-               "https://dl.dropboxusercontent.com/u/29545616/Preview/location.png",
-               new google.maps.Size(48, 48, "px", "px")
-             )
-            }
-         }
-    });
-*/
-
-
-    /* carousel single */
-    /*
-    $('#slider-property').jcarousel({
-        interval: 6500
-    })
-    */
-
 
     /* map property */
     $('a[href="#location"]').on('shown.bs.tab', function(){
@@ -192,8 +96,7 @@ $(document).ready(function(){
     });
 
 
-    $('#mycarousel').jcarousel({
-    })
+    $('#mycarousel').jcarousel().jcarouselSwipe()
     .jcarouselAutoscroll({
         autostart: true,
         interval: 1000,
