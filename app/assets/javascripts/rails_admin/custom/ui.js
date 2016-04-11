@@ -20,7 +20,7 @@
 $(function() {
   $('.rails_admin .form-control[type="number"]').bootstrapNumber();
 });
-
+/*
 $( document ).ready( function() {
   var numberFields = ["propiedad_valor_compra", "propiedad_valor_alquiler", "propiedad_cuota_mantenimiento"];
   $.each(numberFields, function(i, elem) {
@@ -32,3 +32,4 @@ $( document ).ready( function() {
     'init', {aSep: ',', mDec: '0', vMax: '99999999999999999999999999'}
   );
 });
+*/
