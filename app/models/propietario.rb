@@ -13,7 +13,7 @@ class Propietario < ActiveRecord::Base
   end
 
 	validates :nombre, :apellido, :celular, presence: true
-	validates :email, allow_blank: true, email: true
+	validates :email, allow_blank: true, email: true, uniqueness: true
 
   # This validation should use some sort of propietario_status. Because when
   # user just register on site — he has no admin_id. I think admin_id should be
