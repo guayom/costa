@@ -8,8 +8,9 @@ class Propiedad < ActiveRecord::Base
 
   belongs_to :admin
 
-  belongs_to :propietario
+  belongs_to :propietario, inverse_of: :propiedads
   accepts_nested_attributes_for :propietario
+
   belongs_to :tipo
 
   # belongs_to :tipo

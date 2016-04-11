@@ -6,7 +6,7 @@ class Propietario < ActiveRecord::Base
 
 	belongs_to :admin
 
-	has_many :propiedads
+	has_many :propiedads, inverse_of: :propietario
 
 	def nombre_completo
   	"#{self.nombre} #{self.apellido}"

@@ -103,6 +103,11 @@ RailsAdmin.config do |config|
         end
         partial 'multiple_images'
       end
+      configure :propietario do
+        inline_add true
+        inline_edit true
+        nested_form false
+      end
 
       exclude_fields :cover, :tipos, :wpid
     end
