@@ -85,7 +85,7 @@
                                      class: 'form-control', style: 'display: none;'
               = select_tag :distrito_id, nil, style: 'display: none;'
 
-            = f.label :direccion_exacta, class: 'col-sm-2 control-label'
+            = f.label :direccion_exacta, t('registre.direccion_exacta'), class: 'col-sm-2 control-label'
             .col-sm-4
               = f.text_area :direccion_exacta, class: 'form-control'
 
@@ -99,7 +99,7 @@
               = f.number_field :valor_alquiler, class: 'form-control'
 
           .form-group
-            = f.label :descripcion_publica, class: 'col-sm-2 control-label'
+            = f.label :descripcion_publica, "Descripción",class: 'col-sm-2 control-label'
             .col-sm-10
               = f.text_area :descripcion_publica, class: 'form-control', rows: 5
 

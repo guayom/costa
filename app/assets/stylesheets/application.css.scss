@@ -65,6 +65,20 @@
 
 // Social Buttons
 // ------------------------------
+$facebook: #265999;
+$twitter: #00B1EF;
+$googleplus: #e93f2e;
+$instagram: #00749C;
+$linkedin: #0e76a8;
+$pinterest: #EF0020;
+$whatsapp: rgb(72, 198, 102);
+$email: rgb(69, 195, 244);
+.icon-facebook{
+  color: $facebook;
+  a:hover, i:hover{
+    color: lighten( $facebook, 10% );
+  }
+}
 #socialicons{
   span{
     display: inline-block;
@@ -75,15 +89,6 @@
     font-size: 18px;
 
     background: $gray-lightest;
-
-    $facebook: #265999;
-    $twitter: #00B1EF;
-    $googleplus: #e93f2e;
-    $instagram: #00749C;
-    $linkedin: #0e76a8;
-    $pinterest: #EF0020;
-    $whatsapp: rgb(72, 198, 102);
-    $email: rgb(69, 195, 244);
 
     &.facebook{
       background-color: $facebook;

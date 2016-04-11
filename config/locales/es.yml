@@ -61,7 +61,7 @@ es:
         li: "Limón"
         gu: Guanacaste
         pu: Puntarenas
-        
+
   search: "Buscar"
 
   helpers:
@@ -73,7 +73,7 @@ es:
     attributes:
       propiedad:
         tipo_ids: 'Tipos'
-        descripcion_publica: 'Descripcion'
+        descripcion_publica: 'Descripción'
 
   registre:
     new_user: 'Registre Su Propiedad'
@@ -81,6 +81,7 @@ es:
     already?: '¿Ya tiene una cuenta?'
     sign_in: 'Ingrese aquí'
     sign_out: 'Haga click aquí si este no es usted'
+    direccion_exacta: Dirección Exacta
   sidebar:
     related:
       heading: 'Propiedades relacionadas'
@@ -93,9 +94,9 @@ es:
 
   email:
     welcome:
-      subject: 'Welcome to Costa506'
+      subject: 'Bienvenido a Costa506'
     property_added:
-      subject: 'Your new property has been added'
+      subject: 'Su propiedad ha sido registrada'
 
   propiedad_added_succefully: 'Gracias por registrar tu propiedad.'
 
