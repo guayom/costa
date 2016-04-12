@@ -1,10 +1,14 @@
 class PropiedadesController < ApplicationController
   def index
-    if request.query_string.present?
-      session[:propiedad_params] = params
+    if params[:reset].present?
+      session[:propiedad_params] = nil
     else
-      if session[:propiedad_params].present?
-        params.merge!(session[:propiedad_params].except(:page))
+      if request.query_string.present?
+        session[:propiedad_params] = params
+      else
+        if session[:propiedad_params].present?
+          params.merge!(session[:propiedad_params].except(:page))
+        end
       end
     end
 
