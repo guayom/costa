@@ -2,7 +2,7 @@ class Propiedad < ActiveRecord::Base
   extend FriendlyId
   include PgSearch
 
-  # after_initialize :set_default_values
+  before_validation :set_default_values
 
   self.per_page = 5
 
@@ -45,6 +45,7 @@ class Propiedad < ActiveRecord::Base
   validates_presence_of :codigo, if: :publicado?
   validates_presence_of :admin, if: :publicado?
   validates_presence_of :tipo, if: :publicado?
+
   #validates_presence_of :propietario, if: :publicado?
 
   pg_search_scope :search_by_provincia_id, against: :provincia
@@ -233,11 +234,26 @@ class Propiedad < ActiveRecord::Base
     tipo_de_estacionamiento: [31, 2]
   }
 
+  protected
+
   def set_default_values
-    if self.admin_id.blank?
-      if Admin.current.present?
-        self.admin_id = Admin.current.id
-      end
-    end
+    self.listado ||= 'venta'
+    self.moneda ||= 'USD'
+    self.valor_compra ||= 0
+    self.valor_alquiler ||= 0
+    self.cuota_mantenimiento ||= 0
+    self.area_terreno ||= 0
+    self.area_construccion ||= 0.0
+    self.pisos ||= 0
+    self.dormitorios ||= 0
+    self.banos ||= 0.0
+    self.patio ||= false
+    self.patio_area ||= 0
+    self.estacionamiento ||= 0
+    self.fecha_construccion ||= 0
+    self.estatus ||= 2
+    self.featured ||= false
+
+    true
   end
 end

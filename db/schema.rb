@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160411114854) do
+ActiveRecord::Schema.define(version: 20160412072758) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -172,9 +172,9 @@ ActiveRecord::Schema.define(version: 20160411114854) do
   add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
 
   create_table "propiedades", force: :cascade do |t|
-    t.string   "listado",                           default: "1",   null: false
+    t.string   "listado",                           default: "venta",      null: false
     t.string   "titular"
-    t.string   "estado",                            default: "1"
+    t.string   "estado",                            default: "disponible"
     t.string   "codigo"
     t.integer  "admin_id"
     t.integer  "propietario_id"
@@ -182,32 +182,32 @@ ActiveRecord::Schema.define(version: 20160411114854) do
     t.text     "direccion_exacta"
     t.text     "direccion_uso_interno"
     t.text     "descripcion_publica"
-    t.string   "moneda",                            default: "USD", null: false
-    t.integer  "valor_compra",            limit: 8, default: 0,     null: false
-    t.integer  "valor_alquiler",          limit: 8, default: 0,     null: false
+    t.string   "moneda",                            default: "USD",        null: false
+    t.integer  "valor_compra",            limit: 8, default: 0,            null: false
+    t.integer  "valor_alquiler",          limit: 8, default: 0,            null: false
     t.boolean  "opcion_compra"
     t.boolean  "incluye_mantenimiento"
-    t.integer  "cuota_mantenimiento",               default: 0,     null: false
-    t.integer  "area_terreno",                      default: 0,     null: false
-    t.float    "area_construccion",                 default: 0.0,   null: false
-    t.integer  "pisos",                             default: 0,     null: false
-    t.integer  "dormitorios",                       default: 0,     null: false
-    t.float    "banos",                             default: 0.0,   null: false
+    t.integer  "cuota_mantenimiento",               default: 0,            null: false
+    t.integer  "area_terreno",                      default: 0,            null: false
+    t.float    "area_construccion",                 default: 0.0,          null: false
+    t.integer  "pisos",                             default: 0,            null: false
+    t.integer  "dormitorios",                       default: 0,            null: false
+    t.float    "banos",                             default: 0.0,          null: false
     t.boolean  "sala_comedor"
-    t.boolean  "patio",                             default: false, null: false
-    t.integer  "patio_area",                        default: 0,     null: false
-    t.integer  "estacionamiento",                   default: 0,     null: false
+    t.boolean  "patio",                             default: false,        null: false
+    t.integer  "patio_area",                        default: 0,            null: false
+    t.integer  "estacionamiento",                   default: 0,            null: false
     t.string   "tipo_de_estacionamiento"
     t.boolean  "amueblado"
     t.boolean  "linea_blanca"
-    t.integer  "fecha_construccion",                default: 0,     null: false
+    t.integer  "fecha_construccion",                default: 0,            null: false
     t.text     "otros"
     t.string   "numero_plano_catastrado"
     t.text     "notas_uso_interno"
     t.string   "meta_keywords"
     t.text     "meta_description"
-    t.datetime "created_at",                                        null: false
-    t.datetime "updated_at",                                        null: false
+    t.datetime "created_at",                                               null: false
+    t.datetime "updated_at",                                               null: false
     t.string   "provincia"
     t.string   "canton"
     t.string   "distrito"
@@ -215,7 +215,7 @@ ActiveRecord::Schema.define(version: 20160411114854) do
     t.integer  "estatus",                           default: 2
     t.integer  "wpid"
     t.string   "slug"
-    t.boolean  "featured",                          default: false, null: false
+    t.boolean  "featured",                          default: false,        null: false
   end
 
   add_index "propiedades", ["admin_id"], name: "fk__propiedades_admin_id", using: :btree
