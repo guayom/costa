@@ -7,10 +7,10 @@
     %meta{:content => "vdLMMOZytK8_f9EqtFuyZgvUkvGjqWbllc_GTuw_LGM", :name => "google-site-verification"}/
     = favicon_link_tag
 
-    %title 
+    %title
       = yield :title
       = content_for?(:title) ? " | ":""
-      Costa506
+      Costa506 Real Estate
 
     = yield :meta_tags
 
@@ -19,7 +19,7 @@
     = csrf_meta_tags
 
 %body#top
-  = render "application/fbsdk" 
+  = render "application/fbsdk"
   = render "application/navbar"
   = yield :full_width_header
 

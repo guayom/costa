@@ -2,9 +2,11 @@
   %meta{name: "twitter:title", content: title}
   %meta{name: "og:title", content: title}
 -if (descripcion ||= nil)
-  %meta{name: "description", content: (descripcion||="")}
+  %meta{name: "description", content: (title||="")}
   %meta{name: "twitter:description", content: descripcion}
   %meta{name: "og:description", content: descripcion}
+-else
+  %meta{name: "description", content: ("Somos su empresa de bienes raíces. Si está en busca de comprar, vender o aluilar una propiedad en Costa Rica, Costa506 es el lugar correcto")}
 -if (author_handle ||= nil)
   %meta{name: "twitter:creator", content: author_handle}
 -if (image ||= nil)
