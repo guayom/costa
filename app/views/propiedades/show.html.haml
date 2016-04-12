@@ -64,7 +64,7 @@
                     %h3 General
                     .row
                       .col-xs-12.col-md-8
-                        %table.table.table-bordered.table-responsive
+                        %table.table.table-bordered.table-responsive.table-striped
                           %tr
                             %td{:width => "20%"}
                               %strong{class: "propiedad-text-color-#{@propiedad.listado}"}
@@ -189,7 +189,7 @@
                             = @propiedad.admin.nombre
                           %p
                             %i.fa.fa-phone
-                            %a{:href => "tel: +506 #{@propiedad.admin.telefono}"}="+506 #{@propiedad.admin.telefono}"
+                            %a.tel{:href => "tel: +506 #{@propiedad.admin.telefono}"}="+506 #{@propiedad.admin.telefono}"
                           %p
                             %i.fa.fa-envelope
                             = @propiedad.admin.email
