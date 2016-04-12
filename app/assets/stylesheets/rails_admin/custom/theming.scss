@@ -24,3 +24,11 @@
 body.agente form#new_propiedad #propiedad_admin_id_field {
   display: none;
 }
+
+.form-group.form-actions {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: lightgreen;
+  padding: 5px;
+}
