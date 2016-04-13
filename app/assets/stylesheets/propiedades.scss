@@ -114,13 +114,19 @@
   color: black;
 }
 
-.property-image-list .property-status {
-  position: absolute;
-  right: 0;
-  bottom: 35px;
-  padding: 0 5px 0 5px;
-  background-color: red;
-  color: black;
+.property-image-list{
+  min-height: 200px;
+  .property-status {
+    position: absolute;
+    right: 0;
+    bottom: 35px;
+    padding: 0 5px 0 5px;
+    background-color: red;
+    color: black;
+  }
+  .mensajes-especiales{
+    position: static;
+  }
 }
 
 .team-description{
