@@ -88,6 +88,9 @@ RailsAdmin.config do |config|
         end
       end
     end
+    object_label_method do
+      :nombre_completo
+    end
   end
 
   config.model Propiedad do

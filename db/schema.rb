@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 20160413130609) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "pg_stat_statements"
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -34,10 +33,8 @@ ActiveRecord::Schema.define(version: 20160413130609) do
     t.string   "codigo"
     t.string   "telefono"
     t.string   "permisos"
-    t.string   "authentication_token"
   end
 
-  add_index "admins", ["authentication_token"], name: "index_admins_on_authentication_token", using: :btree
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
@@ -131,45 +128,6 @@ ActiveRecord::Schema.define(version: 20160413130609) do
 
   add_index "mensajes_propiedades", ["mensaje_id"], name: "index_mensajes_propiedades_on_mensaje_id", using: :btree
   add_index "mensajes_propiedades", ["propiedad_id"], name: "index_mensajes_propiedades_on_propiedad_id", using: :btree
-
-  create_table "oauth_access_grants", force: :cascade do |t|
-    t.integer  "admin_id",       null: false
-    t.integer  "application_id", null: false
-    t.string   "token",          null: false
-    t.integer  "expires_in",     null: false
-    t.text     "redirect_uri",   null: false
-    t.datetime "created_at",     null: false
-    t.datetime "revoked_at"
-    t.string   "scopes"
-  end
-
-  add_index "oauth_access_grants", ["token"], name: "index_oauth_access_grants_on_token", unique: true, using: :btree
-
-  create_table "oauth_access_tokens", force: :cascade do |t|
-    t.integer  "admin_id"
-    t.integer  "application_id"
-    t.string   "token",          null: false
-    t.string   "refresh_token"
-    t.integer  "expires_in"
-    t.datetime "revoked_at"
-    t.datetime "created_at",     null: false
-    t.string   "scopes"
-  end
-
-  add_index "oauth_access_tokens", ["refresh_token"], name: "index_oauth_access_tokens_on_refresh_token", unique: true, using: :btree
-  add_index "oauth_access_tokens", ["token"], name: "index_oauth_access_tokens_on_token", unique: true, using: :btree
-
-  create_table "oauth_applications", force: :cascade do |t|
-    t.string   "name",                      null: false
-    t.string   "uid",                       null: false
-    t.string   "secret",                    null: false
-    t.text     "redirect_uri",              null: false
-    t.string   "scopes",       default: "", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
 
   create_table "propiedades", force: :cascade do |t|
     t.string   "listado",                           default: "venta",      null: false
@@ -290,8 +248,6 @@ ActiveRecord::Schema.define(version: 20160413130609) do
   add_foreign_key "imagenes", "propiedades", name: "imagenes_propiedad_id_fkey"
   add_foreign_key "mensajes_propiedades", "mensajes", name: "fk_mensajes_propiedades_mensaje_id"
   add_foreign_key "mensajes_propiedades", "propiedades", name: "fk_mensajes_propiedades_propiedad_id"
-  add_foreign_key "oauth_access_grants", "admins"
-  add_foreign_key "oauth_access_tokens", "admins"
   add_foreign_key "propiedades", "admins", name: "fk_propiedades_admin_id"
   add_foreign_key "propiedades", "propietarios", name: "fk_propiedades_propietario_id"
   add_foreign_key "propiedades", "tipos", name: "fk_propiedades_tipo_id"
