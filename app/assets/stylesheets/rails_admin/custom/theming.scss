@@ -24,7 +24,16 @@ $background-color: #f8f8f8;
 	color: orange;
 }
 
+body.agente form#new_propietario #propietario_admin_id_field {
+  display: none;
+}
+body.agente form#edit_propietario #propietario_admin_id_field {
+  display: none;
+}
 body.agente form#new_propiedad #propiedad_admin_id_field {
+  display: none;
+}
+body.agente form#edit_propiedad #propiedad_admin_id_field {
   display: none;
 }
 .form-horizontal{

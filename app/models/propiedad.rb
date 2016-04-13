@@ -27,9 +27,9 @@ class Propiedad < ActiveRecord::Base
 
   before_validation :set_codigo
 
-  after_initialize do
-    if Admin.current.present?
-      self.admin_id = Admin.current.try(:id) unless self.persisted?
+  before_save do
+    if self.admin_id.blank? && Admin.current.present?
+      self.admin_id = Admin.current.try(:id)
     end
   end
 
