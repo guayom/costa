@@ -8,7 +8,13 @@ class Propietario < ActiveRecord::Base
 
 	has_many :propiedads, inverse_of: :propietario
 
-	def nombre_completo
+  before_save do
+    if self.admin_id.blank? && Admin.current.present?
+      self.admin_id = Admin.current.try(:id)
+    end
+  end
+
+  def nombre_completo
   	"#{self.nombre} #{self.apellido}"
   end
 

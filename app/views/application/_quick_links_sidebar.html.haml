@@ -17,7 +17,7 @@
       = t('sidebar.recent.heading')
 
   %ul
-    - Propiedad.publicado.last(5).each do |p|
+    - Propiedad.publicado.where('id != ?', @propiedad.id).last(5).each do |p|
       %li
         = link_to p do
           = p.titular

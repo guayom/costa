@@ -1,2 +1,33 @@
-%p
-  = @mensaje.mensaje
+%dl
+  %dt
+    Nombre
+  %dd
+    = @mensaje.nombre
+  %dt
+    Email
+  %dd
+    = @mensaje.email
+  %dt
+    Telefono
+  %dd
+    = @mensaje.telefono
+  %dt
+    Motivo
+  %dd
+    = @mensaje.motivo
+  %dt
+    Mensaje
+  %dd
+    = @mensaje.mensaje
+
+  - if @mensaje.propiedad.present?
+    %dt
+      Codigo
+    %dd
+      = @mensaje.propiedad.codigo
+    %dt
+      Propiedad
+    %dd
+      = link_to propiedad_url(@mensaje.propiedad, host: 'www.costa506realestate.com'),
+                propiedad_url(@mensaje.propiedad, host: 'www.costa506realestate.com'),
+                target: :blank

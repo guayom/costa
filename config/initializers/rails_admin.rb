@@ -79,15 +79,31 @@ RailsAdmin.config do |config|
     end
   end
 
-  config.model Propiedad do
+  config.model Propietario do
     edit do
       configure :admin do
-        visible false
+        # visible false
         default_value do
           bindings[:view]._current_user.id
         end
       end
-      configure :descripcion_publica, :froala
+    end
+  end
+
+  config.model Propiedad do
+    edit do
+      configure :admin do
+        # visible false
+        default_value do
+          bindings[:view]._current_user.id
+        end
+      end
+
+      # configure :descripcion_publica, :froala
+      configure :descripcion_publica do
+        partial 'propiedad_descripcion_publica'
+      end
+
       configure :provincia do
         partial 'propiedad_provincia'
       end

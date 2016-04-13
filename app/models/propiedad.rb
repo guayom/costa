@@ -27,9 +27,9 @@ class Propiedad < ActiveRecord::Base
 
   before_validation :set_codigo
 
-  after_initialize do
-    if Admin.current.present?
-      self.admin_id = Admin.current.try(:id) unless self.persisted?
+  before_save do
+    if self.admin_id.blank? && Admin.current.present?
+      self.admin_id = Admin.current.try(:id)
     end
   end
 
@@ -173,7 +173,7 @@ class Propiedad < ActiveRecord::Base
   end
 
   def related_properties
-    Propiedad.publicado.where(tipo_id: tipo_id).last(5)
+    Propiedad.publicado.where('id != ?', id).where(tipo_id: tipo_id).last(5)
   end
 
   def to_s
