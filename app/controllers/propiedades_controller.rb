@@ -20,7 +20,8 @@ class PropiedadesController < ApplicationController
       end
     end
 
-    @propiedades = Propiedad.publicado.order(created_at: :desc, id: :desc)
+    @propiedades = Propiedad.publicado.order(order_time: :desc, created_at: :desc, id: :desc)
+    # @propiedades = Propiedad.publicado.order(created_at: :desc, id: :desc)
 
     if params[:estado].present? && params[:estado]
       @propiedades = @propiedades.with_estado(:alquilado, :vendido)
