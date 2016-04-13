@@ -11,6 +11,7 @@
                 return '<a href="#' + page + '">' + page + '</a>';
             },
             event:  'click',
+            interval: 8000,
             method: 'scroll'
         },
         _carouselItems: null,

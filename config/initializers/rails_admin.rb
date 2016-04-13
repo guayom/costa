@@ -118,6 +118,7 @@ RailsAdmin.config do |config|
       field :listado
       field :admin
       field :titular
+      field :provincia
       field :codigo do
         column_width 80
       end
@@ -132,6 +133,9 @@ RailsAdmin.config do |config|
       end
       field :admin do
         column_width 180
+      end
+      field :provincia do
+        column_width 100
       end
     end
   end

@@ -12,7 +12,7 @@ class Propietario < ActiveRecord::Base
   	"#{self.nombre} #{self.apellido}"
   end
 
-	validates :nombre, :apellido, :celular, presence: true
+	validates :nombre, :apellido, :celular, :comision, presence: true
 	validates :email, allow_blank: true, email: true, uniqueness: true
 
   # This validation should use some sort of propietario_status. Because when

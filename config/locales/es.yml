@@ -62,6 +62,9 @@ es:
         gu: Guanacaste
         pu: Puntarenas
 
+  propiedad:
+    amenities: Amenidades
+
   search: "Buscar"
 
   helpers:

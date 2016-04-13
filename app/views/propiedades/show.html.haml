@@ -2,7 +2,7 @@
   = "#{@propiedad.titular} - código: #{@propiedad.codigo}"
 
 - content_for :meta_tags do
-  = render partial: "application/meta_tags", locals: { title: "#{@propiedad.titular} - código: #{@propiedad.codigo}", descripcion: simple_format(@propiedad.descripcion_publica.gsub("↵", '')), image: @propiedad.cover_url, author_handle: "@Costa506"}
+  = render partial: "application/meta_tags", locals: { title: "#{@propiedad.titular} - código: #{@propiedad.codigo}", descripcion: ActionView::Base.full_sanitizer.sanitize( @propiedad.descripcion_publica.gsub("↵", '')), image: @propiedad.cover_url, author_handle: "@Costa506"}
 
 - content_for :full_width_header do
   #header.heading{:style => "background-image: url('#{image_path('img01.jpg')}'); background-position: 50% 0px;"}
@@ -64,7 +64,7 @@
                     %h3 General
                     .row
                       .col-xs-12.col-md-8
-                        %table.table.table-bordered.table-responsive
+                        %table.table.table-bordered.table-responsive.table-striped
                           %tr
                             %td{:width => "20%"}
                               %strong{class: "propiedad-text-color-#{@propiedad.listado}"}
@@ -166,7 +166,7 @@
                     - if @propiedad.caracteristicas.any?
                       .row
                         .col-md-4.col-sm-4
-                          %h3 Características
+                          %h3= t('propiedad.amenities')
                           %ul
                             - @propiedad.caracteristicas.each do |c|
                               %li
@@ -189,7 +189,7 @@
                             = @propiedad.admin.nombre
                           %p
                             %i.fa.fa-phone
-                            %a{:href => "tel: +506 #{@propiedad.admin.telefono}"}="+506 #{@propiedad.admin.telefono}"
+                            %a.tel{:href => "tel: +506 #{@propiedad.admin.telefono}"}="+506 #{@propiedad.admin.telefono}"
                           %p
                             %i.fa.fa-envelope
                             = @propiedad.admin.email

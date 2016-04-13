@@ -42,3 +42,6 @@ en:
         pu: Puntarenas
   registre:
     direccion_exacta: Exact Adress
+    
+  propiedad:
+    amenities: Amenidades
