@@ -1,1 +1,21 @@
+Nombre:
+= @mensaje.nombre
+
+Email:
+= @mensaje.email
+
+Telefono:
+= @mensaje.telefono
+
+Motivo:
+= @mensaje.motivo
+
+Mensaje:
 = @mensaje.mensaje
+
+- if @mensaje.propiedad.present?
+  Codigo:
+  = @mensaje.propiedad.codigo
+
+  Propiedad:
+  = propiedad_url(@mensaje.propiedad, host: 'www.costa506realestate.com')
