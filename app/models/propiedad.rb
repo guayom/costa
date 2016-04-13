@@ -173,7 +173,7 @@ class Propiedad < ActiveRecord::Base
   end
 
   def related_properties
-    Propiedad.publicado.where(tipo_id: tipo_id).last(5)
+    Propiedad.publicado.where('id != ?', id).where(tipo_id: tipo_id).last(5)
   end
 
   def to_s
