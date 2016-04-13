@@ -87,7 +87,12 @@ RailsAdmin.config do |config|
           bindings[:view]._current_user.id
         end
       end
-      configure :descripcion_publica, :froala
+
+      # configure :descripcion_publica, :froala
+      configure :descripcion_publica do
+        partial 'propiedad_descripcion_publica'
+      end
+
       configure :provincia do
         partial 'propiedad_provincia'
       end
