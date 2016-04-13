@@ -135,11 +135,21 @@ class Propiedad < ActiveRecord::Base
     end
   end
 
+  def ubicacion_pcd
+    parts = [
+      :provincia,
+      :canton,
+      :distrito
+    ].map { |key| send(key) }.find_all do |s|
+      s.present? && 'desconocido' != s.downcase && 'buscar' != s.downcase
+    end
+
+    parts.join(', ')
+  end
+
   def ubicacion
     [
-      [:provincia,
-       :canton,
-       :distrito].map { |key| send(key) }.find_all(&:present?).join(', '),
+      ubicacion_pcd,
       direccion_exacta
     ].find_all(&:present?).join('<br>').html_safe
   end
