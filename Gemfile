@@ -30,6 +30,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'rails_admin'
 gem 'wysiwyg-rails', '1.2.8'
+gem 'autonumeric-rails'
 
 gem 'email_validator'
 
