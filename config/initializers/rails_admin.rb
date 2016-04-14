@@ -161,6 +161,10 @@ RailsAdmin.config do |config|
         nested_form false
       end
 
+      configure :order_date do
+        strftime_format '%Y-%m-%d'
+      end
+
       # configure :tipos do
       #   associated_collection_cache_all true  # REQUIRED if you want to SORT the list as below
       #   associated_collection_scope do
