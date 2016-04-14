@@ -115,6 +115,7 @@ gem 'rails-i18n'
 #Virtus Attributes on Steroids for Plain Old Ruby Objects
 gem 'virtus', '~> 1.0.5'
 
+gem 'acts_as_list'
 gem 'aws-sdk', '< 2.0'
 gem 'delayed_paperclip'
 gem 'paperclip'

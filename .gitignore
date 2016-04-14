@@ -12,6 +12,7 @@
 !/log/.keep
 /tmp
 /public/images
+/public/sliders
 
 solr/development
 solr/test

@@ -59,6 +59,38 @@ RailsAdmin.config do |config|
       only ['Propiedad']
       link_icon 'icon-file'
     end
+
+    member :move_higher do
+      link_icon 'icon-arrow-up'
+      visible do
+        [Slider].include?(bindings[:abstract_model].model)
+      end
+      controller do
+        Proc.new do
+          @object.move_lower
+
+          flash[:success] = "#{@model_config.label} moved lower."
+
+          redirect_to back_or_index
+        end
+      end
+    end
+
+    member :move_lower do
+      link_icon 'icon-arrow-down'
+      visible do
+        [Slider].include?(bindings[:abstract_model].model)
+      end
+      controller do
+        Proc.new do
+          @object.move_higher
+
+          flash[:success] = "#{@model_config.label} moved higher."
+
+          redirect_to back_or_index
+        end
+      end
+    end
   end
 
   config.model Mensaje do
@@ -212,6 +244,17 @@ RailsAdmin.config do |config|
       field :provincia do
         column_width 100
       end
+    end
+  end
+
+  config.model Slider do
+    list do
+      exclude_fields :position
+      sort_by :position
+    end
+
+    edit do
+      exclude_fields :position
     end
   end
 end

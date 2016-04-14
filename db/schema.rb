@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160414182143) do
+ActiveRecord::Schema.define(version: 20160414191629) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -274,6 +274,19 @@ ActiveRecord::Schema.define(version: 20160414182143) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "sliders", force: :cascade do |t|
+    t.string   "imagen_file_name"
+    t.string   "imagen_content_type"
+    t.integer  "imagen_file_size"
+    t.datetime "imagen_updated_at"
+    t.integer  "position"
+    t.integer  "propiedad_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "sliders", ["propiedad_id"], name: "index_sliders_on_propiedad_id", using: :btree
+
   create_table "tipos", force: :cascade do |t|
     t.string   "titulo"
     t.datetime "created_at", null: false
@@ -299,4 +312,5 @@ ActiveRecord::Schema.define(version: 20160414182143) do
   add_foreign_key "propiedades_tipos", "propiedades", name: "fk_propiedades_tipos_propiedad_id"
   add_foreign_key "propiedades_tipos", "tipos", name: "fk_propiedades_tipos_tipo_id"
   add_foreign_key "propietarios", "admins", name: "fk_propietarios_admin_id"
+  add_foreign_key "sliders", "propiedades"
 end
