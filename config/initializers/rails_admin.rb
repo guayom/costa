@@ -161,7 +161,7 @@ RailsAdmin.config do |config|
         nested_form false
       end
 
-      exclude_fields :cover, :tipos, :wpid
+      exclude_fields :cover, :tipo, :wpid
     end
     list do
       field :codigo
