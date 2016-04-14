@@ -6,7 +6,7 @@ class Propietario < ActiveRecord::Base
 
 	belongs_to :admin
 
-	has_many :propiedads, inverse_of: :propietario
+	has_many :propiedades, inverse_of: :propietario
 
   before_save do
     if self.admin_id.blank? && Admin.current.present?

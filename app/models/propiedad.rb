@@ -8,7 +8,7 @@ class Propiedad < ActiveRecord::Base
 
   belongs_to :admin
 
-  belongs_to :propietario, inverse_of: :propiedads
+  belongs_to :propietario, inverse_of: :propiedades
   accepts_nested_attributes_for :propietario
 
   belongs_to :tipo
@@ -109,6 +109,10 @@ class Propiedad < ActiveRecord::Base
 
   # friendly_id :slug_string, use: :slugged
   friendly_id :slug_string
+
+  rails_admin do
+    object_label_method :codigo
+  end
 
   def provincia_enum
     Provincia.pluck(:nombre)

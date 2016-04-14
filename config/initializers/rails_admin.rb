@@ -88,37 +88,37 @@ RailsAdmin.config do |config|
         end
       end
       configure :created_at do
-        hide
+        visible false
       end
       configure :updated_at do
-        hide
+        visible false
       end
       configure :reset_password_token do
-        hide
+        visible false
       end
       configure :reset_password_sent_at do
-        hide
+        visible false
       end
       configure :remember_created_at do
-        hide
+        visible false
       end
       configure :sign_in_count do
-        hide
+        visible false
       end
       configure :current_sign_in_at do
-        hide
+        visible false
       end
       configure :last_sign_in_at do
-        hide
+        visible false
       end
       configure :current_sign_in_ip do
-        hide
+        visible false
       end
       configure :last_sign_in_ip do
-        hide
+        visible false
       end
-      configure :propiedads do
-        hide
+      configure :propiedades do
+        visible false
       end
     end
     object_label_method do
@@ -127,6 +127,10 @@ RailsAdmin.config do |config|
   end
 
   config.model Propiedad do
+    object_label_method do
+      :codigo
+    end
+
     edit do
       configure :admin do
         # visible false
