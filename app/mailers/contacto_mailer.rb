@@ -13,7 +13,9 @@ class ContactoMailer < ApplicationMailer
     @mensaje = mensaje
 
     mail to: @mensaje.propiedad.admin.email,
-         from: "#{mensaje.nombre} <#{mensaje.email}>", subject: mensaje.motivo
+         from: "#{mensaje.nombre} <#{mensaje.email}>",
+         subject: mensaje.motivo,
+         reply_to: mensaje.email
   end
 
   def thank_you_mensaje(mensaje)
