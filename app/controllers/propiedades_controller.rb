@@ -20,7 +20,7 @@ class PropiedadesController < ApplicationController
       end
     end
 
-    @propiedades = Propiedad.publicado.order(order_date: :desc, created_at: :desc, id: :desc)
+    @propiedades = Propiedad.publicado.order('order_date IS NOT NULL DESC').order(order_date: :desc, created_at: :desc, id: :desc)
     # @propiedades = Propiedad.publicado.order(created_at: :desc, id: :desc)
 
     if params[:estado].present? && params[:estado]
