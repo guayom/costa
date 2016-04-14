@@ -115,8 +115,11 @@ gem 'rails-i18n'
 #Virtus Attributes on Steroids for Plain Old Ruby Objects
 gem 'virtus', '~> 1.0.5'
 
-gem 'paperclip'
 gem 'aws-sdk', '< 2.0'
+gem 'delayed_paperclip'
+gem 'paperclip'
+gem 'resque', '~> 1.22.0'
+gem 'thin'
 
 gem 'haml', '~> 4.0', '>= 4.0.7'
 
