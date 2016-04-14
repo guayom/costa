@@ -16,7 +16,7 @@ class Imagen < ActiveRecord::Base
     },
     processors: [:watermark]
 
-  process_in_background :imagen, processing_image_url: '/images/uploading.jpg'
+  process_in_background :imagen, processing_image_url: '/uploading.jpg'
 
   def imagen_from_url(url)
     self.imagen = open(url)
