@@ -10,6 +10,4 @@
         %button.btn.btn-info{type: 'submit', name: '_add_another', :'data-disable-with' => t('admin.form.save_and_add_another')}
           = t('admin.form.save_and_add_another')
 
-      %button.btn.btn-default{type: 'submit', name: '_continue', :'data-disable-with' => t('admin.form.cancel'), :formnovalidate => true}
-        %i.icon-remove
-        = t('admin.form.cancel')
+      = link_to 'Cancelar', index_path(model_name: @model_name), class: 'btn btn-default'
