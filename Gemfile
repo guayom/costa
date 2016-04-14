@@ -119,7 +119,7 @@ gem 'aws-sdk', '< 2.0'
 gem 'delayed_paperclip'
 gem 'paperclip'
 gem 'resque', '~> 1.22.0'
-gem 'resque-scheduler'
+# gem 'resque-scheduler'
 gem 'thin'
 
 gem 'haml', '~> 4.0', '>= 4.0.7'
