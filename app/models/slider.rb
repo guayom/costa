@@ -11,5 +11,5 @@ class Slider < ActiveRecord::Base
   #                   url: 'http://localhost:3000/sliders/:id/:style/:filename'
   validates_attachment_content_type :imagen, content_type: /\Aimage\/.*\Z/
 
-  default_scope { order(:position) }
+  default_scope { order(position: :desc) }
 end
