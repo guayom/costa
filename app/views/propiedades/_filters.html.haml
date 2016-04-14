@@ -15,50 +15,50 @@
       .form-group
         %label{for: :provincia_id}= t(:ubicación)
         = select_tag :provincia_id,
-                               options_for_select([['cualquier...', nil]] + Provincia.all.map { |p| [p.nombre, p.nombre, { 'data-provincia-id': p.id }] }, params[:provincia_id]),
+                               options_for_select([['cualquiera...', nil]] + Provincia.all.map { |p| [p.nombre, p.nombre, { 'data-provincia-id': p.id }] }, params[:provincia_id]),
                                class: 'form-control'
         = select_tag :canton_id_copy,
-                               options_for_select([['cualquier...', nil]] + Canton.all.map { |c| [c.nombre, c.nombre, { 'data-provincia-id': c.provincia_id, 'data-canton-id': c.canton_id }]}),
+                               options_for_select([['cualquiera...', nil]] + Canton.all.map { |c| [c.nombre, c.nombre, { 'data-provincia-id': c.provincia_id, 'data-canton-id': c.canton_id }]}),
                                class: 'form-control', style: 'display: none;'
         = select_tag :canton_id, nil, style: 'display: none;'
         = select_tag :distrito_id_copy,
-                               options_for_select([['cualquier...', nil]] + Distrito.all.map { |d| [d.nombre, d.nombre, { 'data-provincia-id': d.provincia_id, 'data-canton-id': d.canton_id }] }),
+                               options_for_select([['cualquiera...', nil]] + Distrito.all.map { |d| [d.nombre, d.nombre, { 'data-provincia-id': d.provincia_id, 'data-canton-id': d.canton_id }] }),
                                class: 'form-control', style: 'display: none;'
         = select_tag :distrito_id, nil, style: 'display: none;'
     .col-md-6.col-sm-6.col-xs-6
       .form-group
         %label{for: :tipo}= t(:tipo)
         = select_tag :tipo,
-                               options_for_select([['cualquier...', nil]] + Tipo.pluck(:titulo), params[:tipo]),
+                               options_for_select([['cualquiera...', nil]] + Tipo.pluck(:titulo), params[:tipo]),
                                class: 'form-control'
       .form-group
         %label{for: :dormitorios}= t(:dormitorios)
         = select_tag :dormitorios,
-                               options_for_select([['cualquier...', nil]] + integer_1_10_options, params[:dormitorios]),
+                               options_for_select([['cualquiera...', nil]] + integer_1_10_options, params[:dormitorios]),
                                class: 'form-control'
     .col-md-6.col-sm-6.col-xs-6
       .form-group
         %label{for: :estacionamiento}= t(:estacionamiento)
         = select_tag :estacionamiento,
-                     options_for_select([['cualquier...', nil]] + integer_1_10_options, params[:estacionamiento]),
+                     options_for_select([['cualquiera...', nil]] + integer_1_10_options, params[:estacionamiento]),
                      class: 'form-control'
       .form-group
         %label{for: :banos}= t(:banos)
         = select_tag :banos,
-                               options_for_select([['cualquier...', nil]] + float_1_10_options, params[:banos]),
+                               options_for_select([['cualquiera...', nil]] + float_1_10_options, params[:banos]),
                                class: 'form-control'
     .col-md-12.col-sm-12.col-xs-12
       - if [:venta, :venta_alquiler].include?(params[:listado] ? params[:listado].to_sym : nil) || params[:listado].nil?
         .form-group
           %label{for: :valor_compra}= t(:price_range)
           = select_tag :valor_compra,
-                       options_for_select([['cualquier...', nil]] + valor_compra_options, params[:valor_compra]),
+                       options_for_select([['cualquiera...', nil]] + valor_compra_options, params[:valor_compra]),
                        class: 'form-control'
       - if [:alquiler, :opcion_compra, :venta_alquiler].include?(params[:listado] ? params[:listado].to_sym : nil)
         .form-group
           %label{for: :valor_alquiler}= t(:valor_alquiler)
           = select_tag :valor_alquiler,
-                       options_for_select([['cualquier...', nil]] + valor_alquiler_options, params[:valor_alquiler]),
+                       options_for_select([['cualquiera...', nil]] + valor_alquiler_options, params[:valor_alquiler]),
                        class: 'form-control'
 
     .col-md-12.col-sm-12.col-xs-12
