@@ -161,6 +161,21 @@ RailsAdmin.config do |config|
         nested_form false
       end
 
+      # configure :tipos do
+      #   associated_collection_cache_all true  # REQUIRED if you want to SORT the list as below
+      #   associated_collection_scope do
+      #     # bindings[:object] & bindings[:controller] are available, but not in scope's block!
+      #     propiedad = bindings[:object]
+      #     Proc.new { |scope|
+      #       # scoping all Players currently, let's limit them to the team's league
+      #       # Be sure to limit if there are a lot of Players and order them by position
+      #       # scope = scope.where(league_id: team.league_id) if team.present?
+      #       # scope = scope.limit(30) # 'order' does not work here
+      #       scope = scope.order(:titulo)
+      #     }
+      #   end
+      # end
+
       exclude_fields :cover, :tipo, :wpid
     end
     list do
