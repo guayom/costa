@@ -87,6 +87,42 @@ RailsAdmin.config do |config|
           bindings[:view]._current_user.id
         end
       end
+      configure :created_at do
+        hide
+      end
+      configure :updated_at do
+        hide
+      end
+      configure :reset_password_token do
+        hide
+      end
+      configure :reset_password_sent_at do
+        hide
+      end
+      configure :remember_created_at do
+        hide
+      end
+      configure :sign_in_count do
+        hide
+      end
+      configure :current_sign_in_at do
+        hide
+      end
+      configure :last_sign_in_at do
+        hide
+      end
+      configure :current_sign_in_ip do
+        hide
+      end
+      configure :last_sign_in_ip do
+        hide
+      end
+      configure :propiedads do
+        hide
+      end
+    end
+    object_label_method do
+      :nombre_completo
     end
   end
 
