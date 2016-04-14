@@ -3,7 +3,9 @@ class Slider < ActiveRecord::Base
 
   belongs_to :propiedad
 
-  has_attached_file :imagen
+  has_attached_file :imagen,
+                    :path  => '/sliders/:id/:style/:filename'
+
   # has_attached_file :imagen,
   #                   path: 'public/sliders/:id/:style/:filename',
   #                   url: 'http://localhost:3000/sliders/:id/:style/:filename'
