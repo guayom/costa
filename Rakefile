@@ -2,6 +2,7 @@
 # for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
 require 'resque/tasks'
+task 'resque:setup' => :environment
 
 require File.expand_path('../config/application', __FILE__)
 
