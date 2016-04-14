@@ -24,5 +24,7 @@ module Costa
     config.active_record.raise_in_transactional_callbacks = true
 
     config.i18n.default_locale = :es
+
+    config.active_job.queue_adapter = :resque
   end
 end
