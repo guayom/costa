@@ -23,8 +23,11 @@ namespace :resque do
     # The schedule doesn't need to be stored in a YAML, it just needs to
     # be a hash.  YAML is usually the easiest.
     Resque.schedule = {
-      'CancelAbandonedOrders' => {
-        'cron' => '*/5 * * * *'
+      'import' => {
+        'cron' => '* * * * *',
+        'class' => 'Rate',
+        'queue' => 'normal',
+        'description' => 'Update exchange rates.'
       }
     }
 
