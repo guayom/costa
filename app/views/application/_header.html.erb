@@ -14,7 +14,7 @@
 
 <script>
   var sliders = {
-    <% Slider.all.each do |s| %>
+    <% Slider.order(position: :desc).each do |s| %>
       '<%= s.imagen.url %>': {
         'id': <%= s.id %>,
         'url': '<%= url_for(s.propiedad) if s.propiedad.present? %>',
@@ -26,7 +26,7 @@
 
   $(function() {
     $('.header-slide').backstretch([
-      <% Slider.all.each do |s| %>
+      <% Slider.order(position: :desc).each do |s| %>
         '<%= s.imagen.url %>',
       <% end %>
     ], {
