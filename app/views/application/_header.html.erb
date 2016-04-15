@@ -1,0 +1,51 @@
+<div id="header" class="header-slide">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5">
+        <div class="quick-search">
+          <div class="row">
+            <%= render 'propiedades/filters' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var sliders = {
+    <% Slider.all.each do |s| %>
+      '<%= s.imagen.url %>': {
+        'id': <%= s.id %>,
+        'url': '<%= url_for(s.propiedad) if s.propiedad.present? %>',
+        'titular': '<%= s.propiedad.titular if s.propiedad.present? %>',
+        'price': '<%= propiedad_slider_prices(s.propiedad) if s.propiedad.present? %>'
+      },
+    <% end %>
+  };
+
+  $(function() {
+    $('.header-slide').backstretch([
+      <% Slider.all.each do |s| %>
+        '<%= s.imagen.url %>',
+      <% end %>
+    ], {
+    fade: 850,
+        duration: 8000
+    });
+  });
+
+  $(window).on('backstretch.after', function (e, instance, index) {
+    var currentUrl = instance.images[index];
+    $('.backstretch').prepend(sliders[currentUrl].price);
+    $('.backstretch').prepend($('<p>', { class: 'visible-md visible-lg' }).html(
+      $('<a>', { href: sliders[currentUrl].url }).text(sliders[currentUrl].titular)
+    ));
+//    debugger;
+  });
+
+  $(window).on('backstretch.before', function (e, instance, index) {
+    $('.backstretch p').remove();
+    $('.backstretch .property-price').remove();
+  });
+</script>

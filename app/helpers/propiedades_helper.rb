@@ -10,6 +10,12 @@ module PropiedadesHelper
     end
   end
 
+  def propiedad_slider_prices(p = @propiedad)
+    content_tag(:div, class: "property-price visible-md visible-lg propiedad-color-#{p.listado}") do
+      propiedad_all_prices(p)
+    end
+  end
+
   def propiedad_all_prices(p = @propiedad)
     if 'venta_alquiler' == p.listado
       res = []
