@@ -143,8 +143,7 @@
                             %br/
 
                           - if @propiedad.banos.present? && @propiedad.banos > 0
-                            %img{:onerror => "this.src='/assets/icons/bathroom-gray.png';this.onerror=null;", :src => "/assets/icons/bathroom-gray.svg", :class=>"img-icon"}/
-
+                            = image_tag 'icons/bathroom-gray.svg', class: "img-icon", :onerror => "this.src='/assets/icons/bathroom-gray.png';this.onerror=null;"
                             = pluralize(@propiedad.banos.prettify, 'Baño')
                             %br/
 
