@@ -50,3 +50,32 @@ body.agente form#edit_propiedad #propiedad_admin_id_field {
   border-top: 1px solid $border-color;
   margin-bottom: 0;
 }
+
+.ra-multiselect .ui-icon.ui-icon-circle-triangle-e {
+  background: asset_url('rails_admin/right.png');
+  background-position: 0 0 !important;
+  width: 32px;
+  height: 32px;
+
+  &:hover {
+    background: asset_url('rails_admin/right.png');
+    background-position: 0 0 !important;
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.ra-multiselect .ui-icon.ui-icon-circle-triangle-w {
+  background: asset_url('rails_admin/left.png');
+  background-position: 0 0 !important;
+  width: 32px;
+  height: 32px;
+
+  &:hover {
+    background: asset_url('rails_admin/left.png');
+    background-position: 0 0 !important;
+    width: 32px;
+    height: 32px;
+  }
+}
+
