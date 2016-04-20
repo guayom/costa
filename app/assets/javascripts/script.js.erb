@@ -100,7 +100,9 @@ $(document).ready(function () {
   $('.jcarousel, .main-jcarousel').jcarousel({
     wrap: 'circular'
   }).jcarouselSwipe();
-  $('.main-jcarousel').jcarouselAutoscroll();
+  $('.main-jcarousel').jcarouselAutoscroll({
+    interval: 8000
+  });
 
   $('.jcarousel-control-prev.main').jcarouselControl({
     carousel: $(".jcarousel"),
