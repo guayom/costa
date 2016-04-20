@@ -136,7 +136,10 @@
                         .post-meta.description-icons
                           - if @propiedad.dormitorios.present? && @propiedad.dormitorios > 0
                             %i.fa.fa-bed
-                            = pluralize(@propiedad.dormitorios, 'Dormitorio')
+                            - if @propiedad.dormitorios > 1
+                              #{@propiedad.dormitorios}#{'+1' if @propiedad.cuarto_de_servicio} Dormitorios
+                            - else
+                              #{@propiedad.dormitorios}#{'+1' if @propiedad.cuarto_de_servicio} Dormitorio
                             %br/
 
                           - if @propiedad.banos.present? && @propiedad.banos > 0

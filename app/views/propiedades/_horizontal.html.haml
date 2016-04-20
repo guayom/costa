@@ -38,7 +38,7 @@
               - if propiedad.dormitorios.present? && propiedad.dormitorios > 0
                 %span
                   %i.fa.fa-bed
-                  #{propiedad.dormitorios} Dormitorios
+                  #{propiedad.dormitorios}#{'+1' if propiedad.cuarto_de_servicio} Dormitorios
 
               - if propiedad.banos.present? && propiedad.banos > 0
                 %span

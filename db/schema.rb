@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160414191629) do
+ActiveRecord::Schema.define(version: 20160420130405) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -218,6 +218,7 @@ ActiveRecord::Schema.define(version: 20160414191629) do
     t.string   "slug"
     t.boolean  "featured",                          default: false,        null: false
     t.date     "order_date"
+    t.boolean  "cuarto_de_servicio",                default: false,        null: false
   end
 
   add_index "propiedades", ["admin_id"], name: "fk__propiedades_admin_id", using: :btree
