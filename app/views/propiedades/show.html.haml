@@ -141,7 +141,7 @@
 
                           - if @propiedad.banos.present? && @propiedad.banos > 0
                             %i.fa.fa-male
-                            = pluralize(number_to_human(@propiedad.banos, precision: 1, strip_insignificant_zeros: true), 'Baño')
+                            = pluralize(@propiedad.banos.prettify, 'Baño')
                             %br/
 
                           - if @propiedad.pisos.present? && @propiedad.pisos > 0

@@ -43,7 +43,7 @@
               - if propiedad.banos.present? && propiedad.banos > 0
                 %span
                   %i.fa.fa-male
-                  #{propiedad.banos.round} Baños
+                  #{propiedad.banos.prettify} Baños
 
               - if propiedad.pisos.present? && propiedad.pisos > 0
                 %span
