@@ -239,17 +239,16 @@ input[type="color"]:focus,
 }
 
 .navbar-default .navbar-brand img{
-	height: 30px;
+	height: 60px;
 	width: auto;
 	max-width:100%;
 	display: block;
-	margin-top: 14px;
 }
 
 .navbar-default .navbar-brand{
 	position: relative;
 	color: #209922;
-	max-width: 70%;
+	//max-width: 70%;
 	font-size: 26px;
 	display: block;
 	padding: 10px 40px 10px 15px;

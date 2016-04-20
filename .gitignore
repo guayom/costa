@@ -16,3 +16,5 @@
 
 solr/development
 solr/test
+
+#config/initializers/rails_admin.rb
