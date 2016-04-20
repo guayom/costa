@@ -16,7 +16,7 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.dom_class = "nav navbar-nav navbar-right"
 
     primary.item :dashboard, 'Inicio', '/'
-    primary.item :entries, 'Propiedades', '/propiedades/index?reset=true'
+    primary.item :entries, 'Propiedades', '/propiedades/index'
 
     if propietario_signed_in?
       primary.item :entries, t('registre.old_user'), '/propiedades/registrar'

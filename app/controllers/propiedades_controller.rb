@@ -1,17 +1,5 @@
 class PropiedadesController < ApplicationController
   def index
-    if params[:reset].present?
-      session[:propiedad_params] = nil
-    else
-      if request.query_string.present?
-        session[:propiedad_params] = params
-      else
-        if session[:propiedad_params].present?
-          params.merge!(session[:propiedad_params].except(:page))
-        end
-      end
-    end
-
     params[:listado] ||= :venta_alquiler
 
     [:valor_compra, :valor_alquiler].each do |range_key|
