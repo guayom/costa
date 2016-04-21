@@ -11,7 +11,6 @@ class Ability
       elsif 'agente' == admin.permisos
         can :manage, [Imagen, Slider], admin_id: admin.id
         can :manage, [Propiedad, Propietario], admin_id: [nil, admin.id]
-        # can :manage, [Propiedad, Propietario], admin_id: nil
         cannot :destroy, [Propiedad, Propietario]
 
         can :create, Propiedad, admin_id: admin.id
