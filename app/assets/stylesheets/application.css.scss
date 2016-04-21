@@ -19,7 +19,6 @@
 @import "variables";
 @import "style";
 @import "propiedades";
-
 @import 'jcarousel.responsive';
 
 .admin-navbar{
@@ -150,8 +149,6 @@ $email: rgb(69, 195, 244);
   }
 }
 
-@import 'iphone';
-
 @media screen and (max-width: 380px) {
   //.container, .single-post {
   //  padding-left: 0;
@@ -187,3 +184,9 @@ $email: rgb(69, 195, 244);
     left: auto !important;
   }
 }
+
+.cccbr-logo{
+  margin: 10px 0 0 40px;
+}
+
+@import 'iphone';

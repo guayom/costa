@@ -2,7 +2,7 @@
 	========================================
 	ARILLO - REAL ESTATE TEMPLATE
 	========================================
-	
+
 	@author			: @avriqq
 	@version		: v1.1
 	@date-create	: 07/14/2014
@@ -23,6 +23,7 @@
 }
 
 @media screen and (min-width: 768px){
+
 }
 
 @media screen and (max-width: 767px){
@@ -57,7 +58,7 @@
 
 	.navbar-default .navbar-nav > li > a{
 		padding-top: 12px;
-		padding-bottom: 12px; 
+		padding-bottom: 12px;
 		padding-left: 15px;
 	}
 
@@ -72,8 +73,8 @@
 		background-color: #209922;
 	}
 
-	.navbar-default .navbar-nav .open .dropdown-menu > .active > a, 
-	.navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, 
+	.navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+	.navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
 	.navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
 		color: #fff;
 		background-color: #209922;
@@ -82,7 +83,7 @@
 	.navbar-default .navbar-nav .open .dropdown-menu > li > a {
 		color: #898ba2;
 		padding-top: 12px;
-		padding-bottom: 12px; 
+		padding-bottom: 12px;
 	}
 
 	.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover {
@@ -138,7 +139,7 @@
 	.blog-comment,
 	.blog-comment-form{
 		padding-left: 10%;
-		padding-right: 10%; 
+		padding-right: 10%;
 	}
 
 	.blog-comment ul.comments ul{
@@ -152,7 +153,6 @@
 		border-top: 1px solid #2c3e50;
 		text-align: center;
 	}
-
 }
 
 @media screen and (max-width: 480px){

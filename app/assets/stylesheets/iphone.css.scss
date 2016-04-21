@@ -1,9 +1,12 @@
-@media only screen 
+@media only screen
     and (max-device-width : 667px) // or 41.6875em
-{ 
+{
 
     .navbar-default .navbar-brand::after{
         display:none;
     }
-
+    .cccbr-logo{
+      margin-left: 0;
+      height: 40px;
+    }
 }
