@@ -64,6 +64,7 @@ es:
 
   propiedad:
     amenities: Amenidades
+    codigo: Código
 
   search: "Buscar"
 
