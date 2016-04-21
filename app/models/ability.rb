@@ -9,7 +9,9 @@ class Ability
       if %w(developer admin).include?(admin.permisos)
         can :manage, :all
       elsif 'agente' == admin.permisos
-        can :manage, [Propiedad, Propietario, Imagen, Slider]
+        can :manage, [Imagen, Slider], admin_id: admin.id
+        can :manage, [Propiedad, Propietario], admin_id: [nil, admin.id]
+        # can :manage, [Propiedad, Propietario], admin_id: nil
         cannot :destroy, [Propiedad, Propietario]
 
         can :create, Propiedad, admin_id: admin.id
