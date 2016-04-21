@@ -223,7 +223,7 @@ RailsAdmin.config do |config|
       #   end
       # end
 
-      exclude_fields :cover, :tipo, :wpid
+      exclude_fields :cover, :tipo, :wpid, :contacto_mensajes
     end
 
     # configure :tipos do
