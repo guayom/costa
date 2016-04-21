@@ -17,3 +17,44 @@
     <% end %>
   </div>
 <% end %>
+
+<% if form.object.imagenes.any? %>
+  <br>
+  <a id="delete_all_images" href="#">Eliminar todos</a>
+  <script>
+    $(function() { $('#delete_all_images:not(.bound)').addClass('bound').click(deleteAllImages); });
+    $(document).on('pjax:complete', function() { $('#delete_all_images:not(.bound)').addClass('bound').click(deleteAllImages); });
+
+    var deleteAllImages = function(event) {
+      if (!confirm('¿Está seguro?')) {
+        return false;
+      }
+
+      var deletePath = [
+        <% form.object.imagenes.each do |image| %>
+        '<%= destroy_image_path(:imagen, image.id) %>',
+        <% end %>
+      ];
+      debugger;
+
+      for (var i = 0; i < deletePath.length; i++) {
+        $.ajax({
+          url: deletePath[i],
+          type: 'DELETE',
+          beforeSend: function(xhr) {
+            xhr.setRequestHeader(
+                'X-CSRF-Token',
+                $('meta[name=csrf-token]').attr('content')
+            );
+          },
+          success: function() {
+            debugger;
+          }
+        });
+      }
+
+      event.preventDefault();
+      return false;
+    };
+  </script>
+<% end %>
