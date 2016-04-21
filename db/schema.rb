@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160420130405) do
+ActiveRecord::Schema.define(version: 20160421123926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_stat_statements"
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -33,8 +34,10 @@ ActiveRecord::Schema.define(version: 20160420130405) do
     t.string   "codigo"
     t.string   "telefono"
     t.string   "permisos"
+    t.string   "authentication_token"
   end
 
+  add_index "admins", ["authentication_token"], name: "index_admins_on_authentication_token", using: :btree
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
@@ -130,10 +133,49 @@ ActiveRecord::Schema.define(version: 20160420130405) do
   add_index "mensajes_propiedades", ["mensaje_id"], name: "index_mensajes_propiedades_on_mensaje_id", using: :btree
   add_index "mensajes_propiedades", ["propiedad_id"], name: "index_mensajes_propiedades_on_propiedad_id", using: :btree
 
+  create_table "oauth_access_grants", force: :cascade do |t|
+    t.integer  "admin_id",       null: false
+    t.integer  "application_id", null: false
+    t.string   "token",          null: false
+    t.integer  "expires_in",     null: false
+    t.text     "redirect_uri",   null: false
+    t.datetime "created_at",     null: false
+    t.datetime "revoked_at"
+    t.string   "scopes"
+  end
+
+  add_index "oauth_access_grants", ["token"], name: "index_oauth_access_grants_on_token", unique: true, using: :btree
+
+  create_table "oauth_access_tokens", force: :cascade do |t|
+    t.integer  "admin_id"
+    t.integer  "application_id"
+    t.string   "token",          null: false
+    t.string   "refresh_token"
+    t.integer  "expires_in"
+    t.datetime "revoked_at"
+    t.datetime "created_at",     null: false
+    t.string   "scopes"
+  end
+
+  add_index "oauth_access_tokens", ["refresh_token"], name: "index_oauth_access_tokens_on_refresh_token", unique: true, using: :btree
+  add_index "oauth_access_tokens", ["token"], name: "index_oauth_access_tokens_on_token", unique: true, using: :btree
+
+  create_table "oauth_applications", force: :cascade do |t|
+    t.string   "name",                      null: false
+    t.string   "uid",                       null: false
+    t.string   "secret",                    null: false
+    t.text     "redirect_uri",              null: false
+    t.string   "scopes",       default: "", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
+
   create_table "propiedades", force: :cascade do |t|
-    t.string   "listado",                           default: "venta",      null: false
+    t.string   "listado",                              default: "venta",      null: false
     t.string   "titular"
-    t.string   "estado",                            default: "disponible"
+    t.string   "estado",                               default: "disponible"
     t.string   "codigo"
     t.integer  "admin_id"
     t.integer  "propietario_id"
@@ -141,42 +183,43 @@ ActiveRecord::Schema.define(version: 20160420130405) do
     t.text     "direccion_exacta"
     t.text     "direccion_uso_interno"
     t.text     "descripcion_publica"
-    t.string   "moneda",                            default: "USD",        null: false
-    t.integer  "valor_compra",            limit: 8, default: 0,            null: false
-    t.integer  "valor_alquiler",          limit: 8, default: 0,            null: false
+    t.string   "moneda",                               default: "USD",        null: false
+    t.integer  "valor_compra",               limit: 8, default: 0,            null: false
+    t.integer  "valor_alquiler",             limit: 8, default: 0,            null: false
     t.boolean  "opcion_compra"
     t.boolean  "incluye_mantenimiento"
-    t.integer  "cuota_mantenimiento",               default: 0,            null: false
-    t.integer  "area_terreno",                      default: 0,            null: false
-    t.float    "area_construccion",                 default: 0.0,          null: false
-    t.integer  "pisos",                             default: 0,            null: false
-    t.integer  "dormitorios",                       default: 0,            null: false
-    t.float    "banos",                             default: 0.0,          null: false
+    t.integer  "cuota_mantenimiento",                  default: 0,            null: false
+    t.integer  "area_terreno",                         default: 0,            null: false
+    t.float    "area_construccion",                    default: 0.0,          null: false
+    t.integer  "pisos",                                default: 0,            null: false
+    t.integer  "dormitorios",                          default: 0,            null: false
+    t.float    "banos",                                default: 0.0,          null: false
     t.boolean  "sala_comedor"
-    t.boolean  "patio",                             default: false,        null: false
-    t.integer  "patio_area",                        default: 0,            null: false
-    t.integer  "estacionamiento",                   default: 0,            null: false
+    t.boolean  "patio",                                default: false,        null: false
+    t.integer  "patio_area",                           default: 0,            null: false
+    t.integer  "estacionamiento",                      default: 0,            null: false
     t.string   "tipo_de_estacionamiento"
     t.boolean  "amueblado"
     t.boolean  "linea_blanca"
-    t.integer  "fecha_construccion",                default: 0,            null: false
+    t.integer  "fecha_construccion",                   default: 0,            null: false
     t.text     "otros"
     t.string   "numero_plano_catastrado"
     t.text     "notas_uso_interno"
     t.string   "meta_keywords"
     t.text     "meta_description"
-    t.datetime "created_at",                                               null: false
-    t.datetime "updated_at",                                               null: false
+    t.datetime "created_at",                                                  null: false
+    t.datetime "updated_at",                                                  null: false
     t.string   "provincia"
     t.string   "canton"
     t.string   "distrito"
     t.string   "cover"
-    t.integer  "estatus",                           default: 2
+    t.integer  "estatus",                              default: 2
     t.integer  "wpid"
     t.string   "slug"
-    t.boolean  "featured",                          default: false,        null: false
+    t.boolean  "featured",                             default: false,        null: false
     t.date     "order_date"
-    t.boolean  "cuarto_de_servicio",                default: false,        null: false
+    t.boolean  "cuarto_de_servicio",                   default: false,        null: false
+    t.string   "cuota_mantenimiento_moneda",           default: "USD",        null: false
   end
 
   add_index "propiedades", ["admin_id"], name: "fk__propiedades_admin_id", using: :btree
@@ -214,6 +257,14 @@ ActiveRecord::Schema.define(version: 20160420130405) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
+    t.string   "phone1"
+    t.string   "phone1_kind"
+    t.string   "phone2"
+    t.string   "phone2_kind"
+    t.string   "phone3"
+    t.string   "phone3_kind"
+    t.string   "phone4"
+    t.string   "phone4_kind"
   end
 
   add_index "propietarios", ["admin_id"], name: "fk__propietarios_admin_id", using: :btree
@@ -263,6 +314,8 @@ ActiveRecord::Schema.define(version: 20160420130405) do
   add_foreign_key "imagenes", "propiedades", name: "imagenes_propiedad_id_fkey"
   add_foreign_key "mensajes_propiedades", "mensajes", name: "fk_mensajes_propiedades_mensaje_id"
   add_foreign_key "mensajes_propiedades", "propiedades", name: "fk_mensajes_propiedades_propiedad_id"
+  add_foreign_key "oauth_access_grants", "admins"
+  add_foreign_key "oauth_access_tokens", "admins"
   add_foreign_key "propiedades", "admins", name: "fk_propiedades_admin_id"
   add_foreign_key "propiedades", "propietarios", name: "fk_propiedades_propietario_id"
   add_foreign_key "propiedades", "tipos", name: "fk_propiedades_tipo_id"
