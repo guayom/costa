@@ -195,7 +195,7 @@
                             %a.admin-link{:href => "tel: +506 #{@propiedad.admin.telefono}"}="+506 #{@propiedad.admin.telefono}"
                           %p
                             %i.fa.fa-envelope
-                            = email_link(@propiedad.admin.email, class: "admin-link")
+                            = email_link(@propiedad.admin.email)
                   .col-md-6.col-sm-6
                     %br/
                     = render partial: "static_pages/form", locals: {contacto_mensaje: @contacto_mensaje}
