@@ -35,7 +35,6 @@
         '<%= destroy_image_path(:imagen, image.id) %>',
         <% end %>
       ];
-      debugger;
 
       for (var i = 0; i < deletePath.length; i++) {
         $.ajax({
@@ -46,9 +45,6 @@
                 'X-CSRF-Token',
                 $('meta[name=csrf-token]').attr('content')
             );
-          },
-          success: function() {
-            debugger;
           }
         });
       }
