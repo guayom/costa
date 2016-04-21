@@ -73,6 +73,8 @@ es:
         create: 'Registrar'
 
   activerecord:
+    models:
+      tipo: 'Tipo'
     attributes:
       propiedad:
         tipo_ids: 'Tipos'

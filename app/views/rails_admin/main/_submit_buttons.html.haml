@@ -11,3 +11,11 @@
           = t('admin.form.save_and_add_another')
 
       = link_to 'Cancelar', index_path(model_name: @model_name), class: 'btn btn-default'
+
+    %button.btn.btn-primary{type: 'submit', name: '_save', style: 'display: none;'}
+      %i.icon-white.icon-ok
+      = t('admin.form.save')
+    %button.btn.btn-default{type: 'submit', name: '_continue', style: 'display: none;'}
+      %i.icon-remove
+      = t('admin.form.cancel')
+
