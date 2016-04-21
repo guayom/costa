@@ -192,10 +192,10 @@
                             = @propiedad.admin.nombre
                           %p
                             %i.fa.fa-phone
-                            %a.tel{:href => "tel: +506 #{@propiedad.admin.telefono}"}="+506 #{@propiedad.admin.telefono}"
+                            %a.admin-link{:href => "tel: +506 #{@propiedad.admin.telefono}"}="+506 #{@propiedad.admin.telefono}"
                           %p
                             %i.fa.fa-envelope
-                            = email_link(@propiedad.admin.email)
+                            = email_link(@propiedad.admin.email, class: "admin-link")
                   .col-md-6.col-sm-6
                     %br/
                     = render partial: "static_pages/form", locals: {contacto_mensaje: @contacto_mensaje}
