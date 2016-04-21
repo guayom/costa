@@ -19,7 +19,7 @@
               %li
                 = admin.nombre
                 %br
-                = admin.telefono
+                = phone_number_link(admin.telefono)
 
       / break
       .col-md-3.col-sm-6.col-xs-12
@@ -30,7 +30,7 @@
           %address
             %strong= CONTACT_INFO['direccion']
             %br
-              Email : #{CONTACT_INFO['email']}
+              Email : #{email_link(CONTACT_INFO['email'])}
               %br/
               %br/
               %strong Teléfonos:
@@ -38,7 +38,7 @@
               - CONTACT_INFO['telefonos'].each do |member|
                 %div
                   %abbr{:title => "Phone"}
-                  = member['numero']
+                  = phone_number_link(member['numero'])
       / break
     / break
     / begin:copyright

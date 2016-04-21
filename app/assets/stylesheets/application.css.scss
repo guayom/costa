@@ -19,7 +19,6 @@
 @import "variables";
 @import "style";
 @import "propiedades";
-
 @import 'jcarousel.responsive';
 
 .admin-navbar{
@@ -31,6 +30,11 @@
 	font-size: 0.9em;
 	padding: 5px 0;
 	border-bottom: solid 1px #ddd;
+  .icon-facebook{
+     i{
+       font-size: 2em;
+     }
+  }
 }
 .property-price div:last-child{
 	padding-left: 20px;
@@ -150,8 +154,6 @@ $email: rgb(69, 195, 244);
   }
 }
 
-@import 'iphone';
-
 @media screen and (max-width: 380px) {
   //.container, .single-post {
   //  padding-left: 0;
@@ -187,3 +189,13 @@ $email: rgb(69, 195, 244);
     left: auto !important;
   }
 }
+
+.cccbr-logo{
+  margin: 10px 0 0 40px;
+}
+
+#footer .widget ul.list-unstyled > li > a:before{
+  display: none;
+}
+
+@import 'iphone';

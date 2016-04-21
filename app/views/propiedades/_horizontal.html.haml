@@ -62,4 +62,8 @@
               %small
             %p= truncate( strip_tags(propiedad.descripcion_publica), length: 150, :separator => ' ').gsub("↵", '')
 
+
+
             = link_to "Más detalles »", propiedad, class: "btn btn-success propiedad-color-#{propiedad.listado} propiedad-border-color-#{propiedad.listado}"
+
+            .codigo #{t('propiedad.codigo')}: #{propiedad.codigo}

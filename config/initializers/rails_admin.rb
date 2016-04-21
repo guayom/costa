@@ -109,6 +109,7 @@ RailsAdmin.config do |config|
      object_label_method do
       :titulo
     end
+    label 'Amenidades'
   end
 
   config.model Propietario do
@@ -222,6 +223,10 @@ RailsAdmin.config do |config|
       #     }
       #   end
       # end
+
+      configure :caracteristicas do
+        label 'Amenidades' # Change the label of this field
+      end
 
       exclude_fields :cover, :tipo, :wpid, :contacto_mensajes
     end

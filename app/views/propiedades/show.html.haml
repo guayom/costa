@@ -131,19 +131,19 @@
                                   %br/
                                   %a{:href => "tel: +506 #{@propiedad.admin.telefono}"}="+506 #{@propiedad.admin.telefono}"
                                   %br/
-                                  %span.hidden-xs= @propiedad.admin.email
+                                  %span.hidden-xs= email_link(@propiedad.admin.email)
                       .col-xs-12.col-md-4
                         .post-meta.description-icons
                           - if @propiedad.dormitorios.present? && @propiedad.dormitorios > 0
                             %i.fa.fa-bed
                             - if @propiedad.dormitorios > 1
-                              #{@propiedad.dormitorios}#{'+1' if @propiedad.cuarto_de_servicio} Dormitorios
+                              #{@propiedad.dormitorios} Dormitorios#{' + Cuarto de Servicio' if @propiedad.cuarto_de_servicio}
                             - else
                               #{@propiedad.dormitorios}#{'+1' if @propiedad.cuarto_de_servicio} Dormitorio
                             %br/
 
                           - if @propiedad.banos.present? && @propiedad.banos > 0
-                            = image_tag 'icons/bathroom-gray.svg', class: "img-icon", :onerror => "this.src='/assets/icons/bathroom-gray.png';this.onerror=null;"
+                            = image_tag '/assets/icons/bathroom-gray.png', class: "img-icon"
                             = pluralize(@propiedad.banos.prettify, 'Baño')
                             %br/
 
@@ -192,10 +192,10 @@
                             = @propiedad.admin.nombre
                           %p
                             %i.fa.fa-phone
-                            %a.tel{:href => "tel: +506 #{@propiedad.admin.telefono}"}="+506 #{@propiedad.admin.telefono}"
+                            %a.admin-link{:href => "tel: +506 #{@propiedad.admin.telefono}"}="+506 #{@propiedad.admin.telefono}"
                           %p
                             %i.fa.fa-envelope
-                            = @propiedad.admin.email
+                            = email_link(@propiedad.admin.email)
                   .col-md-6.col-sm-6
                     %br/
                     = render partial: "static_pages/form", locals: {contacto_mensaje: @contacto_mensaje}
