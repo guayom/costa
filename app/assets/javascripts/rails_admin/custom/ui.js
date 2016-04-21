@@ -2,6 +2,11 @@
 //= require bootstrap-number-input
 //= require autonumeric
 
+$(function(){
+  $('.rails_admin .form-control[type="number"]').bootstrapNumber();
+
+  $('.show_in_app_member_link a').attr('target', '_blank');
+});
 $(document).on('pjax:complete', function() {
   $('.rails_admin .form-control[type="number"]').bootstrapNumber();
 
