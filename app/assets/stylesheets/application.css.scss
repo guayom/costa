@@ -194,4 +194,8 @@ $email: rgb(69, 195, 244);
   margin: 10px 0 0 40px;
 }
 
+#footer .widget ul.list-unstyled > li > a:before{
+  display: none;
+}
+
 @import 'iphone';

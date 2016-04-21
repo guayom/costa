@@ -1,7 +1,7 @@
 class ContactoMailer < ApplicationMailer
 
-  default from: "Your Mailer <noreply@yourdomain.com>"
-  default to: "guayo.mena@gmail.com"
+  default from: "Costa 506 <info@costa506realestate.com>"
+  default to: "info@costa506realestate.com"
 
   def new_mensaje(mensaje)
     @mensaje = mensaje
@@ -21,6 +21,6 @@ class ContactoMailer < ApplicationMailer
   def thank_you_mensaje(mensaje)
     @mensaje = mensaje
 
-    mail subject: "Thank you for contacting us, #{mensaje.nombre}", to: mensaje.email
+    mail subject: "Gracias por escribirnos, #{mensaje.nombre}", to: mensaje.email
   end
 end
