@@ -9,7 +9,23 @@
     = javascript_include_tag "rails_admin/rails_admin.js"
     -# Initialize JS simple i18n
     :javascript
-      RailsAdmin.I18n.init('#{I18n.locale}', JSON.parse("#{j I18n.t("admin.js").to_json}"))
+      $.pjax.disable();
+      RailsAdmin.I18n.init('#{I18n.locale}', JSON.parse("#{j I18n.t("admin.js").to_json}"));
+      $(function() {
+        $('.rails_admin .form-control[type="number"]').bootstrapNumber();
+
+        $('.show_in_app_member_link a').attr('target', '_blank');
+      });
+      $(document).on('ready page:load', function() {
+        $('.rails_admin .form-control[type="number"]').bootstrapNumber();
+
+        $('.show_in_app_member_link a').attr('target', '_blank');
+      });
+      document.addEventListener('page:load', function() {
+        $('.rails_admin .form-control[type="number"]').bootstrapNumber();
+
+        $('.show_in_app_member_link a').attr('target', '_blank');
+      });
   -#%body.rails_admin
   %body{class: "rails_admin #{current_admin.try(:permisos)}"}
     #loading.label.label-warning{style: 'display:none; position:fixed; right:20px; bottom:20px; z-index:100000'}= t('admin.loading')

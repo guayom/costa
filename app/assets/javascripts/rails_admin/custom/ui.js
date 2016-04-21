@@ -4,6 +4,20 @@
 
 $(function() {
   $('.rails_admin .form-control[type="number"]').bootstrapNumber();
+
+  $('.show_in_app_member_link a').attr('target', '_blank');
+});
+
+$(document).on('ready page:load', function() {
+  $('.rails_admin .form-control[type="number"]').bootstrapNumber();
+
+  $('.show_in_app_member_link a').attr('target', '_blank');
+});
+
+document.addEventListener('page:load', function() {
+  $('.rails_admin .form-control[type="number"]').bootstrapNumber();
+
+  $('.show_in_app_member_link a').attr('target', '_blank');
 });
 
 $(function() {
