@@ -53,7 +53,7 @@
       %h3
         -# if propiedad.tipo.present?
           -#%small=t(propiedad.tipo.titulo) unless propiedad.tipo.empty?
-        =link_to truncate(propiedad.titular, :length => 39), propiedad, class: "propiedad-text-color-#{propiedad.listado}"
+        =link_to truncate(propiedad.titular, :length => 40), propiedad, class: "propiedad-text-color-#{propiedad.listado}"
         %small{class: "propiedad-text-color-#{propiedad.listado}"}
           = propiedad.ubicacion
 
