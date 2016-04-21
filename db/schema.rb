@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160421082410) do
+ActiveRecord::Schema.define(version: 20160421123926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -257,6 +257,14 @@ ActiveRecord::Schema.define(version: 20160421082410) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
+    t.string   "phone1"
+    t.string   "phone1_kind"
+    t.string   "phone2"
+    t.string   "phone2_kind"
+    t.string   "phone3"
+    t.string   "phone3_kind"
+    t.string   "phone4"
+    t.string   "phone4_kind"
   end
 
   add_index "propietarios", ["admin_id"], name: "fk__propietarios_admin_id", using: :btree

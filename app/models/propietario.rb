@@ -6,6 +6,12 @@ class Propietario < ActiveRecord::Base
 
 	belongs_to :admin
 
+  extend Enumerize
+  enumerize :phone1_kind, in: [:celular, :oficina, :casa]
+  enumerize :phone2_kind, in: [:celular, :oficina, :casa]
+  enumerize :phone3_kind, in: [:celular, :oficina, :casa]
+  enumerize :phone4_kind, in: [:celular, :oficina, :casa]
+
 	has_many :propiedades, inverse_of: :propietario, dependent: :restrict_with_error
 
   before_save do
