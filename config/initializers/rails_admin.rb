@@ -228,7 +228,7 @@ RailsAdmin.config do |config|
         label 'Amenidades' # Change the label of this field
       end
 
-      exclude_fields :cover, :tipo, :wpid, :contacto_mensajes
+      exclude_fields :cover, :tipo, :tipo_id, :wpid, :contacto_mensajes
     end
 
     # configure :tipos do

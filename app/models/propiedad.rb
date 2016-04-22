@@ -205,7 +205,7 @@ class Propiedad < ActiveRecord::Base
 
   def cover_url
     if cover
-      i = Imagen.find(cover)
+      i = Imagen.find_by(id: cover)
       if i
         url = i.imagen.url
       end
