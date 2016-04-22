@@ -17,7 +17,7 @@ class Ability
         can :create, Propiedad, admin_id: admin.id
         can :create, Propietario, admin_id: admin.id
 
-        can :index, [Mensaje, Caracteristica, Tipo]
+        can :index, [Admin, Mensaje, Caracteristica, Tipo]
       end
     end
 
