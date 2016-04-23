@@ -160,53 +160,139 @@ RailsAdmin.config do |config|
   end
 
   config.model Propiedad do
+
     object_label_method do
       :codigo
     end
 
     edit do
-      configure :admin do
-        # visible false
+
+      field :listado
+      field :titular
+      field :estado
+      field :estatus
+      field :order_date do
+        strftime_format '%Y-%m-%d'
+        label 'Fecha de Publicación'
+      end
+      field :admin do
         default_value do
           bindings[:view]._current_user.id
         end
       end
-
-      # configure :descripcion_publica, :froala
-      configure :descripcion_publica do
-        partial 'propiedad_descripcion_publica'
+      field :codigo do
+        label "Código"
       end
-
-      configure :provincia do
-        partial 'propiedad_provincia'
+      field :featured do
+        label "Destacado"
       end
-      configure :canton do
-        partial 'propiedad_canton'
-      end
-      configure :distrito do
-        partial 'propiedad_distrito'
-      end
-      configure :imagenes, :paperclip do
-        html_attributes do
-          { multiple: true }
-        end
-        partial 'multiple_images'
-      end
-      configure :propietario do
+      field :propietario do
         inline_add true
         inline_edit true
         nested_form false
       end
-
-      configure :order_date do
-        strftime_format '%Y-%m-%d'
+      field :moneda
+      field :valor_compra
+      field :valor_alquiler
+      field :opcion_compra do
+        label "Opción de Compra"
       end
-
-      configure :tipos do
+      field :comision do
+        label "Comisión"
+      end
+      field :incluye_mantenimiento
+      field :cuota_mantenimiento
+      field :cuota_mantenimiento_moneda do
+        label "Moneda de Cuota de Mantenimiento"
+      end
+      field :direccion_exacta do
+        label "Dirección Exacta"
+      end
+      field :direccion_uso_interno do
+        label "Dirección uso Interno"
+      end
+      field :descripcion_publica do
+        label "Descripción Pública"
+        partial 'propiedad_descripcion_publica'
+      end
+      field :provincia do
+        partial 'propiedad_provincia'
+      end
+      field :canton do
+        label "Cantón"
+        partial 'propiedad_canton'
+      end
+      field :distrito do
+        partial 'propiedad_distrito'
+      end
+      field :area_terreno do
+        label "Área de Terreno"
+      end
+      field :area_construccion do
+        label "Área de Construcción"
+      end
+      field :pisos
+      field :dormitorios
+      field :banos do
+        label "Baños"
+      end
+      field :fecha_construccion do
+        label "Años de construcción"
+      end
+      field :tipos do
         sortable do
           :titulo
         end
       end
+      field :caracteristicas do
+        label 'Amenidades'
+      end
+      field :patio
+      field :patio_area do
+        label "Área de Patio"
+      end
+      field :estacionamiento
+      field :tipo_de_estacionamiento
+      field :amueblado
+      field :linea_blanca do
+        label "Línea Blanca"
+      end
+      field :sala_comedor
+      field :cuarto_de_servicio
+
+      group 'Otros' do
+        active false
+        field :notas_uso_interno
+        field :otros
+        field :numero_plano_catastrado do
+          label "Número de plano catastrado"
+        end
+      end
+
+      group 'Imágenes' do
+        active false
+        field :imagenes, :paperclip do
+          html_attributes do
+            { multiple: true }
+          end
+          partial 'multiple_images'
+          label "Imágenes"
+        end
+      end
+      
+      group 'SEO' do
+        active false
+        field :slug do
+          label "Link"
+        end
+        field :meta_keywords do
+          label "Palabras Clave"
+        end
+        field :meta_description do
+          label "Meta Descripción"
+        end
+      end
+
 
       # configure :tipos do
       #   # associated_collection_cache_all true  # REQUIRED if you want to SORT the list as below
@@ -224,18 +310,7 @@ RailsAdmin.config do |config|
       #   end
       # end
 
-      configure :caracteristicas do
-        label 'Amenidades' # Change the label of this field
-      end
-
-      exclude_fields :cover, :tipo, :tipo_id, :wpid, :contacto_mensajes
     end
-
-    # configure :tipos do
-    #   sortable do
-    #     :titulo
-    #   end
-    # end
 
     list do
       field :codigo
