@@ -19,10 +19,6 @@ class Admin < ActiveRecord::Base
 
   scope :for_footer, -> { order('14 != id').order(:nombre) }
 
-  rails_admin do
-		object_label_method :nombre
-  end
-
   def has_any_propiedades?
     Propiedad.where("codigo ILIKE ?", "%#{codigo}%").any?
   end

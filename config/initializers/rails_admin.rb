@@ -33,6 +33,9 @@ RailsAdmin.config do |config|
   # end
   # config.current_user_method(&:current_admin)
 
+  ##Exclude the models we're not using
+  config.excluded_models = ["PropiedadTipo", "Rate"]
+
   config.actions do
     dashboard                     # mandatory
 
@@ -93,73 +96,9 @@ RailsAdmin.config do |config|
     end
   end
 
-  config.model Mensaje do
-    object_label_method do
-      :mensaje
-    end
-    configure :color, :color
-  end
-
-  config.model Caracteristica do
-    list do
-      configure :type do
-        hide
-      end
-    end
-     object_label_method do
-      :titulo
-    end
-    label 'Amenidades'
-  end
-
-  config.model Propietario do
-    edit do
-      configure :admin do
-        # visible false
-        default_value do
-          bindings[:view]._current_user.id
-        end
-      end
-      configure :created_at do
-        visible false
-      end
-      configure :updated_at do
-        visible false
-      end
-      configure :reset_password_token do
-        visible false
-      end
-      configure :reset_password_sent_at do
-        visible false
-      end
-      configure :remember_created_at do
-        visible false
-      end
-      configure :sign_in_count do
-        visible false
-      end
-      configure :current_sign_in_at do
-        visible false
-      end
-      configure :last_sign_in_at do
-        visible false
-      end
-      configure :current_sign_in_ip do
-        visible false
-      end
-      configure :last_sign_in_ip do
-        visible false
-      end
-      configure :propiedades do
-        visible false
-      end
-    end
-    object_label_method do
-      :nombre_completo
-    end
-  end
-
   config.model Propiedad do
+
+    weight -2
 
     object_label_method do
       :codigo
@@ -170,18 +109,23 @@ RailsAdmin.config do |config|
       field :listado
       field :titular
       field :estado
-      field :estatus
+      field :estatus do
+        help "Mientras se crea una propiedad, use el estatus Borrador. Cuando la propiedad esté lista para verse en la página, use el estatus publicado."
+      end
       field :order_date do
         strftime_format '%Y-%m-%d'
         label 'Fecha de Publicación'
+        help "Use este campo para hacer que una propiedad que se creó hace tiempo vuelva a salir en las propiedades recientes"
       end
       field :admin do
         default_value do
           bindings[:view]._current_user.id
         end
+        help "Este campo no es visible para los agentes"
       end
       field :codigo do
         label "Código"
+        help "Este campo se llena atuomáticamente. Es posible editarlo manualmente si surge la necesidad."
       end
       field :featured do
         label "Destacado"
@@ -207,13 +151,16 @@ RailsAdmin.config do |config|
       end
       field :direccion_exacta do
         label "Dirección Exacta"
+        help "Use este campo para colocar más detalles sobre la dirección que aparece pública. Ejemplo: Residencial Monterán"
       end
       field :direccion_uso_interno do
         label "Dirección uso Interno"
+        help "Use este campo para poner detalles específicos de como llegar a la propiedad. Esto no se verá público en la página."
       end
       field :descripcion_publica do
         label "Descripción Pública"
         partial 'propiedad_descripcion_publica'
+        help "Esta es la descripción que  saldrá pública en la página"
       end
       field :provincia do
         partial 'propiedad_provincia'
@@ -238,6 +185,7 @@ RailsAdmin.config do |config|
       end
       field :fecha_construccion do
         label "Años de construcción"
+        help "Indique hace cuantos años fue construída esta propiedad"
       end
       field :tipos do
         sortable do
@@ -261,7 +209,7 @@ RailsAdmin.config do |config|
       field :cuarto_de_servicio
 
       group 'Otros' do
-        active false
+        #active false
         field :notas_uso_interno
         field :otros
         field :numero_plano_catastrado do
@@ -279,11 +227,12 @@ RailsAdmin.config do |config|
           label "Imágenes"
         end
       end
-      
+
       group 'SEO' do
-        active false
+        #active false
         field :slug do
           label "Link"
+          help "Este link se genera automáticamente, pero existe la posibilidad de editarlo luego manualmente"
         end
         field :meta_keywords do
           label "Palabras Clave"
@@ -341,7 +290,125 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model Propietario do
+    weight -1
+
+    edit do
+      configure :admin do
+        # visible false
+        default_value do
+          bindings[:view]._current_user.id
+        end
+      end
+      configure :created_at do
+        visible false
+      end
+      configure :updated_at do
+        visible false
+      end
+      configure :reset_password_token do
+        visible false
+      end
+      configure :reset_password_sent_at do
+        visible false
+      end
+      configure :remember_created_at do
+        visible false
+      end
+      configure :sign_in_count do
+        visible false
+      end
+      configure :current_sign_in_at do
+        visible false
+      end
+      configure :last_sign_in_at do
+        visible false
+      end
+      configure :current_sign_in_ip do
+        visible false
+      end
+      configure :last_sign_in_ip do
+        visible false
+      end
+      configure :propiedades do
+        visible false
+      end
+    end
+    object_label_method do
+      :nombre_completo
+    end
+  end
+
+  config.model Admin do
+    weight 0
+
+    label "Agente"
+    label_plural "Agentes"
+    object_label_method do
+      :nombre
+    end
+    list do
+      field :nombre
+      field :codigo
+      field :email
+      field :permisos
+      field :telefono
+    end
+  end
+
+  config.model Slider do
+    weight 1
+
+    label "Slider"
+    label_plural "Slides"
+
+    list do
+      exclude_fields :position
+      sort_by :position
+    end
+
+    edit do
+      exclude_fields :position
+    end
+  end
+
+  config.model ContactoMensaje do
+    weight 2
+    label "Mensaje de Interesado"
+    label_plural "Mensajes de Interesados"
+    object_label_method do
+      :nombre
+    end
+  end
+
+  config.model Mensaje do
+    weight 3
+    label "Mensaje Especial"
+    label_plural "Mensajes Epeciales"
+    object_label_method do
+      :mensaje
+    end
+    configure :color, :color
+  end
+
+  config.model Caracteristica do
+    weight 3
+    list do
+      configure :type do
+        hide
+      end
+    end
+     object_label_method do
+      :titulo
+    end
+    label 'Amenidades'
+  end
+
   config.model Tipo do
+    weight 3
+    label "Tipode Propiedad"
+    label_plural "Tipos de Propiedades"
+
     object_label_method do
       :titulo
     end
@@ -357,14 +424,19 @@ RailsAdmin.config do |config|
     end
   end
 
-  config.model Slider do
-    list do
-      exclude_fields :position
-      sort_by :position
-    end
+  config.model Provincia do
+    weight 20
+  end
+  config.model Canton do
+    weight 21
+    parent Provincia
+  end
+  config.model Distrito do
+    weight 22
+    parent Provincia
+  end
 
-    edit do
-      exclude_fields :position
-    end
+  config.model 'Imagen' do
+    visible false
   end
 end
