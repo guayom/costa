@@ -13,7 +13,7 @@
       .row.single-post
         = form_for @propiedad, html: { class: 'tab-content navbar-default form-horizontal', role: 'form' } do |f|
           - if @propiedad.errors.any?
-            = @propiedad.errors.full_messages.each do |msg|
+            - @propiedad.errors.full_messages.each do |msg|
               = msg
               %br
 
@@ -40,25 +40,35 @@
               .form-group
                 = sf.label :nombre, class: 'col-sm-2 control-label'
                 .col-sm-4
-                  = sf.text_field :nombre, class: 'form-control'
+                  = sf.text_field :nombre, class: 'form-control', required: true
+                  %p.help-block
+                    no puede estar en blanco
                 = sf.label :apellido, class: 'col-sm-2 control-label'
                 .col-sm-4
-                  = sf.text_field :apellido, class: 'form-control'
+                  = sf.text_field :apellido, class: 'form-control', required: true
+                  %p.help-block
+                    no puede estar en blanco
 
               .form-group
                 = sf.label :celular, class: 'col-sm-2 control-label'
                 .col-sm-4
-                  = sf.phone_field :celular, class: 'form-control'
+                  = sf.phone_field :celular, class: 'form-control', required: true
+                  %p.help-block
+                    no puede estar en blanco
                 = sf.label :email, class: 'col-sm-2 control-label'
                 .col-sm-4
-                  = sf.email_field :email, class: 'form-control'
+                  = sf.email_field :email, class: 'form-control', required: true
+                  %p.help-block
+                    no puede estar en blanco
 
               %hr
 
           .form-group
             = f.label :titular, class: 'col-sm-2 control-label'
             .col-sm-10
-              = f.text_field :titular, class: 'form-control'
+              = f.text_field :titular, class: 'form-control', required: true
+              %p.help-block
+                no puede estar en blanco
 
           .form-group
             = f.label :tipo_id, class: 'col-sm-2 control-label'
@@ -92,14 +102,37 @@
           .form-group
             = f.label :valor_compra, class: 'col-sm-2 control-label'
             .col-sm-4
-              = f.number_field :valor_compra, class: 'form-control'
+              = f.number_field :valor_compra, class: 'form-control', style: 'width: auto;'
 
             = f.label :valor_alquiler, class: 'col-sm-2 control-label'
             .col-sm-4
-              = f.number_field :valor_alquiler, class: 'form-control'
+              = f.number_field :valor_alquiler, class: 'form-control', style: 'width: auto;'
+
+          :javascript
+            $(function() {
+              $('.form-control[type="number"]').bootstrapNumber();
+
+              $('form').submit(function() {
+                $('input').each(function() {
+                  var self = $(this);
+                  try{
+                    var v = self.autoNumeric('get');
+                    self.autoNumeric('destroy');
+                    self.val(v);
+                  } catch(err) {
+                    // Not an autonumeric field.
+                  }
+                });
+                return true;
+              });
+
+              $('#propiedad_valor_compra').autoNumeric('init', { mDec: 0 });
+              $('#propiedad_valor_alquiler').autoNumeric('init', { mDec: 0 });
+            });
+
 
           .form-group
-            = f.label :descripcion_publica, "Descripción",class: 'col-sm-2 control-label'
+            = f.label :descripcion_publica, 'Descripción', class: 'col-sm-2 control-label'
             .col-sm-10
               = f.text_area :descripcion_publica, class: 'form-control', rows: 5
 

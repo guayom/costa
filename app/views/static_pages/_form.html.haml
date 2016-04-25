@@ -8,20 +8,32 @@
   = f.hidden_field :propiedad_id
   .form-group
     = f.label :nombre, class: 'sr-only'
-    = f.text_field :nombre, class: "form-control", placeholder: "Nombre y apellidos"
+    = f.text_field :nombre, class: 'form-control', placeholder: 'Nombre y apellidos', required: true
+    %p.help-text
+      no puede estar en blanco
   .form-group
     = f.label :email, class: 'sr-only'
-    = f.email_field :email, class: "form-control", placeholder: "nombre@ejemplo.com"
+    = f.email_field :email, class: 'form-control', placeholder: 'nombre@ejemplo.com', required: true
+    %p.help-text
+      no puede estar en blanco
   .form-group
-    = f.label :telefono, "Teléfono", class: 'sr-only'
-    = f.text_field :telefono, class: "form-control", placeholder: "2222 2222"
+    = f.label :telefono, 'Teléfono', class: 'sr-only'
+    = f.text_field :telefono, class: 'form-control', placeholder: '2222 2222', required: true
+    %p.help-text
+      no puede estar en blanco
+
+    :javascript
+      $('#contacto_mensaje_telefono').mask('9999-9999');
+
   .form-group
     = f.label :motivo, class: 'sr-only'
-    = f.text_field :motivo, class: "form-control", placeholder: "Motivo de mensaje"
+    = f.text_field :motivo, class: 'form-control', placeholder: 'Motivo de mensaje', required: true
+    %p.help-text
+      no puede estar en blanco
   .form-group
     = f.label :mensaje, class: 'sr-only'
-    = f.text_area :mensaje, class: "form-control", placeholder: "Escriba su mensaje", rows: 5
+    = f.text_area :mensaje, class: 'form-control', placeholder: 'Escriba su mensaje', rows: 5
   .form-group
-    %button.btn.btn-success{:name => "submit", :type => "submit"}
+    %button.btn.btn-success{:name => 'submit', :type => 'submit'}
       %i.fa.fa-envelope-o
       Enviar Mensaje

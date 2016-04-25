@@ -8,6 +8,25 @@
           </div>
         </div>
       </div>
+
+      <div class="col-md-12" style="position: absolute; bottom: 10px;">
+        <a id="scroll_to_content" href="#content">
+          <div class="mouse-icon">
+            <div class="wheel"></div>
+          </div>
+        </a>
+        <script type="text/javascript">
+          $(function() {
+            $('#scroll_to_content').click(function(event) {
+              event.preventDefault();
+
+              $('body').animate({
+                scrollTop: $('#content').offset().top - $('#navbar-top').height()
+              }, 500);
+            });
+          });
+        </script>
+      </div>
     </div>
   </div>
 </div>

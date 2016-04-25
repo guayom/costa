@@ -60,6 +60,8 @@ class PropiedadesController < ApplicationController
     @propiedad.canton = params[:canton_id]
     @propiedad.distrito = params[:distrito_id]
 
+    @propiedad.tipos << @propiedad.tipo
+
     if @propiedad.save
       if propiedad_params[:propietario_attributes]
         # Send password to new user.
