@@ -31,6 +31,7 @@
 //= require filters
 //= require bootstrap-number-input
 //= require autonumeric
+//= require jquery.maskedinput
 
 function slideMensajesEspeciales() {
     var allofEm = $('.property-status div');

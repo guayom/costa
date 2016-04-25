@@ -21,6 +21,10 @@
     = f.text_field :telefono, class: 'form-control', placeholder: '2222 2222', required: true
     %p.help-text
       no puede estar en blanco
+
+    :javascript
+      $('#contacto_mensaje_telefono').mask('9999-9999');
+
   .form-group
     = f.label :motivo, class: 'sr-only'
     = f.text_field :motivo, class: 'form-control', placeholder: 'Motivo de mensaje', required: true
