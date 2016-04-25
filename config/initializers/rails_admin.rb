@@ -104,6 +104,8 @@ RailsAdmin.config do |config|
       :codigo
     end
 
+    navigation_icon 'icon-home'
+
     edit do
 
       field :listado
@@ -292,6 +294,8 @@ RailsAdmin.config do |config|
 
   config.model Propietario do
     weight -1
+
+    navigation_icon 'icon-user'
 
     edit do
       configure :admin do
