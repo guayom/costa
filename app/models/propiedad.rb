@@ -38,7 +38,7 @@ class Propiedad < ActiveRecord::Base
   enumerize :estado, in: [:disponible, :alquilado, :vendido], default: :disponible, scope: true
   enumerize :moneda, in: ['USD', 'CRC'], default: 'USD'
   enumerize :cuota_mantenimiento_moneda, in: ['USD', 'CRC'], default: 'USD'
-  enumerize :tipo_de_estacionamiento, in: [:parqueo, :garaje, :parqueo_techado]
+  enumerize :tipo_de_estacionamiento, in: [:parqueo, :garaje, :parqueo_techado, :visitas, :calle, :sotano]
 
   enum estatus: { publicado: 1, borrador: 2, rechazado: 3 }
 
