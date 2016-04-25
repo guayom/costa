@@ -29,6 +29,8 @@
 //= require jquery.jcarousel-pagination
 //= require script
 //= require filters
+//= require bootstrap-number-input
+//= require autonumeric
 
 function slideMensajesEspeciales() {
     var allofEm = $('.property-status div');
