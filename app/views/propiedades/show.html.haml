@@ -204,6 +204,6 @@
                             = email_link(@propiedad.admin.email)
                   .col-md-6.col-sm-6
                     %br/
-                    = render partial: "static_pages/form", locals: {contacto_mensaje: @contacto_mensaje}
+                    = render partial: 'static_pages/form', locals: {contacto_mensaje: @contacto_mensaje}
       .col-md-4.col-md-pull-8.sidebar
         = render :partial => 'application/quick_links_sidebar'
