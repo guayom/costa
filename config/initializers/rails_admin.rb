@@ -33,6 +33,9 @@ RailsAdmin.config do |config|
   # end
   # config.current_user_method(&:current_admin)
 
+  ##Exclude the models we're not using
+  config.excluded_models = ["PropiedadTipo", "Rate"]
+
   config.actions do
     dashboard                     # mandatory
 
@@ -93,26 +96,203 @@ RailsAdmin.config do |config|
     end
   end
 
-  config.model Mensaje do
-    object_label_method do
-      :mensaje
-    end
-    configure :color, :color
-  end
+  config.model Propiedad do
 
-  config.model Caracteristica do
+    weight -2
+
+    object_label_method do
+      :codigo
+    end
+
+    edit do
+
+      field :listado
+      field :titular
+      field :estado
+      field :estatus do
+        help "Mientras se crea una propiedad, use el estatus Borrador. Cuando la propiedad esté lista para verse en la página, use el estatus publicado."
+      end
+      field :order_date do
+        strftime_format '%Y-%m-%d'
+        label 'Fecha de Publicación'
+        help "Use este campo para hacer que una propiedad que se creó hace tiempo vuelva a salir en las propiedades recientes"
+      end
+      field :admin do
+        default_value do
+          bindings[:view]._current_user.id
+        end
+        help "Este campo no es visible para los agentes"
+      end
+      field :codigo do
+        label "Código"
+        help "Este campo se llena atuomáticamente. Es posible editarlo manualmente si surge la necesidad."
+      end
+      field :featured do
+        label "Destacado"
+      end
+      field :propietario do
+        inline_add true
+        inline_edit true
+        nested_form false
+      end
+      field :moneda
+      field :valor_compra
+      field :valor_alquiler
+      field :opcion_compra do
+        label "Opción de Compra"
+      end
+      field :comision do
+        label "Comisión"
+      end
+      field :incluye_mantenimiento
+      field :cuota_mantenimiento
+      field :cuota_mantenimiento_moneda do
+        label "Moneda de Cuota de Mantenimiento"
+      end
+      field :direccion_exacta do
+        label "Dirección Exacta"
+        help "Use este campo para colocar más detalles sobre la dirección que aparece pública. Ejemplo: Residencial Monterán"
+      end
+      field :direccion_uso_interno do
+        label "Dirección uso Interno"
+        help "Use este campo para poner detalles específicos de como llegar a la propiedad. Esto no se verá público en la página."
+      end
+      field :descripcion_publica do
+        label "Descripción Pública"
+        partial 'propiedad_descripcion_publica'
+        help "Esta es la descripción que  saldrá pública en la página"
+      end
+      field :provincia do
+        partial 'propiedad_provincia'
+      end
+      field :canton do
+        label "Cantón"
+        partial 'propiedad_canton'
+      end
+      field :distrito do
+        partial 'propiedad_distrito'
+      end
+      field :area_terreno do
+        label "Área de Terreno"
+      end
+      field :area_construccion do
+        label "Área de Construcción"
+      end
+      field :pisos
+      field :dormitorios
+      field :banos do
+        label "Baños"
+      end
+      field :fecha_construccion do
+        label "Años de construcción"
+        help "Indique hace cuantos años fue construída esta propiedad"
+      end
+      field :tipos do
+        sortable do
+          :titulo
+        end
+      end
+      field :caracteristicas do
+        label 'Amenidades'
+      end
+      field :patio
+      field :patio_area do
+        label "Área de Patio"
+      end
+      field :estacionamiento
+      field :tipo_de_estacionamiento
+      field :amueblado
+      field :linea_blanca do
+        label "Línea Blanca"
+      end
+      field :sala_comedor
+      field :cuarto_de_servicio
+
+      group 'Otros' do
+        #active false
+        field :notas_uso_interno
+        field :otros
+        field :numero_plano_catastrado do
+          label "Número de plano catastrado"
+        end
+      end
+
+      group 'Imágenes' do
+        active false
+        field :imagenes, :paperclip do
+          html_attributes do
+            { multiple: true }
+          end
+          partial 'multiple_images'
+          label "Imágenes"
+        end
+      end
+
+      group 'SEO' do
+        #active false
+        field :slug do
+          label "Link"
+          help "Este link se genera automáticamente, pero existe la posibilidad de editarlo luego manualmente"
+        end
+        field :meta_keywords do
+          label "Palabras Clave"
+        end
+        field :meta_description do
+          label "Meta Descripción"
+        end
+      end
+
+
+      # configure :tipos do
+      #   # associated_collection_cache_all true  # REQUIRED if you want to SORT the list as below
+      #   associated_collection_scope do
+      #     # bindings[:object] & bindings[:controller] are available, but not in scope's block!
+      #     # propiedad = bindings[:object]
+      #     Proc.new { |scope|
+      #       # scoping all Players currently, let's limit them to the team's league
+      #       # Be sure to limit if there are a lot of Players and order them by position
+      #       # scope = scope.where(league_id: team.league_id) if team.present?
+      #       # scope = scope.limit(30) # 'order' does not work here
+      #       # fail scope.inspect
+      #       scope.reorder(:titulo)
+      #     }
+      #   end
+      # end
+
+    end
+
     list do
-      configure :type do
-        hide
+      field :codigo
+      field :estado
+      field :estatus
+      field :listado
+      field :admin
+      field :titular
+      field :provincia
+      field :codigo do
+        column_width 80
+      end
+      field :estado do
+        column_width 100
+      end
+      field :estatus do
+        column_width 100
+      end
+      field :listado do
+        column_width 110
+      end
+      field :admin do
+        column_width 180
+      end
+      field :provincia do
+        column_width 100
       end
     end
-     object_label_method do
-      :titulo
-    end
-    label 'Amenidades'
   end
 
   config.model Propietario do
+    weight -1
+
     edit do
       configure :admin do
         # visible false
@@ -159,114 +339,76 @@ RailsAdmin.config do |config|
     end
   end
 
-  config.model Propiedad do
+  config.model Admin do
+    weight 0
+
+    label "Agente"
+    label_plural "Agentes"
     object_label_method do
-      :codigo
+      :nombre
     end
-
-    edit do
-      configure :admin do
-        # visible false
-        default_value do
-          bindings[:view]._current_user.id
-        end
-      end
-
-      # configure :descripcion_publica, :froala
-      configure :descripcion_publica do
-        partial 'propiedad_descripcion_publica'
-      end
-
-      configure :provincia do
-        partial 'propiedad_provincia'
-      end
-      configure :canton do
-        partial 'propiedad_canton'
-      end
-      configure :distrito do
-        partial 'propiedad_distrito'
-      end
-      configure :imagenes, :paperclip do
-        html_attributes do
-          { multiple: true }
-        end
-        partial 'multiple_images'
-      end
-      configure :propietario do
-        inline_add true
-        inline_edit true
-        nested_form false
-      end
-
-      configure :order_date do
-        strftime_format '%Y-%m-%d'
-      end
-
-      configure :tipos do
-        sortable do
-          :titulo
-        end
-      end
-
-      # configure :tipos do
-      #   # associated_collection_cache_all true  # REQUIRED if you want to SORT the list as below
-      #   associated_collection_scope do
-      #     # bindings[:object] & bindings[:controller] are available, but not in scope's block!
-      #     # propiedad = bindings[:object]
-      #     Proc.new { |scope|
-      #       # scoping all Players currently, let's limit them to the team's league
-      #       # Be sure to limit if there are a lot of Players and order them by position
-      #       # scope = scope.where(league_id: team.league_id) if team.present?
-      #       # scope = scope.limit(30) # 'order' does not work here
-      #       # fail scope.inspect
-      #       scope.reorder(:titulo)
-      #     }
-      #   end
-      # end
-
-      configure :caracteristicas do
-        label 'Amenidades' # Change the label of this field
-      end
-
-      exclude_fields :cover, :tipo, :tipo_id, :wpid, :contacto_mensajes
-    end
-
-    # configure :tipos do
-    #   sortable do
-    #     :titulo
-    #   end
-    # end
-
     list do
+      field :nombre
       field :codigo
-      field :estado
-      field :estatus
-      field :listado
-      field :admin
-      field :titular
-      field :provincia
-      field :codigo do
-        column_width 80
-      end
-      field :estado do
-        column_width 100
-      end
-      field :estatus do
-        column_width 100
-      end
-      field :listado do
-        column_width 110
-      end
-      field :admin do
-        column_width 180
-      end
-      field :provincia do
-        column_width 100
-      end
+      field :email
+      field :permisos
+      field :telefono
     end
   end
 
+  config.model Slider do
+    weight 1
+
+    label "Slider"
+    label_plural "Slides"
+
+    list do
+      exclude_fields :position
+      sort_by :position
+    end
+
+    edit do
+      exclude_fields :position
+    end
+  end
+
+  config.model ContactoMensaje do
+    weight 2
+    label "Mensaje de Interesado"
+    label_plural "Mensajes de Interesados"
+    object_label_method do
+      :nombre
+    end
+  end
+
+  config.model Mensaje do
+    weight 3
+    label "Mensaje Especial"
+    label_plural "Mensajes Epeciales"
+    object_label_method do
+      :mensaje
+    end
+    configure :color, :color
+  end
+
+  config.model Caracteristica do
+    weight 3
+    list do
+      configure :type do
+        hide
+      end
+    end
+     object_label_method do
+      :titulo
+    end
+    label 'Amenidades'
+  end
+
   config.model Tipo do
+    weight 3
+    label "Tipode Propiedad"
+    label_plural "Tipos de Propiedades"
+
     object_label_method do
       :titulo
     end
@@ -282,14 +424,19 @@ RailsAdmin.config do |config|
     end
   end
 
-  config.model Slider do
-    list do
-      exclude_fields :position
-      sort_by :position
-    end
+  config.model Provincia do
+    weight 20
+  end
+  config.model Canton do
+    weight 21
+    parent Provincia
+  end
+  config.model Distrito do
+    weight 22
+    parent Provincia
+  end
 
-    edit do
-      exclude_fields :position
-    end
+  config.model 'Imagen' do
+    visible false
   end
 end
