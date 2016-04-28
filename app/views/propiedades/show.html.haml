@@ -140,6 +140,7 @@
                                   %a{:href => "tel: +506 #{@propiedad.admin.telefono}"}="+506 #{@propiedad.admin.telefono}"
                                   %br/
                                   %span.hidden-xs= email_link(@propiedad.admin.email)
+                                  %a.visible-xs.hidden-sm.hidden-md.hidden-lg{:href => "mailto:#{@propiedad.admin.email}"} Enviar Email
                       .col-xs-12.col-md-4
                         .post-meta.description-icons
                           - if @propiedad.dormitorios.present? && @propiedad.dormitorios > 0
