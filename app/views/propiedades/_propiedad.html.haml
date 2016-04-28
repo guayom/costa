@@ -1,6 +1,8 @@
 .col-md-3.col-sm-6.col-xs-12
   .property-container
     .property-image
+      - if propiedad.imagenes.pluck(:created_at).max <= Date.new(2016, 3, 14)
+        .add-watermark-grid
       =link_to propiedad do
         - if propiedad.imagenes.any?
           = link_to propiedad do
