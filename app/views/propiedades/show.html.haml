@@ -42,6 +42,8 @@
                         Código: #{@propiedad.codigo}
 
                     .jcarousel-wrapper
+                      - if @propiedad.imagenes.pluck(:created_at).max <= Date.new(2016, 3, 14)
+                        .add-watermark-large
                       .jcarousel.main-jcarousel
                         %ul
                           - unless @propiedad.imagenes.empty?

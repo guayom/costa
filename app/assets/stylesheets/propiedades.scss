@@ -147,3 +147,14 @@
   padding: 10px;
   display: inline-block;
 }
+
+.add-watermark-large {
+  background-image: asset_url('watermark-white.png');
+  background-size: cover;
+  bottom: 50px;
+  height: 131px;
+  position: absolute;
+  right: 40px;
+  width: 200px;
+  z-index: 10000;
+}
