@@ -184,6 +184,20 @@
                       Estado de la propiedad:
                     %p{class: "propiedad-text-color-#{@propiedad.listado}"}
                       = @propiedad.estado.capitalize
+
+                    %br
+                    %br
+                    %a{id: 'request_info_bottom', style: 'font-size: 1.5em; cursor: pointer;'}
+                      %i.fa.fa-plus
+                      Solicitar más información
+                    :javascript
+                      $(function() {
+                        $('#request_info_bottom').click(function() {
+                          $('#myTab a[href="#location"]').tab('show');
+                          $(document).scrollTop($('#myTabContent').position().top);
+                        });
+                      });
+
               / break
               #location.tab-pane.fade
                 .row
