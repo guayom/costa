@@ -1,4 +1,4 @@
-require 'open-uri' 
+require 'open-uri'
 class Imagen < ActiveRecord::Base
 
   belongs_to :propiedad, inverse_of: :imagenes
@@ -9,7 +9,7 @@ class Imagen < ActiveRecord::Base
       :thumb => '100x65>',
       :small  => '260x173>',
       medium: {
-        geometry: '358x238>',
+        geometry: '370x246>',
         watermark_path: Rails.root.join('app', 'assets', 'images', 'watermark-white.png')
       },
       large: {
