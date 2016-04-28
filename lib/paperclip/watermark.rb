@@ -31,7 +31,7 @@ module Paperclip
         end
 
         begin
-          watermark_geometry = "#{(src_size[0] * 0.3).to_i}x#{src_size[1]}+30+25"
+          watermark_geometry = "#{(src_size[0] * 0.2).to_i}x#{src_size[1]}+50+45"
 
           parameters = []
           parameters << "-dissolve #{@dissolve}"
