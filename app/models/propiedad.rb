@@ -215,7 +215,7 @@ class Propiedad < ActiveRecord::Base
       url
     else
       if imagenes.any?
-        imagenes.first.imagen.url
+        imagenes.first.imagen.url(:medium)
       else
         nil
       end
