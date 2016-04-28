@@ -207,7 +207,7 @@ class Propiedad < ActiveRecord::Base
     if cover
       i = Imagen.find_by(id: cover)
       if i
-        url = i.imagen.url
+        url = i.imagen.url(:medium)
       end
     end
 
@@ -215,7 +215,7 @@ class Propiedad < ActiveRecord::Base
       url
     else
       if imagenes.any?
-        imagenes.first.imagen.url(:medium)
+        imagenes.first.imagen.url
       else
         nil
       end
