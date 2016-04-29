@@ -225,12 +225,9 @@ class Propiedad < ActiveRecord::Base
   end
 
   def should_generate_new_friendly_id?
-    slug.blank? || slug.nil? || !slug.include?(codigo)
+    slug.blank? || !slug.include?(codigo)
   end
-  # def should_generate_new_friendly_id?
-  #   # slug.blank?
-  #   true
-  # end
+
   def slug_string
     "#{codigo} #{titular}"
   end
