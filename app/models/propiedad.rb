@@ -138,7 +138,7 @@ class Propiedad < ActiveRecord::Base
       num = (prev_number + 1).to_s
       self.codigo = "#{admin.codigo}#{num}"
 
-      self.slug = normalize_friendly_id(slug_string)
+      self.slug = normalize_friendly_id(self.slug_string)
     end
   end
 
@@ -225,7 +225,7 @@ class Propiedad < ActiveRecord::Base
   end
 
   def should_generate_new_friendly_id?
-    slug.blank? || !slug.include?(codigo)
+    slug.blank? || codigo.blank? || !slug.include?(normalize_friendly_id(codigo))
   end
 
   def slug_string
