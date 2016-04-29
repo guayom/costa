@@ -15,6 +15,10 @@ class Imagen < ActiveRecord::Base
       large: {
         geometry: '786x522>',
         watermark_path: Rails.root.join('app', 'assets', 'images', 'watermark-white.png')
+      },
+      facebook: {
+        geometry: '800x420>',
+        watermark_path: Rails.root.join('app', 'assets', 'images', 'watermark-white.png')
       }
     },
     processors: [:watermark]
