@@ -38,6 +38,15 @@
      }
   }
 }
+
+.navbar-brand {
+  padding: 0 !important;
+
+  img {
+    height: 80px !important;
+  }
+}
+
 .property-price div:last-child{
 	padding-left: 20px;
 }

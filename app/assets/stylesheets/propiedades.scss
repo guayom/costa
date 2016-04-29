@@ -158,7 +158,7 @@
   position: absolute;
   right: 40px;
   width: 200px;
-  z-index: 10000;
+  z-index: 900;
 }
 .add-watermark-grid {
   background-image: asset_url('watermark-white.png');
@@ -168,7 +168,7 @@
   position: absolute;
   right: 30px;
   width: 80px;
-  z-index: 10000;
+  z-index: 900;
 }
 .add-watermark-horizontal {
   background-image: asset_url('watermark-white.png');
@@ -178,5 +178,5 @@
   position: absolute;
   right: 40px;
   width: 80px;
-  z-index: 10000;
+  z-index: 900;
 }
