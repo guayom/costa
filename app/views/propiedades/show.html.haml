@@ -140,6 +140,7 @@
                                   %a{:href => "tel: +506 #{@propiedad.admin.telefono}"}="+506 #{@propiedad.admin.telefono}"
                                   %br/
                                   %span.hidden-xs= email_link(@propiedad.admin.email)
+                                  %a.visible-xs.hidden-sm.hidden-md.hidden-lg{:href => "mailto:#{@propiedad.admin.email}"} Enviar Email
                       .col-xs-12.col-md-4
                         .post-meta.description-icons
                           - if @propiedad.dormitorios.present? && @propiedad.dormitorios > 0
@@ -167,7 +168,9 @@
                               para
                             #{pluralize(@propiedad.estacionamiento, 'Carro')}
                             %br/
-
+                    %a{style: 'font-size: 1.5em; cursor: pointer;', class: 'request_info_bottom'}
+                      %i.fa.fa-plus
+                      Solicitar más información
                     %h3 Compartir
                     = render partial: 'application/social_buttons', locals: {text: "#{@propiedad.titular} - código: #{@propiedad.codigo}", title: "#{@propiedad.titular} - código: #{@propiedad.codigo}", summary: @propiedad.descripcion_publica, img: @propiedad.cover_url}
 
@@ -189,12 +192,12 @@
 
                     %br
                     %br
-                    %a{id: 'request_info_bottom', style: 'font-size: 1.5em; cursor: pointer;'}
+                    %a{style: 'font-size: 1.5em; cursor: pointer;', class: 'request_info_bottom'}
                       %i.fa.fa-plus
                       Solicitar más información
                     :javascript
                       $(function() {
-                        $('#request_info_bottom').click(function() {
+                        $('.request_info_bottom').click(function() {
                           $('#myTab a[href="#location"]').tab('show');
                           $(document).scrollTop($('#myTabContent').position().top);
                         });

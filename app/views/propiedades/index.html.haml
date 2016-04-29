@@ -1,5 +1,5 @@
 - content_for :full_width_header do
-  #header.heading{:style => "background-image: url('#{image_path('img01.jpg')}'); background-position: 50% 0px;"}
+  #header.heading.hidden-xs.hidden-sm{:style => "background-image: url('#{image_path('img01.jpg')}'); background-position: 50% 0px;"}
     .container
       .row
         .col-md-10.col-md-offset-1.col-sm-12
@@ -20,4 +20,3 @@
           = render partial: "application/pagination"
         .col-md-4.col-md-pull-8.sidebar
           = render :partial => 'application/filters_sidebar'
-
