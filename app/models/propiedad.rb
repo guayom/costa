@@ -138,7 +138,7 @@ class Propiedad < ActiveRecord::Base
       num = (prev_number + 1).to_s
       self.codigo = "#{admin.codigo}#{num}"
 
-      self.slug = nil
+      self.slug = normalize_friendly_id(slug_string)
     end
   end
 
