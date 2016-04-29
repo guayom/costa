@@ -47,7 +47,7 @@
                       .jcarousel.main-jcarousel
                         %ul
                           - unless @propiedad.imagenes.empty?
-                            - @propiedad.imagenes.each_with_index do |pic, index|
+                            - @propiedad.imagenes.sorted(@propiedad.cover).each_with_index do |pic, index|
                               %li
                                 = image_tag pic.imagen.url(:large)
 

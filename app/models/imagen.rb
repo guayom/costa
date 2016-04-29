@@ -21,6 +21,8 @@ class Imagen < ActiveRecord::Base
 
   process_in_background :imagen, processing_image_url: '/uploading.jpg'
 
+  scope :sorted, -> (cover_id) { order("imagenes.id != #{cover_id}, id") }
+
   def imagen_from_url(url)
     self.imagen = open(url)
   end
