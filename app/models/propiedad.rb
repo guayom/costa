@@ -137,6 +137,8 @@ class Propiedad < ActiveRecord::Base
       prev_number = last_propiedad ? last_propiedad.codigo[/\d+/].to_i : 0
       num = (prev_number + 1).to_s
       self.codigo = "#{admin.codigo}#{num}"
+
+      self.slug = nil
     end
   end
 
