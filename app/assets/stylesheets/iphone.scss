@@ -1,14 +1,11 @@
-@media only screen
-    and (max-device-width : 667px) // or 41.6875em
-{
-
-    .navbar-default .navbar-brand::after{
-        display:none;
-    }
-    .cccbr-logo{
-      margin-left: 0;
-      height: 40px;
-    }
+@media only screen and (max-width : 767px) {
+  .navbar-default .navbar-brand::after{
+      display:none;
+  }
+  .cccbr-logo{
+    margin-left: 0;
+    height: 40px;
+  }
 
   .header-phones {
     font-size: 0.9em;
