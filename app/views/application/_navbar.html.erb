@@ -17,7 +17,7 @@
 <div class="contact-header">
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-sm-8">
+      <div class="col-xs-12 col-sm-8 header-phones">
         <strong class="hidden-xs">Teléfonos: </strong>
         <% CONTACT_INFO['telefonos'].each_with_index do |tel, index| %>
           <a href="tel:<%= tel['numero'] %>" style="white-space: nowrap;"><%= tel['numero'] %></a>
