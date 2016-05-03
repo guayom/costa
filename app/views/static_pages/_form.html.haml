@@ -25,11 +25,18 @@
     :javascript
       $('#contacto_mensaje_telefono').mask('9999-9999');
 
-  .form-group
-    = f.label :motivo, class: 'sr-only'
-    = f.text_field :motivo, class: 'form-control', placeholder: 'Motivo de mensaje', required: true
-    %p.help-text
-      no puede estar en blanco
+  - if 'propiedades' == params[:controller] && 'show' == params[:action]
+    - if contacto_mensaje.propiedad.present?
+      = f.hidden_field :motivo, value: contacto_mensaje.propiedad.codigo
+    - else
+      = f.hidden_field :motivo, value: 'Contacto Mensaje'
+  - else
+    .form-group
+      = f.label :motivo, class: 'sr-only'
+      = f.text_field :motivo, class: 'form-control', placeholder: 'Motivo de mensaje', required: true
+      %p.help-text
+        no puede estar en blanco
+
   .form-group
     = f.label :mensaje, class: 'sr-only'
     = f.text_area :mensaje, class: 'form-control', placeholder: 'Escriba su mensaje', rows: 5
