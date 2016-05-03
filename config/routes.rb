@@ -1,4 +1,4 @@
-require 'resque_web'
+# require 'resque_web'
 
 Rails.application.routes.draw do
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
