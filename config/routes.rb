@@ -1,3 +1,5 @@
+require 'resque_web'
+
 Rails.application.routes.draw do
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   devise_for :propietarios
@@ -8,6 +10,15 @@ Rails.application.routes.draw do
 
   devise_for :admins
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
+  resque_web_constraint = lambda do |request|
+    current_admin = request.env['warden'].user(:admin)
+    current_admin.present? && %w(developer admin).include?(current_admin.permisos)
+  end
+
+  constraints resque_web_constraint do
+    mount ResqueWeb::Engine => '/resque_web'
+  end
 
   resources :tipos, only: [:index]
   resources :provincias, only: [:index]
