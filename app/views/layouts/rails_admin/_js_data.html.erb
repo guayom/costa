@@ -1,0 +1,49 @@
+<script>
+  var arrayUnique = function(a) {
+    return a.reduce(function(p, c) {
+      if (p.indexOf(c) < 0) p.push(c);
+      return p;
+    }, []);
+  };
+
+  var caracteristicas_tipos = {
+    <% Tipo.all.each do |t| %>
+      <%= t.id.to_s %> : [<%= t.caracteristicas.map(&:id).join(',') %>],
+    <% end %>
+  };
+
+  var changeCaracteristicas = function() {
+    var caracteristicas = [];
+
+    var tipos = $('#propiedad_tipo_ids').val();
+    if (null == tipos) {
+      tipos = [];
+    }
+    for (var i = 0; i < tipos.length; i++) {
+      if (caracteristicas_tipos[tipos[i]]) {
+        caracteristicas = caracteristicas.concat(caracteristicas_tipos[tipos[i]]);
+      }
+    }
+
+    uniq_caracteristicas = arrayUnique(caracteristicas);
+
+    $('#propiedad_caracteristica_ids + .ra-multiselect select').eq(0).html('');
+    for (var i = 0; i < uniq_caracteristicas.length; i++) {
+      var option = $('#propiedad_caracteristica_ids option[value="' + uniq_caracteristicas[i] + '"]').clone();
+
+      $('#propiedad_caracteristica_ids + .ra-multiselect select').eq(0).append(option);
+    }
+  };
+  $(function() {
+    $('.ra-multiselect-item-add, .ra-multiselect-item-remove, .ra-multiselect-item-add-all, .ra-multiselect-item-remove-all').click(function() {
+      changeCaracteristicas();
+    });
+    changeCaracteristicas();
+  });
+  $(document).on('pjax:complete', function() {
+    $('.ra-multiselect-item-add, .ra-multiselect-item-remove, .ra-multiselect-item-add-all, .ra-multiselect-item-remove-all').click(function() {
+      changeCaracteristicas();
+    });
+    changeCaracteristicas();
+  });
+</script>

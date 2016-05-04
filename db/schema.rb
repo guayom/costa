@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160421211907) do
+ActiveRecord::Schema.define(version: 20160504092733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_stat_statements"
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -63,6 +64,14 @@ ActiveRecord::Schema.define(version: 20160421211907) do
 
   add_index "caracteristicas_propiedades", ["caracteristica_id"], name: "index_caracteristicas_propiedades_on_caracteristica_id", using: :btree
   add_index "caracteristicas_propiedades", ["propiedad_id"], name: "index_caracteristicas_propiedades_on_propiedad_id", using: :btree
+
+  create_table "caracteristicas_tipos", force: :cascade do |t|
+    t.integer "tipo_id"
+    t.integer "caracteristica_id"
+  end
+
+  add_index "caracteristicas_tipos", ["caracteristica_id"], name: "index_caracteristicas_tipos_on_caracteristica_id", using: :btree
+  add_index "caracteristicas_tipos", ["tipo_id"], name: "index_caracteristicas_tipos_on_tipo_id", using: :btree
 
   create_table "contacto_mensajes", force: :cascade do |t|
     t.string  "nombre"
