@@ -1,3 +1,12 @@
+<style>
+  .navbar-default .navbar-nav > li > a {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  .navbar-brand img {
+    height: 140px;
+  }
+</style>
 <script>
   $(window).on('scroll',function() {
     var scrollSize = Math.round($(window).scrollTop());
@@ -5,11 +14,31 @@
     if (scrollSize > 37) {
       $('.navbar-fixed-top').css({
         marginTop: 0
-      })
+      });
     } else {
       $('.navbar-fixed-top').css({
         marginTop: 37 - scrollSize
       });
+    }
+
+    if (scrollSize > 60) {
+      $('.navbar-default .navbar-nav > li > a').css({
+        paddingTop: '30px',
+        paddingBottom: '30px'
+      });
+//      $('.navbar-brand img').css({
+//        height: '80px !important'
+//      });
+      $('.navbar-brand img').height(80);
+    } else {
+      $('.navbar-default .navbar-nav > li > a').css({
+        paddingTop: (60 - scrollSize / 2) + 'px',
+        paddingBottom: (60 - scrollSize / 2) + 'px'
+      });
+//      $('.navbar-brand img').css({
+//        height: (140 - scrollSize / 2) + 'px !important'
+//      });
+      $('.navbar-brand img').height(140 - scrollSize / 2);
     }
   });
 </script>
