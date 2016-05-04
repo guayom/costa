@@ -6,6 +6,10 @@
   .navbar-brand img {
     height: 140px;
   }
+
+  .separator {
+    margin-top: 80px;
+  }
 </style>
 <script>
   $(window).on('scroll',function() {
@@ -30,6 +34,7 @@
 //        height: '80px !important'
 //      });
       $('.navbar-brand img').height(80);
+      $('.separator').css({marginTop: '80px'});
     } else {
       $('.navbar-default .navbar-nav > li > a').css({
         paddingTop: (60 - scrollSize / 2) + 'px',
@@ -39,6 +44,7 @@
 //        height: (140 - scrollSize / 2) + 'px !important'
 //      });
       $('.navbar-brand img').height(140 - scrollSize / 2);
+      $('.separator').css({marginTop: (140 - scrollSize / 2) + 'px'});
     }
   });
 </script>
@@ -91,3 +97,5 @@
   </div><!-- /.container -->
 </nav>
 <!-- end:navbar -->
+
+<div class="separator"></div>

@@ -171,21 +171,21 @@
 .add-watermark-grid {
   background-image: asset_url('watermark-white.png');
   background-size: cover;
-  bottom: 40px;
+  bottom: 19px;
   height: 52px;
   position: absolute;
-  right: 30px;
+  right: 26px;
   width: 80px;
   z-index: 900;
 }
 .add-watermark-horizontal {
   background-image: asset_url('watermark-white.png');
   background-size: cover;
-  bottom: 60px;
-  height: 52px;
+  bottom: 62px;
+  height: 72px;
   position: absolute;
-  right: 40px;
-  width: 80px;
+  right: 32px;
+  width: 109px;
   z-index: 900;
 }
 .heading-title-home{
