@@ -21,6 +21,10 @@ $(function() {
   for (var i = 0; i < phones.length; i++) {
     $('#' + phones[i]).mask('9999-9999');
   }
+
+  $('.propiedad_row .delete_member_link a').each(function() {
+    $(this).attr('data-confirm', '¿Seguro que desea borrar esta propiedad? Esta acción es irreversible');
+  });
 });
 
 $(document).on('pjax:complete', function() {
@@ -41,6 +45,10 @@ $(document).on('pjax:complete', function() {
   for (var i = 0; i < phones.length; i++) {
     $('#' + phones[i]).mask('9999-9999');
   }
+
+  $('.propiedad_row .delete_member_link a').each(function() {
+    $(this).attr('data-confirm', '¿Seguro que desea borrar esta propiedad? Esta acción es irreversible');
+  });
 });
 
 $(function() {
