@@ -24,6 +24,10 @@ $background-color: #f8f8f8;
 	color: orange;
 }
 
+body.agente #admin_permisos_field {
+  display: none;
+}
+
 body.agente form#new_propietario #propietario_admin_id_field {
   display: none;
 }
