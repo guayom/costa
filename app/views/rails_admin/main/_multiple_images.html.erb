@@ -20,13 +20,14 @@
 
 <% if form.object.imagenes.any? %>
   <br>
-  <a id="delete_all_images" href="#">Eliminar todos</a>
+  <%= link_to 'Eliminar todos', '#', id: 'delete_all_images', data: { confirm: '¿Seguro que desea borrar todas las imágenes? Esta acción es irreversible' } %>
+  <!--<a id="delete_all_images" href="#">Eliminar todos</a>-->
   <script>
     $(function() { $('#delete_all_images:not(.bound)').addClass('bound').click(deleteAllImages); });
     $(document).on('pjax:complete', function() { $('#delete_all_images:not(.bound)').addClass('bound').click(deleteAllImages); });
 
     var deleteAllImages = function(event) {
-      if (!confirm('¿Está seguro?')) {
+      if (!confirm('¿Seguro que desea borrar todas las imágenes? Esta acción es irreversible')) {
         return false;
       }
 
