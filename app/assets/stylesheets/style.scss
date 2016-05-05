@@ -262,10 +262,10 @@ input[type="color"]:focus,
 .navbar-default .navbar-brand::after{
 	content: "";
 	position: absolute;
-	right: -20px;
+	right: -40px;
 	top: -6px;
 	width: 1px;
-	height: 93px;
+	height: 160px;
 	background: #209922;
 	-webkit-transform: rotate(30deg);
 	   -moz-transform: rotate(30deg);
