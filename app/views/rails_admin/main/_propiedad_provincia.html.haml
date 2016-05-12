@@ -10,5 +10,7 @@
       $('#propiedad_distrito').html('<option>Buscar</option>');
     });
 
+    var val = $('#propiedad_canton').val();
     $('#propiedad_canton option[data-provincia-name!="' + $('#propiedad_provincia').val() + '"]').remove();
+    $('#propiedad_canton').val(val);
   });

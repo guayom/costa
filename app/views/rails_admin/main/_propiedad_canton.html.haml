@@ -16,6 +16,8 @@
       $('#propiedad_distrito').append(options);
     });
 
+    var val = $('#propiedad_distrito').val();
     $('#propiedad_distrito option[data-provincia-name!="' + $('#propiedad_provincia').val() + '"]').remove();
     $('#propiedad_distrito option[data-canton-name!="' + $('#propiedad_canton').val() + '"]').remove();
+    $('#propiedad_distrito').val(val);
   });
