@@ -32,6 +32,7 @@
 //= require bootstrap-number-input
 //= require autonumeric
 //= require jquery.maskedinput
+//= require s3_direct_upload
 
 function slideMensajesEspeciales() {
     var allofEm = $('.property-status div');
