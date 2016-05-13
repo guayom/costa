@@ -34,7 +34,8 @@ class Propiedad < ActiveRecord::Base
   end
 
   extend Enumerize
-  enumerize :listado, in: [:venta, :alquiler, :opcion_compra, :venta_alquiler]
+  # enumerize :listado, in: [:venta, :alquiler, :opcion_compra, :venta_alquiler]
+  enumerize :listado, in: [:venta, :alquiler, :venta_alquiler]
   enumerize :estado, in: [:disponible, :alquilado, :vendido], default: :disponible, scope: true
   enumerize :moneda, in: ['USD', 'CRC'], default: 'USD'
   enumerize :cuota_mantenimiento_moneda, in: ['USD', 'CRC'], default: 'USD'
