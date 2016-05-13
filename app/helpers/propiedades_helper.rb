@@ -40,7 +40,7 @@ module PropiedadesHelper
                 [p.valor_compra]
               when :alquiler
                 [p.valor_alquiler]
-              when :venta_alquiler
+              else
                 [p.valor_compra, p.valor_alquiler]
               end
 
