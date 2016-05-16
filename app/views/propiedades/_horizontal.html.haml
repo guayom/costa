@@ -33,7 +33,8 @@
             .property-features{class: "propiedad-color-#{propiedad.listado}"}
               - if propiedad.area.present? && propiedad.area > 0
                 %span
-                  %i.fa.fa-home
+                  -#%i.fa.fa-home
+                  = image_tag 'icons/area.png', class: 'bathroom-index', style: 'margin-bottom: 4px;'
                   #{propiedad.area} m
                   %sup 2
 
