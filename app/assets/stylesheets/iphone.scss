@@ -20,4 +20,39 @@
     height: 52px;
     width: 80px;
   }
+
+  .add-watermark-grid {
+    bottom: 15px;
+    height: 92px;
+    right: 42px;
+    width: 140px;
+  }
+
+  .add-watermark-horizontal {
+    bottom: 72px;
+    height: 92px;
+    right: 40px;
+    width: 140px;
+  }
+
+  //.add-watermark-grid {
+  //  background-image: asset_url('watermark-white.png');
+  //  background-size: cover;
+  //  bottom: 19px;
+  //  height: 52px;
+  //  position: absolute;
+  //  right: 26px;
+  //  width: 80px;
+  //  z-index: 900;
+  //}
+  //.add-watermark-horizontal {
+  //  background-image: asset_url('watermark-white.png');
+  //  background-size: cover;
+  //  bottom: 62px;
+  //  height: 72px;
+  //  position: absolute;
+  //  right: 32px;
+  //  width: 109px;
+  //  z-index: 900;
+  //}
 }
