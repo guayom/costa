@@ -5,7 +5,7 @@
 
 var updateFieldsVisibility = function() {
   var selectedTipos = $('#propiedad_tipo_ids').val();
-  if (selectedTipos.length > 0) {
+  if (selectedTipos && selectedTipos.length > 0) {
     for (var i = 0; i < selectedTipos.length; i++) {
       for (var key in tipos_hidden_fields) {
         if (key == selectedTipos[i]) {
