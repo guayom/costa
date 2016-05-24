@@ -7,6 +7,28 @@ class Tipo < ActiveRecord::Base
 
 	validates :titulo, presence: true
 
+	serialize :hidden_fields, Array
+  def hidden_fields_enum
+    [
+      ['incluye_mantenimiento', 1],
+      ['cuota_mantenimiento', 2],
+      ['area_construccion', 3],
+      ['pisos', 4],
+      ['dormitorios', 5],
+      ['banos', 6],
+      ['sala_comedor', 7],
+      ['patio', 8],
+      ['patio_area', 9],
+      ['estacionamiento', 10],
+      ['tipo_de_estacionamiento', 11],
+      ['amueblado', 12],
+      ['linea_blanca', 13],
+      ['fecha_construccion', 14],
+      ['cuarto_de_servicio', 15],
+      ['cuota_mantenimiento_moneda', 16]
+    ]
+  end
+
 	default_scope do
     order(:titulo)
   end

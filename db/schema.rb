@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160504092733) do
+ActiveRecord::Schema.define(version: 20160524095010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_stat_statements"
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -266,8 +267,9 @@ ActiveRecord::Schema.define(version: 20160504092733) do
 
   create_table "tipos", force: :cascade do |t|
     t.string   "titulo"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.text     "hidden_fields"
   end
 
   add_foreign_key "cantones", "cantones", name: "fk_cantones_canton_id"
