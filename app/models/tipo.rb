@@ -45,7 +45,7 @@ class Tipo < ActiveRecord::Base
     caracteristicas.map(&:id)
   end
 
-  def to_json
+  def as_json(options)
     super(except: [:hidden_fields, :created_at, :updated_at], methods: [:hidden_ids, :car_ids])
   end
 end
