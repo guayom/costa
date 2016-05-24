@@ -39,6 +39,7 @@ class Tipo < ActiveRecord::Base
 
   def hidden_ids
     hidden_fields.find_all(&:present?).map(&:to_i)
+    hidden_fields_enum.find_all { |_, id| t.hidden_fields.include?(id.to_s) }.map { |f| f[0] }
   end
 
   def car_ids
