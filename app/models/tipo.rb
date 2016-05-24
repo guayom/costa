@@ -35,5 +35,17 @@ class Tipo < ActiveRecord::Base
 
 	rails_admin do
 		object_label_method :titulo
-	end
+  end
+
+  def hidden_ids
+    hidden_fields.find_all(&:present?).map(&:to_i)
+  end
+
+  def car_ids
+    caracteristicas.map(&:id)
+  end
+
+  def to_json
+    super(except: [:hidden_fields, :created_at, :updated_at], methods: [:hidden_ids, :car_ids])
+  end
 end
