@@ -4,6 +4,11 @@
 //= require jquery.maskedinput
 
 var updateFieldsVisibility = function() {
+  $('.tipo-hidden').each(function() {
+    $(this).show();
+    $(this).removeClass('tipo-hidden');
+  });
+
   var selectedTipos = $('#propiedad_tipo_ids').val();
   if (selectedTipos && selectedTipos.length > 0) {
     for (var i = 0; i < selectedTipos.length; i++) {
@@ -12,6 +17,7 @@ var updateFieldsVisibility = function() {
           // Should hide fields for that tipo.
           tipos_hidden_fields[key].forEach(function(fieldName, i, arr) {
             $('#propiedad_' + fieldName + '_field').hide();
+            $('#propiedad_' + fieldName + '_field').addClass('tipo-hidden');
           });
         }
       }
@@ -43,6 +49,7 @@ $(function() {
   });
 
   updateFieldsVisibility();
+  $('.ra-multiselect-selection').change(updateFieldsVisibility);
 });
 
 $(document).on('pjax:complete', function() {
@@ -69,6 +76,7 @@ $(document).on('pjax:complete', function() {
   });
 
   updateFieldsVisibility();
+  $('.ra-multiselect-selection').change(updateFieldsVisibility);
 });
 
 $(function() {
