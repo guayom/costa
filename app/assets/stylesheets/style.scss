@@ -536,7 +536,8 @@ input[type="color"]:focus,
 	margin-bottom: 20px;
 }
 
-@media screen and (max-width: 380px) {
+//@media screen and (max-width: 380px) {
+@media screen and (max-width: 415px) {
   .navbar-brand img {
     height:40px !important;
   }
