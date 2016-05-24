@@ -469,6 +469,10 @@ RailsAdmin.config do |config|
       field :created_at
       field :updated_at
     end
+
+    edit do
+      exclude_fields :tipo_caracteristicas
+    end
   end
 
   config.model Provincia do
@@ -484,6 +488,10 @@ RailsAdmin.config do |config|
   end
 
   config.model 'Imagen' do
+    visible false
+  end
+
+  config.model 'TipoCaracteristica' do
     visible false
   end
 end
