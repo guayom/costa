@@ -151,6 +151,14 @@
                               #{@propiedad.dormitorios}#{'+1' if @propiedad.cuarto_de_servicio} Dormitorio
                             %br/
 
+                          - if @propiedad.oficinas.present? && @propiedad.oficinas > 0
+                            %i.fa.fa-briefcase
+                            - if @propiedad.oficinas > 1
+                              #{@propiedad.oficinas} Oficinas
+                            - else
+                              #{@propiedad.oficinas} Oficina
+                            %br/
+
                           - if @propiedad.banos.present? && @propiedad.banos > 0
                             = image_tag 'icons/bathroom_gray.png', class: "img-icon"
                             = pluralize(@propiedad.banos.prettify, 'Baño')

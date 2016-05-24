@@ -42,6 +42,10 @@
                 %span
                   %i.fa.fa-bed
                   #{propiedad.dormitorios}#{'+1' if propiedad.cuarto_de_servicio} Dormitorios
+              - elsif propiedad.oficinas.present? && propiedad.oficinas > 0
+                %span
+                  %i.fa.fa-briefcase
+                  #{propiedad.oficinas} Oficinas
 
               - if propiedad.banos.present? && propiedad.banos > 0
                 %span
