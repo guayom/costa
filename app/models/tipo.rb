@@ -25,7 +25,8 @@ class Tipo < ActiveRecord::Base
       ['linea_blanca', 13],
       ['fecha_construccion', 14],
       ['cuarto_de_servicio', 15],
-      ['cuota_mantenimiento_moneda', 16]
+      ['cuota_mantenimiento_moneda', 16],
+      ['oficinas', 17]
     ]
   end
 
