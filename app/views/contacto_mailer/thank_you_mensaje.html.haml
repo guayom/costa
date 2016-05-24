@@ -10,7 +10,7 @@ Hola #{@mensaje.nombre},
   Propiedad:
   = link_to propiedad_url(@mensaje.propiedad, host: 'www.costa506realestate.com'),
             propiedad_url(@mensaje.propiedad, host: 'www.costa506realestate.com'),
-            target: :blank
+            target: :blank if @mensaje.propiedad.present?
 
 %p
   Estaremos en contacto tan pronto como sea posible.
