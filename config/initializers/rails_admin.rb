@@ -224,6 +224,7 @@ RailsAdmin.config do |config|
       end
       field :pisos
       field :dormitorios
+      field :oficinas
       field :banos do
         label "Baños"
       end
