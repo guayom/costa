@@ -3,6 +3,22 @@
 //= require autonumeric
 //= require jquery.maskedinput
 
+var updateFieldsVisibility = function() {
+  var selectedTipos = $('#propiedad_tipo_ids').val();
+  if (selectedTipos.length > 0) {
+    for (var i = 0; i < selectedTipos.length; i++) {
+      for (var key in tipos_hidden_fields) {
+        if (key == selectedTipos[i]) {
+          // Should hide fields for that tipo.
+          tipos_hidden_fields[key].forEach(function(fieldName, i, arr) {
+            $('#propiedad_' + fieldName + '_field').hide();
+          });
+        }
+      }
+    }
+  }
+};
+
 $(function() {
   $('.rails_admin .form-control[type="number"]').bootstrapNumber();
 
@@ -25,6 +41,8 @@ $(function() {
   $('.propiedad_row .delete_member_link a').each(function() {
     $(this).attr('data-confirm', '¿Seguro que desea borrar esta propiedad? Esta acción es irreversible');
   });
+
+  updateFieldsVisibility();
 });
 
 $(document).on('pjax:complete', function() {
@@ -49,6 +67,8 @@ $(document).on('pjax:complete', function() {
   $('.propiedad_row .delete_member_link a').each(function() {
     $(this).attr('data-confirm', '¿Seguro que desea borrar esta propiedad? Esta acción es irreversible');
   });
+
+  updateFieldsVisibility();
 });
 
 $(function() {
