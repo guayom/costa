@@ -4,7 +4,7 @@ class Propiedad < ActiveRecord::Base
 
   before_validation :set_default_values
 
-  self.per_page = 5
+  self.per_page = 10
 
   belongs_to :admin
 
