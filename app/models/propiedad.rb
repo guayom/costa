@@ -60,9 +60,9 @@ class Propiedad < ActiveRecord::Base
   scope :search_by_listado, -> (value) do
     case value
     when 'venta'
-      where(listado: :venta)
+      where(listado: [:venta, :venta_alquiler])
     when 'alquiler'
-      where(listado: [:alquiler, :opcion_compra])
+      where(listado: [:alquiler, :venta_alquiler, :opcion_compra])
     else
       where(listado: [:venta, :alquiler, :venta_alquiler, :opcion_compra])
     end
