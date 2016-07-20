@@ -316,6 +316,7 @@ RailsAdmin.config do |config|
       field :admin
       field :titular
       field :provincia
+      field :order_date
       field :codigo do
         column_width 80
       end
