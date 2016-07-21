@@ -307,7 +307,7 @@ RailsAdmin.config do |config|
     end
 
     list do
-      scopes [:all, :featured]
+      # scopes [:all, :featured]
 
       field :codigo
       field :estado
