@@ -309,6 +309,7 @@ RailsAdmin.config do |config|
     list do
       # scopes [:all, :featured]
 
+      field :id
       field :codigo
       field :estado
       field :estatus
