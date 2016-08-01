@@ -2,11 +2,11 @@ class StaticPagesController < ApplicationController
   def index
   	@propiedades = Propiedad.notfeatured.with_estado(:disponible).publicado.
       order('order_date IS NOT NULL DESC').
-      order(order_date: :desc, created_at: :desc, id: :desc).last(8)
+      order(order_date: :desc, created_at: :desc, id: :desc).first(8)
 
     @featured = Propiedad.featured.
       order('order_date IS NOT NULL DESC').
-      order(order_date: :desc, created_at: :desc, id: :desc).last(8)
+      order(order_date: :desc, created_at: :desc, id: :desc).first(8)
   end
 
   def show
