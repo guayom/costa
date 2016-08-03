@@ -2,6 +2,7 @@
 //= require bootstrap-number-input
 //= require autonumeric
 //= require jquery.maskedinput
+//= require s3_direct_upload
 
 var updateFieldsVisibility = function() {
   $('.tipo-hidden').each(function() {
@@ -23,6 +24,10 @@ var updateFieldsVisibility = function() {
       }
     }
   }
+};
+
+var initS3 = function() {
+  $('#s3_uploader').S3Uploader();
 };
 
 $(function() {
@@ -50,6 +55,8 @@ $(function() {
 
   updateFieldsVisibility();
   $('.ra-multiselect-selection').change(updateFieldsVisibility);
+
+  initS3();
 });
 
 $(document).on('pjax:complete', function() {
@@ -77,6 +84,8 @@ $(document).on('pjax:complete', function() {
 
   updateFieldsVisibility();
   $('.ra-multiselect-selection').change(updateFieldsVisibility);
+
+  initS3();
 });
 
 $(function() {
@@ -134,3 +143,4 @@ $( document ).ready( function() {
   );
 });
 */
+

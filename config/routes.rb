@@ -26,6 +26,11 @@ Rails.application.routes.draw do
   resources :distritos, only: [:index]
   resources :mensajes, only: [:index]
   resources :caracteristicas, only: [:index]
+  resources :imagenes do
+    collection do
+      get 'upload', action: :upload
+    end
+  end
 
   resources :propiedades do
     collection do

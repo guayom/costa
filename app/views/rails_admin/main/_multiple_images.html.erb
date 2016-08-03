@@ -1,4 +1,10 @@
-<%= form.file_field(field.name, field.html_attributes.reverse_merge({ multiple: true, data: { fileupload: true }})) %>
+<iframe src="<%= main_app.upload_imagenes_path %>" style="width: 100%;"></iframe>
+
+<div style="border: 2px solid black;">
+  <p>USE THIS ONE</p>
+
+  <%= form.file_field(field.name, field.html_attributes.reverse_merge({ multiple: true, data: { fileupload: true }})) %>
+</div>
 
 <% form.object.imagenes.each do |image| %>
   <div class="image-form-preview" id="image_<%= image.id %>">
