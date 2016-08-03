@@ -27,7 +27,7 @@ var updateFieldsVisibility = function() {
 };
 
 var initS3 = function() {
-  $('#s3_uploader').S3Uploader();
+  // $('#s3_uploader').S3Uploader();
 };
 
 $(function() {
