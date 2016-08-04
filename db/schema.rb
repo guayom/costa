@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160804201030) do
+ActiveRecord::Schema.define(version: 20160804203748) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,6 +122,7 @@ ActiveRecord::Schema.define(version: 20160804201030) do
     t.boolean  "imagen_processing"
     t.string   "direct_upload_url"
     t.boolean  "processed",           default: false, null: false
+    t.integer  "admin_id"
   end
 
   add_index "imagenes", ["propiedad_id"], name: "fk__imagenes_propiedad_id", using: :btree
