@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160524170956) do
+ActiveRecord::Schema.define(version: 20160804201030) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -111,8 +111,8 @@ ActiveRecord::Schema.define(version: 20160524170956) do
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "imagenes", force: :cascade do |t|
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "imagen_file_name"
     t.string   "imagen_content_type"
     t.integer  "imagen_file_size"
@@ -120,6 +120,8 @@ ActiveRecord::Schema.define(version: 20160524170956) do
     t.string   "imagen"
     t.integer  "propiedad_id"
     t.boolean  "imagen_processing"
+    t.string   "direct_upload_url"
+    t.boolean  "processed",           default: false, null: false
   end
 
   add_index "imagenes", ["propiedad_id"], name: "fk__imagenes_propiedad_id", using: :btree
