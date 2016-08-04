@@ -1,10 +1,15 @@
-<iframe src="<%= main_app.upload_imagenes_path %>" style="width: 100%;"></iframe>
+<% if form.object.persisted? %>
+  <iframe src="<%= main_app.upload_imagenes_path %>"
+          style="width: 100%;"></iframe>
 
-<div style="border: 2px solid black;">
-  <p>USE THIS ONE</p>
+  <div style="border: 2px solid black;">
+    <p>USE THIS ONE</p>
 
+    <%= form.file_field(field.name, field.html_attributes.reverse_merge({ multiple: true, data: { fileupload: true }})) %>
+  </div>
+<% else %>
   <%= form.file_field(field.name, field.html_attributes.reverse_merge({ multiple: true, data: { fileupload: true }})) %>
-</div>
+<% end %>
 
 <% form.object.imagenes.each do |image| %>
   <div class="image-form-preview" id="image_<%= image.id %>">
