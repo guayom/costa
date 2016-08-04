@@ -1,9 +1,19 @@
 class ImagenesController < ApplicationController
-  # before_action :set_imagenes_controller, only: [:show, :edit, :update, :destroy]
+  def create
+    @imagen = current_admin.imagenes.create(imagenes_controller_params)
+  end
 
   def upload
     render layout: 'plain'
   end
+
+  private
+
+  def imagenes_controller_params
+    params.fetch(:imagenes_controller, {})
+  end
+
+  # before_action :set_imagenes_controller, only: [:show, :edit, :update, :destroy]
 
   # # GET /imagenes_controllers
   # # GET /imagenes_controllers.json
@@ -23,22 +33,6 @@ class ImagenesController < ApplicationController
   #
   # # GET /imagenes_controllers/1/edit
   # def edit
-  # end
-  #
-  # # POST /imagenes_controllers
-  # # POST /imagenes_controllers.json
-  # def create
-  #   @imagenes_controller = ImagenesController.new(imagenes_controller_params)
-  #
-  #   respond_to do |format|
-  #     if @imagenes_controller.save
-  #       format.html { redirect_to @imagenes_controller, notice: 'Imagenes controller was successfully created.' }
-  #       format.json { render :show, status: :created, location: @imagenes_controller }
-  #     else
-  #       format.html { render :new }
-  #       format.json { render json: @imagenes_controller.errors, status: :unprocessable_entity }
-  #     end
-  #   end
   # end
   #
   # # PATCH/PUT /imagenes_controllers/1

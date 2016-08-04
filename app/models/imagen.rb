@@ -2,6 +2,7 @@ require 'open-uri'
 class Imagen < ActiveRecord::Base
 
   belongs_to :propiedad, inverse_of: :imagenes
+  belongs_to :admin, inverse_of: :imagenes
 
   has_attached_file :imagen,
     :path  => '/images/:id/:style/:filename',

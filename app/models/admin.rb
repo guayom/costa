@@ -17,6 +17,8 @@ class Admin < ActiveRecord::Base
   has_many :propietarios
   has_many :propiedades
 
+  has_many :imagenes
+
   scope :for_footer, -> { order('14 != id').order(:nombre) }
 
   def has_any_propiedades?

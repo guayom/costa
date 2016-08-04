@@ -1,5 +1,20 @@
 <% if form.object.persisted? %>
-  <iframe src="<%= main_app.upload_imagenes_path %>"
+  <script>
+    function resizeIFrameToFitContent(iframe) {
+      iframe.width  = iframe.contentWindow.document.body.scrollWidth;
+      iframe.height = iframe.contentWindow.document.body.scrollHeight;
+    }
+
+    window.addEventListener('DOMContentReady', function() {
+//      debugger;
+
+      var iframe = document.getElementById('direct_uploader');
+      resizeIFrameToFitContent(iframe);
+    });
+  </script>
+
+  <iframe id="direct_uploader"
+          src="<%= main_app.upload_imagenes_path %>"
           style="width: 100%;"></iframe>
 
   <div style="border: 2px solid black;">

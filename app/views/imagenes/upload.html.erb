@@ -1,4 +1,6 @@
-<%= s3_uploader_form id: 's3_uploader' do %>
+<%= s3_uploader_form id: 's3_uploader',
+                     callback_url: imagenes_url,
+                     callback_param: 'imagen[direct_upload_url]' do %>
   <%= file_field_tag :file, multiple: true, data: { url: 'http://costa506.s3.amazonaws.com' } %>
 <% end %>
 
