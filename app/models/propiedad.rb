@@ -49,6 +49,7 @@ class Propiedad < ActiveRecord::Base
   # validates_presence_of :tipo, if: :publicado?
 
   #validates_presence_of :propietario, if: :publicado?
+  validate :order_date_cannot_be_in_the_future
 
   pg_search_scope :search_by_provincia_id, against: :provincia
   pg_search_scope :search_by_canton_id, against: :canton
@@ -227,6 +228,12 @@ class Propiedad < ActiveRecord::Base
 
   def should_generate_new_friendly_id?
     slug.blank? || codigo.blank? || !slug.include?(normalize_friendly_id(codigo))
+  end
+
+  def order_date_cannot_be_in_the_future
+    if order_date.present && order_date > Date.today
+      errors.add(:order_date, "No puede ser mayor a la fecha de hoy")
+    end
   end
 
   def slug_string
