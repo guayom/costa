@@ -46,6 +46,7 @@ class Propiedad < ActiveRecord::Base
   validates_presence_of :listado
   validates_presence_of :codigo, if: :publicado?
   validates_presence_of :admin, if: :publicado?
+  validates_presence_of :imagenes, if: :publicado?
   # validates_presence_of :tipo, if: :publicado?
 
   #validates_presence_of :propietario, if: :publicado?
