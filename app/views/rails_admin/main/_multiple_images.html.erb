@@ -1,27 +1,32 @@
 <% if form.object.persisted? %>
-  <script>
-    function resizeIFrameToFitContent(iframe) {
-      iframe.width  = iframe.contentWindow.document.body.scrollWidth;
-      iframe.height = iframe.contentWindow.document.body.scrollHeight;
-    }
+  <% if 3 == current_admin.try(:id) %>
+    <script>
+      function resizeIFrameToFitContent(iframe) {
+        iframe.width  = iframe.contentWindow.document.body.scrollWidth;
+        iframe.height = iframe.contentWindow.document.body.scrollHeight;
+      }
 
-    window.addEventListener('DOMContentReady', function() {
-//      debugger;
+      window.addEventListener('DOMContentReady', function() {
+  //      debugger;
 
-      var iframe = document.getElementById('direct_uploader');
-      resizeIFrameToFitContent(iframe);
-    });
-  </script>
+        var iframe = document.getElementById('direct_uploader');
+        resizeIFrameToFitContent(iframe);
+      });
+    </script>
 
-  <iframe id="direct_uploader"
-          src="<%= main_app.upload_imagenes_path %>"
-          style="width: 100%;"></iframe>
+    <iframe id="direct_uploader"
+            src="<%= main_app.upload_imagenes_path %>"
+            style="width: 100%;"></iframe>
 
-  <div style="border: 2px solid black;">
-    <p>USE THIS ONE</p>
+    <div style="border: 2px solid black;">
+      <p>USE THIS ONE</p>
+  <% end %>
 
-    <%= form.file_field(field.name, field.html_attributes.reverse_merge({ multiple: true, data: { fileupload: true }})) %>
-  </div>
+  <%= form.file_field(field.name, field.html_attributes.reverse_merge({ multiple: true, data: { fileupload: true }})) %>
+
+  <% if 3 == current_admin.try(:id) %>
+    </div>
+  <% end %>
 <% else %>
   <%= form.file_field(field.name, field.html_attributes.reverse_merge({ multiple: true, data: { fileupload: true }})) %>
 <% end %>
