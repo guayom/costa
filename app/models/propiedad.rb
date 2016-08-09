@@ -231,7 +231,7 @@ class Propiedad < ActiveRecord::Base
   end
 
   def order_date_cannot_be_in_the_future
-    if order_date.present && order_date > Date.today
+    if order_date.present? && order_date > Date.today
       errors.add(:order_date, "No puede ser mayor a la fecha de hoy")
     end
   end
