@@ -124,7 +124,9 @@ $(function() {
     });
   }
 
-  $('#propiedad_area_construccion').autoNumeric('init');
+  $('#propiedad_area_construccion').autoNumeric('init', {
+    mDec: 3
+  });
   $('#propiedad_banos').autoNumeric('init');
 
   $(document).on('pjax:complete', Bootsy.init);
