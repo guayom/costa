@@ -7,6 +7,25 @@ class ImagenesController < ApplicationController
     render layout: 'plain'
   end
 
+  def download
+    @propiedad = Propiedad.find_by(id: params[:propiedad])
+    @imagenes = @propiedad.imagenes
+
+    temp_file  = Tempfile.new("propiedad_#{params[:propiedad]}_images")
+
+    Zip::OutputStream.open(temp_file.path) do |zos|
+      @imagenes.each do |attachment|
+        zos.put_next_entry(attachment.imagen.original_filename)
+        zos.write(URI.parse(attachment.imagen.url).read)
+      end
+    end
+
+    send_file(temp_file.path,
+              filename: "propiedad_#{params[:propiedad]}_images.zip",
+              type: 'application/zip',
+              disposition: 'attachment')
+  end
+
   private
 
   def imagenes_controller_params

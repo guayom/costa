@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   resources :imagenes do
     collection do
       get 'upload', action: :upload
+      get 'download', action: :download
     end
   end
 

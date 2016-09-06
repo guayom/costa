@@ -125,6 +125,7 @@ gem 's3_direct_upload'
 gem 'resque', '~> 1.22.0'
 # gem 'resque-scheduler'
 gem 'thin'
+gem 'rubyzip'
 
 gem 'haml', '~> 4.0', '>= 4.0.7'
 

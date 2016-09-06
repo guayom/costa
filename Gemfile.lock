@@ -394,6 +394,7 @@ DEPENDENCIES
   resque (~> 1.22.0)
   roo
   rspec-rails
+  rubyzip
   s3_direct_upload
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
