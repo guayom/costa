@@ -112,7 +112,7 @@
                                 %strong Área
                               %td
                                 - if @propiedad.area_construccion > 0
-                                  Construcción: #{number_with_precision(@propiedad.area_construccion, significant: true)}m
+                                  Construcción: #{number_with_precision(@propiedad.area_construccion)}m
                                   %sup 2
                                   %br/
                                 - if @propiedad.area_terreno > 0
