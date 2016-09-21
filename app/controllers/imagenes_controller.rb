@@ -16,7 +16,7 @@ class ImagenesController < ApplicationController
     Zip::OutputStream.open(temp_file.path) do |zos|
       @imagenes.each do |attachment|
         zos.put_next_entry(attachment.imagen.original_filename)
-        zos.write(URI.parse(attachment.imagen.url).read)
+        zos.write(URI.parse(attachment.imagen.url(:large)).read)
       end
     end
 
