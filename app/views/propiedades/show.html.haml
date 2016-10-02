@@ -116,7 +116,7 @@
                                   %sup 2
                                   %br/
                                 - if @propiedad.area_terreno > 0
-                                  Terreno: #{number_with_precision(@propiedad.area_terreno, significant: true)}m
+                                  Terreno: #{number_with_precision(@propiedad.area_terreno, precision: 3, separator: ',', delimiter: '.')}m
                                   %sup 2
 
                           - if @propiedad.patio
