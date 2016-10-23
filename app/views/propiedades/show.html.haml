@@ -169,9 +169,9 @@
                             = pluralize(@propiedad.pisos, 'Piso')
                             %br/
 
-                          - if @propiedad.ubicada_en_piso.present? && @propiedad.ubicada_en_piso > 0
+                          - if @propiedad.ubicado_en_piso.present? && @propiedad.ubicado_en_piso > 0
                             %i.fa.fa-building-o
-                            = "Ubicada en el piso #{ubicada_en_piso}"
+                            = "Ubicada en el piso #{ubicado_en_piso}"
                             %br/
 
                           - if @propiedad.estacionamiento.present? && @propiedad.estacionamiento > 0
