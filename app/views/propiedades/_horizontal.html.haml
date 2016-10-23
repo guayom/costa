@@ -3,9 +3,9 @@
     .property-content-list
       .row
         .col-xs-12.col-md-6
-          - unless propiedad.imagenes.nil?
+          - unless propiedad.imagenes.pluck(:created_at).max.nil?
             .property-image-list
-              - if propiedad.imagenes.pluck(:created_at).max <= Date.new(2016, 3, 14) && propiedad.imagenes.pluck(:created_at).max != nil
+              - if propiedad.imagenes.pluck(:created_at).max <= Date.new(2016, 3, 14)
                 .add-watermark-horizontal
               - if propiedad.imagenes.any?
                 = link_to propiedad do
