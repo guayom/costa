@@ -112,11 +112,11 @@
                                 %strong Área
                               %td
                                 - if @propiedad.area_construccion > 0
-                                  Construcción: #{number_with_precision(@propiedad.area_construccion)}m
+                                  Construcción: #{number_with_precision(@propiedad.area_construccion, precision: 3, separator: ',', delimiter: '.',strip_insignificant_zeros: true)}m
                                   %sup 2
                                   %br/
                                 - if @propiedad.area_terreno > 0
-                                  Terreno: #{number_with_precision(@propiedad.area_terreno, significant: true)}m
+                                  Terreno: #{number_with_precision(@propiedad.area_terreno, precision: 3, separator: ',', delimiter: '.',strip_insignificant_zeros: true)}m
                                   %sup 2
 
                           - if @propiedad.patio
@@ -167,6 +167,11 @@
                           - if @propiedad.pisos.present? && @propiedad.pisos > 0
                             %i.fa.fa-building-o
                             = pluralize(@propiedad.pisos, 'Piso')
+                            %br/
+
+                          - if @propiedad.ubicado_en_piso.present? && @propiedad.ubicado_en_piso > 0
+                            %i.fa.fa-building-o
+                            = "Ubicada en el piso #{@propiedad.ubicado_en_piso}"
                             %br/
 
                           - if @propiedad.estacionamiento.present? && @propiedad.estacionamiento > 0

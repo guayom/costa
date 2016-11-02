@@ -11,11 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160804203748) do
+ActiveRecord::Schema.define(version: 20161023155139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "pg_stat_statements"
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -192,6 +191,7 @@ ActiveRecord::Schema.define(version: 20160804203748) do
     t.string   "cuota_mantenimiento_moneda",           default: "USD",        null: false
     t.integer  "comision"
     t.integer  "oficinas",                             default: 0,            null: false
+    t.integer  "ubicado_en_piso"
   end
 
   add_index "propiedades", ["admin_id"], name: "fk__propiedades_admin_id", using: :btree

@@ -222,7 +222,13 @@ RailsAdmin.config do |config|
       field :area_construccion do
         label "Área de Construcción"
       end
-      field :pisos
+      field :pisos do
+        help "Indique la cantidade de pisos que tiene esta propiedad"
+      end
+      field :ubicado_en_piso do
+        label "Ubicado en el piso N."
+        help "Si esta propiedad está en un edificio, indique en qué piso del edifico está"
+      end
       field :dormitorios
       field :oficinas
       field :banos do
