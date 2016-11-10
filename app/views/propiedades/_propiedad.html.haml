@@ -1,13 +1,14 @@
 .col-md-3.col-sm-6.col-xs-12
   .property-container
     .property-image
-      - if propiedad.imagenes.pluck(:created_at).max <= Date.new(2016, 3, 14)
-        .add-watermark-grid
-      =link_to propiedad do
-        - if propiedad.imagenes.any?
-          = link_to propiedad do
-            %img{:alt => "arillo real estate theme", :src => propiedad.cover_url }
-            -#%img{:alt => "arillo real estate theme", :src => 'http://costa506.s3.amazonaws.com/images/18507/original/open-uri20160313-3-1mdk20k?1457857175' }
+      - if propiedad.imagenes.pluck(:created_at).present?
+        - if propiedad.imagenes.pluck(:created_at).max <= Date.new(2016, 3, 14)
+          .add-watermark-grid
+        =link_to propiedad do
+          - if propiedad.imagenes.any?
+            = link_to propiedad do
+              %img{:alt => "arillo real estate theme", :src => propiedad.cover_url }
+              -#%img{:alt => "arillo real estate theme", :src => 'http://costa506.s3.amazonaws.com/images/18507/original/open-uri20160313-3-1mdk20k?1457857175' }
       - if 'disponible' == propiedad.estado
         .property-price{:data => {:listado => propiedad.listado }, class: "propiedad-color-#{propiedad.listado}"}
           -#%h4
