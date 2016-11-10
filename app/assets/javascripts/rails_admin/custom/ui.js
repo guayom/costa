@@ -110,7 +110,6 @@ $(function() {
     '#propiedad_valor_compra',
     '#propiedad_valor_alquiler',
     '#propiedad_cuota_mantenimiento',
-    '#propiedad_area_terreno',
     '#propiedad_pisos',
     '#propiedad_dormitorios',
     '#propiedad_patio_area',
@@ -124,7 +123,14 @@ $(function() {
     });
   }
 
+  $('#propiedad_area_terreno').autoNumeric('init', {
+    aSep: ',',
+    aDec: '.',
+    mDec: 3
+  });
   $('#propiedad_area_construccion').autoNumeric('init', {
+    aSep: ',',
+    aDec: '.',
     mDec: 3
   });
   $('#propiedad_banos').autoNumeric('init');
