@@ -36,10 +36,14 @@
                 .row
                   .col-md-12
                     %h2{class: "propiedad-text-color-#{@propiedad.listado}"}
-                      = @propiedad.titular
+                      - if @propiedad.estado != 'disponible'
+                        = "*#{@propiedad.estado.capitalize}* #{@propiedad.titular}"
+                      - else
+                        = @propiedad.titular
                       %br/
                       %small{class: "propiedad-text-color-#{@propiedad.listado}"}
                         Código: #{@propiedad.codigo}
+
 
                     .jcarousel-wrapper
                       - if @propiedad.imagenes.any? && @propiedad.imagenes.pluck(:created_at).max <= Date.new(2016, 3, 14)
