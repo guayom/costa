@@ -14,8 +14,8 @@ class Ability
         can :manage, [Imagen, Slider]
 
         can :manage, Propiedad, admin_id: [nil, admin.id]
-        can :manage, Propietario
-        cannot :destroy, [Propiedad, Propietario]
+        can :manage, [Propietario, Mensaje]
+        cannot :destroy, [Propiedad, Propietario, Mensaje]
 
         can :create, Propiedad, admin_id: admin.id
         can :create, Propietario, admin_id: admin.id
