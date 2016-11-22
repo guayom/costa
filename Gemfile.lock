@@ -127,6 +127,8 @@ GEM
       railties (>= 3.0.0)
     faker (1.6.5)
       i18n (~> 0.5)
+    figaro (1.1.1)
+      thor (~> 0.14)
     font-awesome-rails (4.6.3.1)
       railties (>= 3.2, < 5.1)
     friendly_id (5.1.0)
@@ -372,6 +374,7 @@ DEPENDENCIES
   enumerize
   factory_girl_rails
   faker
+  figaro
   font-awesome-rails
   friendly_id
   haml (~> 4.0, >= 4.0.7)
@@ -408,5 +411,8 @@ DEPENDENCIES
   will_paginate
   will_paginate-bootstrap
 
+RUBY VERSION
+   ruby 2.2.3p173
+
 BUNDLED WITH
-   1.11.2
+   1.12.5
