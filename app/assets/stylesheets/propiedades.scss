@@ -200,14 +200,14 @@
 }
 
 .banner-estado{
-  position: relative;
+  position: absolute;
   background: $rojo;
   padding: 5px 10px;
   text-align: center;
   color: #fff;
   font-weight: bold;
   width: 100%;
-  top:50px;
+  top:0;
   z-index: 10;
   display: block;
   margin: 0;
