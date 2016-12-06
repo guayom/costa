@@ -40,4 +40,8 @@ class Propietario < ActiveRecord::Base
 	def alt
 		"#{nombre_completo}, #{celular}"
 	end
+
+  def telefonos
+    [phone1, phone2, phone3, phone4 ].reject { |c| c.empty? }.join(" / ")
+  end
 end

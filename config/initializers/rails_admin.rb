@@ -148,6 +148,7 @@ RailsAdmin.config do |config|
 
     navigation_icon 'icon-home'
 
+
     edit do
 
       field :listado
@@ -321,6 +322,22 @@ RailsAdmin.config do |config|
       field :estatus
       field :listado
       field :admin
+      field :propietario_details do
+        formatted_value{
+          pretty_value do
+              util = bindings[:object]
+              if util.propietario == nil
+                "-"
+              else
+                %{
+                  #{util.propietario.nombre_completo}<br/>
+                  #{util.propietario.telefonos}
+                }.html_safe
+              end
+          end
+        }
+        label "Propietario"
+      end
       field :titular
       field :provincia
       field :order_date
@@ -392,6 +409,7 @@ RailsAdmin.config do |config|
       end
       configure :email, :email
     end
+
     object_label_method do
       :nombre_completo
     end
