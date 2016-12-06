@@ -42,6 +42,6 @@ class Propietario < ActiveRecord::Base
 	end
 
   def telefonos
-    [phone1, phone2, phone3, phone4 ].reject { |c| c.empty? }.join(" / ")
+    [telefono, celular, phone1, phone2, phone3, phone4 ].reject { |c| c.empty? }.join(" / ")
   end
 end
