@@ -41,7 +41,7 @@ class Propietario < ActiveRecord::Base
 		"#{nombre_completo}, #{celular}"
 	end
 
-  def telefonos
-    [telefono, celular, phone1, phone2, phone3, phone4 ].reject { |c| c.empty? }.join(" / ")
+  def contact_info_string
+    "#{nombre_completo}<br/>#{[telefono, celular, phone1, phone2, phone3, phone4 ].reject { |c| c.empty? }.join(" / ")}"
   end
 end

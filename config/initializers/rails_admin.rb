@@ -322,22 +322,6 @@ RailsAdmin.config do |config|
       field :estatus
       field :listado
       field :admin
-      field :propietario_details do
-        formatted_value{
-          pretty_value do
-              util = bindings[:object]
-              if util.propietario == nil
-                "-"
-              else
-                %{
-                  #{util.propietario.nombre_completo}<br/>
-                  #{util.propietario.telefonos}
-                }.html_safe
-              end
-          end
-        }
-        label "Propietario"
-      end
       field :titular
       field :provincia
       field :order_date
@@ -359,6 +343,36 @@ RailsAdmin.config do |config|
       field :provincia do
         column_width 100
       end
+    end
+
+    show do
+      field :codigo
+      field :estado
+      field :propietario_details do
+        formatted_value{
+          pretty_value do
+              util = bindings[:object]
+              if util.propietario == nil
+                "-"
+              else
+                %{#{util.propietario.contact_info_string}}.html_safe
+              end
+          end
+        }
+        label "Propietario"
+      end
+      field :estatus
+      field :listado
+      field :admin
+      field :titular
+      field :provincia
+      field :order_date
+      field :codigo
+      field :estado
+      field :estatus
+      field :listado
+      field :admin
+      field :provincia
     end
   end
 
