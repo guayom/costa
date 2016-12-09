@@ -181,7 +181,7 @@
                           - if @propiedad.estacionamiento.present? && @propiedad.estacionamiento > 0
                             %i.fa.fa-car
                             - if @propiedad.tipo_de_estacionamiento.present?
-                              = @propiedad.tipo_de_estacionamiento.split('_').join(' ').capitalize
+                              = t("enumerize.propiedad.tipo_de_estacionamiento.#{@propiedad.tipo_de_estacionamiento}")
                               para
                             #{pluralize(@propiedad.estacionamiento, 'Carro')}
                             %br/
