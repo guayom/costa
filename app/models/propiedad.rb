@@ -44,9 +44,12 @@ class Propiedad < ActiveRecord::Base
   enum estatus: { publicado: 1, borrador: 2, rechazado: 3 }
 
   validates_presence_of :listado
+  validates_presence_of :propietario
   validates_presence_of :codigo, if: :publicado?
   validates_presence_of :admin, if: :publicado?
   validates_presence_of :imagenes, if: :publicado?
+  validates_presence_of :provincia
+  validates_presence_of :canton
   # validates_presence_of :tipo, if: :publicado?
 
   #validates_presence_of :propietario, if: :publicado?
