@@ -109,7 +109,9 @@ class Propiedad < ActiveRecord::Base
   scope :featured, -> { where(featured: true, estado: :disponible, estatus: 1) }
   scope :notfeatured, -> { where(featured: false) }
 
-  pg_search_scope :search_by_keywords, against: [:titular, :provincia, :canton, :distrito, :codigo]
+  pg_search_scope :search_by_keywords,
+                  against: [:titular, :provincia, :canton, :distrito, :codigo],
+                  ignoring: :accents
 
   # friendly_id :slug_string, use: :slugged
   friendly_id :slug_string
