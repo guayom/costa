@@ -37,7 +37,8 @@
   <% collection.each do |titulo, id| %>
     <%= check_box_tag form.dom_name(field), id, selected_ids.include?(id), 
       id: "#{form.dom_id(field)}_#{id}" %>
-    <%= label_tag "#{form.dom_id(field)}_#{id}", titulo %>
+    <%= label_tag "#{form.dom_id(field)}_#{id}", titulo, 
+      style: 'font-weight: normal;' %>
     <br>
   <% end %>
 </div>
