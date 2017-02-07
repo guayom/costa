@@ -243,6 +243,7 @@ RailsAdmin.config do |config|
         sortable do
           :titulo
         end
+        partial 'propiedad_tipo'
       end
       field :caracteristicas do
         label 'Amenidades'
