@@ -131,7 +131,7 @@ class PropiedadesController < ApplicationController
       :descripcion_publica, :tipo_id, :provincia_id, :canton_id,
       :distrito_id, :direccion_exacta, :propietario_id,
       propietario_attributes: [:nombre, :apellido, :celular, :email,
-                               :password]
+                               :password, :self_register]
     )
   end
 end

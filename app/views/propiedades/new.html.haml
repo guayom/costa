@@ -36,6 +36,7 @@
 
             = f.fields_for :propietario do |sf|
               = sf.hidden_field :password
+              = sf.hidden_field :self_register, { value: true }
 
               .form-group
                 = sf.label :nombre, class: 'col-sm-2 control-label'
