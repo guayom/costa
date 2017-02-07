@@ -15,5 +15,5 @@
 /public/images
 /public/sliders
 
-# Ignore application configuration
-/config/database.yml
+# Ignore local application configuration
+.env
