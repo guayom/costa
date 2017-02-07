@@ -243,10 +243,11 @@ RailsAdmin.config do |config|
         sortable do
           :titulo
         end
-        partial 'propiedad_tipo'
+        partial 'checkboxes_field'
       end
       field :caracteristicas do
         label 'Amenidades'
+        partial 'checkboxes_field'
       end
       field :patio
       field :patio_area do
