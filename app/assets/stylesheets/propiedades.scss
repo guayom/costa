@@ -213,3 +213,10 @@
   margin: 0;
 
 }
+.amenities-list{
+  -webkit-column-count: 3; /* Chrome, Safari, Opera */
+  -moz-column-count: 3; /* Firefox */
+  column-count: 3;
+  list-style-position: inside;
+  padding: 0;
+}

@@ -196,9 +196,9 @@
 
                     - if @propiedad.caracteristicas.any?
                       .row
-                        .col-md-4.col-sm-4
+                        .col-xs-12
                           %h3= t('propiedad.amenities')
-                          %ul
+                          %ul.amenities-list
                             - @propiedad.caracteristicas.each do |c|
                               %li
                                 = c.titulo
