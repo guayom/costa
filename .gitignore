@@ -8,22 +8,12 @@
 /.bundle
 
 # Ignore all logfiles and tempfiles.
+.DS_Store
 /log/*
 !/log/.keep
 /tmp
 /public/images
 /public/sliders
 
-solr/development
-solr/test
-
-#config/initializers/rails_admin.rb
-
-app/assets/images/.DS_Store
-
-app/views/.DS_Store
-
-public/.DS_Store
-
 # Ignore application configuration
-/config/application.yml
+/config/database.yml
