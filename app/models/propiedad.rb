@@ -111,7 +111,7 @@ class Propiedad < ActiveRecord::Base
 
   pg_search_scope :search_by_keywords,
                   against: [:titular, :provincia, :canton, :distrito, :codigo],
-                  associated_against: { caracteristicas: [:titulo] },
+                  #associated_against: { caracteristicas: [:titulo] },
                   ignoring: :accents
 
   # friendly_id :slug_string, use: :slugged
