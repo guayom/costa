@@ -11,11 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161023155139) do
+ActiveRecord::Schema.define(version: 20170224211457) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "pg_stat_statements"
+  enable_extension "unaccent"
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -123,6 +124,7 @@ ActiveRecord::Schema.define(version: 20161023155139) do
     t.string   "direct_upload_url"
     t.boolean  "processed",           default: false, null: false
     t.integer  "admin_id"
+    t.integer  "sort"
   end
 
   add_index "imagenes", ["propiedad_id"], name: "fk__imagenes_propiedad_id", using: :btree

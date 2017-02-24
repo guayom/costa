@@ -3,6 +3,7 @@
 //= require autonumeric
 //= require jquery.maskedinput
 //= require s3_direct_upload
+//= require sortablejs
 
 var updateFieldsVisibility = function() {
   $('.tipo-hidden').each(function() {

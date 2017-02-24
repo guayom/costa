@@ -1,53 +1,43 @@
 <% if form.object.persisted? %>
-  <% if 3 == current_admin.try(:id) %>
-    <script>
-      function resizeIFrameToFitContent(iframe) {
-        iframe.width  = iframe.contentWindow.document.body.scrollWidth;
-        iframe.height = iframe.contentWindow.document.body.scrollHeight;
-      }
-
-      window.addEventListener('DOMContentReady', function() {
-  //      debugger;
-
-        var iframe = document.getElementById('direct_uploader');
-        resizeIFrameToFitContent(iframe);
-      });
-    </script>
-
-    <iframe id="direct_uploader"
-            src="<%= main_app.upload_imagenes_path %>"
-            style="width: 100%;"></iframe>
-
-    <div style="border: 2px solid black;">
-      <p>USE THIS ONE</p>
-  <% end %>
-
   <%= form.file_field(field.name, field.html_attributes.reverse_merge({ multiple: true, data: { fileupload: true }})) %>
 
-  <% if 3 == current_admin.try(:id) %>
-    </div>
-  <% end %>
 <% else %>
   <%= form.file_field(field.name, field.html_attributes.reverse_merge({ multiple: true, data: { fileupload: true }})) %>
 <% end %>
 
-<% form.object.imagenes.each do |image| %>
-  <div class="image-form-preview" id="image_<%= image.id %>">
-    <%= link_to(image.imagen.url, target: 'blank') do %>
-      <%= image_tag image.imagen.url(:small), class: image.id.to_s == form.object.cover ? 'cover' : '' %>
-    <% end %>
-    <% if image.id.present? %>
-      <div class="clearfix"></div>
-      <p class="pull-right" style="padding-right: 15px;">
-        <%= link_to 'Cover', main_app.cover_propiedad_path(cover: image.id), remote: true %>
-      </p>
+<div id="propiedad_images">
+  <% form.object.imagenes.each do |image| %>
+    <div class="image-form-preview" id="image_<%= image.id %>" 
+         data-id="<%= image.id %>">
+      <%= link_to(image.imagen.url, target: 'blank') do %>
+        <%= image_tag image.imagen.url(:small), class: image.id.to_s == form.object.cover ? 'cover' : '' %>
+      <% end %>
+      <% if image.id.present? %>
+        <div class="clearfix"></div>
+        <p class="pull-right" style="padding-right: 15px;">
+          <%= link_to 'Cover', main_app.cover_propiedad_path(cover: image.id), remote: true %>
+        </p>
 
-      <p align="left">
-        <%= link_to "Eliminar", destroy_image_path(:imagen, image.id), method: :delete, remote: true, data: {confirm: '¿Está seguro?'} %>
-      </p>
-    <% end %>
-  </div>
-<% end %>
+        <p align="left">
+          <%= link_to "Eliminar", destroy_image_path(:imagen, image.id), method: :delete, remote: true, data: {confirm: '¿Está seguro?'} %>
+        </p>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<script>
+  $(function() {
+    var sortable = Sortable.create(document.getElementById('propiedad_images'), {
+      onSort: function(event) {
+        var items = sortable.toArray();
+        for (var i = 0; i < items.length; i++) {
+          debugger;
+        }
+      }
+    });
+  });
+</script>
 
 <% if form.object.imagenes.any? %>
   <br>

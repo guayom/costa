@@ -141,6 +141,8 @@ gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 # gem 'resque-web', require: 'resque_web'
 
+gem 'rails-assets-sortablejs', source: 'https://rails-assets.org'
+
 gem "informant-rails"
 # gem 'rails_admin_multiple_upload', path: 'vendor/gems/rails_admin_multiple_upload'
 #RUBY Version
