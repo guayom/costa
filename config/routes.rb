@@ -39,6 +39,8 @@ Rails.application.routes.draw do
       get 'import'
 
       get 'test_email', action: :test_email
+
+      get 'update_sort_index'
     end
 
     member do

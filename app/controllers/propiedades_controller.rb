@@ -56,6 +56,15 @@ class PropiedadesController < ApplicationController
     @propiedad.propietario.password = password
   end
 
+  def update_sort_index
+    respond_to do |format|
+      format.js do 
+        Imagen.find(params[:id]).update!(sort_index: params[:sort_index])
+        render nothing: true, status: 204
+      end
+    end
+  end
+
   def create
     @propiedad = Propiedad.new(propiedad_params)
     @propiedad.provincia = params[:provincia_id]

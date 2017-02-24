@@ -28,6 +28,8 @@ class Imagen < ActiveRecord::Base
 
   scope :sorted, -> (cover_id) { order("imagenes.id != #{cover_id}, id") if cover_id.present? }
 
+  default_scope { order(:sort_index, :id) }
+
   def imagen_from_url(url)
     self.imagen = open(url)
   end
