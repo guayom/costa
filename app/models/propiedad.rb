@@ -101,7 +101,8 @@ class Propiedad < ActiveRecord::Base
 
   scope :search_by_valor_alquiler, -> (values) {
     if values.size > 1
-      where('valor_alquiler >= ? AND valor_alquiler <= ?', values[0], values[1])
+      rate = Rate.order(created_at: :desc).first
+      where('(moneda = ? AND valor_alquiler >= ? AND valor_alquiler <= ?) OR (moneda = ? AND valor_alquiler >= ? * ? * 0.98 AND valor_alquiler <= ? * ? * 1.02)', 'USD', values[0], values[1], 'CRC', values[0], rate.buy, values[1], rate.sell)
     else
       where('valor_alquiler >= ?', values[0])
     end
