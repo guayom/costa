@@ -113,7 +113,6 @@ $(function() {
     '#propiedad_cuota_mantenimiento',
     '#propiedad_pisos',
     '#propiedad_dormitorios',
-    '#propiedad_patio_area',
     '#propiedad_estacionamiento',
     '#propiedad_fecha_construccion'
   ];
@@ -134,6 +133,12 @@ $(function() {
     aDec: '.',
     mDec: 3
   });
+  $('#propiedad_patio_area').autoNumeric('init', {
+    aSep: ',',
+    aDec: '.',
+    mDec: 3
+  });
+
   $('#propiedad_banos').autoNumeric('init');
 
   $(document).on('pjax:complete', Bootsy.init);
