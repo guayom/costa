@@ -777,25 +777,29 @@ input[type="color"]:focus,
 	display: block;
 	width: auto;
 	max-width: 100%;
-	padding: 8px 16px;
+	padding: 8px 0;
 	background: #209922;
 	color: #fff;
 	text-align: left;
-	font-size: 19px;
+	font-size: 14px;
 	line-height: 22px;
 	font-weight: 600;
-}
 
-.property-price h4{
-	font-size: 14px;
-	line-height: 14px;
-	margin: 0;
-	font-weight: 400;
-}
+  h4{
+  	font-size: 14px;
+  	line-height: 14px;
+  	margin: 0;
+  	font-weight: 400;
+  }
 
-.property-price small{
-	font-size: 13px;
-	font-weight: 400;
+  small{
+  	font-size: 13px;
+  	font-weight: 400;
+  }
+
+  @include mq('desktop') {
+    font-size: 16px;
+  }
 }
 
 .property-features{
