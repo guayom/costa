@@ -230,6 +230,25 @@ class Propiedad < ActiveRecord::Base
       end
     end
   end
+  
+  def facebook_cover_url
+    if cover
+      i = Imagen.find_by(id: cover)
+      if i
+        url = i.imagen.url(:facebook)
+      end
+    end
+
+    if url.present?
+      url
+    else
+      if imagenes.any?
+        imagenes.first.imagen.url(:facebook)
+      else
+        nil
+      end
+    end
+  end
 
   def should_generate_new_friendly_id?
     slug.blank? || codigo.blank? || !slug.include?(normalize_friendly_id(codigo))
