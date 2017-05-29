@@ -21,17 +21,24 @@
       ] 
     end
   else
+    # controller.list_entries(
+    #   config, 
+    #   :index, 
+    #   field.associated_collection_scope, 
+    #   false
+    # ).map do |o| 
+    #   [
+    #     o.send(field.associated_object_label_method), 
+    #     o.send(field.associated_primary_key)
+    #   ]
+    # end
+
     controller.list_entries(
       config, 
       :index, 
       field.associated_collection_scope, 
       false
-    ).map do |o| 
-      [
-        o.send(field.associated_object_label_method), 
-        o.send(field.associated_primary_key)
-      ]
-    end
+    )
   end
 
   js_data = {
@@ -53,14 +60,22 @@
 %>
 
 <div style="columns: 3;">
-  <% collection.each do |name, id| %>
-    <%= check_box_tag form.dom_name(field), id, selected_ids.include?(id), 
-      id: "#{form.dom_id(field)}_#{id}" %>
-    <%= label_tag "#{form.dom_id(field)}_#{id}", name, 
+  <%= form.collection_check_boxes field.method_name, collection, 
+                                  field.associated_primary_key, 
+                                  field.associated_object_label_method do |b| %>
+    <%= b.label(style: 'font-weight: normal;') { b.check_box + '&nbsp;'.html_safe + b.text } %> <br>
+  <% end %>                              
+</div>
+
+<!-- <div style="columns: 3;">
+  <%# collection.each do |name, id| %>
+    <%#= check_box_tag form.dom_name(field), id, selected_ids.include?(id) %>
+    <%#= label_tag "#{form.dom_id(field)}_#{id}", name, 
       style: 'font-weight: normal;' %>
     <br>
-  <% end %>
+  <%# end %>
 </div>
+ -->
 
 <% selected_ids = (hdv = field.form_default_value).nil? ? selected_ids : hdv %>
 
