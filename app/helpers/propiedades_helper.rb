@@ -44,8 +44,10 @@ module PropiedadesHelper
                 [p.valor_compra, p.valor_alquiler]
               end
 
-      "<h4>#{listado_name(p.listado)}</h4>".html_safe + content_tag(:span) do
-        price.map { |v| number_to_currency(v, locale: p.price_locale) }.join('<br>').html_safe
+      content_tag(:div, class: 'col-xs-12') do
+        "<h4>#{listado_name(p.listado)}</h4>".html_safe + content_tag(:span) do
+          price.map { |v| number_to_currency(v, locale: p.price_locale) }.join('<br>').html_safe
+        end
       end
     end
   end

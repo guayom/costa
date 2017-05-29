@@ -39,7 +39,7 @@ class Propiedad < ActiveRecord::Base
   enumerize :estado, in: [:disponible, :alquilado, :vendido], default: :disponible, scope: true
   enumerize :moneda, in: ['USD', 'CRC'], default: 'USD'
   enumerize :cuota_mantenimiento_moneda, in: ['USD', 'CRC'], default: 'USD'
-  enumerize :tipo_de_estacionamiento, in: [:parqueo, :garaje, :parqueo_techado, :visitas, :calle, :sotano]
+  enumerize :tipo_de_estacionamiento, in: [:parqueo, :garaje, :parqueo_techado, :visitas, :calle, :sotano, :tantem]
 
   enum estatus: { publicado: 1, borrador: 2, rechazado: 3 }
 
@@ -225,6 +225,25 @@ class Propiedad < ActiveRecord::Base
     else
       if imagenes.any?
         imagenes.first.imagen.url(:medium)
+      else
+        nil
+      end
+    end
+  end
+  
+  def facebook_cover_url
+    if cover
+      i = Imagen.find_by(id: cover)
+      if i
+        url = i.imagen.url(:facebook)
+      end
+    end
+
+    if url.present?
+      url
+    else
+      if imagenes.any?
+        imagenes.first.imagen.url(:facebook)
       else
         nil
       end
