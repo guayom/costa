@@ -214,9 +214,12 @@
 
 }
 .amenities-list{
-  -webkit-column-count: 3; /* Chrome, Safari, Opera */
-  -moz-column-count: 3; /* Firefox */
-  column-count: 3;
-  list-style-position: inside;
-  padding: 0;
+  padding: 0 0 0 20px;
+  @include mq('tablet') {
+    -webkit-column-count: 3; /* Chrome, Safari, Opera */
+    -moz-column-count: 3; /* Firefox */
+    column-count: 3;
+    list-style-position: inside;
+    padding: 0;
+  }
 }
