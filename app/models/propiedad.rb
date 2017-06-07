@@ -302,6 +302,7 @@ class Propiedad < ActiveRecord::Base
     self.fecha_construccion ||= 0
     self.estatus ||= 2
     self.featured ||= false
+    self.order_date ||= Date.today
 
     true
   end
