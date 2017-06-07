@@ -223,21 +223,3 @@
     padding: 0;
   }
 }
-
-//Estilos para impresión
-@media print {
-  .contact-header, .navbar, #header, #footer, .nav-tabs, .sidebar, .request_info_bottom, #socialicons, h3, .property-description {
-    display: none;
-  }
-  #content {
-    padding-top: 0;
-  }
-  .main-property-container {
-    width: 100%;
-    position: relative;
-    left: 0;
-  }
-  .single-post .tab-content {
-    border: 0;
-  }
-}
