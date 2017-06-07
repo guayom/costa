@@ -17,7 +17,7 @@
   #content.show-view
     .container
       / begin:article
-      .col-md-8.col-md-push-4
+      .col-md-8.col-md-push-4.visible-print-block.main-property-container
         .row
           .col-md-12.single-post
             %ul#myTab.nav.nav-tabs.nav-justified
@@ -190,12 +190,12 @@
                       Solicitar más información
                     %h3 Compartir
                     = render partial: 'application/social_buttons', locals: {text: "#{@propiedad.titular} - código: #{@propiedad.codigo}", title: "#{@propiedad.titular} - código: #{@propiedad.codigo}", summary: @propiedad.descripcion_publica, img: @propiedad.cover_url}
-
-                    %h3 Descripción:
-                    %p= simple_format(@propiedad.descripcion_publica.gsub("↵", '<br/>'))
+                    .property-description
+                      %h3 Descripción:
+                      %p= simple_format(@propiedad.descripcion_publica.gsub("↵", '<br/>'))
 
                     - if @propiedad.caracteristicas.any?
-                      .row
+                      .row.hidden-print
                         .col-xs-12
                           %h3= t('propiedad.amenities')
                           %ul.amenities-list
@@ -204,7 +204,7 @@
                                 = c.titulo
                     %h3{class: "propiedad-text-color-#{@propiedad.listado}"}
                       Estado de la propiedad:
-                    %p{class: "propiedad-text-color-#{@propiedad.listado}"}
+                    %p{class: "propiedad-text-color-#{@propiedad.listado} hidden-print"}
                       = @propiedad.estado.capitalize
 
                     %br
