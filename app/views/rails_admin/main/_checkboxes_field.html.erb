@@ -12,6 +12,11 @@
 
   current_action = params[:action].in?(['create', 'new']) ? 'create' : 'update'
   xhr = !field.associated_collection_cache_all
+  xhr = false
+
+  # unless ['tipos'].include?(field.name.to_s)
+  #   fail '123'
+  # end
 
   collection = if xhr
     selected.map do |o| 
