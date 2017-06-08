@@ -11,10 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170224212002) do
+ActiveRecord::Schema.define(version: 20170608164218) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_stat_statements"
+  enable_extension "unaccent"
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -95,6 +97,16 @@ ActiveRecord::Schema.define(version: 20170224212002) do
   add_index "distritos", ["canton_id"], name: "index_distritos_on_canton_id", using: :btree
   add_index "distritos", ["distrito_id"], name: "index_distritos_on_distrito_id", using: :btree
   add_index "distritos", ["provincia_id"], name: "index_distritos_on_provincia_id", using: :btree
+
+  create_table "facebook_covers", force: :cascade do |t|
+    t.integer  "propiedad_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.boolean  "image_processing"
+    t.boolean  "processed"
+  end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false

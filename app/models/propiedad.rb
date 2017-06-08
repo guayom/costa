@@ -15,6 +15,9 @@ class Propiedad < ActiveRecord::Base
 
   # belongs_to :tipo
   has_many :imagenes, :dependent => :destroy
+  accepts_nested_attributes_for :imagenes
+  has_many :facebook_covers, dependent: :destroy
+  accepts_nested_attributes_for :facebook_covers
   has_many :contacto_mensajes
   has_and_belongs_to_many :mensajes
 

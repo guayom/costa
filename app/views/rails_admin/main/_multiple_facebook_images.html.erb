@@ -1,0 +1,83 @@
+<% if form.object.persisted? %>
+  <%= form.file_field(field.name, field.html_attributes.reverse_merge({ multiple: true, data: { fileupload: true }})) %>
+
+<% else %>
+  <%= form.file_field(field.name, field.html_attributes.reverse_merge({ multiple: true, data: { fileupload: true }})) %>
+<% end %>
+
+<div id="propiedad_facebook_images">
+  <% form.object.facebook_covers.each do |image| %>
+    <div class="image-form-preview" id="facebook_image_<%= image.id %>" 
+         data-id="<%= image.id %>">
+      <%= link_to(image.image.url, target: 'blank') do %>
+        <%= image_tag image.image.url(:small), class: image.id.to_s == form.object.cover ? 'cover' : '' %>
+      <% end %>
+      <% if image.id.present? %>
+        <div class="clearfix"></div>
+        <p align="left">
+          <%= link_to "Eliminar", destroy_image_path(:image, image.id), method: :delete, remote: true, data: {confirm: '¿Está seguro?'} %>
+        </p>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<script>
+//  $(function() {
+//    var sortable = Sortable.create(document.getElementById('propiedad_facebook_covers'), {
+//      onSort: function(event) {
+//        var items = sortable.toArray();
+//        for (var i = 0; i < items.length; i++) {
+//          $.ajax('/propiedades/update_sort_index', {
+//            data: {
+//              id: items[i],
+//              sort_index: i              
+//            }
+//          });
+//        }
+//      }
+//    });
+//  });
+</script>
+
+<% if false #form.object.imagenes.any? %>
+  <br>
+  <%= link_to 'Eliminar todos', '#', id: 'delete_all_images', data: { confirm: '¿Seguro que desea borrar todas las imágenes? Esta acción es irreversible' } %>
+  <!--<a id="delete_all_images" href="#">Eliminar todos</a>-->
+  <script>
+    $(function() { $('#delete_all_images:not(.bound)').addClass('bound').click(deleteAllImages); });
+    $(document).on('pjax:complete', function() { $('#delete_all_images:not(.bound)').addClass('bound').click(deleteAllImages); });
+
+    var deleteAllImages = function(event) {
+      if (!confirm('¿Seguro que desea borrar todas las imágenes? Esta acción es irreversible')) {
+        return false;
+      }
+
+      var deletePath = [
+        <% form.object.imagenes.each do |image| %>
+        '<%= destroy_image_path(:imagen, image.id) %>',
+        <% end %>
+      ];
+
+      for (var i = 0; i < deletePath.length; i++) {
+        $.ajax({
+          url: deletePath[i],
+          type: 'DELETE',
+          beforeSend: function(xhr) {
+            xhr.setRequestHeader(
+                'X-CSRF-Token',
+                $('meta[name=csrf-token]').attr('content')
+            );
+          }
+        });
+      }
+
+      event.preventDefault();
+      return false;
+    };
+  </script>
+
+  <br>
+
+  <%= link_to 'Download all images', main_app.download_imagenes_path(propiedad: form.object.id) %>
+<% end %>

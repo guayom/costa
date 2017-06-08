@@ -92,7 +92,7 @@ RailsAdmin.config do |config|
     show_in_app
 
     destroy_image do
-      only ['Imagen']
+      only ['Imagen', 'FacebookCover']
     end
 
     collection :featured do
@@ -273,12 +273,21 @@ RailsAdmin.config do |config|
 
       group 'Imágenes' do
         active false
+
         field :imagenes, :paperclip do
           html_attributes do
             { multiple: true }
           end
           partial 'multiple_images'
           label "Imágenes"
+        end
+
+        field :facebook_covers, :paperclip do
+          html_attributes do
+            { multiple: true }
+          end
+          partial 'multiple_facebook_images'
+          label "Facebook Cover"
         end
       end
 
@@ -533,6 +542,10 @@ RailsAdmin.config do |config|
   end
 
   config.model 'Imagen' do
+    visible false
+  end
+
+  config.model 'FacebookCover' do
     visible false
   end
 
