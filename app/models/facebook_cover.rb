@@ -16,5 +16,5 @@ class FacebookCover < ActiveRecord::Base
 
   process_in_background :image, processign_image_url: '/uploading.jpg'
 
-  validates_attachment_content_type :image, content_type: /\Qimage\/.*\Z/
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 end

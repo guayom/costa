@@ -141,6 +141,12 @@ class Propiedad < ActiveRecord::Base
     end
   end
 
+  def facebook_covers= array
+    # array.each do |file|
+      facebook_covers.build(image: array)
+    # end
+  end
+
   def set_codigo
     if admin && codigo.blank?
       last_propiedad = admin.propiedades.order(:codigo).last

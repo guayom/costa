@@ -1,8 +1,7 @@
-<% if form.object.persisted? %>
+<% if form.object.persisted? && form.object.facebook_covers.empty? %>
   <%= form.file_field(field.name, field.html_attributes.reverse_merge({ multiple: true, data: { fileupload: true }})) %>
-
 <% else %>
-  <%= form.file_field(field.name, field.html_attributes.reverse_merge({ multiple: true, data: { fileupload: true }})) %>
+  <%#= form.file_field(field.name, field.html_attributes.reverse_merge({ multiple: false, data: { fileupload: true }})) %>
 <% end %>
 
 <div id="propiedad_facebook_images">
@@ -15,7 +14,7 @@
       <% if image.id.present? %>
         <div class="clearfix"></div>
         <p align="left">
-          <%= link_to "Eliminar", destroy_image_path(:image, image.id), method: :delete, remote: true, data: {confirm: '¿Está seguro?'} %>
+          <%= link_to "Eliminar", destroy_facebook_cover_path(:facebook_cover, image.id), method: :delete, remote: true, data: {confirm: '¿Está seguro?'} %>
         </p>
       <% end %>
     </div>
@@ -45,17 +44,17 @@
   <%= link_to 'Eliminar todos', '#', id: 'delete_all_images', data: { confirm: '¿Seguro que desea borrar todas las imágenes? Esta acción es irreversible' } %>
   <!--<a id="delete_all_images" href="#">Eliminar todos</a>-->
   <script>
-    $(function() { $('#delete_all_images:not(.bound)').addClass('bound').click(deleteAllImages); });
-    $(document).on('pjax:complete', function() { $('#delete_all_images:not(.bound)').addClass('bound').click(deleteAllImages); });
+    $(function() { $('#delete_all_images:not(.bound)').addClass('bound').click(deleteAllFImages); });
+    $(document).on('pjax:complete', function() { $('#delete_all_images:not(.bound)').addClass('bound').click(deleteAllFImages); });
 
-    var deleteAllImages = function(event) {
+    var deleteAllFImages = function(event) {
       if (!confirm('¿Seguro que desea borrar todas las imágenes? Esta acción es irreversible')) {
         return false;
       }
 
       var deletePath = [
-        <% form.object.imagenes.each do |image| %>
-        '<%= destroy_image_path(:imagen, image.id) %>',
+        <% form.object.facebook_covers.each do |image| %>
+        '<%= destroy_facebook_cover_path(:facebook_cover, image.id) %>',
         <% end %>
       ];
 

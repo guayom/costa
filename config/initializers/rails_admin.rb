@@ -1,4 +1,5 @@
 require Rails.root.join('lib', 'rails_admin', 'destroy_image.rb')
+require Rails.root.join('lib', 'rails_admin', 'destroy_facebook_cover.rb')
 
 RailsAdmin::ApplicationController.class_eval do
   before_filter do
@@ -92,8 +93,12 @@ RailsAdmin.config do |config|
     show_in_app
 
     destroy_image do
-      only ['Imagen', 'FacebookCover']
+      only ['Imagen']
     end
+
+    destroy_facebook_cover do
+      only ['FacebookCover']
+    end    
 
     collection :featured do
       only ['Propiedad']
@@ -284,7 +289,7 @@ RailsAdmin.config do |config|
 
         field :facebook_covers, :paperclip do
           html_attributes do
-            { multiple: true }
+            { multiple: false }
           end
           partial 'multiple_facebook_images'
           label "Facebook Cover"

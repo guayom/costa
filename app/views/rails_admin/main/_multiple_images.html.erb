@@ -1,6 +1,5 @@
 <% if form.object.persisted? %>
   <%= form.file_field(field.name, field.html_attributes.reverse_merge({ multiple: true, data: { fileupload: true }})) %>
-
 <% else %>
   <%= form.file_field(field.name, field.html_attributes.reverse_merge({ multiple: true, data: { fileupload: true }})) %>
 <% end %>
