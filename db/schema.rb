@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170608164218) do
+ActiveRecord::Schema.define(version: 20170609121710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -205,6 +205,12 @@ ActiveRecord::Schema.define(version: 20170608164218) do
     t.integer  "comision"
     t.integer  "oficinas",                             default: 0,            null: false
     t.integer  "ubicado_en_piso"
+    t.string   "titular_en"
+    t.text     "direccion_exacta_en"
+    t.text     "direccion_uso_interno_en"
+    t.text     "descripcion_publica_en"
+    t.string   "meta_keywords_en"
+    t.text     "meta_description_en"
   end
 
   add_index "propiedades", ["admin_id"], name: "fk__propiedades_admin_id", using: :btree
