@@ -38,13 +38,21 @@
     #   ]
     # end
 
+    # fail '123'
+    # config.list.items_per_page = 1000
     controller.list_entries(
       config, 
       :index, 
-      field.associated_collection_scope, 
+      nil, # field.associated_collection_scope, 
       false
     )
+    # opts = {}
+    # config.abstract_model.all(opts, field.associated_collection_scope)
+    # fail '123' unless :tipos == field.name
+    # config.abstract_model.all
   end
+
+# fail '123'
 
   js_data = {
     xhr: xhr,

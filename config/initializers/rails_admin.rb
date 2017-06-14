@@ -265,6 +265,8 @@ RailsAdmin.config do |config|
         partial 'checkboxes_field'
       end
       field :caracteristicas do
+        # associated_collection_cache_all true
+        
         label 'Amenidades'
         partial 'checkboxes_field'
       end
