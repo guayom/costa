@@ -8,7 +8,7 @@ class FacebookCover < ActiveRecord::Base
                       thumb: '100x65>',
                       small: '260x173>',
                       facebook: {
-                        geometry: '1200x630>',
+                        geometry: '1200x630#',
                         watermark_path: Rails.root.join('app', 'assets', 'images', 'watermark-white.png')
                       }
                     },
