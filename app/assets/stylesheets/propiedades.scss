@@ -323,4 +323,15 @@
     font-weight: bold;
     z-index: 1;
   }
+  .description-icons br {
+    display: none;
+  }
+
+  .description-icons img, .description-icons i.fa {
+    margin-left: 20px;
+  }
+
+  .description-icons i.fa:first-of-type {
+    margin-left: 0;
+  }
 }
