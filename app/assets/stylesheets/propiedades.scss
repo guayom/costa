@@ -280,4 +280,24 @@
     padding-bottom: 0;
     padding-top: 0;
   }
+  .jcarousel-wrapper {
+  border: 0;
+}
+
+.jcarousel-wrapper img, .jcarousel-wrapper ul {
+  width: 100%;
+}
+.propiedad-text-color-alquiler small {
+  display: none;
+}
+.jcarousel-pagination-wrapper li{
+  display: none;
+}
+.main-jcarousel ul {
+  width: 100%;
+}
+.main-jcarousel ul li:nth-child(2), .main-jcarousel ul li:nth-child(3), .main-jcarousel ul li:nth-child(4){
+  display: block;
+  width: 33.3333% !important;
+  
 }
