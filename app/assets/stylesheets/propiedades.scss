@@ -305,4 +305,21 @@
   .tab-content {
     padding: 0 !important;
   }
+
+  .big-picture {
+    position: relative;
+    min-height: 100px;
+  }
+
+  .price-print {
+    background-color: #fff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 20px;
+    padding: 20px;
+    font-size: 1.8em;
+    color: #000;
+    font-weight: bold;
+  }
 }

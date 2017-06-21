@@ -43,7 +43,24 @@
                         Código: #{@propiedad.codigo}
 
 
-                    .jcarousel-wrapper
+                    .jcarousel-wrapper.big-picture
+                      .visible-print.price-print
+                        - if @propiedad.valor_compra > 0
+                          %tr
+                            %td
+                              %strong{class: "propiedad-text-color-#{@propiedad.listado}"}
+                                Venta
+                            %td{class: "propiedad-text-color-#{@propiedad.listado}"}
+                              = number_to_currency(@propiedad.valor_compra, locale: @propiedad.price_locale)
+                              \#{'Opción de compra' if @propiedad.opcion_compra == true}
+                        - if @propiedad.valor_alquiler > 0
+                          %tr
+                            %td
+                              %strong{class: "propiedad-text-color-#{@propiedad.listado}"}
+                                Alquiler
+                            %td{class: "propiedad-text-color-#{@propiedad.listado}"}
+                              = number_to_currency(@propiedad.valor_alquiler, locale: @propiedad.price_locale)
+
                       - if @propiedad.estado != 'disponible'
                         .banner-estado= @propiedad.estado.capitalize
                       - if @propiedad.imagenes.any? && @propiedad.imagenes.pluck(:created_at).max <= Date.new(2016, 3, 14)
