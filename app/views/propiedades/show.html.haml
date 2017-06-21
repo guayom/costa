@@ -60,6 +60,10 @@
                                 Alquiler
                             %td{class: "propiedad-text-color-#{@propiedad.listado}"}
                               = number_to_currency(@propiedad.valor_alquiler, locale: @propiedad.price_locale)
+                        - if @propiedad.admin
+                          = @propiedad.admin.nombre
+                          %br/
+                          = @propiedad.admin.telefono
 
                       - if @propiedad.estado != 'disponible'
                         .banner-estado= @propiedad.estado.capitalize
@@ -91,7 +95,7 @@
                         = link_to '&rsaquo;'.html_safe, '#', class: 'jcarousel-control-next secondary'
 
                     %h3 General
-                    .row
+                    .row.hidden-print
                       .col-xs-12.col-md-8
                         %table.table.table-bordered.table-responsive.table-striped
                           %tr
