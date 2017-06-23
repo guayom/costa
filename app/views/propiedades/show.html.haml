@@ -53,6 +53,8 @@
                             %td{class: "propiedad-text-color-#{@propiedad.listado}"}
                               = number_to_currency(@propiedad.valor_compra, locale: @propiedad.price_locale)
                               \#{'Opción de compra' if @propiedad.opcion_compra == true}
+                        - if @propiedad.valor_compra > 0 and @propiedad.valor_alquiler > 0
+                          %br
                         - if @propiedad.valor_alquiler > 0
                           %tr
                             %td
@@ -60,11 +62,6 @@
                                 Alquiler
                             %td{class: "propiedad-text-color-#{@propiedad.listado}"}
                               = number_to_currency(@propiedad.valor_alquiler, locale: @propiedad.price_locale)
-                        - if @propiedad.admin
-                          %br/
-                          = @propiedad.admin.nombre
-                          %br/
-                          = @propiedad.admin.telefono
 
                       - if @propiedad.estado != 'disponible'
                         .banner-estado= @propiedad.estado.capitalize
@@ -207,6 +204,10 @@
                               para
                             #{pluralize(@propiedad.estacionamiento, 'Carro')}
                             %br/
+                        .logo-and-contact-print.visible-print
+                          = image_tag('logo-share.png')
+                          - if @propiedad.admin
+                            = @propiedad.admin.telefono
                     %a{style: 'font-size: 1.5em; cursor: pointer;', class: 'request_info_bottom'}
                       %i.fa.fa-plus
                       Solicitar más información

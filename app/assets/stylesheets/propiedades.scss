@@ -282,6 +282,8 @@
   }
   .jcarousel-wrapper {
     border: 0;
+    overflow: visible;
+    border-radius: 0;
   }
 
   .jcarousel-wrapper img, .jcarousel-wrapper ul {
@@ -296,10 +298,24 @@
   .main-jcarousel ul {
     width: 100%;
   }
-  .main-jcarousel ul li:nth-child(2), .main-jcarousel ul li:nth-child(3), .main-jcarousel ul li:nth-child(4){
+  .main-jcarousel ul li:nth-child(2), .main-jcarousel ul li:nth-child(3) {
     display: block;
-    width: 33.3333% !important;
+    width: 40% !important;
     float: left;
+    border: solid #fff 10px;
+    border-right: 0;
+  }
+
+  .main-jcarousel ul li:nth-child(2) {
+    position: absolute;
+    bottom: 20px;
+    right: 0;
+  }
+
+  .main-jcarousel ul li:nth-child(3) {
+    position: absolute;
+    bottom: -37%;
+    right: 0;
   }
 
   .tab-content {
@@ -312,30 +328,69 @@
   }
 
   .price-print {
-    background-color: #fff !important;
+    background-color: red !important;
     position: absolute;
-    bottom: 25%;
+    bottom: 0;
     left: 0;
-    margin: 20px;
     padding: 20px;
     font-size: 2em;
     color: #000;
     font-weight: bold;
     z-index: 1;
+    width: 60%;
+    color: #fff !important;
+    font-weight: 300;
+
+    .propiedad-text-color-venta {
+      color: #fff !important;
+    }
   }
   .description-icons{
-    margin-top: 30px;
+    margin-top: 15px;
+    width: 30%;
+    color: #888;
+    float: left;
 
-    br {
-      display: none;
+    i, .fa {
+      color: #888
     }
   }
 
-  .description-icons img, .description-icons i.fa {
-    margin-left: 20px;
+  .propiedad-text-color-venta, .propiedad-text-color-alquiler {
+    color: #fff !important;
+  }
+  h2.propiedad-text-color-venta, h2.propiedad-text-color-alquiler {
+    display: block;
+    max-width: 100%;
+    background: green !important;
+    color: #fff !important;
+    font-size: 1.9em;
+    margin: 10px 0 0 0;
+    padding: 15px;
+    line-height: 1em;
+    font-weight: 300;
   }
 
-  .description-icons i.fa:first-of-type {
-    margin-left: 0;
+  h2.propiedad-text-color-venta small {
+    display: none;
+  }
+
+  .jcarousel-wrapper.big-picture {
+    margin-top: 0;
+    border: 0;
+  }
+
+  .jcarousel-wrapper.big-picture li {
+    margin-top: 0;
+    border: 0;
+    border-radius: 0 !important;
+  }
+
+  .logo-and-contact-print {
+    width: 30%;
+    float: left;
+    img {
+      max-width: 100%;
+    }
   }
 }
