@@ -125,18 +125,18 @@ class Propiedad < ActiveRecord::Base
     object_label_method :codigo
   end
 
-  [
-    :titular, :direccion_exacta, :direccion_uso_interno, 
-    :descripcion_publica, :meta_keywords, :meta_description
-  ].each do |field|
-    define_method(field) do |locale = I18n.locale|
-      if 'es' != locale.to_s
-        send("#{field}_#{locale}") || super()
-      else
-        super()
-      end      
-    end
-  end
+  # [
+  #   :titular, :direccion_exacta, :direccion_uso_interno,
+  #   :descripcion_publica, :meta_keywords, :meta_description
+  # ].each do |field|
+  #   define_method(field) do |locale = I18n.locale|
+  #     if 'es' != locale.to_s
+  #       send("#{field}_#{locale}") || super()
+  #     else
+  #       super()
+  #     end
+  #   end
+  # end
 
   def provincia_enum
     Provincia.pluck(:nombre)
@@ -252,7 +252,7 @@ class Propiedad < ActiveRecord::Base
       end
     end
   end
-  
+
   def facebook_cover_url
     if cover
       i = Imagen.find_by(id: cover)

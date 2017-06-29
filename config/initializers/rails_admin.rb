@@ -158,7 +158,6 @@ RailsAdmin.config do |config|
 
       field :listado
       field :titular
-      field :titular_en
       field :estado
       field :estatus do
         help "Mientras se crea una propiedad, use el estatus Borrador. Cuando la propiedad esté lista para verse en la página, use el estatus publicado."
@@ -204,24 +203,11 @@ RailsAdmin.config do |config|
         label "Dirección Exacta"
         help "Use este campo para colocar más detalles sobre la dirección que aparece pública. Ejemplo: Residencial Monterán"
       end
-      field :direccion_exacta_en do
-        label "Dirección Exacta"
-        help "Use este campo para colocar más detalles sobre la dirección que aparece pública. Ejemplo: Residencial Monterán"
-      end
       field :direccion_uso_interno do
         label "Dirección uso Interno"
         help "Use este campo para poner detalles específicos de como llegar a la propiedad. Esto no se verá público en la página."
       end
-      field :direccion_uso_interno_en do
-        label "Dirección uso Interno"
-        help "Use este campo para poner detalles específicos de como llegar a la propiedad. Esto no se verá público en la página."
-      end
       field :descripcion_publica do
-        label "Descripción Pública"
-        partial 'propiedad_descripcion_publica'
-        help "Esta es la descripción que  saldrá pública en la página"
-      end
-      field :descripcion_publica_en do
         label "Descripción Pública"
         partial 'propiedad_descripcion_publica'
         help "Esta es la descripción que  saldrá pública en la página"
@@ -321,13 +307,7 @@ RailsAdmin.config do |config|
         field :meta_keywords do
           label "Palabras Clave"
         end
-        field :meta_keywords_en do
-          label "Palabras Clave"
-        end
         field :meta_description do
-          label "Meta Descripción"
-        end
-        field :meta_description_en do
           label "Meta Descripción"
         end
       end
