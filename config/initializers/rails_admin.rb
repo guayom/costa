@@ -98,7 +98,7 @@ RailsAdmin.config do |config|
 
     destroy_facebook_cover do
       only ['FacebookCover']
-    end    
+    end
 
     collection :featured do
       only ['Propiedad']
@@ -266,7 +266,7 @@ RailsAdmin.config do |config|
       end
       field :caracteristicas do
         # associated_collection_cache_all true
-        
+
         label 'Amenidades'
         partial 'checkboxes_field'
       end
@@ -329,6 +329,28 @@ RailsAdmin.config do |config|
         end
         field :meta_description_en do
           label "Meta Descripción"
+        end
+      end
+
+      group 'Inglés' do
+        active false
+        field :titular_en do
+          label "titular en Inglés"
+        end
+        field :direccion_exacta_en do
+          label "Dirección en Inglés"
+        end
+        field :direccion_uso_interno_en do
+          label "Dirección uso interno en inglés"
+        end
+        field :descripcion_publica_en do
+          label "Descripción pública en inglés"
+        end
+        field :meta_keywords_en do
+          label "Keywords en inglés"
+        end
+        field :meta_description_en do
+          label "Meta descripción en inglés"
         end
       end
 
