@@ -58,7 +58,7 @@ class PropiedadesController < ApplicationController
 
   def update_sort_index
     respond_to do |format|
-      format.js do 
+      format.js do
         Imagen.find(params[:id]).update!(sort_index: params[:sort_index])
         render nothing: true, status: 204
       end
@@ -138,7 +138,7 @@ class PropiedadesController < ApplicationController
     params.require(:propiedad).permit(
       :estatus, :titular, :valor_compra, :valor_alquiler, :listado,
       :descripcion_publica, :tipo_id, :provincia_id, :canton_id,
-      :distrito_id, :direccion_exacta, :propietario_id,
+      :distrito_id, :direccion_exacta, :propietario_id, :mascota,
       propietario_attributes: [:nombre, :apellido, :celular, :email,
                                :password, :self_register]
     )
