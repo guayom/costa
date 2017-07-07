@@ -268,6 +268,7 @@ RailsAdmin.config do |config|
       end
       field :sala_comedor
       field :cuarto_de_servicio
+      field :mascota
 
       group 'Otros' do
         #active false

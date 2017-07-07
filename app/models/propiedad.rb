@@ -43,6 +43,7 @@ class Propiedad < ActiveRecord::Base
   enumerize :moneda, in: ['USD', 'CRC'], default: 'USD'
   enumerize :cuota_mantenimiento_moneda, in: ['USD', 'CRC'], default: 'USD'
   enumerize :tipo_de_estacionamiento, in: [:parqueo, :garaje, :parqueo_techado, :visitas, :calle, :sotano, :tantem]
+  enumerize :mascota,  in: [:indefinido, :permitido, :prohibido], default: :indefinido
 
   enum estatus: { publicado: 1, borrador: 2, rechazado: 3 }
 
