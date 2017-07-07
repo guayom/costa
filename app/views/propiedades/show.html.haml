@@ -204,6 +204,18 @@
                               para
                             #{pluralize(@propiedad.estacionamiento, 'Carro')}
                             %br/
+
+                          - if @propiedad.mascota.present? && @propiedad.mascota == 'permitido'
+                            = image_tag 'icons/pet.svg', class: "img-icon"
+                            = "Se permiten mascotas"
+                            %br/
+
+                          - if @propiedad.mascota.present? && @propiedad.mascota == 'prohibido'
+                            = image_tag 'icons/no-pet.svg', class: "img-icon"
+                            = "Mascotas prohibidas"
+                            %br/
+
+
                         .logo-and-contact-print.visible-print
                           = image_tag('logo-print.jpg')
                           - if @propiedad.admin
