@@ -183,7 +183,7 @@
                             %br/
 
                           - if @propiedad.banos.present? && @propiedad.banos > 0
-                            = image_tag 'icons/bathroom_gray.png', class: "img-icon"
+                            = image_tag 'icons/banos.svg', class: "img-icon"
                             = pluralize(@propiedad.banos.prettify, 'Baño')
                             %br/
 
