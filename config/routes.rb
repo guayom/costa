@@ -1,6 +1,8 @@
 # require 'resque_web'
 
 Rails.application.routes.draw do
+  get 'printed_add/:id' => "printed_add#show"
+
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   devise_for :propietarios
 

@@ -83,10 +83,24 @@ es:
   activerecord:
     models:
       tipo: 'Tipo'
+      printed_add:
+        one: 'Anuncio impreso'
+        other: 'Anuncios impresos'
+      printed_add_characteristic:
+        one: 'Característica de anuncio impreso'
+        other: 'Características de anuncios impresos'
     attributes:
       propiedad:
         tipo_ids: 'Tipos'
         descripcion_publica: 'Descripción'
+      printed_add:
+        title: Título
+        price: Precio
+        currency: Moneda
+        description: Descripción
+        contact1: Teléfono 1
+        contact2: Teléfono 2
+        printed_add_characteristics: 'Características'
 
   registre:
     new_user: 'Registre Su Propiedad'

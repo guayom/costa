@@ -1,0 +1,33 @@
+<div class="wrapper">
+  <div class="main clearfix">
+    <div class="title-bar">
+      <h1><%= @ad.title %></h1>
+    </div>
+    <div class="imagenes">
+      <%= image_tag @ad.main_image.url %>
+      <div class="description">
+        <%= @ad.description %>
+      </div>
+    </div>
+    <div class="precio-de-venta">
+      Precio de venta
+      <%= number_to_currency(@ad.price, unit: @ad.currency_sign, separator: ".", delimiter: ",") %>
+    </div>
+    <div class="imagenes-secundarias">
+      <%= image_tag @ad.image1.url %>
+      <%= image_tag @ad.image2.url %>
+    </div>
+    <div class="informacion-adicional">
+      <ul>
+        <% @ad.printed_add_characteristics.each do |c| %>
+          <li><%= c.icon_image.html_safe %><%= c.title %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="informacion-de-contacto">
+      <%= image_tag 'logo-costa.svg' %>
+      <p><%= @ad.contact1 %></p>
+      <p><%= @ad.contact2 %></p>
+    </div>
+  </div>
+</div>

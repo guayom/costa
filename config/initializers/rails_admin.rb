@@ -471,7 +471,7 @@ RailsAdmin.config do |config|
   end
 
   config.model Admin do
-    weight 0
+    weight 1
 
     label 'Agente'
     label_plural 'Agentes'
@@ -581,5 +581,16 @@ RailsAdmin.config do |config|
 
   config.model 'TipoCaracteristica' do
     visible false
+  end
+
+  config.model PrintedAdd do
+    weight 100
+    navigation_icon 'icon-print'
+  end
+
+  config.model PrintedAddCharacteristic do
+    visible false
+    weight 100
+    navigation_icon 'icon-print'
   end
 end

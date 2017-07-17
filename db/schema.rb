@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170707041703) do
+ActiveRecord::Schema.define(version: 20170709061410) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -151,6 +151,39 @@ ActiveRecord::Schema.define(version: 20170707041703) do
 
   add_index "mensajes_propiedades", ["mensaje_id"], name: "index_mensajes_propiedades_on_mensaje_id", using: :btree
   add_index "mensajes_propiedades", ["propiedad_id"], name: "index_mensajes_propiedades_on_propiedad_id", using: :btree
+
+  create_table "printed_add_characteristics", force: :cascade do |t|
+    t.string   "title"
+    t.string   "icon"
+    t.integer  "printed_add_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "printed_add_characteristics", ["printed_add_id"], name: "index_printed_add_characteristics_on_printed_add_id", using: :btree
+
+  create_table "printed_adds", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "price"
+    t.string   "description"
+    t.string   "currency"
+    t.string   "contact1"
+    t.string   "contact2"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "main_image_file_name"
+    t.string   "main_image_content_type"
+    t.integer  "main_image_file_size"
+    t.datetime "main_image_updated_at"
+    t.string   "image1_file_name"
+    t.string   "image1_content_type"
+    t.integer  "image1_file_size"
+    t.datetime "image1_updated_at"
+    t.string   "image2_file_name"
+    t.string   "image2_content_type"
+    t.integer  "image2_file_size"
+    t.datetime "image2_updated_at"
+  end
 
   create_table "propiedades", force: :cascade do |t|
     t.string   "listado",                              default: "venta",      null: false
@@ -305,6 +338,7 @@ ActiveRecord::Schema.define(version: 20170707041703) do
   add_foreign_key "imagenes", "propiedades", name: "imagenes_propiedad_id_fkey"
   add_foreign_key "mensajes_propiedades", "mensajes", name: "fk_mensajes_propiedades_mensaje_id"
   add_foreign_key "mensajes_propiedades", "propiedades", name: "fk_mensajes_propiedades_propiedad_id"
+  add_foreign_key "printed_add_characteristics", "printed_adds"
   add_foreign_key "propiedades", "admins", name: "fk_propiedades_admin_id"
   add_foreign_key "propiedades", "propietarios", name: "fk_propiedades_propietario_id"
   add_foreign_key "propiedades", "tipos", name: "fk_propiedades_tipo_id"
