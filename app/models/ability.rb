@@ -21,6 +21,8 @@ class Ability
         can :create, Propietario, admin_id: admin.id
 
         can :index, [Admin, Mensaje, Caracteristica, Tipo]
+
+        can :show_in_app, PrintedAdd
       end
     end
 
