@@ -14,15 +14,13 @@ class Ability
         can :manage, [Imagen, Slider]
 
         can :manage, Propiedad, admin_id: [nil, admin.id]
-        can :manage, [Propietario, Mensaje]
+        can :manage, [Propietario, Mensaje, PrintedAdd]
         cannot :destroy, [Propiedad, Propietario, Mensaje]
 
         can :create, Propiedad, admin_id: admin.id
         can :create, Propietario, admin_id: admin.id
 
         can :index, [Admin, Mensaje, Caracteristica, Tipo]
-
-        can :show_in_app, PrintedAdd
       end
     end
 

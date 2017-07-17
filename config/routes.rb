@@ -2,10 +2,10 @@
 
 Rails.application.routes.draw do
   get 'printed_add/:id' => "printed_add#show"
+  resources :printed_add, only: [:show]
 
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   devise_for :propietarios
-  devise_for :printed_adds
 
   get 'propiedades/index'
 
