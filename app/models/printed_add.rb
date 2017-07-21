@@ -4,10 +4,10 @@ class PrintedAdd < ActiveRecord::Base
   has_attached_file :main_image, :default_url => "/public/missing/printed_add.png"
   validates_attachment_content_type :main_image, content_type: /\Aimage\/.*\z/
 
-  has_attached_file :image1
+  has_attached_file :image1, :default_url => "/public/missing/printed_add.png"
   validates_attachment_content_type :image1, content_type: /\Aimage\/.*\z/
 
-  has_attached_file :image2
+  has_attached_file :image2, :default_url => "/public/missing/printed_add.png"
   validates_attachment_content_type :image2, content_type: /\Aimage\/.*\z/
 
   attr_accessor :delete_main_image
