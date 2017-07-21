@@ -1,13 +1,13 @@
 class PrintedAdd < ActiveRecord::Base
   has_many :printed_add_characteristics
 
-  has_attached_file :main_image, :default_url => "/public/missing/printed_add.png"
+  has_attached_file :main_image, :default_url => "/public/missing/printed_add.png", :path => "/printed_adds/:filename"
   validates_attachment_content_type :main_image, content_type: /\Aimage\/.*\z/
 
-  has_attached_file :image1, :default_url => "/public/missing/printed_add.png"
+  has_attached_file :image1, :default_url => "/public/missing/printed_add.png", :path => "/printed_adds/:filename"
   validates_attachment_content_type :image1, content_type: /\Aimage\/.*\z/
 
-  has_attached_file :image2, :default_url => "/public/missing/printed_add.png"
+  has_attached_file :image2, :default_url => "/public/missing/printed_add.png", :path => "/printed_adds/:filename"
   validates_attachment_content_type :image2, content_type: /\Aimage\/.*\z/
 
   attr_accessor :delete_main_image
