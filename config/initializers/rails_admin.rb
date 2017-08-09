@@ -384,6 +384,7 @@ RailsAdmin.config do |config|
       field :provincia do
         column_width 100
       end
+      field :created_at
     end
 
     show do
