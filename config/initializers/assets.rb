@@ -12,3 +12,4 @@ Rails.application.config.assets.version = '1.0'
 
 Rails.application.config.assets.precompile += %w(rails_admin/custom/theming.css rails_admin/custom/ui.js)
 Rails.application.config.assets.precompile += %w( print/print.css )
+Rails.application.config.assets.precompile += %w( assets/images/cccbr.png )

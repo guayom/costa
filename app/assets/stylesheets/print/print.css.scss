@@ -39,8 +39,7 @@ img {
 .title-bar {
   background-color: green;
   color: #fff;
-  //background-image: url(/assets/images/cccbr.png);
-  background-image: url('/assets/cccbr.png');
+  background-image: asset_url('cccbr.png');
   background-position: right 8px top 8px;
   background-repeat: no-repeat;
   box-sizing: border-box;
