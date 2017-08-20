@@ -13,11 +13,15 @@ $azul: #223551;
 html, body {
   //width: 210mm;
   //height: 297mm;
-  padding: 18px;
   font-family: 'Raleway', sans-serif;
   margin: 0 auto;
   width: 100%;
   position: relative;
+  box-sizing: border-box;
+}
+
+html {
+  padding: 28px;
 }
 
 .wrapper {
@@ -43,7 +47,7 @@ img {
   background-position: right 8px top 8px;
   background-repeat: no-repeat;
   box-sizing: border-box;
-  padding: 10px 150px 10px 20px;
+  padding: 20px 150px 20px 20px;
   background-size: 80px;
 
   h1 {
@@ -88,7 +92,7 @@ img {
 .precio-de-venta {
   background: #f00;
   color: #fff;
-  padding: 10px 20px;
+  padding: 20px;
   font-size: 2em;
   font-weight: bold;
 }
@@ -97,7 +101,7 @@ img {
   box-sizing: border-box;
   float: left;
   width: 35%;
-  padding: 20px;
+  padding: 40px 20px 20px;
 
   ul {
     margin: 0;
@@ -108,7 +112,7 @@ img {
   li {
     color: $gris;
     margin-bottom: 13px;
-    font-size: 1.4em;
+    font-size: 1.6em;
 
     .fa {
       margin-right: 10px;
@@ -127,6 +131,7 @@ img {
   float: left;
   color: $azul;
   text-align: center;
+  padding-top: 20px;
 
   img {
     width: 90%;
