@@ -28,7 +28,7 @@
       .form-group
         %label{for: :tipo}= t(:tipo)
         = select_tag :tipo,
-                               options_for_select([['cualquiera...', nil]] + Tipo.pluck(:titulo), params[:tipo]),
+                               options_for_select([['cualquiera...', nil]] + Tipo.pluck(:titulo, :id), params[:tipo]),
                                class: 'form-control'
       .form-group
         %label{for: :dormitorios}= t(:dormitorios)

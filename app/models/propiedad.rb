@@ -61,7 +61,7 @@ class Propiedad < ActiveRecord::Base
   pg_search_scope :search_by_distrito_id, against: :distrito
 
   pg_search_scope :search_by_tipo,
-                  associated_against: { tipos: :titulo }
+                  associated_against: { tipos: :id }
 
   scope :search_by_listado, -> (value) do
     case value
