@@ -95,6 +95,7 @@ img {
   padding: 20px;
   font-size: 2em;
   font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .informacion-adicional {
@@ -110,7 +111,7 @@ img {
   }
 
   li {
-    color: $gris;
+    color: darken($gris, 30%);
     margin-bottom: 13px;
     font-size: 1.6em;
 
