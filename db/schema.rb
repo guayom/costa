@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170709061410) do
+ActiveRecord::Schema.define(version: 20170821002903) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -202,7 +202,7 @@ ActiveRecord::Schema.define(version: 20170709061410) do
     t.boolean  "opcion_compra"
     t.boolean  "incluye_mantenimiento"
     t.integer  "cuota_mantenimiento",                  default: 0,            null: false
-    t.integer  "area_terreno",                         default: 0,            null: false
+    t.float    "area_terreno",                         default: 0.0,          null: false
     t.float    "area_construccion",                    default: 0.0,          null: false
     t.integer  "pisos",                                default: 0,            null: false
     t.integer  "dormitorios",                          default: 0,            null: false
