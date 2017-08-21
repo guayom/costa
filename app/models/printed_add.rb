@@ -21,6 +21,7 @@ class PrintedAdd < ActiveRecord::Base
 
   extend Enumerize
   enumerize :currency, in: [:dolares, :colones], default: :colones
+  enumerize :listing_type, in: [:alquiler, :venta], default: :alquiler
 
   def currency_sign
     self.currency == 'dolares' ? "$" : "₡"

@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="precio-de-venta">
-      Precio de venta
+      Precio de <%= @ad.listing_type %>
       <%= number_to_currency(@ad.price, unit: @ad.currency_sign, separator: ".", delimiter: ",") %>
     </div>
     <div class="imagenes-secundarias">
