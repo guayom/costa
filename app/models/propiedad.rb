@@ -214,15 +214,6 @@ class Propiedad < ActiveRecord::Base
     end
   end
 
-  def get_cuota_mantenimiento_moneda_symbol
-    case cuota_mantenimiento_moneda
-    when 'USD'
-      "$"
-    else
-      "₡"
-    end
-  end
-
   def short_description
     strip_tags(self.descripcion_publica)
     #truncate( self.descripcion_publica, length: 150, :separator => ' ')
