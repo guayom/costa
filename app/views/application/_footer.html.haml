@@ -8,7 +8,7 @@
           %ul.list-unstyled
             - Tipo.all.find_all { |t| t.propiedades.publicado.any? }.each do |tipo|
               %li
-                = link_to propiedades_path(listado: :venta_alquiler, tipo: tipo.titulo) do
+                = link_to propiedades_path(listado: :venta_alquiler, tipo: tipo.id) do
                   = tipo.titulo
       / break
       .col-md-4.col-sm-6.col-xs-12
