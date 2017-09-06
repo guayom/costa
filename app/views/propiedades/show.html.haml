@@ -142,6 +142,14 @@
                                   Terreno: #{number_with_precision(@propiedad.area_terreno, precision: 3, separator: ',', delimiter: '.',strip_insignificant_zeros: true)}m
                                   %sup 2
 
+                          - if @propiedad.cuota_mantenimiento.present? and @propiedad.cuota_mantenimiento.present? > 0
+                            %tr
+                              %td
+                                %strong Cuota Mantenimiento
+                              %td
+                                = get_cuota_mantenimiento_moneda_symbol
+                                = @propiedad.cuota_mantenimiento
+
                           - if @propiedad.patio
                             %tr
                               %td
