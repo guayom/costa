@@ -290,6 +290,15 @@ class Propiedad < ActiveRecord::Base
   #   "#{id}-#{codigo.parameterize}-#{titular.parameterize}"
   # end
 
+  def get_cuota_mantenimiento
+    case self.cuota_mantenimiento_moneda
+    when 'USD'
+      "$#{self.cuota_mantenimiento}"
+    else
+      "₡#{self.cuota_mantenimiento}"
+    end
+  end
+
   EXCEL_COORDS = {
     titular: [4,2],
     tipo_id: [6, 2],
