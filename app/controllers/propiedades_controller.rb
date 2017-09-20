@@ -138,7 +138,7 @@ class PropiedadesController < ApplicationController
     params.require(:propiedad).permit(
       :estatus, :titular, :valor_compra, :valor_alquiler, :listado,
       :descripcion_publica, :tipo_id, :provincia_id, :canton_id,
-      :distrito_id, :direccion_exacta, :propietario_id, :mascota,
+      :distrito_id, :direccion_exacta, :propietario_id, :mascota, :file,
       propietario_attributes: [:nombre, :apellido, :celular, :email,
                                :password, :self_register]
     )

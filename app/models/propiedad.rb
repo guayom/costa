@@ -25,6 +25,9 @@ class Propiedad < ActiveRecord::Base
 
   # accepts_nested_attributes_for :imagenes, :allow_destroy => true
 
+  has_attached_file :file
+  validates_attachment :file, content_type: { content_type: ["image/jpeg", "image/gif", "image/png", "application/pdf"] }
+
   has_and_belongs_to_many :tipos, dependent: :destroy
   # accepts_nested_attributes_for :tipos
 

@@ -277,6 +277,7 @@ RailsAdmin.config do |config|
         field :numero_plano_catastrado do
           label "Número de plano catastrado"
         end
+        field :file
       end
 
       group 'Imágenes' do
@@ -538,7 +539,7 @@ RailsAdmin.config do |config|
 
   config.model Tipo do
     weight 3
-    label "Tipode Propiedad"
+    label "Tipo de Propiedad"
     label_plural "Tipos de Propiedades"
 
     object_label_method do
