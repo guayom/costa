@@ -53,10 +53,10 @@
                   = image_tag 'icons/bathroom_white.png', class: "bathroom-index"
                   #{propiedad.banos.prettify} Baños
 
-              - if propiedad.pisos.present? && propiedad.pisos > 0
+              - if propiedad.ubicado_en_piso.present? && propiedad.ubicado_en_piso > 0
                 %span
                   %i.fa.fa-building-o
-                  #{propiedad.pisos} Pisos
+                  #{propiedad.ubicado_en_piso}
 
               - if (propiedad.estacionamiento.present? && propiedad.estacionamiento > 0)
                 %span
