@@ -20,7 +20,7 @@
     <div class="informacion-adicional">
       <ul>
         <% @ad.printed_add_characteristics.each do |c| %>
-          <li><%= c.icon_image.html_safe %><%= c.title %></li>
+          <li><%= c.icon_image.html_safe unless c.icon_image.nil? %><%= c.title %></li>
         <% end %>
       </ul>
     </div>
