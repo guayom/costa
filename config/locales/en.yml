@@ -42,6 +42,16 @@ en:
         pu: Puntarenas
   registre:
     direccion_exacta: Exact Adress
-    
+    new_user: 'List your property'
+    old_user: 'List a nw property'
+
   propiedad:
     amenities: Amenidades
+
+  phone_numbers: Phone numbers
+  follow_us_at: Follow us at
+
+  navigation:
+    index: Home
+    properties: Properties
+    contact: Contact

@@ -91,7 +91,7 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-8 header-phones">
-        <strong class="hidden-xs">Teléfonos: </strong>
+        <strong class="hidden-xs"><%= t(:phone_numbers) %>: </strong>
         <% CONTACT_INFO['telefonos'].each_with_index do |tel, index| %>
           <a href="tel:<%= tel['numero'] %>" style="white-space: nowrap;"><%= tel['numero'] %></a>
           <% unless index == CONTACT_INFO['telefonos'].size - 1 %>
@@ -100,7 +100,7 @@
         <% end %>
       </div>
       <div class="col-sm-4 text-right hidden-xs">
-        <strong>Seguinos en: </strong>
+        <strong><%= t(:follow_us_at) %>: </strong>
         <% CONTACT_INFO['redes_sociales'].each do |link| %>
           <a href="<%= link['url'] %>" class="icon-<%= link['nombre'] %>" rel="tooltip" title="" data-placement="bottom" data-original-title="<%= link['nombre'].titleize %>" target="_blank">
             <i class="fa fa-<%= link['icon'] %>-official"></i>
