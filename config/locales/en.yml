@@ -48,10 +48,25 @@ en:
   propiedad:
     amenities: Amenidades
 
+  banos: 'Bathrooms'
+  price_range: "Price range"
+  keywords: "Keywords or listing code"
   phone_numbers: Phone numbers
   follow_us_at: Follow us at
+  ubicación: Location
+  tipo: Category
+  dormitorios: Rooms
+  estacionamiento: Parking
+  banos: Restrooms
+  search: Search
 
   navigation:
     index: Home
     properties: Properties
     contact: Contact
+
+  filters:
+    both: Both
+    rent: Rent
+    sale: Sale
+    show_rented_and_sold: Show rented and sold listings

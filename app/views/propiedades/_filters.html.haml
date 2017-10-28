@@ -3,9 +3,9 @@
     .col-md-12.col-sm-12.col-xs-12
       .form-group
         .btn-group.btn-group-justified.btn-group-listado{ data: { toggle: 'buttons' } }
-          - [['venta_alquiler', 'Ambos'],
-             ['alquiler', 'Alquiler'],
-             ['venta', 'Venta']].each do |value, label|
+          - [['venta_alquiler', (I18n.t 'filters.both')],
+             ['alquiler', (I18n.t 'filters.rent')],
+             ['venta', (I18n.t 'filters.sale')]].each do |value, label|
             %label.btn.btn-success{ class: (value == params[:listado].to_s ? 'active' : '') }
               = radio_button_tag :listado, value, (value == params[:listado].to_s), class: 'listado-control'
               = label
@@ -69,7 +69,7 @@
       .form-group
         %label
           = check_box_tag :estado, '1', ('1' == params[:estado])
-          Mostrar propiedades rentadas y vendidas
+          = I18n.t 'filters.show_rented_and_sold'
 
     .col-md-12.col-sm-12.col-xs-12
       %input.btn.btn-success.btn-lg.btn-block{type: :submit, value: t(:search)}

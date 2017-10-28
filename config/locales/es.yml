@@ -73,8 +73,6 @@ es:
     amenities: Amenidades
     codigo: Código
 
-  search: "Buscar"
-
   helpers:
     submit:
       propiedad:
@@ -132,8 +130,15 @@ es:
   keywords: "Palabras clave ó Código de propiedad"
   phone_numbers: Teléfonos
   follow_us_at: Seguínos en
+  search: "Buscar"
 
   navigation:
     index: Inicio
     properties: Propiedades
     contact: Contacto
+
+  filters:
+    both: Ambos
+    rent: Alquiler
+    sale: Venta
+    show_rented_and_sold: Mostrar propiedades rentadas y vendidas
