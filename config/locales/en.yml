@@ -47,6 +47,34 @@ en:
 
   propiedad:
     amenities: Amenidades
+    request_information: Request information
+    request_more_information: Request more information
+    general: General
+    code: Code
+    sale: Sale
+    rent: Rent
+    status: Status
+    locaciont: Location
+    area: Area
+    construction: Construction
+    maintenance: Maintenance fee
+    lot: Lot
+    backyard: Backyard
+    agent: Agent
+    send_email: Send email
+    rooms: Rooms
+    room: Room
+    offices: Offices
+    office: Office
+    bathroom: Bathroom
+    floor: Floor
+    located_at_floor: Located at floor
+    pets_allowed: Pets are allowed
+    pets_not_allowed: Pets are not allowed
+    description: Description
+    listing_status: Listing status
+    are_you_interested: Are you interested in this listing?
+    contact_us_text: Contact us via our web form or call one of our agents directly
 
   banos: 'Bathrooms'
   price_range: "Price range"
@@ -65,6 +93,7 @@ en:
   recent_properties: Recent listings
   our_agents: Our agents
   copyrights: All rights reserved.
+  share: Share
 
   navigation:
     index: Home
@@ -72,6 +101,7 @@ en:
     contact: Contact
 
   filters:
+    title: Search
     both: Both
     rent: Rent
     sale: Sale
