@@ -59,6 +59,12 @@ en:
   estacionamiento: Parking
   banos: Restrooms
   search: Search
+  properties: Properties
+  our_properties: Our properties
+  featured_properties: Featured listings
+  recent_properties: Recent listings
+  our_agents: Our agents
+  copyrights: All rights reserved.
 
   navigation:
     index: Home

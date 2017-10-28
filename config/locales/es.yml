@@ -131,6 +131,12 @@ es:
   phone_numbers: Teléfonos
   follow_us_at: Seguínos en
   search: "Buscar"
+  properties: Propiedades
+  our_properties: Nuestras propiedades
+  featured_properties: Propiedades destacadas
+  recent_properties: Propiedades recientes
+  our_agents: Nuestro agentes
+  copyrights: Todos los derechos reservados.
 
   navigation:
     index: Inicio
@@ -142,3 +148,5 @@ es:
     rent: Alquiler
     sale: Venta
     show_rented_and_sold: Mostrar propiedades rentadas y vendidas
+
+  meta_description:
