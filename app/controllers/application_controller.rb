@@ -37,6 +37,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def default_url_options
+    { locale: I18n.locale }
+  end
+
   private
 
   def compare_password_and_do_simple_auth!
@@ -59,6 +63,6 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
-    Rails.application.routes.default_url_options[:locale]= I18n.locale 
+    Rails.application.routes.default_url_options[:locale]= I18n.locale
   end
 end
