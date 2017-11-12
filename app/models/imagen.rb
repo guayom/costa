@@ -25,7 +25,8 @@ class Imagen < ActiveRecord::Base
         watermark_path: Rails.root.join('app', 'assets', 'images', 'watermark-white.png')
       }
     },
-    processors: [:watermark]
+    processors: [:watermark],
+    :preserve_files => "true"
 
   process_in_background :imagen, processing_image_url: '/uploading.jpg'
 
