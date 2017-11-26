@@ -149,6 +149,7 @@ gem "informant-rails"
 # gem 'rails_admin_multiple_upload', path: 'vendor/gems/rails_admin_multiple_upload'
 
 gem 'globalize', '~> 5.0.0'
+gem 'rails_admin_globalize_field'
 
 #RUBY Version
 ruby "2.2.3"

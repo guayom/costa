@@ -7,6 +7,7 @@ class Tipo < ActiveRecord::Base
 
 	validates :titulo, presence: true
   translates :titulo
+  accepts_nested_attributes_for :translations, allow_destroy: true
 
 	serialize :hidden_fields, Array
   def hidden_fields_enum

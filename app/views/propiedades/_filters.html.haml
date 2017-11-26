@@ -28,7 +28,7 @@
       .form-group
         %label{for: :tipo}= t(:tipo)
         = select_tag :tipo,
-                               options_for_select([['cualquiera...', nil]] + Tipo.pluck(:id, :id), params[:id]),
+                               options_for_select([['cualquiera...', nil]] + Tipo.all.map{|i| [i.titulo, i.id]}, params[:tipo]),
                                class: 'form-control'
       .form-group
         %label{for: :dormitorios}= t(:dormitorios)
@@ -73,3 +73,4 @@
 
     .col-md-12.col-sm-12.col-xs-12
       %input.btn.btn-success.btn-lg.btn-block{type: :submit, value: t(:search)}
+  = "#{Tipo.first.titulo}"
