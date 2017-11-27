@@ -28,7 +28,7 @@
       .form-group
         %label{for: :tipo}= t(:tipo)
         = select_tag :tipo,
-                               options_for_select([['cualquiera...', nil]] + Tipo.all.map{|i| [i.titulo, i.id]}, params[:tipo]),
+                               options_for_select([['cualquiera...', nil]] + Tipo.all.sort_by{|u| u.titulo}.map{|i| [i.titulo, i.id]}, params[:tipo]),
                                class: 'form-control'
       .form-group
         %label{for: :dormitorios}= t(:dormitorios)
