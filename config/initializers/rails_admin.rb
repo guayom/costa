@@ -51,7 +51,18 @@ end
 
 RailsAdmin.config do |config|
 
-  config.included_models = ['Tipo','Tipo::Translation']
+  config.included_models = [
+    'Tipo',
+    'Tipo::Translation',
+    'Propiedad',
+    'Propietario',
+    'Agente',
+    'Slide',
+    'Mensaje',
+    'Amenidad',
+    'ContactoMensaje',
+    'PrintedAdd'
+  ]
 
   ### Popular gems integration
 
