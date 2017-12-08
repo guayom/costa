@@ -6,6 +6,8 @@ class Tipo < ActiveRecord::Base
   has_many :caracteristicas, class_name: 'Caracteristica', through: :tipo_caracteristicas
 
 	validates :titulo, presence: true
+  translates :titulo
+  accepts_nested_attributes_for :translations, allow_destroy: true
 
 	serialize :hidden_fields, Array
   def hidden_fields_enum
@@ -30,9 +32,9 @@ class Tipo < ActiveRecord::Base
     ]
   end
 
-	default_scope do
-    order(:titulo)
-  end
+	# default_scope do
+  #   order(:titulo)
+  # end
 
 	rails_admin do
 		object_label_method :titulo

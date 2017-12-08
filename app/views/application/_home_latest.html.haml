@@ -3,9 +3,9 @@
     .row
       .col-md-12
         .heading-title.hidden-xs.heading-title-home
-          %h2 Propiedades Destacadas
+          %h2=(I18n.t 'featured_properties')
         .visible-xs
-          %h2 Propiedades Destacadas
+          %h2=(I18n.t 'featured_properties')
     .row
       = render @featured
 
@@ -13,8 +13,8 @@
     .row
       .col-md-12
         .heading-title.hidden-xs
-          %h2 Propiedades Recientes
+          %h2=(I18n.t 'recent_properties')
         .visible-xs
-          %h2 Propiedades Recientes
+          %h2=(I18n.t 'recent_properties')
     .row
       = render @propiedades

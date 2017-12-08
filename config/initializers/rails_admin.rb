@@ -51,6 +51,19 @@ end
 
 RailsAdmin.config do |config|
 
+  config.included_models = [
+    'Tipo',
+    'Tipo::Translation',
+    'Propiedad',
+    'Propietario',
+    'Agente',
+    'Slide',
+    'Mensaje',
+    'Amenidad',
+    'ContactoMensaje',
+    'PrintedAdd'
+  ]
+
   ### Popular gems integration
 
   ## == Devise ==
@@ -538,6 +551,7 @@ RailsAdmin.config do |config|
   end
 
   config.model Tipo do
+    configure :translations, :globalize_tabs
     weight 3
     label "Tipo de Propiedad"
     label_plural "Tipos de Propiedades"
@@ -559,6 +573,14 @@ RailsAdmin.config do |config|
     edit do
       exclude_fields :tipo_caracteristicas
     end
+  end
+
+  config.model 'Tipo::Translation' do
+    visible false
+    configure :locale, :hidden do
+      help ''
+    end
+    include_fields :locale, :titulo
   end
 
   config.model Provincia do
