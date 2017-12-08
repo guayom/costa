@@ -100,7 +100,8 @@ es:
     listing_status: Estado de la propiedad
     are_you_interested: ¿Le interesa esta propiedad?
     contact_us_text: Póngase en contacto con nosotros por medio de nuestro formulario o contacte a nuestro agente directamente.
-    incluye_mantenimiento: Incluída en la cuota de alquiler
+    incluye_mantenimiento: Incluye cuota de mantenimiento
+    incluida_en_alquiler: Incluída en la cuota de alquiler
 
   helpers:
     submit:

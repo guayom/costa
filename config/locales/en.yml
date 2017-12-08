@@ -75,7 +75,8 @@ en:
     listing_status: Listing status
     are_you_interested: Are you interested in this listing?
     contact_us_text: Contact us via our web form or call one of our agents directly
-    incluye_mantenimiento: Icluded in the rent rate
+    incluye_mantenimiento: Includes maintenance rate
+    incluida_en_alquiler: Icluded in the rent rate
 
   banos: 'Bathrooms'
   price_range: "Price range"
