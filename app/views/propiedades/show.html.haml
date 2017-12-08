@@ -147,6 +147,9 @@
                                 %strong Cuota Mantenimiento
                               %td
                                 = @propiedad.get_cuota_mantenimiento
+                                - if @propiedad.incluye_mantenimiento
+                                  %br
+                                  = t('propiedad.incluye_mantenimiento')
 
                           - if @propiedad.patio
                             %tr

@@ -42,6 +42,7 @@ en:
         pu: Puntarenas
   registre:
     direccion_exacta: Exact Adress
-    
+
   propiedad:
     amenities: Amenidades
+    incluye_mantenimiento: Icluded in the rent rate
