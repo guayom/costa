@@ -72,7 +72,8 @@ es:
   propiedad:
     amenities: Amenidades
     codigo: Código
-    incluye_mantenimiento: Incluída en la cuota de alquiler
+    incluye_mantenimiento: Incluye cuota de mantenimiento
+    incluida_en_alquiler: Incluída en la cuota de alquiler
 
   search: "Buscar"
 

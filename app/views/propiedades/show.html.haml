@@ -121,6 +121,9 @@
                                   Alquiler
                               %td{class: "propiedad-text-color-#{@propiedad.listado}"}
                                 = number_to_currency(@propiedad.valor_alquiler, locale: @propiedad.price_locale)
+                                - if @propiedad.incluye_mantenimiento
+                                  %br
+                                  = t('propiedad.incluye_mantenimiento')
 
                           - if @propiedad.ubicacion.present?
                             %tr
@@ -149,7 +152,7 @@
                                 = @propiedad.get_cuota_mantenimiento
                                 - if @propiedad.incluye_mantenimiento
                                   %br
-                                  = t('propiedad.incluye_mantenimiento')
+                                  = t('propiedad.incluida_en_alquiler')
 
                           - if @propiedad.patio
                             %tr
