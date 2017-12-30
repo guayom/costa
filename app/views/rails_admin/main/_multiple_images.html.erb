@@ -6,7 +6,7 @@
 
 <div id="propiedad_images">
   <% form.object.imagenes.each do |image| %>
-    <div class="image-form-preview" id="image_<%= image.id %>" 
+    <div class="image-form-preview" id="image_<%= image.id %>"
          data-id="<%= image.id %>">
       <%= link_to(image.imagen.url, target: 'blank') do %>
         <%= image_tag image.imagen.url(:small), class: image.id.to_s == form.object.cover ? 'cover' : '' %>
@@ -34,7 +34,7 @@
           $.ajax('/propiedades/update_sort_index', {
             data: {
               id: items[i],
-              sort_index: i              
+              sort_index: i
             }
           });
         }
@@ -83,4 +83,5 @@
   <br>
 
   <%= link_to 'Download all images', main_app.download_imagenes_path(propiedad: form.object.id) %>
+  <%= link_to 'Download original images', main_app.download_original_imagenes_path(propiedad: form.object.id) %>
 <% end %>

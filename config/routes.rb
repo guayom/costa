@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     collection do
       get 'upload', action: :upload
       get 'download', action: :download
+      get 'download_original', action: :download_original
     end
   end
 
