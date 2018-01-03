@@ -82,6 +82,6 @@
 
   <br>
 
-  <%= link_to 'Download all images', main_app.download_imagenes_path(propiedad: form.object.id) %>
-  <%= link_to 'Download original images', main_app.download_original_imagenes_path(propiedad: form.object.id) %>
+  <%= link_to 'Bajar imágenes CON marca de agua', main_app.download_imagenes_path(propiedad: form.object.id) %><br/>
+  <%= link_to 'Bajar imágenes SIN marca de agua', main_app.download_original_imagenes_path(propiedad: form.object.id) %>
 <% end %>
