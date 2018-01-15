@@ -68,7 +68,7 @@
                       - if @propiedad.imagenes.any? && @propiedad.imagenes.pluck(:created_at).max <= Date.new(2016, 3, 14)
                         .add-watermark-large
                       .jcarousel.main-jcarousel
-                        %ul.clearfix
+                        %ul
                           - unless @propiedad.imagenes.empty?
                             - @propiedad.imagenes.sorted(@propiedad.cover).each_with_index do |pic, index|
                               %li
