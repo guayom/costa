@@ -47,9 +47,7 @@
   display: block;
 }
 
-
-
-@media (min-width: 992px) {
+@media only screen and (min-width: 992px) {
   .big-picture .jcarousel ul{
     display: flex;
     height: 100%;
