@@ -40,7 +40,6 @@
                       %small{class: "propiedad-text-color-#{@propiedad.listado}"}
                         #{I18n.t 'propiedad.code'}: #{@propiedad.codigo}
 
-
                     .jcarousel-wrapper.big-picture
                       .visible-print.price-print
                         - if @propiedad.valor_compra > 0
@@ -65,17 +64,8 @@
                         .banner-estado= @propiedad.estado.capitalize
                       - if @propiedad.imagenes.any? && @propiedad.imagenes.pluck(:created_at).max <= Date.new(2016, 3, 14)
                         .add-watermark-large
-                      .jcarousel.main-jcarousel
-                        %ul
-                          - unless @propiedad.imagenes.empty?
-                            - @propiedad.imagenes.sorted(@propiedad.cover).each_with_index do |pic, index|
-                              %li
-                                = image_tag pic.imagen.url(:large)
 
-                        %ul.mensajes-especiales{style: 'width: 100%; top: -5px;'}
-                          - @propiedad.mensajes.each do |mensaje|
-                            %li{:data => {:color => mensaje.color }, style: 'width: 100%; border: none;'}
-                              = mensaje.mensaje
+                      = render 'slider', :images => @propiedad.imagenes, :cover => @propiedad.cover, :mensajes => @propiedad.mensajes
 
                       = link_to '&lsaquo;'.html_safe, '#', class: 'jcarousel-control-prev main'
                       = link_to '&rsaquo;'.html_safe, '#', class: 'jcarousel-control-next main'
@@ -285,6 +275,6 @@
                             = email_link(@propiedad.admin.email)
                   .col-md-6.col-sm-6
                     %br/
-                    = render partial: 'static_pages/form', locals: {contacto_mensaje: @contacto_mensaje}
+                    = render 'static_pages/form', :contacto_mensaje => @contacto_mensaje
       .col-md-4.col-md-pull-8.sidebar
-        = render :partial => 'application/quick_links_sidebar'
+        = render 'application/quick_links_sidebar'

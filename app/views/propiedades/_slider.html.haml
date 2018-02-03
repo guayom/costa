@@ -1,0 +1,11 @@
+.jcarousel.main-jcarousel
+  %ul
+    - unless images.empty?
+      - images.sorted(cover).each_with_index do |pic, index|
+        %li
+          = image_tag pic.imagen.url(:large)
+
+  %ul.mensajes-especiales{style: 'width: 100%; top: -5px;'}
+    - mensajes.each do |mensaje|
+      %li{:data => {:color => mensaje.color }, style: 'width: 100%; border: none;'}
+        = mensaje.mensaje
