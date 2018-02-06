@@ -22,11 +22,12 @@
 //= require masonry.pkgd.min
 //= require jquery.backstretch
 // require jquery.nicescroll.min
-//= require jquery.jcarousel.min
-//= require jquery.jcarousel-autoscroll.min.js
-//= require jquery.jcarousel-control
-//= require jquery.jcarousel-swipe
-//= require jquery.jcarousel-pagination
+// require jquery.jcarousel.min
+// require jquery.jcarousel-autoscroll.min.js
+// require jquery.jcarousel-control
+// require jquery.jcarousel-swipe
+// require jquery.jcarousel-pagination
+//= require slick.min
 //= require script
 //= require filters
 //= require bootstrap-number-input
