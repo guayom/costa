@@ -10,7 +10,8 @@
       .row
         .col-md-10.col-md-offset-1.col-sm-12
           .page-title
-            %h2=I18n.t 'our_properties'
+            %h2
+              Nuestras Propiedades
 
 - content_for :content do
   #content.show-view
@@ -23,10 +24,11 @@
               %li.active
                 %a{"data-toggle" => "tab", :href => "#detail"}
                   %i.fa.fa-university
-                  =(I18n.t 'propiedad.general')
+                  General
               %li
                 %a{"data-toggle" => "tab", :href => "#location"}
-                  %i.fa.fa-plus=I18n.t 'propiedad.request_information'
+                  %i.fa.fa-plus
+                  Solicitar Información
             #myTabContent.tab-content
               #detail.tab-pane.fade.in.active
                 .row
@@ -38,15 +40,16 @@
                         = @propiedad.titular
                       %br/
                       %small{class: "propiedad-text-color-#{@propiedad.listado}"}
-                        #{I18n.t 'propiedad.code'}: #{@propiedad.codigo}
+                        Código: #{@propiedad.codigo}
 
-                    .big-picture
+
+                    .jcarousel-wrapper.big-picture
                       .visible-print.price-print
                         - if @propiedad.valor_compra > 0
                           %tr
                             %td
                               %strong{class: "propiedad-text-color-#{@propiedad.listado}"}
-                                #{I18n.t 'propiedad.sale'}
+                                Venta
                             %td{class: "propiedad-text-color-#{@propiedad.listado}"}
                               = number_to_currency(@propiedad.valor_compra, locale: @propiedad.price_locale)
                               \#{'Opción de compra' if @propiedad.opcion_compra == true}
@@ -56,7 +59,7 @@
                           %tr
                             %td
                               %strong{class: "propiedad-text-color-#{@propiedad.listado}"}
-                                #{I18n.t 'propiedad.rent'}
+                                Alquiler
                             %td{class: "propiedad-text-color-#{@propiedad.listado}"}
                               = number_to_currency(@propiedad.valor_alquiler, locale: @propiedad.price_locale)
 
@@ -64,34 +67,50 @@
                         .banner-estado= @propiedad.estado.capitalize
                       - if @propiedad.imagenes.any? && @propiedad.imagenes.pluck(:created_at).max <= Date.new(2016, 3, 14)
                         .add-watermark-large
+                      .jcarousel.main-jcarousel
+                        %ul.clearfix
+                          - unless @propiedad.imagenes.empty?
+                            - @propiedad.imagenes.sorted(@propiedad.cover).each_with_index do |pic, index|
+                              %li
+                                = image_tag pic.imagen.url(:large)
 
-                      = render 'slider', :images => @propiedad.imagenes, :cover => @propiedad.cover, :mensajes => @propiedad.mensajes
+                        %ul.mensajes-especiales{style: 'width: 100%; top: -5px;'}
+                          - @propiedad.mensajes.each do |mensaje|
+                            %li{:data => {:color => mensaje.color }, style: 'width: 100%; border: none;'}
+                              = mensaje.mensaje
+
+                      = link_to '&lsaquo;'.html_safe, '#', class: 'jcarousel-control-prev main'
+                      = link_to '&rsaquo;'.html_safe, '#', class: 'jcarousel-control-next main'
 
                     .clearfix
 
                     .row.hidden-xs
                       .col-xs-12.jcarousel-wrapper
-                        = render 'slider_navigation', :images => @propiedad.imagenes, :cover => @propiedad.cover, :mensajes => @propiedad.mensajes
+                        .jcarousel-pagination-wrapper.jcarousel
+                          %ul.jcarousel-pagination
 
-                    %h3="#{I18n.t 'propiedad.general'}"
+                        = link_to '&lsaquo;'.html_safe, '#', class: 'jcarousel-control-prev secondary'
+                        = link_to '&rsaquo;'.html_safe, '#', class: 'jcarousel-control-next secondary'
+
+                    %h3 General
                     .row
                       .col-xs-12.col-md-8.hidden-print
                         %table.table.table-bordered.table-responsive.table-striped
                           %tr
                             %td{:width => "20%"}
                               %strong{class: "propiedad-text-color-#{@propiedad.listado}"}
-                                #{I18n.t 'propiedad.code'}
+                                Código
                             %td{class: "propiedad-text-color-#{@propiedad.listado}"}
                               = @propiedad.codigo
                           %tr
                             %td{:width => "20%"}
-                              %strong #{I18n.t 'propiedad.status'}
+                              %strong Estado
                             %td= @propiedad.estado.capitalize
                           - if @propiedad.valor_compra > 0
                             %tr
                               %td
                                 %strong{class: "propiedad-text-color-#{@propiedad.listado}"}
-                                  #{I18n.t 'propiedad.sale'}
+                                  Venta
                               %td{class: "propiedad-text-color-#{@propiedad.listado}"}
                                 = number_to_currency(@propiedad.valor_compra, locale: @propiedad.price_locale)
                                 \#{'Opción de compra' if @propiedad.opcion_compra == true}
@@ -99,46 +118,40 @@
                             %tr
                               %td
                                 %strong{class: "propiedad-text-color-#{@propiedad.listado}"}
-                                  #{I18n.t 'propiedad.rent'}
+                                  Alquiler
                               %td{class: "propiedad-text-color-#{@propiedad.listado}"}
                                 = number_to_currency(@propiedad.valor_alquiler, locale: @propiedad.price_locale)
-                                - if @propiedad.incluye_mantenimiento
-                                  %br
-                                  = t('propiedad.incluye_mantenimiento')
 
                           - if @propiedad.ubicacion.present?
                             %tr
                               %td
-                                %strong #{I18n.t 'propiedad.location'}
+                                %strong Ubicación
                               %td
                                 = @propiedad.ubicacion
 
                           - if @propiedad.area_construccion > 0 || @propiedad.area_terreno > 0
                             %tr
                               %td
-                                %strong #{I18n.t 'propiedad.area'}
+                                %strong Área
                               %td
                                 - if @propiedad.area_construccion > 0
-                                  #{I18n.t 'propiedad.construction'}: #{number_with_precision(@propiedad.area_construccion, precision: 3, separator: ',', delimiter: '.',strip_insignificant_zeros: true)}m
+                                  Construcción: #{number_with_precision(@propiedad.area_construccion, precision: 3, separator: ',', delimiter: '.',strip_insignificant_zeros: true)}m
                                   %sup 2
                                   %br/
                                 - if @propiedad.area_terreno > 0
-                                  #{I18n.t 'propiedad.lot'}: #{number_with_precision(@propiedad.area_terreno, precision: 3, separator: ',', delimiter: '.',strip_insignificant_zeros: true)}m
+                                  Terreno: #{number_with_precision(@propiedad.area_terreno, precision: 3, separator: ',', delimiter: '.',strip_insignificant_zeros: true)}m
                                   %sup 2
                           - if @propiedad.cuota_mantenimiento.present? and @propiedad.cuota_mantenimiento > 0
                             %tr
                               %td
-                                %strong #{I18n.t 'propiedad.maintenance'}
+                                %strong Cuota Mantenimiento
                               %td
                                 = @propiedad.get_cuota_mantenimiento
-                                - if @propiedad.incluye_mantenimiento
-                                  %br
-                                  = t('propiedad.incluida_en_alquiler')
 
                           - if @propiedad.patio
                             %tr
                               %td
-                                %strong #{I18n.t 'propiedad.backyard'}
+                                %strong Patio
                               %td
                                 - if @propiedad.patio_area > 0
                                   = @propiedad.patio_area
@@ -148,7 +161,7 @@
                           - unless @propiedad.admin.nil?
                             %tr
                               %td
-                                %strong #{I18n.t 'propiedad.agent'}
+                                %strong Agente
                               %td
                                 - if @propiedad.admin
                                   = "#{@propiedad.admin.nombre}"
@@ -156,38 +169,38 @@
                                   %a{:href => "tel: +506 #{@propiedad.admin.telefono}"}="+506 #{@propiedad.admin.telefono}"
                                   %br/
                                   %span.hidden-xs= email_link(@propiedad.admin.email)
-                                  %a.visible-xs.hidden-sm.hidden-md.hidden-lg{:href => "mailto:#{@propiedad.admin.email}"} #{I18n.t 'propiedad.send_email'}
+                                  %a.visible-xs.hidden-sm.hidden-md.hidden-lg{:href => "mailto:#{@propiedad.admin.email}"} Enviar Email
                       .col-xs-12.col-md-4
                         .post-meta.description-icons
                           - if @propiedad.dormitorios.present? && @propiedad.dormitorios > 0
                             %i.fa.fa-bed
                             - if @propiedad.dormitorios > 1
-                              #{@propiedad.dormitorios} #{I18n.t 'propiedad.rooms'}#{' + Cuarto de Servicio' if @propiedad.cuarto_de_servicio}
+                              #{@propiedad.dormitorios} Dormitorios#{' + Cuarto de Servicio' if @propiedad.cuarto_de_servicio}
                             - else
-                              #{@propiedad.dormitorios}#{'+1' if @propiedad.cuarto_de_servicio} #{I18n.t 'propiedad.room'}
+                              #{@propiedad.dormitorios}#{'+1' if @propiedad.cuarto_de_servicio} Dormitorio
                             %br/
 
                           - if @propiedad.oficinas.present? && @propiedad.oficinas > 0
                             %i.fa.fa-briefcase
                             - if @propiedad.oficinas > 1
-                              #{@propiedad.oficinas} #{I18n.t 'propiedad.offices'}
+                              #{@propiedad.oficinas} Oficinas
                             - else
-                              #{@propiedad.oficinas} #{I18n.t 'propiedad.office'}
+                              #{@propiedad.oficinas} Oficina
                             %br/
 
                           - if @propiedad.banos.present? && @propiedad.banos > 0
                             = image_tag 'icons/banos.svg', class: "img-icon"
-                            = pluralize(@propiedad.banos.prettify, (I18n.t 'propiedad.bathroom'))
+                            = pluralize(@propiedad.banos.prettify, 'Baño')
                             %br/
 
                           - if @propiedad.pisos.present? && @propiedad.pisos > 0
                             %i.fa.fa-building-o
-                            = pluralize(@propiedad.pisos, (I18n.t 'propiedad.floor'))
+                            = pluralize(@propiedad.pisos, 'Piso')
                             %br/
 
                           - if @propiedad.ubicado_en_piso.present? && @propiedad.ubicado_en_piso > 0
                             %i.fa.fa-building-o
-                            = "#{I18n.t 'propiedad.located_at_floor'} #{@propiedad.ubicado_en_piso}"
+                            = "Ubicada en el piso #{@propiedad.ubicado_en_piso}"
                             %br/
 
                           - if @propiedad.estacionamiento.present? && @propiedad.estacionamiento > 0
@@ -200,12 +213,12 @@
 
                           - if @propiedad.mascota.present? && @propiedad.mascota == 'permitido'
                             = image_tag 'icons/pet.svg', class: "img-icon"
-                            ="#{I18n.t 'propiedad.pets_allowed'}"
+                            = "Se permiten mascotas"
                             %br/
 
                           - if @propiedad.mascota.present? && @propiedad.mascota == 'prohibido'
                             = image_tag 'icons/no-pet.svg', class: "img-icon"
-                            ="#{I18n.t 'propiedad.pets_not_allowed'}"
+                            = "Mascotas prohibidas"
                             %br/
 
 
@@ -215,11 +228,11 @@
                             = @propiedad.admin.telefono
                     %a{style: 'font-size: 1.5em; cursor: pointer;', class: 'request_info_bottom'}
                       %i.fa.fa-plus
-                      = I18n.t 'propiedad.request_more_information'
-                    %h3= I18n.t 'share'
-                    = render partial: 'application/social_buttons', locals: {text: "#{@propiedad.titular} - #{I18n.t 'propiedad.code'}: #{@propiedad.codigo}", title: "#{@propiedad.titular} - #{I18n.t 'propiedad.code'}: #{@propiedad.codigo}", summary: @propiedad.descripcion_publica, img: @propiedad.cover_url}
+                      Solicitar más información
+                    %h3 Compartir
+                    = render partial: 'application/social_buttons', locals: {text: "#{@propiedad.titular} - código: #{@propiedad.codigo}", title: "#{@propiedad.titular} - código: #{@propiedad.codigo}", summary: @propiedad.descripcion_publica, img: @propiedad.cover_url}
                     .hidden-in-print
-                      %h3="#{t('propiedad.description')}:"
+                      %h3 Descripción:
                       %p= simple_format(@propiedad.descripcion_publica.gsub("↵", '<br/>'))
 
                       - if @propiedad.caracteristicas.any?
@@ -231,7 +244,7 @@
                                 %li
                                   = c.titulo
                       %h3{class: "propiedad-text-color-#{@propiedad.listado}"}
-                        ="#{I18n.t 'propiedad.listing_status'}:"
+                        Estado de la propiedad:
                       %p{class: "propiedad-text-color-#{@propiedad.listado}"}
                         = @propiedad.estado.capitalize
 
@@ -239,7 +252,7 @@
                       %br
                       %a{style: 'font-size: 1.5em; cursor: pointer;', class: 'request_info_bottom'}
                         %i.fa.fa-plus
-                        =t('propiedad.request_more_information')
+                        Solicitar más información
                       :javascript
                         $(function() {
                           $('.request_info_bottom').click(function() {
@@ -252,8 +265,8 @@
               #location.tab-pane.fade
                 .row
                   .col-md-6.col-sm-6
-                    %h3=t('propiedad.are_you_interested')
-                    %p=t('propiedad.contact_us_text')
+                    %h3 ¿Le interesa esta propiedad?
+                    %p Póngase en contacto con nosotros por medio de nuestro formulario o contacte a nuestro agente directamente.
                     .team-container.team-dark
                       .team-description
                         %small Agente:
@@ -268,6 +281,6 @@
                             = email_link(@propiedad.admin.email)
                   .col-md-6.col-sm-6
                     %br/
-                    = render 'static_pages/form', :contacto_mensaje => @contacto_mensaje
+                    = render partial: 'static_pages/form', locals: {contacto_mensaje: @contacto_mensaje}
       .col-md-4.col-md-pull-8.sidebar
-        = render 'application/quick_links_sidebar'
+        = render :partial => 'application/quick_links_sidebar'

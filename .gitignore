@@ -17,8 +17,3 @@
 
 # Ignore local application configuration
 .env
-
-
-lib/custom/aws-copy.rb
-get-pip.py
-configure

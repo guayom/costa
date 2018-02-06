@@ -2,7 +2,7 @@ development:
   adapter:  postgresql
   host:     localhost
   encoding: unicode
-  database: costalocal
+  database: costa_development
   pool:     5
   username: guayo
   password: elgrone
@@ -24,7 +24,7 @@ production:
   encoding: unicode
   database: costa_production
   pool:     5
-  template: template0
+  template: template0  
   username: costa
   # password: <%= ENV['COSTA_DATABASE_PASSWORD'] %>
   password: postgres

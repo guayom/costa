@@ -15,8 +15,8 @@ SimpleNavigation::Configuration.run do |navigation|
     # Bootstrap classes for tabbed menu
     primary.dom_class = "nav navbar-nav navbar-right"
 
-    primary.item :dashboard, (I18n.t 'navigation.index'), '/'
-    primary.item :entries, (I18n.t 'navigation.properties'), '/propiedades/index'
+    primary.item :dashboard, 'Inicio', '/'
+    primary.item :entries, 'Propiedades', '/propiedades/index'
 
     if propietario_signed_in?
       primary.item :entries, t('registre.old_user'), '/propiedades/registrar'
@@ -24,7 +24,7 @@ SimpleNavigation::Configuration.run do |navigation|
       primary.item :entries, t('registre.new_user'), '/propiedades/registrar'
     end
 
-    primary.item :entries, (I18n.t 'navigation.contact'), '/static_pages/contacto'
+    primary.item :entries, 'Contacto', '/static_pages/contacto'
 
   end
 end

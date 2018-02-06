@@ -35,28 +35,29 @@ Rails.application.routes.draw do
       get 'download', action: :download
       get 'download_original', action: :download_original
     end
-
-    resources :propiedades do
-      collection do
-        get 'registrar', action: :new
-        get 'import'
-
-        get 'test_email', action: :test_email
-
-        get 'update_sort_index'
-      end
-
-      member do
-        get 'cover', action: :cover
-      end
-    end
-
-    controller :static_pages, path: 'static_pages' do
-      get 'contacto', to: 'static_pages#contacto_new', as: 'contacto'
-      post 'contacto', to: 'static_pages#contacto_create'
-    end
-    root 'static_pages#index'
-    get "/static_pages/:page" => "static_pages#show"
-    match ':controller(/:action(/:id))', :via => [:get , :post, :patch]
   end
+
+  resources :propiedades do
+    collection do
+      get 'registrar', action: :new
+      get 'import'
+
+      get 'test_email', action: :test_email
+
+      get 'update_sort_index'
+    end
+
+    member do
+      get 'cover', action: :cover
+    end
+  end
+
+  controller :static_pages, path: 'static_pages' do
+    get 'contacto', to: 'static_pages#contacto_new', as: 'contacto'
+    post 'contacto', to: 'static_pages#contacto_create'
+  end
+  root 'static_pages#index'
+  get "/static_pages/:page" => "static_pages#show"
+  match ':controller(/:action(/:id))', :via => [:get , :post, :patch]
+
 end

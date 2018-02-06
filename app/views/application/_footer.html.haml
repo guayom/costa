@@ -4,7 +4,7 @@
     .row
       .col-md-5.col-sm-6.col-xs-12
         .widget.tipos
-          %h3=I18n.t 'properties'
+          %h3 Propiedades
           %ul.list-unstyled
             - Tipo.all.find_all { |t| t.propiedades.publicado.any? }.each do |tipo|
               %li
@@ -13,7 +13,7 @@
       / break
       .col-md-4.col-sm-6.col-xs-12
         .widget
-          %h3=I18n.t 'our_agents'
+          %h3 Nuestros Agentes
           %ul.list-unstyled
             - Admin.without_permisos(:developer).for_footer.each do |admin|
               %li
@@ -37,7 +37,7 @@
               Email : #{email_link(CONTACT_INFO['email'])}
               %br/
               %br/
-              %strong=I18n.t 'phone_numbers'
+              %strong Teléfonos:
               %br/
               - CONTACT_INFO['telefonos'].each do |member|
                 %div
@@ -53,7 +53,7 @@
             %li
               %a{:class => "icon-#{link['nombre']}", "data-original-title" => link['nombre'].titleize, "data-placement" => "bottom", :href => link['url'], :rel => "tooltip", :title => ""}
                 %i{:class => "fa fa-#{link['icon']}"}
-        %p="Copyright &copy; #{Time.now.year} Costa 506 Real Estate. #{I18n.t 'copyrights'}".html_safe
+        %p Copyright &copy; 2015 Costa 506 Real Estate. Todos los derechos reservados.
         %p
           Powered by
           %strong
