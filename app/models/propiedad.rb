@@ -18,14 +18,14 @@ class Propiedad < ActiveRecord::Base
   accepts_nested_attributes_for :imagenes
   has_many :facebook_covers, dependent: :destroy
   accepts_nested_attributes_for :facebook_covers
-  has_many :contacto_mensajes
+  has_many :contacto_mensajes, dependent: :destroy
   has_and_belongs_to_many :mensajes
 
   has_and_belongs_to_many :caracteristicas
 
   # accepts_nested_attributes_for :imagenes, :allow_destroy => true
 
-  has_attached_file :file, :path => '/files/:id/:filename'
+  has_attached_file :file, :path => '/files/:id/:filename', :preserve_files => "true"
   validates_attachment :file, content_type: { content_type: ["image/jpeg", "image/gif", "image/png", "application/pdf"] }
 
   has_and_belongs_to_many :tipos, dependent: :destroy

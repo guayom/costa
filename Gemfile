@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 group :development, :test do
-  gem 'dotenv-rails', require: 'dotenv/rails-now'       
+  gem 'dotenv-rails', require: 'dotenv/rails-now'
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -147,5 +147,9 @@ gem 'rails-assets-sortablejs', source: 'https://rails-assets.org'
 
 gem "informant-rails"
 # gem 'rails_admin_multiple_upload', path: 'vendor/gems/rails_admin_multiple_upload'
+
+gem 'globalize', '~> 5.0.0'
+gem 'rails_admin_globalize_field'
+
 #RUBY Version
 ruby "2.2.3"

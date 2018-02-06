@@ -17,12 +17,16 @@ class Imagen < ActiveRecord::Base
         geometry: '786x522>',
         watermark_path: Rails.root.join('app', 'assets', 'images', 'watermark-white.png')
       },
+      no_watermark: {
+        geometry: '786x522>'
+      },
       facebook: {
         geometry: '800x420>',
         watermark_path: Rails.root.join('app', 'assets', 'images', 'watermark-white.png')
       }
     },
-    processors: [:watermark]
+    processors: [:watermark],
+    :preserve_files => "true"
 
   process_in_background :imagen, processing_image_url: '/uploading.jpg'
 

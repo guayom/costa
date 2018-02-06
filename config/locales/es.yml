@@ -72,8 +72,36 @@ es:
   propiedad:
     amenities: Amenidades
     codigo: Código
-
-  search: "Buscar"
+    request_information: Solicitar Información
+    request_more_information: Solicitar más invormación
+    general: General
+    code: Código
+    sale: Venta
+    rent: Renta
+    status: Estado
+    location: Ubicación
+    area: Área
+    construction: Construcción
+    maintenance: Cuota de mantenimiento
+    lot: Terreno
+    backyard: Patio
+    agent: Agente
+    send_email: Enviar email
+    rooms: Dormitorios
+    room: Dormitorio
+    offices: Oficinas
+    office: Oficina
+    bathroom: Baño
+    floor: Piso
+    located_at_floor: Ubicada en el piso
+    pets_allowed: Se permiten mascotas
+    pets_not_allowed: Se prohíben mascotas
+    description: Descripción
+    listing_status: Estado de la propiedad
+    are_you_interested: ¿Le interesa esta propiedad?
+    contact_us_text: Póngase en contacto con nosotros por medio de nuestro formulario o contacte a nuestro agente directamente.
+    incluye_mantenimiento: Incluye cuota de mantenimiento
+    incluida_en_alquiler: Incluída en la cuota de alquiler
 
   helpers:
     submit:
@@ -130,3 +158,28 @@ es:
   banos: 'Baños'
   price_range: "Rango de precio"
   keywords: "Palabras clave ó Código de propiedad"
+  phone_numbers: Teléfonos
+  follow_us_at: Seguínos en
+  search: "Buscar"
+  properties: Propiedades
+  our_properties: Nuestras propiedades
+  featured_properties: Propiedades destacadas
+  recent_properties: Propiedades recientes
+  our_agents: Nuestro agentes
+  copyrights: Todos los derechos reservados.
+  chare: Compartir
+
+  navigation:
+    index: Inicio
+    properties: Propiedades
+    contact: Contacto
+
+  filters:
+    title: Búsqueda
+    both: Ambos
+    rent: Alquiler
+    sale: Venta
+    show_rented_and_sold: Mostrar propiedades rentadas y vendidas
+    any: Cualquiera...
+
+  meta_description:
