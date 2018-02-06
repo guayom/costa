@@ -84,29 +84,16 @@ $(document).ready(function () {
     return "#" + $(this).data('color')
   });
 
-  $('.jcarousel').on('jcarousel:reload jcarousel:create', function () {
-    var carousel = $(this),
-        width = carousel.innerWidth();
-
-//    if (width >= 600) {
-//      width = width / 3;
-//    } else if (width >= 350) {
-//      width = width / 2;
-//    }
-
-    carousel.jcarousel('items').css('width', Math.ceil(width) + 'px');
-  });
-
-  $('.jcarousel, .main-jcarousel').jcarousel({
-    wrap: 'circular'
-  }).jcarouselSwipe();
-  $('.main-jcarousel').jcarouselAutoscroll({
-    interval: 8000
-  });
-
-  $('.jcarousel-control-prev.main').jcarouselControl({
-    carousel: $(".jcarousel"),
-    target: '-=1'
+  //Slick
+  $('.property-slider').slick({
+    infinite: true,
+    speed: 300,
+    slidesToShow: 1,
+    adaptiveHeight: true,
+    lazyLoad: 'ondemand',
+    arrows: true,
+    prevArrow: "<a class='jcarousel-control-prev main' href='#'>‹</a>",
+    nextArrow: "<a class='jcarousel-control-next main' href='#'>›</a>"
   });
 
   $('.jcarousel-control-next.main').jcarouselControl({
