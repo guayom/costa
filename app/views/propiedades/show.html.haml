@@ -43,7 +43,7 @@
                         Código: #{@propiedad.codigo}
 
 
-                    .jcarousel-wrapper.big-picture
+                    .big-picture
                       .visible-print.price-print
                         - if @propiedad.valor_compra > 0
                           %tr
@@ -67,15 +67,7 @@
                         .banner-estado= @propiedad.estado.capitalize
                       - if @propiedad.imagenes.any? && @propiedad.imagenes.pluck(:created_at).max <= Date.new(2016, 3, 14)
                         .add-watermark-large
-                        = render 'slider', :images => @propiedad.imagenes, :cover => @propiedad.cover, :mensajes => @propiedad.mensajes
-
-                        %ul.mensajes-especiales{style: 'width: 100%; top: -5px;'}
-                          - @propiedad.mensajes.each do |mensaje|
-                            %li{:data => {:color => mensaje.color }, style: 'width: 100%; border: none;'}
-                              = mensaje.mensaje
-
-                      = link_to '&lsaquo;'.html_safe, '#', class: 'jcarousel-control-prev main'
-                      = link_to '&rsaquo;'.html_safe, '#', class: 'jcarousel-control-next main'
+                      = render 'slider', :images => @propiedad.imagenes, :cover => @propiedad.cover, :mensajes => @propiedad.mensajes
 
                     .clearfix
 

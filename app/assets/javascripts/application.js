@@ -21,7 +21,7 @@
 //= require imagesloaded.pkgd.min
 //= require masonry.pkgd.min
 //= require jquery.backstretch
-// require jquery.nicescroll.min
+//= require jquery.nicescroll.min
 // require jquery.jcarousel.min
 // require jquery.jcarousel-autoscroll.min.js
 // require jquery.jcarousel-control
