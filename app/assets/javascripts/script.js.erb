@@ -9,18 +9,6 @@ $(document).ready(function () {
     $('.heading').css('background-position', 'center ' + -(scrolled * 0.5) + 'px');
   }
 
-
-  /* backstretch slider */
-//  $('.header-slide').backstretch([
-//    "<%#= asset_path('bg01.jpg') %>",
-//    "<%#= asset_path('bg02.jpg') %>",
-//    "<%#= asset_path('bg03.jpg') %>"
-//  ], {
-//    fade: 850,
-//    duration: 8000
-//  });
-
-
   /* navbar */
   $(window).scroll(function () {
     parallax();
@@ -58,28 +46,6 @@ $(document).ready(function () {
     });
   });
 
-  /* map property */
-//  $('a[href="#location"]').on('shown.bs.tab', function () {
-//    $("#map-property").gmap3({
-//      map: {
-//        options: {
-//          center: [-7.866315, 110.389574],
-//          zoom: 13,
-//          scrollwheel: false
-//        }
-//      },
-//      marker: {
-//        latLng: [-7.866315, 110.389574],
-//        options: {
-//          icon: new google.maps.MarkerImage(
-//              "https://dl.dropboxusercontent.com/u/29545616/Preview/location.png",
-//              new google.maps.Size(48, 48, "px", "px")
-//          )
-//        }
-//      }
-//    });
-//  })
-
   $(".mensajes-especiales li").css('background', function () { //or for code's consistency, i'd use background-color instead
     return "#" + $(this).data('color')
   });
@@ -95,36 +61,12 @@ $(document).ready(function () {
     prevArrow: "<a class='jcarousel-control-prev main' href='#'>‹</a>",
     nextArrow: "<a class='jcarousel-control-next main' href='#'>›</a>"
   });
-
-  $('.jcarousel-control-next.main').jcarouselControl({
-    carousel: $(".jcarousel"),
-    target: '+=1'
+  $('.slider-nav').slick({
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    asNavFor: '.property-slider',
+    centerMode: true,
+    focusOnSelect: true,
+    arrows: false,
   });
-
-  $('.jcarousel-pagination')
-    .on('click', function(e) {
-      e.preventDefault();
-    })
-    .on('jcarouselpagination:createend', function() {
-      $('.jcarousel-pagination-wrapper').jcarousel({
-        wrap: 'circular'
-      }).jcarouselSwipe().jcarouselAutoscroll({autostart: false});
-      $('.jcarousel-control-prev.secondary').jcarouselControl({
-        carousel: $(".jcarousel-pagination-wrapper"),
-        target: '-=1'
-      });
-      $('.jcarousel-control-next.secondary').jcarouselControl({
-        carousel: $(".jcarousel-pagination-wrapper"),
-        target: '+=1'
-      });
-    })
-    .jcarouselPagination({
-      carousel: $('.main-jcarousel'),
-      perPage: 1,
-      item: function(page, items) {
-        return '<li><a href="#' + page + '"><img src="'
-          + $(items).children('img').attr('src').replace('/large/', '/thumb/')
-            + '"></a></li>';
-      }
-    });
 });
