@@ -40,7 +40,7 @@
                       %small{class: "propiedad-text-color-#{@propiedad.listado}"}
                         #{I18n.t 'propiedad.code'}: #{@propiedad.codigo}
 
-                    .jcarousel-wrapper.big-picture
+                    .big-picture
                       .visible-print.price-print
                         - if @propiedad.valor_compra > 0
                           %tr
@@ -67,18 +67,11 @@
 
                       = render 'slider', :images => @propiedad.imagenes, :cover => @propiedad.cover, :mensajes => @propiedad.mensajes
 
-                      = link_to '&lsaquo;'.html_safe, '#', class: 'jcarousel-control-prev main'
-                      = link_to '&rsaquo;'.html_safe, '#', class: 'jcarousel-control-next main'
-
                     .clearfix
 
                     .row.hidden-xs
                       .col-xs-12.jcarousel-wrapper
-                        .jcarousel-pagination-wrapper.jcarousel
-                          %ul.jcarousel-pagination
-
-                        = link_to '&lsaquo;'.html_safe, '#', class: 'jcarousel-control-prev secondary'
-                        = link_to '&rsaquo;'.html_safe, '#', class: 'jcarousel-control-next secondary'
+                        = render 'slider_navigation', :images => @propiedad.imagenes, :cover => @propiedad.cover, :mensajes => @propiedad.mensajes
 
                     %h3="#{I18n.t 'propiedad.general'}"
                     .row

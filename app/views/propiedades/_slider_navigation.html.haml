@@ -1,0 +1,5 @@
+.slider-nav
+  - unless images.empty?
+    - images.sorted(cover).each_with_index do |pic, index|
+      %div
+        = image_tag pic.imagen.url(:small)
