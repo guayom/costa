@@ -91,6 +91,7 @@
 
 .jcarousel-control-prev {
   left: 15px;
+  z-index: 999;
 }
 
 .jcarousel-control-next {
