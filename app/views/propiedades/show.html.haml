@@ -72,7 +72,8 @@
                     .clearfix
 
                     .row.hidden-xs
-                      = render 'slider_navigation', :images => @propiedad.imagenes, :cover => @propiedad.cover, :mensajes => @propiedad.mensajes
+                      .col-xs-12
+                        = render 'slider_navigation', :images => @propiedad.imagenes, :cover => @propiedad.cover, :mensajes => @propiedad.mensajes
 
                     %h3 General
                     .row
