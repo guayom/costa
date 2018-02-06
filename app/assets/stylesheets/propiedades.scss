@@ -322,11 +322,6 @@
     padding: 0 !important;
   }
 
-  .big-picture {
-    position: relative;
-    min-height: 100px;
-  }
-
   .price-print {
     background-color: red !important;
     position: absolute;
@@ -404,4 +399,14 @@
 
 .property-slider {
   margin-bottom: 20px;
+}
+
+.big-picture {
+  position: relative;
+  min-height: 100px;
+}
+
+.slick-slide img {
+    display: block;
+    max-width: 100%;
 }
