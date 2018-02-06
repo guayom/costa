@@ -24,15 +24,8 @@
   list-style: none;
   margin: 0;
   padding: 0;
-
-  display: flex;
-  height: 100%;
 }
 
-.big-picture .jcarousel ul{
-  display: flex;
-  height: 100%;
-}
 
 .jcarousel li {
   width: 200px;
@@ -43,27 +36,35 @@
   box-sizing: border-box;
 }
 
-.big-picture .jcarousel ul li{
-  position: relative;
-  overflow: hidden;
-}
-
 .jcarousel-pagination-wrapper li {
   width: 100px;
 }
 
 .jcarousel img {
   display: block;
-}
-
-.jcarousel-pagination .jcarousel img {
   max-width: 100%;
-  height: auto !important;
 }
 
-.big-picture .jcarousel img {
-  height: 100%;
-  float: right;
+@media only screen and (min-width: 992px) {
+  .big-picture .jcarousel ul{
+    display: flex;
+    height: 100%;
+  }
+
+  .big-picture .jcarousel ul li{
+    position: relative;
+    overflow: hidden;
+  }
+
+  .big-picture .jcarousel img {
+    height: 100%;
+    float: right;
+  }
+
+  .jcarousel-pagination .jcarousel img {
+    max-width: 100%;
+    height: auto !important;
+  }
 }
 
 /** Carousel Controls **/
