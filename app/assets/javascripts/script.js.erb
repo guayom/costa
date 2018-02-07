@@ -60,7 +60,9 @@ $(document).ready(function () {
     arrows: true,
     prevArrow: "<a class='jcarousel-control-prev main' href='#'>‹</a>",
     nextArrow: "<a class='jcarousel-control-next main' href='#'>›</a>",
-    mobileFirst: true
+    mobileFirst: true,
+    autoplay: true,
+    autoplaySpeed: 2000,
   });
 
   $('.slider-nav').slick({
@@ -70,5 +72,6 @@ $(document).ready(function () {
     centerMode: true,
     focusOnSelect: true,
     arrows: false,
+    lazyLoad: 'progressive',
   });
 });
