@@ -93,7 +93,7 @@ $(document).ready(function () {
     elem.appendChild(closeBtn);
     closeBtn.append("x");
     closeBtn.id = "close-modal-button";
-    $( ".property-slider" ).clone().appendTo( container );
+    $( ".property-slider" ).appendTo( container );
   }
 
   $('.property-slider .slick-slide').click(function(e){
@@ -103,6 +103,7 @@ $(document).ready(function () {
 
 function closeModal(e){
   console.log(e);
+  $( ".property-slider" ).appendTo('.big-picture');
   $('#slider-modal-container').remove();
 }
 
