@@ -412,22 +412,28 @@
 }
 
 .popUpSlider {
-  display: none;
+  display: block;
   position: fixed;
   width:100%;
   height:100vh;
-  z-index:99999;
   background:rgba(0,0,0,0.8);
   top:0;
   left:0;
   bottom: 0;
   right: 0;
+  opacity: 0;
+  z-index: -9999;
+  transition: opacity 0.5s ease;
 }
 
 .popUpSliderWrapper {
   width: 98%;
   margin: 40px auto;
   height: 100%;
+
+  .property-slider {
+    height: 200px;
+  }
 }
 
 #close-modal-button {
@@ -435,4 +441,5 @@
   top: 10px;
   right: 1%;
   color: #fff;
+  font-size: 18px;
 }
