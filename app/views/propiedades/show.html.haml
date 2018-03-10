@@ -267,3 +267,8 @@
                     = render partial: 'static_pages/form', locals: {contacto_mensaje: @contacto_mensaje}
       .col-md-4.col-md-pull-8.sidebar
         = render :partial => 'application/quick_links_sidebar'
+  .popUpSlider
+    #close-modal-button
+      %i.fa.fa-close
+    .popUpSliderWrapper
+      = render 'slider', :images => @propiedad.imagenes, :cover => @propiedad.cover, :mensajes => @propiedad.mensajes
