@@ -15,7 +15,7 @@
         .widget
           %h3 Nuestros Agentes
           %ul.list-unstyled
-            - Admin.without_permisos(:developer).for_footer.each do |admin|
+            - Admin.without_permisos(:developer).where('id != ?', 57).for_footer.each do |admin|
               %li
                 = admin.nombre
                 %br
