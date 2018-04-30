@@ -56,6 +56,7 @@ class Propiedad < ActiveRecord::Base
   validates_presence_of :imagenes, if: :publicado?
   # validates_presence_of :tipo, if: :publicado?
 
+  validates_presence_of :propietario
   #validates_presence_of :propietario, if: :publicado?
   validate :order_date_cannot_be_in_the_future
 
