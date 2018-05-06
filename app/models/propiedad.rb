@@ -1,8 +1,10 @@
 class Propiedad < ActiveRecord::Base
   extend FriendlyId
   include PgSearch
+  include ActiveModel::Dirty
 
   before_validation :set_default_values
+  after_save :notify_admin
 
   self.per_page = 10
 
@@ -318,6 +320,14 @@ class Propiedad < ActiveRecord::Base
     estacionamiento: [30, 2],
     tipo_de_estacionamiento: [31, 2]
   }
+
+  private
+
+  def notify_admin
+    if estado_changed?
+      logger.debug "It changed!!!!!"
+    end
+  end
 
   protected
 
