@@ -325,7 +325,8 @@ class Propiedad < ActiveRecord::Base
 
   def notify_admin
     if estado_changed?
-      logger.debug "It changed!!!!!"
+      logger.debug "===========!!!!!!!!!!!!"
+      PropiedadMailer.estado_email(self).deliver_later
     end
   end
 
