@@ -296,6 +296,10 @@ class Propiedad < ActiveRecord::Base
   #   "#{id}-#{codigo.parameterize}-#{titular.parameterize}"
   # end
 
+  def absolute_link
+    return "http://www.costa506realestate.com/propiedades/#{self.slug}"
+  end
+
   def get_cuota_mantenimiento
     case self.cuota_mantenimiento_moneda
     when 'USD'
