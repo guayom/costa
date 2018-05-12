@@ -5,8 +5,9 @@
   </head>
   <body>
     <h1>Propiedad <%= @propiedad.codigo %> cambió a estado: <%= @propiedad.estado %></h1>
-    <%= link_to @propiedad.titular, @propiedad.absolute_link %>
-    <br/><br/>
+    <br/>
+    <p>pLink a la propiedad: <%= link_to @propiedad.titular, @propiedad.absolute_link %></p>
+    <br/>
     <img src="http://www.costa506realestate.com/assets/logos/logo_full-368d570de8a8805e7a43e7647b51a60261a609eab1958263cc01aaa8bfa713ea.png" />
   </body>
 </html>
