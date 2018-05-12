@@ -269,6 +269,9 @@ RailsAdmin.config do |config|
       field :sala_comedor
       field :cuarto_de_servicio
       field :mascota
+      field :pet_restrictions do
+        label "Mascota aplica restricciones"
+      end
 
       group 'Otros' do
         #active false
