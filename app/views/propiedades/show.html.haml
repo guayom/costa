@@ -195,9 +195,14 @@
                             %br/
 
                           - if @propiedad.mascota.present? && @propiedad.mascota == 'permitido'
-                            = image_tag 'icons/pet.svg', class: "img-icon"
-                            = "Se permiten mascotas"
-                            %br/
+                            %div{ :style => "display: flex; align-items: center" }
+                              = image_tag 'icons/pet.svg', class: "pull-left img-icon"
+                              %span
+                                = "Se permiten mascotas"
+                                - if @propiedad.pet_restrictions === true
+                                  %br
+                                  %small Aplica restricciones
+                              %br/
 
                           - if @propiedad.mascota.present? && @propiedad.mascota == 'prohibido'
                             = image_tag 'icons/no-pet.svg', class: "img-icon"
