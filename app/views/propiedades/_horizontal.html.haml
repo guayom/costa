@@ -11,7 +11,7 @@
                 = link_to propiedad do
                   %img{:alt => "#{propiedad.titular}", :src => propiedad.cover_url }
 
-                    .property-price{:data => {:listado => propiedad.listado }, class: "propiedad-color-#{propiedad.listado}"}
+                    .property-price{:data => {:listado => propiedad.listado }, class: "propiedad-color-#{propiedad.listado} #{propiedad.dot_color}"}
                       -#%h4
                       -#  = propiedad.tipo.titulo unless propiedad.tipo.nil?
                       - if 'disponible' == propiedad.estado

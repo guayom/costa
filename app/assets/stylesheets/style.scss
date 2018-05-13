@@ -801,6 +801,30 @@ input[type="color"]:focus,
   @include mq('desktop') {
     font-size: 16px;
   }
+
+  &:after {
+    content: "";
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: transparent;
+    display: block;
+    border-radius: 50%;
+  }
+
+  &.blue:after {
+    background: blue;
+  }
+
+  &.yellow:after {
+    background: yellow;
+  }
+
+  &.orange:after {
+    background: orange;
+  }
 }
 
 .property-features{

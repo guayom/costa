@@ -49,6 +49,7 @@ class Propiedad < ActiveRecord::Base
   enumerize :cuota_mantenimiento_moneda, in: ['USD', 'CRC'], default: 'USD'
   enumerize :tipo_de_estacionamiento, in: [:parqueo, :garaje, :parqueo_techado, :visitas, :calle, :sotano, :tandem]
   enumerize :mascota,  in: [:indefinido, :permitido, :prohibido], default: :indefinido
+  enumerize :commision_range, in: ['5% - 100%', '50 - 100%', '50%'], default: '5% - 100%'
 
   enum estatus: { publicado: 1, borrador: 2, rechazado: 3 }
 
@@ -309,6 +310,19 @@ class Propiedad < ActiveRecord::Base
     end
   end
 
+  def dot_color
+    case self.commision_range
+    when '5% - 100%'
+      "blue"
+    when '50 - 100%'
+      "orange"
+    when '50%'
+      "yellow"
+    else
+      nil
+    end
+  end
+
   EXCEL_COORDS = {
     titular: [4,2],
     tipo_id: [6, 2],
@@ -329,7 +343,6 @@ class Propiedad < ActiveRecord::Base
 
   def notify_admin
     if estado_changed?
-      logger.debug "===========!!!!!!!!!!!!"
       PropiedadMailer.estado_email(self).deliver_now
     end
   end

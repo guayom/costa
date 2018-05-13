@@ -194,6 +194,9 @@ RailsAdmin.config do |config|
       field :comision do
         label "Comisión"
       end
+      field :commision_range do
+        label "Rango de comsión"
+      end
       field :incluye_mantenimiento
       field :cuota_mantenimiento
       field :cuota_mantenimiento_moneda do
