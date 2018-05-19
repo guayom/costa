@@ -804,18 +804,18 @@ input[type="color"]:focus,
 
   &:after {
     content: "";
-    width: 5px;
-    height: 5px;
+    width: 7px;
+    height: 7px;
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 7px;
+    right: 7px;
     background: transparent;
     display: block;
     border-radius: 50%;
   }
 
   &.blue:after {
-    background: blue;
+    background: black;
   }
 
   &.yellow:after {
