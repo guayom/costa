@@ -804,11 +804,11 @@ input[type="color"]:focus,
 
   &:after {
     content: "";
-    width: 7px;
-    height: 7px;
+    width: 8px;
+    height: 8px;
     position: absolute;
-    top: 7px;
-    right: 7px;
+    top: 5px;
+    right: 5px;
     background: transparent;
     display: block;
     border-radius: 50%;
