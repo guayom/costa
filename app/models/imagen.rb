@@ -9,6 +9,7 @@ class Imagen < ActiveRecord::Base
     :styles => {
       :thumb => '100x65>',
       :small  => '260x173>',
+      :original => '786x522>',
       medium: {
         geometry: '370x246>',
         watermark_path: Rails.root.join('app', 'assets', 'images', 'watermark-white.png')
