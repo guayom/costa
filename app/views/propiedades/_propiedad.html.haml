@@ -65,8 +65,9 @@
         =link_to truncate(propiedad.titular, :length => 40), propiedad, class: "propiedad-text-color-#{propiedad.listado}"
         %small{class: "propiedad-text-color-#{propiedad.listado}"}
           = propiedad.ubicacion
-          - if propiedad.mascota.present? && propiedad.mascota == 'permitido'
-            %div= image_tag 'icons/pet.svg', class: "pull-rigth img-icon"
+      - if propiedad.mascota.present? && propiedad.mascota != 'indefinido'
+        .home-pet
+          = render 'propiedades/pet', pet: propiedad.mascota
       %p= propiedad.codigo
 - if 0 == (propiedad_counter + 1) % 4
   .clearfix.visible-md-block.visible-lg-block
