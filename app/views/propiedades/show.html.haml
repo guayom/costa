@@ -194,21 +194,8 @@
                             #{pluralize(@propiedad.estacionamiento, 'Carro')}
                             %br/
 
-                          - if @propiedad.mascota.present? && @propiedad.mascota == 'permitido'
-                            %div{ :style => "display: flex; align-items: center" }
-                              = image_tag 'icons/pet.svg', class: "pull-left img-icon"
-                              %span
-                                = "Se permiten mascotas"
-                                - if @propiedad.pet_restrictions === true
-                                  %br
-                                  %small *Aplica restricciones
-                              %br/
-
-                          - if @propiedad.mascota.present? && @propiedad.mascota == 'prohibido'
-                            = image_tag 'icons/no-pet.svg', class: "img-icon"
-                            = "Mascotas prohibidas"
-                            %br/
-
+                          - if @propiedad.mascota.present? && @propiedad.mascota != 'indefinido'
+                            = render 'pet', pet: @propiedad.mascota
 
                         .logo-and-contact-print.visible-print
                           = image_tag('logo-print.jpg')
