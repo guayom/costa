@@ -141,7 +141,7 @@
                                   m<sup>2</sup>
                                 - else
                                   Si
-                          - unless @propiedad.admin.nil?
+                          - if @propiedad.admin.present? && @propiedad.admin.permisos != "developer"
                             %tr
                               %td
                                 %strong Agente
