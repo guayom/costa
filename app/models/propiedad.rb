@@ -170,7 +170,7 @@ class Propiedad < ActiveRecord::Base
 
   def set_codigo
     if admin && codigo.blank?
-      last_propiedad = admin.propiedades.order(:codigo).last
+      last_propiedad = admin.propiedades.where("codigo LIKE :prefix", prefix: "#{admin.codigo}%").order(:codigo).last
       prev_number = last_propiedad ? last_propiedad.codigo[/\d+/].to_i : 0
       num = (prev_number + 1).to_s
       self.codigo = "#{admin.codigo}#{num}"
