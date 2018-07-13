@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180616184944) do
+ActiveRecord::Schema.define(version: 20180713045404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,6 +95,14 @@ ActiveRecord::Schema.define(version: 20180616184944) do
   add_index "distritos", ["canton_id"], name: "index_distritos_on_canton_id", using: :btree
   add_index "distritos", ["distrito_id"], name: "index_distritos_on_distrito_id", using: :btree
   add_index "distritos", ["provincia_id"], name: "index_distritos_on_provincia_id", using: :btree
+
+  create_table "documents", force: :cascade do |t|
+    t.string   "document_file_name"
+    t.string   "document_content_type"
+    t.integer  "document_file_size"
+    t.datetime "document_updated_at"
+    t.integer  "propiedad_id"
+  end
 
   create_table "facebook_covers", force: :cascade do |t|
     t.integer  "propiedad_id"

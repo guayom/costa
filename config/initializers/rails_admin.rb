@@ -281,6 +281,9 @@ RailsAdmin.config do |config|
           label "Número de plano catastrado"
         end
         field :file
+        field :documents do 
+          label "Documentos"
+        end
       end
 
       group 'Imágenes' do

@@ -15,7 +15,6 @@ class Propiedad < ActiveRecord::Base
 
   belongs_to :tipo
 
-  # belongs_to :tipo
   has_many :imagenes, :dependent => :destroy
   accepts_nested_attributes_for :imagenes
   has_many :facebook_covers, dependent: :destroy
@@ -25,13 +24,13 @@ class Propiedad < ActiveRecord::Base
 
   has_and_belongs_to_many :caracteristicas
 
-  # accepts_nested_attributes_for :imagenes, :allow_destroy => true
-
   has_attached_file :file, :path => '/files/:id/:filename'
   validates_attachment :file, content_type: { content_type: ["image/jpeg", "image/gif", "image/png", "application/pdf"] }
 
+  has_many :documents, :dependent => :destroy
+  accepts_nested_attributes_for :documents
+
   has_and_belongs_to_many :tipos, dependent: :destroy
-  # accepts_nested_attributes_for :tipos
 
   before_validation :set_codigo
 
@@ -159,6 +158,12 @@ class Propiedad < ActiveRecord::Base
   def imagenes= array
     array.each do |file|
       imagenes.build(imagen: file)
+    end
+  end
+
+  def documents= array
+    array.each do |file|
+      documents.build(document: file)
     end
   end
 

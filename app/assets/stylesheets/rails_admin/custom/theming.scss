@@ -101,7 +101,7 @@ input:valid + .help-text, input:valid + .help-block {
   display: none;
 }
 
-#propiedad_file_field {
+#propiedad_file_field, .document_field {
   img.img-thumbnail {
       max-width: 100px;
   }
