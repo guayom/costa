@@ -1776,6 +1776,11 @@ input[type="color"]:focus,
 	font-size: 32px;
 	line-height: 40px;
 	font-weight: 600;
+
+	small {
+		font-family: Arial, Helvetica, sans-serif;
+		font-weight: 300;
+	}
 }
 
 .single-post h3{
