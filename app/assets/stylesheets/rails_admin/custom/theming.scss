@@ -100,3 +100,9 @@ input:required:invalid + .help-text, input:required:invalid + .help-block {
 input:valid + .help-text, input:valid + .help-block {
   display: none;
 }
+
+#propiedad_file_field {
+  img.img-thumbnail {
+      max-width: 100px;
+  }
+}
