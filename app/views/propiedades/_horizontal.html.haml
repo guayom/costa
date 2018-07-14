@@ -70,7 +70,9 @@
               %small
             %p= truncate( strip_tags(propiedad.descripcion_publica), length: 150, :separator => ' ').gsub("↵", '')
 
-
+            - if propiedad.mascota.present? && propiedad.mascota != 'indefinido'
+              .home-pet
+                = render 'propiedades/pet', pet: propiedad.mascota
 
             = link_to "Más detalles »", propiedad, class: "btn btn-success propiedad-color-#{propiedad.listado} propiedad-border-color-#{propiedad.listado}"
 

@@ -68,6 +68,11 @@ es:
         visitas: Parqueo de Visitas
         calle: Sobre la calle
         sotano: Sótano
+      mascota:
+        indefinido: Indefinido
+        permitido: Permitido
+        prohibido: Prohibido
+        restringido: Aplica restricciones
 
   propiedad:
     amenities: Amenidades

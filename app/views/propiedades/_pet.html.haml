@@ -1,11 +1,12 @@
 - if pet === 'prohibido'
   = image_tag 'icons/no-pet.svg', class: "img-icon"
-  = "Mascotas prohibidas"
+  %span.pet-text
+    "Mascotas prohibidas"
 - else
   %div{ :style => "display: flex; align-items: center" }
     = image_tag 'icons/pet.svg', class: "pull-left img-icon"
     %span.pet-text
       = "Se permite mascotas"
-      - if pet  === 'restringido'
-        %br
-        %small *Aplica restricciones
+    - if pet  === 'restringido'
+      %span.pet-text-mobile 
+        %sup * Aplica restricciones
