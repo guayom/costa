@@ -307,11 +307,21 @@ class Propiedad < ActiveRecord::Base
   end
 
   def get_cuota_mantenimiento
-    case self.cuota_mantenimiento_moneda
-    when 'USD'
-      "$#{self.cuota_mantenimiento}"
+    @symbol = self.cuota_mantenimiento_moneda === 'USD' ? "$" : "₡"
+    @precio = "#{@symbol}#{self.cuota_mantenimiento}"
+    #:alquiler, :venta_alquiler
+    case self.listado
+    when "alquiler"
+      @disclaimer = self.incluye_mantenimiento ? "Cuota incluída en el alquiler" : "No incluída en la cuota de alquiler"
+    when "venta_alquiler"
+      @disclaimer = self.incluye_mantenimiento ? "Cuota incluída sólamente para alquiler" : "No incluída en la cuota de alquiler"
     else
-      "₡#{self.cuota_mantenimiento}"
+      @disclaimer = false
+    end
+    if self.cuota_mantenimiento.present? and self.cuota_mantenimiento > 0
+      {:precio => @precio, :disclaimer => @disclaimer}
+    else
+      false
     end
   end
 
