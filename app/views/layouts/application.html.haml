@@ -47,3 +47,5 @@
 
   = content_for?(:content) ? yield(:content) : yield
   = render "application/footer"
+  - if Rails.env === 'production'
+    = render "application/fb_pixel"
