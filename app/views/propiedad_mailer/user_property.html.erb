@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Propiedad registrada por un cliente</h1>
+
+    <h2>Propietario</h2>
+    <dl>
+      <dt>Nombre</dt>
+      <dd><%= @propietario.nombre_completo %></dd>
+      <dt>Teléfono</dt>
+      <dd><%= @propietario.celular %></dd>
+      <dt>Email</dt>
+      <dd><%= @propietario.email %></dd>
+    </dl>
+
+    <h2>Propiedad</h2>
+    <dl>
+      <dt>Titula</dt>
+      <dd><%= @propiedad.titular %></dd>
+      <dt>Dirección</dt>
+      <dd><%= @propiedad.direccion_exacta %></dd>
+      <dt>Descripción</dt>
+      <dd><%= @propiedad.descripcion_publica %></dd>
+    </dl>
+    
+    <br/>
+    <img src="http://www.costa506realestate.com/assets/logos/logo_full-368d570de8a8805e7a43e7647b51a60261a609eab1958263cc01aaa8bfa713ea.png" />
+  </body>
+</html>

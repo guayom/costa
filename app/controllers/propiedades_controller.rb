@@ -88,6 +88,8 @@ class PropiedadesController < ApplicationController
         .property_added_email(@propiedad.propietario, @propiedad)
         .deliver_later
 
+      PropiedadMailer.user_property(@propiedad).deliver_now
+
       redirect_to propiedades_path, { notice: t(:propiedad_added_succefully) }
     else
       render :new
