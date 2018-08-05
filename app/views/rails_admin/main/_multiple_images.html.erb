@@ -20,6 +20,9 @@
         <p align="left">
           <%= link_to "Eliminar", destroy_image_path(:imagen, image.id), method: :delete, remote: true, data: {confirm: '¿Está seguro?'} %>
         </p>
+        <p>
+          <input type="checkbox" value="<%= image.id %>" class="delete-several" onchange="checkToDelete(this)" /> Eliminar varias
+        </p>
       <% end %>
     </div>
   <% end %>
@@ -42,6 +45,49 @@
     });
   });
 </script>
+
+<div>
+  <div>
+    <input id="to-be-deleted" type="text" />
+  </div>
+  <button class="btn btn-danger">Eliminar imágenes seleccionadas</button>
+  <script type="text/javascript">
+    function checkToDelete(e){
+      addOrRemoveFromToBeDeletedItems(e.checked, e.value);
+    }
+
+    function addOrRemoveFromToBeDeletedItems(checked, id){
+      var field = document.getElementById("to-be-deleted").value
+      var array = field.split(',');
+
+      if(checked) {
+        array.push(id);
+      } else {
+        let index = array.indexOf(id);
+        if (index > -1) {
+          array.splice(index, 1);
+        }
+      }
+
+      setToBeDeletedFieldValue(cleanArray(array));
+    }
+
+    function cleanArray(array){
+      var newArray = new Array();
+      for (var i = 0; i < array.length; i++) {
+        if (array[i]) {
+          newArray.push(array[i]);
+        }
+      }
+      return newArray.join(",");
+    }
+
+    function setToBeDeletedFieldValue(value) {
+      document.getElementById("to-be-deleted").value = value
+    }
+
+  </script>
+</div>
 
 <% if form.object.imagenes.any? %>
   <br>
