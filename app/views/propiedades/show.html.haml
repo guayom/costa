@@ -5,7 +5,7 @@
   = render partial: "application/meta_tags", locals: { title: "#{@propiedad.titular} - código: #{@propiedad.codigo}", descripcion: ActionView::Base.full_sanitizer.sanitize( @propiedad.descripcion_publica.gsub("↵", '')), image: @propiedad.facebook_cover_url, author_handle: "@Costa506"}
 
 - content_for :full_width_header do
-  #header.heading{:style => "background-image: url('#{image_path('img01.jpg')}'); background-position: 50% 0px;"}
+  #header.heading.hidden-xs.hidden-sm{:style => "background-image: url('#{image_path('img01.jpg')}'); background-position: 50% 0px;"}
     .container
       .row
         .col-md-10.col-md-offset-1.col-sm-12
