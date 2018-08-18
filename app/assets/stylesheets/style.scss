@@ -657,6 +657,12 @@ input[type="color"]:focus,
 	background: #f4f4f4;
 }
 
+@include mq("desktop"){
+	#content {
+		padding: 60px 0;
+	}
+}
+
 .heading-title{
 	display: block;
 	text-align: center;
