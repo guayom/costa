@@ -7,13 +7,6 @@ class ImagenesController < ApplicationController
     render layout: 'plain'
   end
 
-  def delete_array
-    @imagenes = Imagen.where(id: params[:ids])
-    respond_to do |format|
-      format.json { render json: @imagenes, status: :ok, head: :no_content }
-    end
-  end
-
   def download
     @propiedad = Propiedad.find_by(id: params[:propiedad])
     @imagenes = @propiedad.imagenes
@@ -55,10 +48,7 @@ class ImagenesController < ApplicationController
   private
 
   def imagenes_controller_params
-    #params.fetch(:imagenes_controller, {})
-    params.require(:propiedad).permit(
-      :ids
-    )
+    params.fetch(:imagenes_controller, {})
   end
 
   # before_action :set_imagenes_controller, only: [:show, :edit, :update, :destroy]
