@@ -20,15 +20,12 @@
         <p align="left">
           <%= link_to "Eliminar", destroy_image_path(:imagen, image.id), method: :delete, remote: true, data: {confirm: '¿Está seguro?'} %>
         </p>
-<<<<<<< HEAD
-=======
         <p>
           <label for="imagen_<%= image.id %>_checkbox">
             <input id="imagen_<%= image.id %>_checkbox" type="checkbox" value="<%= image.id %>" class="delete-several" onchange="checkToDelete(this)" /> 
              Eliminar varias
           </label>
         </p>
->>>>>>> delete
       <% end %>
     </div>
   <% end %>
