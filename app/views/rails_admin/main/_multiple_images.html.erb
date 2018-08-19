@@ -20,6 +20,15 @@
         <p align="left">
           <%= link_to "Eliminar", destroy_image_path(:imagen, image.id), method: :delete, remote: true, data: {confirm: '¿Está seguro?'} %>
         </p>
+<<<<<<< HEAD
+=======
+        <p>
+          <label for="imagen_<%= image.id %>_checkbox">
+            <input id="imagen_<%= image.id %>_checkbox" type="checkbox" value="<%= image.id %>" class="delete-several" onchange="checkToDelete(this)" /> 
+             Eliminar varias
+          </label>
+        </p>
+>>>>>>> delete
       <% end %>
     </div>
   <% end %>
@@ -42,6 +51,12 @@
     });
   });
 </script>
+
+<div>
+  <div>
+    <%= link_to "Eliminar", main_app.delete_array_imagenes_path(ids: "1"), remote: true, id: "test-link", class: "btn btn-sm btn-danger" %>
+  </div>
+</div>
 
 <% if form.object.imagenes.any? %>
   <br>
@@ -78,6 +93,49 @@
       event.preventDefault();
       return false;
     };
+
+
+    // GUAYO
+    function checkToDelete(e){
+      addOrRemoveFromToBeDeletedItems(e.checked, e.value);
+    }
+
+    function addOrRemoveFromToBeDeletedItems(checked, id){
+      var hrefString = document.getElementById("test-link").href;
+      var idsString = hrefString.split("?")[1];
+      var array = idsString.split("&").map(i => i.split("=")[1].toString());
+
+      if(checked) {
+        array.push(id);
+        console.log({array});
+      } else {
+        let index = array.indexOf(id);
+        if (index > -1) {
+          array.splice(index, 1);
+          console.log({array});
+        }
+      }
+
+      var paramsString = array.filter(e => e != "").map(i => `ids[]=${i}`).join("&");
+      console.log(paramsString);
+      setParamsforDeleteButton(paramsString);
+    }
+
+    function setParamsforDeleteButton(newParams){
+      var button = document.getElementById("test-link");
+      var oldString = button.getAttribute("href").split("?");
+      oldString[1] = newParams;
+      var newString = oldString.join("?");
+      button.href = newString;
+    }
+
+    $('#test-link').on ('ajax:success', removeImages);
+
+    function removeImages(event, data) {
+      for (var i = 0; i < data.length; i++) {
+        $( "#image_" + data[i].id).remove();
+      }
+    }
   </script>
 
   <br>

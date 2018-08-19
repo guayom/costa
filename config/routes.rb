@@ -34,6 +34,7 @@ Rails.application.routes.draw do
       get 'upload', action: :upload
       get 'download', action: :download
       get 'download_original', action: :download_original
+      get 'delete_array', action: :delete_array
     end
   end
 
