@@ -49,44 +49,8 @@
 <div>
   <div>
     <input id="to-be-deleted" type="text" />
+    <%= link_to "Eliminar", main_app.delete_array_imagenes_path(ids: ""), remote: true, id: "test-link", class: "btn btn-danger" %>
   </div>
-  <button class="btn btn-danger">Eliminar imágenes seleccionadas</button>
-  <script type="text/javascript">
-    function checkToDelete(e){
-      addOrRemoveFromToBeDeletedItems(e.checked, e.value);
-    }
-
-    function addOrRemoveFromToBeDeletedItems(checked, id){
-      var field = document.getElementById("to-be-deleted").value
-      var array = field.split(',');
-
-      if(checked) {
-        array.push(id);
-      } else {
-        let index = array.indexOf(id);
-        if (index > -1) {
-          array.splice(index, 1);
-        }
-      }
-
-      setToBeDeletedFieldValue(cleanArray(array));
-    }
-
-    function cleanArray(array){
-      var newArray = new Array();
-      for (var i = 0; i < array.length; i++) {
-        if (array[i]) {
-          newArray.push(array[i]);
-        }
-      }
-      return newArray.join(",");
-    }
-
-    function setToBeDeletedFieldValue(value) {
-      document.getElementById("to-be-deleted").value = value
-    }
-
-  </script>
 </div>
 
 <% if form.object.imagenes.any? %>
@@ -124,6 +88,65 @@
       event.preventDefault();
       return false;
     };
+
+
+    // GUAYO
+    function checkToDelete(e){
+      addOrRemoveFromToBeDeletedItems(e.checked, e.value);
+    }
+
+    function createParamsString(array){
+      var newArray = array.split(',');
+      var paramsString = newArray.map( id => `ids[]=${id}`).join("&");
+      setParamsforDeleteButton(paramsString);
+    }
+
+    function setParamsforDeleteButton(newParams){
+      var button = document.getElementById("test-link");
+      var oldString = button.getAttribute("href").split("?");
+      oldString[1] = newParams;
+      var newString = oldString.join("?");
+      button.href = newString;
+    }
+
+    function addOrRemoveFromToBeDeletedItems(checked, id){
+      var field = document.getElementById("to-be-deleted").value;
+      var array = field.split(','); 
+
+      if(checked) {
+        array.push(id);
+      } else {
+        let index = array.indexOf(id);
+        if (index > -1) {
+          array.splice(index, 1);
+        }
+      }
+
+      createParamsString(cleanArray(array));
+      setToBeDeletedFieldValue(cleanArray(array));
+    }
+
+    function cleanArray(array){
+      var newArray = new Array();
+      for (var i = 0; i < array.length; i++) {
+        if (array[i]) {
+          newArray.push(array[i]);
+        }
+      }
+      return newArray.join(",");
+    }
+
+    function setToBeDeletedFieldValue(value) {
+      document.getElementById("to-be-deleted").value = value
+    }
+
+    $('#test-link').on ('ajax:success', removeImages);
+
+    function removeImages(event, data) {
+      for (var i = 0; i < data.length; i++) {
+        $( "#image_" + data[i].id).remove();
+      }
+    }
   </script>
 
   <br>
