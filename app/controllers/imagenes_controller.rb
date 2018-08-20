@@ -8,7 +8,8 @@ class ImagenesController < ApplicationController
   end
 
   def delete_array
-    @imagenes = Imagen.where(id: params[:ids])
+    @imagenes = Imagen.where(:id => params[:ids]).destroy_all
+
     respond_to do |format|
       format.json { render json: @imagenes, status: :ok, head: :no_content }
     end
