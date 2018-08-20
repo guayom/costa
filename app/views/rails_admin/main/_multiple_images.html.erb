@@ -51,7 +51,7 @@
 
 <div>
   <div>
-    <%= link_to "Eliminar", main_app.delete_array_imagenes_path(ids: ""), remote: true, id: "test-link", class: "btn btn-sm btn-danger" %>
+    <%= link_to "Eliminar", main_app.delete_array_imagenes_path(ids: "0"), remote: true, id: "test-link", class: "btn btn-sm btn-danger" %>
   </div>
 </div>
 
@@ -101,20 +101,21 @@
       var hrefString = document.getElementById("test-link").href;
       var idsString = hrefString.split("?")[1];
       var array = idsString.split("&").map(i => i.split("=")[1].toString());
+      var index = array.indexOf("0");
+      if (index > -1) {
+        array.splice(index, 1);
+      }
 
       if(checked) {
         array.push(id);
-        console.log({array});
       } else {
         let index = array.indexOf(id);
         if (index > -1) {
           array.splice(index, 1);
-          console.log({array});
         }
       }
 
       var paramsString = array.filter(e => e != "").map(i => `ids[]=${i}`).join("&");
-      console.log(paramsString);
       setParamsforDeleteButton(paramsString);
     }
 
