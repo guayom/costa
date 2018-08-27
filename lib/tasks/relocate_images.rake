@@ -5,7 +5,7 @@ namespace :images do
     @propiedades.each do |propiedad|
       puts "PROPIEDAD: #{propiedad.codigo} -------------------"
       propiedad.imagenes.each do |imagen|
-        puts imagen.to_json
+        puts imagen.imagen
       end
     end
   end
