@@ -7,7 +7,9 @@ namespace :images do
       puts "PROPIEDAD: #{propiedad.codigo} -------------------"
       propiedad.imagenes.each do |imagen|
         @styles.each do |style|
-          unless imagen.blank? puts imagen.imagen(style)
+          unless imagen.blank? 
+            puts imagen.imagen(style)
+          end
         end
       end
     end
