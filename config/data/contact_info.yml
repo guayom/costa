@@ -14,8 +14,8 @@ direccion: 'San José, Costa Rica'
 telefonos:
  - nombre: primero
    numero: +506 8701 7726
- - nombre: segundo
-   numero: +506 8857 2832
+#  - nombre: segundo
+#    numero: +506 8857 2832
  - nombre: tercero
    numero: +506 8380 0415
  - nombre: cuarto
