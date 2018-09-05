@@ -12,7 +12,7 @@ class Admin < ActiveRecord::Base
   validates :telefono, presence: true
 
   extend Enumerize
-  enumerize :permisos, :in => [:developer, :admin, :agente], scope: true
+  enumerize :permisos, :in => [:developer, :admin, :agente, :bloqueado], scope: true
 
   has_many :propietarios
   has_many :propiedades
