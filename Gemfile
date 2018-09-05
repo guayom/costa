@@ -125,7 +125,6 @@ gem 'acts_as_list', '0.7.2'
 # gem 'aws-sdk', '< 2.0'
 # gem 'aws-sdk-v1'
 gem 'aws-sdk'
-gem 'aws-sdk-s3'
 gem 'delayed_paperclip'
 gem 'paperclip'
 gem 's3_direct_upload'
@@ -149,4 +148,4 @@ gem 'rails-assets-sortablejs', source: 'https://rails-assets.org'
 gem "informant-rails"
 # gem 'rails_admin_multiple_upload', path: 'vendor/gems/rails_admin_multiple_upload'
 #RUBY Version
-ruby "2.3.0"
+ruby "2.2.3"
