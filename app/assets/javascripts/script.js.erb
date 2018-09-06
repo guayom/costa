@@ -84,6 +84,19 @@ $(document).ready(function () {
   });
 });
 
-$(document).on('click', '#close-modal-button', function(e){
+// $(document).on('click', '#close-modal-button', function(e){
+//   $('.popUpSlider').css('opacity', 0).css('z-index', '-9999999');
+// });
+
+function hidePopUp(){
   $('.popUpSlider').css('opacity', 0).css('z-index', '-9999999');
+}
+
+$(document).mouseup(function(e) 
+{
+    var container = $(".property-slider");
+    if (!container.is(e.target) && container.has(e.target).length === 0) 
+    {
+        hidePopUp();
+    }
 });
