@@ -266,6 +266,13 @@
   .jcarousel-control-prev, .jcarousel-control-next, .separator {
     display: none;
   }
+  .jcarousel-control-next:focus, .jcarousel-control-prev:focus {
+    text-decoration: none;
+    color: #fff;
+  } 
+  .jcarousel-control-next:active, .jcarousel-control-prev:active {
+    transform: translateY(2px);
+  } 
   .jcarousel-wrapper:last-of-type {
     margin-top: 0;
   }
