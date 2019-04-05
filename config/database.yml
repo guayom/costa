@@ -1,11 +1,11 @@
 development:
   adapter:  postgresql
-  host:     localhost
+  host:     <%= ENV['COSTA_DATABASE_HOST'] %>
   encoding: unicode
-  database: costa_development
+  database: <%= ENV['COSTA_DATABASE'] %>
   pool:     5
-  username: guayo
-  password: elgrone
+  username: <%= ENV['COSTA_DATABASE_USER'] %>
+  password: <%= ENV['COSTA_DATABASE_PASSWORD'] %>
   template: template0
 
 test:
