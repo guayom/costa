@@ -49,9 +49,6 @@ gem 'pg_search'
 
 gem 'cancancan'
 
-# Roo implements read access for all common spreadsheet types.
-gem 'roo'
-
 # FriendlyId is the "Swiss Army bulldozer" of slugging and permalink plugins
 # for Active Record. It lets you create pretty URLs and work with human-friendly
 # strings as if they were numeric ids.
