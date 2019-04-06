@@ -46,6 +46,7 @@ class PropiedadesController < ApplicationController
   def show
   	@propiedad = Propiedad.find(params[:id])
     @contacto_mensaje = @propiedad.contacto_mensajes.new
+    respond_to :html, :json
   end
 
   def new

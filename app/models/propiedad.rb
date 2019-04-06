@@ -338,6 +338,10 @@ class Propiedad < ActiveRecord::Base
     end
   end
 
+  def large_images
+    self.imagenes.map { |i| i.imagen.url(:large)}
+  end
+
   EXCEL_COORDS = {
     titular: [4,2],
     tipo_id: [6, 2],
