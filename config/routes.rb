@@ -41,10 +41,9 @@ Rails.application.routes.draw do
   resources :propiedades do
     collection do
       get 'registrar', action: :new
+      get 'search'
       get 'import'
-
       get 'test_email', action: :test_email
-
       get 'update_sort_index'
     end
 

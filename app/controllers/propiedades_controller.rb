@@ -11,14 +11,9 @@ class PropiedadesController < ApplicationController
     @propiedades = Propiedad.publicado.
       order('order_date IS NOT NULL DESC').
       order(order_date: :desc, created_at: :desc, id: :desc)
-    # @propiedades = Propiedad.publicado.order(created_at: :desc, id: :desc)
 
     if params[:estado].present? && params[:estado]
       @propiedades = @propiedades.with_estado(:alquilado, :vendido)
-    # else
-    #   if params[:keywords].blank?
-    #     @propiedades = @propiedades.with_estado(:disponible)
-    #   end
     else
       @propiedades = @propiedades.with_estado(:disponible)
     end
@@ -27,9 +22,12 @@ class PropiedadesController < ApplicationController
      :estacionamiento, :dormitorios, :banos, :valor_compra,
      :valor_alquiler, :keywords].each do |key|
       if params[key].present?
+        # TODO limit with a parameter
         @propiedades = @propiedades.send("search_by_#{key}", params[key])
       end
     end
+
+    @allPropiedades = @propiedades.first(20)
 
     @propiedades = @propiedades.page(params[:page])
 
@@ -38,6 +36,15 @@ class PropiedadesController < ApplicationController
         params[range_key] = params[range_key].join(',')
       end
     end
+
+    respond_to :html, :json
+  end
+
+  def search
+    keyword = params[:keyword] || 5
+    limit = params[:limit]
+    @propiedades = []
+    @propiedades = Propiedad.publicado.where('titular LIKE ?', "%#{keyword}%").limit(limit) if keyword
   end
 
   def detalles
