@@ -41,10 +41,27 @@ class PropiedadesController < ApplicationController
   end
 
   def search
-    keyword = params[:keyword] || 5
-    limit = params[:limit]
+    # TODO consider Elastic search
+    # TODO Add pages
+    # http://www.bentedder.com/creating-a-basic-autocomplete-search-endpoint-in-ruby-on-rails/
+    # TODO review Scopes
+    # https://www.justinweiss.com/articles/search-and-filter-rails-models-without-bloating-your-controller/
+    # TODO Search in description field
+    # TODO Search in code field
+    # TODO filter by listing kind
+    # TODO filter by status
+    # TODO filter by price
+    # TODO filter by pets
+    keyword = params[:keyword] || nil
+    limit = params[:limit] || 6
+    page = params[:page] || 6
+    offset = ((page.to_i - 1) * limit.to_i) || 0
     @propiedades = []
-    @propiedades = Propiedad.publicado.where('titular LIKE ?', "%#{keyword}%").limit(limit) if keyword
+    @propiedades = Propiedad.where('titular ILIKE ? '\
+                                   'OR codigo ILIKE ?', "%#{keyword}%","%#{keyword}%")
+                    .limit(limit) if keyword
+
+    #Client.where("orders_count = ? AND locked = ?", params[:orders], false)
   end
 
   def detalles
