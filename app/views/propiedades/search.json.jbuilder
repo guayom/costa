@@ -25,4 +25,5 @@ json.data @propiedades.each do |propiedad|
   json.bathrooms propiedad.banos
   json.constructionDate propiedad.fecha_construccion
   json.cover propiedad.cover_url
+  json.cover_url propiedad.cover_url
 end

@@ -64,6 +64,7 @@ json.data @allPropiedades.each do |propiedad|
     json.facebook image.imagen.url(:facebook)
   end
   json.cover propiedad.cover
+  json.cover_url propiedad.cover_url
   json.createdAt propiedad.created_at
   json.updatedAt propiedad.updated_at
 end
