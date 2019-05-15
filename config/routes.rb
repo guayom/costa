@@ -60,4 +60,10 @@ Rails.application.routes.draw do
   get "/static_pages/:page" => "static_pages#show"
   match ':controller(/:action(/:id))', :via => [:get , :post, :patch]
 
+  namespace :api, :defaults => {:format => :json} do
+    namespace :v1 do
+      resources :agents, only: [:index]
+    end
+  end
+
 end
