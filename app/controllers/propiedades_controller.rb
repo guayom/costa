@@ -1,3 +1,4 @@
+
 class PropiedadesController < ApplicationController
   def index
     params[:listado] ||= :venta_alquiler
@@ -19,8 +20,8 @@ class PropiedadesController < ApplicationController
     end
 
     [:listado, :provincia_id, :canton_id, :distrito_id, :tipo,
-     :estacionamiento, :dormitorios, :banos, :valor_compra,
-     :valor_alquiler, :keywords].each do |key|
+    :estacionamiento, :dormitorios, :banos, :valor_compra,
+    :valor_alquiler, :keywords].each do |key|
       if params[key].present?
         # TODO limit with a parameter
         @propiedades = @propiedades.send("search_by_#{key}", params[key])
@@ -41,34 +42,16 @@ class PropiedadesController < ApplicationController
   end
 
   def search
-    # TODO consider Elastic search
-    # TODO Add pages
-    # http://www.bentedder.com/creating-a-basic-autocomplete-search-endpoint-in-ruby-on-rails/
-    # TODO review Scopes
-    # https://www.justinweiss.com/articles/search-and-filter-rails-models-without-bloating-your-controller/
-    # TODO Search in description field
-    # TODO Search in code field
-    # TODO filter by listing kind
-    # TODO filter by status
-    # TODO filter by price
-    # TODO filter by pets
-    keyword = params[:keyword] || nil
-    limit = params[:limit] || 6
-    page = params[:page] || 6
-    offset = ((page.to_i - 1) * limit.to_i) || 0
-    @propiedades = []
-    @propiedades = Propiedad.where('titular ILIKE ? '\
-                                   'OR codigo ILIKE ?', "%#{keyword}%","%#{keyword}%")
-                    .limit(limit) if keyword
+    @propiedades = Propiedad.first(5)
 
-    #Client.where("orders_count = ? AND locked = ?", params[:orders], false)
+    respond_to :json
   end
 
   def detalles
   end
 
   def show
-  	@propiedad = Propiedad.find(params[:id])
+    @propiedad = Propiedad.find(params[:id])
     @contacto_mensaje = @propiedad.contacto_mensajes.new
     respond_to :html, :json
   end
@@ -103,7 +86,7 @@ class PropiedadesController < ApplicationController
         # Send password to new user.
         PropietarioMailer
           .welcome_email(@propiedad.propietario,
-                         propiedad_params[:propietario_attributes][:password])
+                        propiedad_params[:propietario_attributes][:password])
           .deliver_later
 
         sign_in(:propietario, @propiedad.propietario)
@@ -167,7 +150,8 @@ class PropiedadesController < ApplicationController
       :descripcion_publica, :tipo_id, :provincia_id, :canton_id,
       :distrito_id, :direccion_exacta, :propietario_id, :mascota, :file,
       propietario_attributes: [:nombre, :apellido, :celular, :email,
-                               :password, :self_register]
+                              :password, :self_register]
     )
   end
 end
+

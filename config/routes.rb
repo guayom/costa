@@ -41,7 +41,6 @@ Rails.application.routes.draw do
   resources :propiedades do
     collection do
       get 'registrar', action: :new
-      get 'search'
       get 'import'
       get 'test_email', action: :test_email
       get 'update_sort_index'
@@ -63,6 +62,7 @@ Rails.application.routes.draw do
   namespace :api, :defaults => {:format => :json} do
     namespace :v1 do
       resources :agents, only: [:index]
+      resources :propiedades, only: [:index]
     end
   end
 
