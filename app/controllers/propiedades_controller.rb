@@ -28,7 +28,7 @@ class PropiedadesController < ApplicationController
       end
     end
 
-    @allPropiedades = @propiedades.first(20)
+    @allPropiedades = @propiedades
 
     @propiedades = @propiedades.page(params[:page])
 
