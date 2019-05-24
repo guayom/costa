@@ -9,7 +9,7 @@ json.data @propiedades.each do |propiedad|
   json.purchasePrice propiedad.valor_compra
   json.rentPrice propiedad.valor_alquiler
   json.purchase_option propiedad.opcion_compra
-  json.commissionRange propiedad.commision_range #revisar valores, debería ser algo más privado. Tal vez sólo tirar el color de la bolita
+  json.dotColor propiedad.dot_color
   json.maintenanceFee propiedad.cuota_mantenimiento
   json.maintenanceFeeCurrency propiedad.cuota_mantenimiento_moneda
   json.exactAddress propiedad.direccion_exacta
