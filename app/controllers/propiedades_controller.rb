@@ -28,7 +28,7 @@ class PropiedadesController < ApplicationController
       end
     end
 
-    @allPropiedades = @propiedades
+    @allPropiedades = @propiedades.first(150)
 
     @propiedades = @propiedades.page(params[:page])
 
@@ -38,7 +38,7 @@ class PropiedadesController < ApplicationController
       end
     end
 
-    respond_to :html, :json
+    respond_to :html
   end
 
   def search

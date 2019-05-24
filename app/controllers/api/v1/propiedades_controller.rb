@@ -1,6 +1,11 @@
 module Api
   module V1
     class PropiedadesController < ApplicationController
+        def all
+          @propiedades = Propiedad.publicado
+          respond_to :json
+        end
+
         def index
           params[:listado] ||= :venta_alquiler
 

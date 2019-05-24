@@ -334,7 +334,7 @@ class Propiedad < ActiveRecord::Base
     when '50%'
       "yellow"
     else
-      nil
+      ""
     end
   end
 
