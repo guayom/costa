@@ -35,6 +35,7 @@ Rails.application.routes.draw do
       get 'download', action: :download
       get 'download_original', action: :download_original
       get 'delete_array', action: :delete_array
+      get 'descargar/:id/:format', action: :descargar, as: "descargar"
     end
   end
 
@@ -69,5 +70,7 @@ Rails.application.routes.draw do
       end
     end
   end
+
+
 
 end

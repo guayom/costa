@@ -1,4 +1,7 @@
 class ImagenesController < ApplicationController
+  before_action :authenticate_admin!, only: [:descargar]
+  layout "plain", only: [:descargar]
+
   def create
     @imagen = current_admin.imagenes.create(imagenes_controller_params)
   end
@@ -51,6 +54,11 @@ class ImagenesController < ApplicationController
               filename: "propiedad_#{params[:propiedad]}_original_images.zip",
               type: 'application/zip',
               disposition: 'attachment')
+  end
+
+  def descargar
+    @propiedad = Propiedad.find(params[:id])
+    @format = params[:format]
   end
 
   private

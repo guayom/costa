@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="row">
+    <div class="column col-xs-12" style="margin: 100px 0;"> 
+      <% @propiedad.imagenes.each do |imagen| %>
+        <img src="<%= imagen.imagen.url(@format.to_sym) %>" />
+      <% end %>
+    </div>
+  </div>
+</div>
