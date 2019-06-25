@@ -28,8 +28,7 @@
       %noscript
         %img{:height => "1", :src => "https://www.facebook.com/tr?id=1843959702324485&ev=PageView\nhttps://www.facebook.com/tr?id=1843959702324485&ev=PageView\n\n&noscript=1", :width => "1"}/
       / End Facebook Pixel Code
-      %script{type: "text/javascript"}
-        = render 'application/ga'
+      = render 'application/ga'
     = yield :meta_tags
 
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
