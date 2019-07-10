@@ -51,7 +51,7 @@ class PropiedadesController < ApplicationController
   end
 
   def show
-    @propiedad = Propiedad.find(params[:id])
+    @propiedad = Propiedad.publicado.find(params[:id])
     @contacto_mensaje = @propiedad.contacto_mensajes.new
     respond_to :html, :json
   end
