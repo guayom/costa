@@ -9,7 +9,7 @@ class PropiedadesController < ApplicationController
       end
     end
 
-    @propiedades = Propiedad.publicado.
+    @propiedades = Propiedad.publicado.last(25)
       order('order_date IS NOT NULL DESC').
       order(order_date: :desc, created_at: :desc, id: :desc)
 
