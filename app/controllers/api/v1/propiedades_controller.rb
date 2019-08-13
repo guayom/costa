@@ -2,7 +2,7 @@ module Api
   module V1
     class PropiedadesController < ApplicationController
         def all
-          @propiedades = Propiedad.publicado
+          @propiedades = Propiedad.publicado.first(10)
           respond_to :json
         end
 
