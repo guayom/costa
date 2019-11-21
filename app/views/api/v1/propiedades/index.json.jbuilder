@@ -1,29 +1,29 @@
 json.data @propiedades.each do |propiedad|
   json.id propiedad.id
   json.code propiedad.codigo
-  json.title propiedad.titular
+  json.titular propiedad.titular
   json.slug propiedad.slug
-  json.availability propiedad.estado
-  json.category propiedad.listado
-  json.currency propiedad.moneda
-  json.purchasePrice propiedad.valor_compra
-  json.rentPrice propiedad.valor_alquiler
-  json.purchase_option propiedad.opcion_compra
-  json.dotColor propiedad.dot_color
-  json.maintenanceFee propiedad.cuota_mantenimiento
-  json.maintenanceFeeCurrency propiedad.cuota_mantenimiento_moneda
-  json.exactAddress propiedad.direccion_exacta
+  json.estado propiedad.estado
+  json.listado propiedad.listado
+  json.moneda propiedad.moneda
+  json.valor_compra propiedad.valor_compra
+  json.valor_alquiler propiedad.valor_alquiler
+  json.opcion_compra propiedad.opcion_compra
+  json.commision_range propiedad.commision_range
+  json.cuota_mantenimiento propiedad.cuota_mantenimiento
+  json.cuota_mantenimiento_moneda propiedad.cuota_mantenimiento_moneda
+  json.direccion_exacta propiedad.direccion_exacta
   json.provincia propiedad.provincia
   json.canton propiedad.canton
   json.distrito propiedad.distrito
-  json.landArea propiedad.area_terreno
-  json.constructionArea propiedad.area_construccion
-  json.storeys propiedad.pisos
-  json.locatedAtFloor propiedad.ubicado_en_piso
-  json.bedrooms propiedad.dormitorios
-  json.offices propiedad.oficinas
-  json.bathrooms propiedad.banos
-  json.constructionDate propiedad.fecha_construccion
-  json.cover propiedad.cover_url
-  json.cover_url propiedad.cover_url
+  json.area_terreno propiedad.area_terreno
+  json.area_construccion propiedad.area_construccion
+  json.pisos propiedad.pisos
+  json.ubicado_en_piso propiedad.ubicado_en_piso
+  json.dormitorios propiedad.dormitorios
+  json.oficinas propiedad.oficinas
+  json.banos propiedad.banos
+  json.fecha_construccion propiedad.fecha_construccion
+  json.cover propiedad.cover
+  json.imagenes propiedad.imagenes
 end
