@@ -1,6 +1,6 @@
 json.data @propiedades.each do |propiedad|
   json.id propiedad.id
-  json.code propiedad.codigo
+  json.codigo propiedad.codigo
   json.titular propiedad.titular
   json.slug propiedad.slug
   json.estado propiedad.estado
