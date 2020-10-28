@@ -287,8 +287,6 @@ RailsAdmin.config do |config|
       end
 
       group 'Imágenes' do
-        active false
-
         field :imagenes, :paperclip do
           html_attributes do
             { multiple: true }
